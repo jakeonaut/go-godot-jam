@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/farmcrickets.wav-2cf243f9f25b06ffa70b989122337fa0.sample"
+
+[deps]
+
+source_file="res://assets/ambience/farmcrickets.wav"
+dest_files=[ "res://.import/farmcrickets.wav-2cf243f9f25b06ffa70b989122337fa0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/OOT_Pot_Shatter.wav-2695df3721d05fffaa42b910754e8b50.sample"
+
+[deps]
+
+source_file="res://assets/sfx/OOT_Pot_Shatter.wav"
+dest_files=[ "res://.import/OOT_Pot_Shatter.wav-2695df3721d05fffaa42b910754e8b50.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

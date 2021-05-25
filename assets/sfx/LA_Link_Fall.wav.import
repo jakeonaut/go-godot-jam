@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/LA_Link_Fall.wav-fc7bec022d9e09218bd9d33541134951.sample"
+
+[deps]
+
+source_file="res://assets/sfx/LA_Link_Fall.wav"
+dest_files=[ "res://.import/LA_Link_Fall.wav-fc7bec022d9e09218bd9d33541134951.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
