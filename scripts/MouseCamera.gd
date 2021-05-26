@@ -46,16 +46,18 @@ func _ready():
     real_rotation_target_x = camera_x.rotation_degrees.x
     self.normalizeTargetX()
     current_rotation_x = target_rotation_x
+
+    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     
 func _input(ev):
     if ev is InputEventMouseButton: # and ev.button_index == BUTTON_RIGHT:
         mouseDown = ev.is_pressed()
         startClickPos = ev.position
     elif ev is InputEventMouseMotion and not (global.pauseMoveInput or global.pauseGame):
-        if mouseDown:
-            mouseDiffX = startClickPos.x - ev.position.x
-            mouseDiffY = startClickPos.y - ev.position.y
-            startClickPos = ev.position
+        #if mouseDown:
+        mouseDiffX = -ev.relative.x
+        mouseDiffY = -ev.relative.y
+        startClickPos = ev.position
 
 func _process(delta):
     if is_rotating and debug_print: 
@@ -108,12 +110,22 @@ func processMouseInput(delta):
         mouseDiffY = -highest_mouse_rotation_step
     elif mouseDiffY > highest_mouse_rotation_step:
         mouseDiffY = highest_mouse_rotation_step
+
+    var smallest = 2
+    if abs(mouseDiffX) < smallest: mouseDiffX = 0
+    if abs(mouseDiffY) < smallest: mouseDiffY = 0
+
+    mouseDiffX /= 2
+    mouseDiffY /= 2
+
     rotate_y(mouseDiffX * delta)
     if (mouseDiffY > 0 and not self.gateKeepDownCondition_(camera_x.rotation.x)) or \
        (mouseDiffY < 0 and not self.gateKeepUpCondition_(camera_x.rotation.x)):
         camera_x.rotate_x(mouseDiffY * delta)
     mouseDiffX = 0
     mouseDiffY = 0
+
+    Input.warp_mouse_position (Vector2(0, 0))
 
 func focusForward(facing):
     # STILL DON'T REALLY KNOW WHAT I'M DOING HERE
