@@ -61,6 +61,8 @@ var broom_time_limit = 2
 var broom_state = 0
 var can_broom = global.can_broom
 
+var is_interact_charging = false
+
 func getCamera(): return camera
 func getCameraX(): return camera.get_node("CameraX")
 func getTrueCamera(): return camera.get_node("CameraX/Camera")
@@ -309,6 +311,46 @@ func processJumpInputs(delta):
             jumpSound.play()
             has_just_jumped_timer = -has_just_jumped_time_limit
 
+func getCameraForward(should_snap = false):
+    # Forward as "seen" by the camera (OpenGL convention)
+    var view_forward = -getCamera().get_transform().basis.z
+    # Forward as "seen" by the player
+    var forward = Vector3(view_forward.x, 0.0, view_forward.z).normalized()
+    # snap movement to right angles
+    if should_snap or getTrueCamera().get_projection() == PROJECTION_ORTHOGONAL:
+        if abs(forward.z) > abs(forward.x):
+            if forward.z < 0:
+                forward = Vector3(0, 0, -1)
+            else:
+                forward = Vector3(0, 0, 1)
+        else:
+            if forward.x < 0:
+                forward = Vector3(-1, 0, 0)
+            else:
+                forward = Vector3(1, 0, 0)
+    return forward
+
+func getCameraRight(should_snap = false):
+    # Forward as "seen" by the camera (OpenGL convention)
+    var view_forward = -getCamera().get_transform().basis.z
+    var view_right = -getCamera().get_transform().basis.x
+    # Forward as "seen" by the player
+    var forward = Vector3(view_forward.x, 0.0, view_forward.z).normalized()
+    var right = view_right
+    # snap movement to right angles
+    if should_snap or getTrueCamera().get_projection() == PROJECTION_ORTHOGONAL:
+        if abs(forward.z) > abs(forward.x):
+            if forward.z < 0:
+                right = Vector3(-1, 0, 0)
+            else:
+                right = Vector3(1, 0, 0)
+        else:
+            if forward.x < 0:
+                right = Vector3(0, 0, 1)
+            else:
+                right = Vector3(0, 0, -1)
+    return right
+
 const PROJECTION_ORTHOGONAL = 1
 func processHorizontalInputs(delta):
     self.is_pressing_horizontal_input = (Input.is_action_pressed("ui_left") or 
@@ -316,29 +358,8 @@ func processHorizontalInputs(delta):
                                          Input.is_action_pressed("ui_up") or 
                                          Input.is_action_pressed("ui_down"))
 
-    # Forward as "seen" by the camera (OpenGL convention)
-    var view_forward = -getCamera().get_transform().basis.z
-    var view_right = -getCamera().get_transform().basis.x
-    # Forward as "seen" by the player
-    var forward = Vector3(view_forward.x, 0.0, view_forward.z).normalized()
-    var right = view_right
-
-    # snap movement to right angles
-    if getTrueCamera().get_projection() == PROJECTION_ORTHOGONAL:
-        if abs(forward.z) > abs(forward.x):
-            if forward.z < 0:
-                forward = Vector3(0, 0, -1)
-                right = Vector3(-1, 0, 0)
-            else:
-                forward = Vector3(0, 0, 1)
-                right = Vector3(1, 0, 0)
-        else:
-            if forward.x < 0:
-                forward = Vector3(-1, 0, 0)
-                right = Vector3(0, 0, 1)
-            else:
-                forward = Vector3(1, 0, 0)
-                right = Vector3(0, 0, -1)
+    var forward = getCameraForward()
+    var right = getCameraRight()
 
     if self.glitch_form == GlitchForm.FEATHER or (self.is_holding_chicken and not on_ground):
         forward = forward / 4
@@ -425,7 +446,7 @@ func processHorizontalInputs(delta):
             is_lunging = 0
             if mySprite: mySprite.setLungeSprite(false)
 
-    if broom_state > 0:
+    if broom_state > 0 or is_interact_charging:
         hv = Vector3(0, 0, 0)
         is_walking = false
     else:

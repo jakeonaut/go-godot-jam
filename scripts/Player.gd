@@ -4,6 +4,12 @@ var sprite_reset_timer = 0
 var sprite_reset_limit = 3
 var cameraRotationCounter = 0
 
+var interact_charge_timer = 0
+var interact_charge_time_max = 20
+
+onready var startChargeSound = get_node("Sounds/StartChargeSound")
+onready var fullChargeSound = get_node("Sounds/FullyChargedSound")
+
 func _ready():
     set_process_input(true)
     set_process(true)
@@ -26,9 +32,6 @@ func wearCostume(costume):
     elif costume == "nightgown": 
         mySprite.setNightgown()
     global.memory["player_costume"] = costume
-    
-func bugTransform():
-    pass # needs to be updated to work with hframe/vframe!!! could be a glitch or a costume ? [both?]
     
 func _process(delta):
     # ._process(delta) #NOTE: this super method is called automatically 
@@ -94,3 +97,6 @@ func tryRotateCamera(delta):
 
 func faceDown():
     mySprite.faceDown()
+
+func tryEmptyInteract():
+    pass    

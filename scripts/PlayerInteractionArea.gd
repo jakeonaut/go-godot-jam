@@ -1,5 +1,6 @@
 extends Area
 
+onready var player = get_node("..")
 
 func _ready():
     set_process(true)
@@ -53,24 +54,33 @@ func _process(delta):
                     nearest_area = area
 
     # give priority to active area if user pressing interact action
-    if Input.is_action_just_pressed("ui_ctrl_interact"):
+    if Input.is_action_just_pressed("ui_interact"):
         if nearest_area:
             nearest_area.InteractActivate()
         # Give secondary priority to held objects action.
         elif global.activeThrowableObject:
-            global.activeThrowableObject.activate_crouch()
+            player.is_interact_charging = true
+            player.interact_charge_timer = 0
         # if no nearby active area, and no held object, use primary player action
         else:
-            get_node("..").tryBroom()
-    elif Input.is_action_just_pressed("ui_interact"):
-        if nearest_area:
-            nearest_area.InteractActivate()
-        # Give secondary priority to held objects action.
-        elif global.activeThrowableObject:
-            global.activeThrowableObject.activate()
-        # if no nearby active area, and no held object, use primary player action
-        else:
-            get_node("..").tryBroom()
+            get_node("..").tryEmptyInteract()
+    elif player.is_interact_charging and Input.is_action_pressed("ui_interact"):
+        if global.activeThrowableObject and player.interact_charge_timer < player.interact_charge_time_max:
+            var was_less_than_3 = player.interact_charge_timer < 3
+            player.interact_charge_timer += (delta*22)
+            if was_less_than_3 and player.interact_charge_timer >= 3:
+                player.startChargeSound.play()
+            
+            if player.interact_charge_timer >= player.interact_charge_time_max:
+                player.fullChargeSound.play()
+    elif player.is_interact_charging:
+        player.is_interact_charging = 0
+        if global.activeThrowableObject:
+            player.startChargeSound.stop()
+            if Input.is_action_pressed("ui_crouch"):
+                global.activeThrowableObject.activate_crouch(player.interact_charge_timer)
+            else: 
+                global.activeThrowableObject.activate(player.interact_charge_timer)
     # otherwise, try to interact passive areas
     elif nearest_passive_area:
         nearest_passive_area.PassiveInteractActivate(delta)     

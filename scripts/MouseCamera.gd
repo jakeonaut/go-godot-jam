@@ -70,12 +70,16 @@ func _process(delta):
         current_rotation += curr_step_y*delta
         rotate_y(curr_step_y * delta)
         player_sprite.fixSpriteFacing()
+        if player.activeThrowableObject:
+            player.facing = player.getCameraForward(true)
         if current_rotation > target_rotation:
             self.tryNormalizeCurrent()
     elif target_rotation < current_rotation:
         current_rotation -= curr_step_y*delta
         rotate_y(-curr_step_y * delta)
         player_sprite.fixSpriteFacing()
+        if player.activeThrowableObject:
+            player.facing = player.getCameraForward(true)
         if current_rotation < target_rotation:
             self.tryNormalizeCurrent()
     else:
@@ -119,9 +123,16 @@ func processMouseInput(delta):
     mouseDiffY /= 2
 
     rotate_y(mouseDiffX * delta)
+    if mouseDiffX != 0 and not player.is_pressing_horizontal_input:
+        player.facing = player.getCameraForward()
+
     if (mouseDiffY > 0 and not self.gateKeepDownCondition_(camera_x.rotation.x)) or \
        (mouseDiffY < 0 and not self.gateKeepUpCondition_(camera_x.rotation.x)):
         camera_x.rotate_x(mouseDiffY * delta)
+
+    if mouseDiffX != 0 or mouseDiffY != 0:
+        player_sprite.fixSpriteFacing()
+
     mouseDiffX = 0
     mouseDiffY = 0
 

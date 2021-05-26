@@ -16,6 +16,7 @@ var was_rolled = false
 var pickupCounter = 0
 var pickupCounterMax = 3
 
+var throw_force = 1
 var throw_speed = 14
 var jump_force = 10
 
@@ -61,8 +62,8 @@ func processInputs(delta):
 
     if was_just_thrown:
         was_just_thrown = false
-        hv = player.facing.normalized() * throw_speed
-        vv = jump_force
+        hv = player.facing.normalized() * (throw_speed + throw_force - 1)
+        vv = jump_force + (5 * throw_force / 10)
         if thrown_down:
             hv = player.facing.normalized() * 0
             vv = -jump_force*2
@@ -105,12 +106,12 @@ func isActive():
     # BECAUSE player will already know about it through the global var.
     return visible and !global.activeThrowableObject
 
-func activate():
+func activate(interact_charge_timer = 1):
     # Should be able to talk while holding an object.
     if not is_held and global.activeThrowableObject == null:
         pickup()
     elif pickupCounter >= pickupCounterMax and (global.activeThrowableObject == self or is_held):
-        throw()
+        throw(interact_charge_timer)
 
 func pickup():
     is_floating = false
@@ -122,7 +123,7 @@ func pickup():
     pickupCounter = 0
     self.repositionSelf()
 
-func throw():
+func throw(interact_charge_timer = 1):
     spawn_origin = self.global_transform.origin
     is_floating = false
     float_timer = float_time_limit
@@ -130,6 +131,7 @@ func throw():
     throwSound.play()
     is_held = false
     was_just_thrown = true
+    throw_force = interact_charge_timer
     was_planted = true
     # if Input.is_action_pressed("ui_jump") and not player.is_pressing_horizontal_input:
     #     thrown_down = true
