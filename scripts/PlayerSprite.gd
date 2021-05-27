@@ -14,9 +14,11 @@ func preProcess():
        or parent.linear_velocity.z > 0.001 or parent.linear_velocity.z < -0.001 \
        or parent.broom_state > 0:
         frame_delay = 0.1
-    elif Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") \
+    elif Input.is_action_pressed("ui_interact") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") \
          or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down"):
         frame_delay = 0.2
+        if Input.is_action_pressed("ui_interact"):
+            frame_delay = 0.1
     else:
         frame_delay = 0.4
 

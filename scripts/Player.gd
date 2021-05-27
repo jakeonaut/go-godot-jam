@@ -9,6 +9,9 @@ var interact_charge_time_max = 20
 
 onready var startChargeSound = get_node("Sounds/StartChargeSound")
 onready var fullChargeSound = get_node("Sounds/FullyChargedSound")
+onready var slowDownSound = get_node("Sounds/SlowDownSound")
+var sprint_timer = 0
+var sprint_time_max = 40
 
 func _ready():
     set_process_input(true)
@@ -27,6 +30,28 @@ func _process(delta):
             global.pauseGame = true
         else:
             global.pauseGame = false
+
+    if Input.is_action_pressed("ui_interact") and not global.activeThrowableObject and sprint_timer < sprint_time_max:
+        if Input.is_action_just_pressed("ui_interact") and not startChargeSound.playing:
+            startChargeSound.play()
+
+        if startChargeSound.playing:
+            walk_speed = 1
+        else:
+            if walk_speed == 1:
+                fullChargeSound.play()
+                sprint_timer = 0
+            walk_speed = 21
+            sprint_timer += (delta*22)
+    else:
+        if walk_speed == 21:
+            slowDownSound.play()
+        if slowDownSound.playing:
+            walk_speed = 2
+        else:
+            walk_speed = 12
+        if not Input.is_action_pressed("ui_interact") or global.activeThrowableObject:
+            sprint_timer = 0
 
     # if Input.is_action_just_pressed("ui_action") and on_ground and not global.pauseMoveInput and not global.pauseGame:
     #     is_rolling = true

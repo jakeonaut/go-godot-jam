@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scripts/heronbaby.gd" type="Script" id=1]
 [ext_resource path="res://materials/heronwing.tres" type="Material" id=2]
@@ -10,8 +10,10 @@
 [ext_resource path="res://assets/sfx/sm64_piranha_plant_loop.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sfx/wingflap.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/sfx/Link - Bomb Deploy.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sfx/whoopingcrane.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sfx/whoopingcranebig.wav" type="AudioStream" id=12]
 
-[sub_resource type="ArrayMesh" id=16]
+[sub_resource type="ArrayMesh" id=1]
 resource_name = "Cylinder008"
 surfaces/0 = {
 "aabb": AABB( 0.288138, -2.97367, -0.747285, 0.855312, 0.73266, 0.675186 ),
@@ -26,7 +28,7 @@ surfaces/0 = {
 "vertex_count": 28
 }
 
-[sub_resource type="ArrayMesh" id=17]
+[sub_resource type="ArrayMesh" id=2]
 resource_name = "Cylinder010"
 surfaces/0 = {
 "aabb": AABB( 0.288138, -2.97367, -0.747285, 0.855312, 0.73266, 0.675186 ),
@@ -41,7 +43,7 @@ surfaces/0 = {
 "vertex_count": 28
 }
 
-[sub_resource type="ArrayMesh" id=18]
+[sub_resource type="ArrayMesh" id=3]
 resource_name = "Cylinder007"
 surfaces/0 = {
 "aabb": AABB( -0.542919, 0.377607, -1.78768, 1.03079, 1.28066, 2.101 ),
@@ -56,7 +58,7 @@ surfaces/0 = {
 "vertex_count": 65
 }
 
-[sub_resource type="ArrayMesh" id=19]
+[sub_resource type="ArrayMesh" id=4]
 resource_name = "Cylinder012"
 surfaces/0 = {
 "aabb": AABB( -0.597356, 0.00938791, -2.1195, 1.49095, 3.01883, 1.2912 ),
@@ -71,7 +73,7 @@ surfaces/0 = {
 "vertex_count": 28
 }
 
-[sub_resource type="ArrayMesh" id=20]
+[sub_resource type="ArrayMesh" id=5]
 resource_name = "Cylinder013"
 surfaces/0 = {
 "aabb": AABB( -1.99007, 0.00938791, -1.63655, 1.50489, 3.04916, 1.95625 ),
@@ -86,8 +88,7 @@ surfaces/0 = {
 "vertex_count": 28
 }
 
-[sub_resource type="ArrayMesh" id=3]
-resource_name = "Cylinder"
+[sub_resource type="ArrayMesh" id=6]
 surfaces/0 = {
 "aabb": AABB( -0.948502, 1.39109, -3.21415, 2.05661, 3.97007, 5.89643 ),
 "array_data": PoolByteArray( 152, 21, 138, 60, 24, 67, 29, 64, 24, 125, 9, 192, 254, 125, 234, 0, 105, 246, 187, 127, 170, 55, 122, 56, 25, 198, 165, 190, 187, 15, 244, 63, 45, 207, 247, 191, 148, 193, 20, 0, 200, 65, 163, 127, 52, 54, 83, 56, 44, 102, 80, 191, 68, 110, 230, 63, 180, 171, 132, 191, 158, 177, 10, 0, 210, 43, 146, 127, 166, 52, 233, 56, 5, 0, 64, 51, 97, 224, 47, 64, 242, 36, 5, 192, 255, 75, 155, 0, 114, 44, 30, 127, 10, 56, 163, 56, 44, 102, 80, 191, 132, 211, 22, 64, 42, 2, 8, 191, 149, 234, 63, 0, 218, 119, 234, 127, 18, 53, 149, 57, 5, 0, 64, 51, 154, 124, 83, 64, 44, 159, 201, 191, 0, 102, 182, 0, 126, 0, 0, 127, 64, 56, 78, 57, 25, 198, 165, 190, 187, 15, 244, 63, 45, 207, 247, 191, 148, 193, 20, 0, 190, 102, 222, 127, 221, 57, 55, 54, 204, 8, 183, 62, 187, 15, 244, 63, 45, 207, 247, 191, 106, 196, 32, 0, 188, 162, 50, 127, 30, 57, 55, 54, 44, 102, 80, 63, 68, 110, 230, 63, 180, 171, 132, 191, 98, 177, 11, 0, 176, 159, 14, 127, 158, 56, 26, 56, 44, 102, 80, 191, 68, 110, 230, 63, 180, 171, 132, 191, 158, 177, 10, 0, 176, 97, 244, 127, 103, 58, 26, 56, 204, 8, 183, 62, 187, 15, 244, 63, 45, 207, 247, 191, 106, 196, 32, 0, 67, 82, 187, 127, 69, 47, 206, 58, 152, 21, 138, 60, 24, 67, 29, 64, 24, 125, 9, 192, 254, 125, 234, 0, 148, 243, 192, 127, 147, 50, 172, 58, 5, 0, 64, 51, 97, 224, 47, 64, 242, 36, 5, 192, 255, 75, 155, 0, 148, 52, 41, 127, 99, 51, 109, 58, 44, 102, 80, 63, 68, 110, 230, 63, 180, 171, 132, 191, 98, 177, 11, 0, 51, 48, 151, 127, 205, 34, 9, 58, 135, 54, 216, 190, 28, 153, 75, 64, 68, 118, 180, 189, 176, 33, 92, 0, 31, 122, 240, 127, 91, 54, 119, 58, 0, 0, 0, 0, 203, 16, 107, 64, 127, 47, 33, 191, 0, 126, 246, 0, 97, 250, 175, 127, 17, 56, 82, 58, 44, 102, 80, 191, 68, 110, 230, 63, 180, 171, 132, 191, 158, 177, 10, 0, 80, 159, 12, 127, 158, 56, 228, 59, 44, 102, 80, 63, 68, 110, 230, 63, 180, 171, 132, 191, 98, 177, 11, 0, 80, 97, 242, 127, 103, 58, 228, 59, 44, 102, 80, 63, 132, 211, 22, 64, 42, 2, 8, 191, 107, 234, 63, 0, 67, 35, 155, 127, 103, 58, 20, 59, 44, 102, 80, 191, 132, 211, 22, 64, 42, 2, 8, 191, 149, 234, 63, 0, 67, 221, 101, 127, 158, 56, 20, 59, 5, 0, 64, 51, 154, 124, 83, 64, 44, 159, 201, 191, 0, 102, 182, 0, 130, 6, 8, 127, 13, 52, 160, 57, 44, 102, 80, 63, 132, 211, 22, 64, 42, 2, 8, 191, 107, 234, 63, 0, 34, 121, 241, 127, 148, 40, 59, 57, 97, 221, 40, 190, 89, 221, 84, 64, 74, 36, 33, 190, 213, 68, 97, 0, 69, 98, 218, 127, 229, 54, 145, 58, 255, 255, 31, 179, 19, 39, 97, 64, 73, 215, 188, 190, 0, 125, 17, 0, 91, 12, 170, 127, 151, 55, 131, 58, 135, 54, 216, 62, 28, 153, 75, 64, 68, 118, 180, 189, 80, 33, 92, 0, 98, 230, 181, 127, 249, 57, 14, 58, 135, 54, 216, 190, 28, 153, 75, 64, 68, 118, 180, 189, 176, 33, 92, 0, 98, 26, 75, 127, 12, 57, 14, 58, 0, 0, 0, 0, 203, 16, 107, 64, 127, 47, 33, 191, 0, 126, 246, 0, 149, 251, 189, 127, 87, 51, 140, 56, 135, 54, 216, 62, 28, 153, 75, 64, 68, 118, 180, 189, 80, 33, 92, 0, 214, 119, 250, 127, 118, 47, 88, 56, 252, 1, 207, 189, 219, 51, 149, 64, 175, 125, 13, 63, 194, 30, 150, 0, 110, 23, 199, 127, 63, 56, 188, 59, 131, 177, 50, 179, 86, 130, 154, 64, 72, 220, 27, 63, 0, 61, 146, 0, 126, 244, 249, 127, 103, 56, 228, 59, 97, 221, 40, 62, 89, 221, 84, 64, 74, 36, 33, 190, 43, 68, 97, 0, 119, 232, 221, 127, 177, 57, 247, 57, 97, 221, 40, 190, 89, 221, 84, 64, 74, 36, 33, 190, 213, 68, 97, 0, 119, 24, 35, 127, 84, 57, 247, 57, 255, 255, 31, 179, 19, 39, 97, 64, 73, 215, 188, 190, 0, 125, 17, 0, 143, 8, 200, 127, 83, 50, 106, 56, 97, 221, 40, 62, 89, 221, 84, 64, 74, 36, 33, 190, 43, 68, 97, 0, 162, 83, 240, 127, 234, 48, 86, 56, 131, 177, 50, 179, 86, 130, 154, 64, 72, 220, 27, 63, 0, 61, 146, 0, 147, 55, 31, 127, 1, 59, 188, 48, 252, 1, 207, 189, 219, 51, 149, 64, 175, 125, 13, 63, 194, 30, 150, 0, 163, 50, 69, 127, 1, 59, 159, 49, 200, 64, 30, 191, 97, 26, 139, 64, 66, 208, 13, 63, 155, 217, 191, 0, 183, 82, 63, 127, 84, 59, 227, 51, 139, 57, 34, 51, 159, 142, 171, 64, 200, 177, 101, 63, 0, 126, 247, 0, 135, 2, 36, 127, 84, 59, 238, 44, 252, 1, 207, 61, 219, 51, 149, 64, 175, 125, 13, 63, 62, 30, 150, 0, 110, 239, 60, 127, 159, 57, 80, 56, 252, 1, 207, 189, 219, 51, 149, 64, 175, 125, 13, 63, 194, 30, 150, 0, 110, 17, 196, 127, 102, 57, 80, 56, 131, 177, 50, 179, 86, 130, 154, 64, 72, 220, 27, 63, 0, 61, 146, 0, 136, 33, 18, 127, 57, 52, 109, 53, 252, 1, 207, 61, 219, 51, 149, 64, 175, 125, 13, 63, 62, 30, 150, 0, 155, 63, 215, 127, 208, 51, 184, 53, 139, 57, 34, 51, 159, 142, 171, 64, 200, 177, 101, 63, 0, 126, 247, 0, 105, 5, 70, 127, 213, 49, 144, 37, 200, 64, 30, 191, 97, 26, 139, 64, 66, 208, 13, 63, 155, 217, 191, 0, 228, 120, 228, 127, 205, 34, 144, 37, 157, 229, 195, 188, 230, 145, 127, 64, 229, 208, 42, 64, 175, 185, 65, 0, 14, 75, 101, 127, 63, 46, 0, 53, 20, 202, 29, 179, 103, 10, 129, 64, 122, 170, 43, 64, 0, 62, 110, 0, 82, 83, 209, 127, 170, 46, 0, 53, 252, 1, 207, 61, 219, 51, 149, 64, 175, 125, 13, 63, 62, 30, 150, 0, 162, 78, 224, 127, 207, 58, 45, 49, 200, 64, 30, 63, 97, 26, 139, 64, 66, 208, 13, 63, 101, 217, 191, 0, 214, 60, 154, 127, 40, 58, 45, 49, 104, 229, 195, 60, 230, 145, 127, 64, 229, 208, 42, 64, 81, 185, 65, 0, 186, 14, 104, 127, 175, 50, 244, 52, 20, 202, 29, 179, 103, 10, 129, 64, 122, 170, 43, 64, 0, 62, 110, 0, 139, 42, 233, 127, 221, 50, 0, 53, 157, 229, 195, 188, 230, 145, 127, 64, 229, 208, 42, 64, 175, 185, 65, 0, 172, 94, 255, 127, 221, 50, 230, 52, 200, 64, 30, 191, 97, 26, 139, 64, 66, 208, 13, 63, 155, 217, 191, 0, 180, 52, 86, 127, 92, 55, 108, 45, 200, 64, 30, 63, 97, 26, 139, 64, 66, 208, 13, 63, 101, 217, 191, 0, 180, 204, 170, 127, 166, 52, 108, 45, 104, 229, 195, 60, 230, 145, 127, 64, 229, 208, 42, 64, 81, 185, 65, 0, 159, 196, 54, 127, 244, 53, 12, 54, 157, 229, 195, 188, 230, 145, 127, 64, 229, 208, 42, 64, 175, 185, 65, 0, 159, 60, 202, 127, 15, 54, 12, 54, 200, 64, 30, 63, 97, 26, 139, 64, 66, 208, 13, 63, 101, 217, 191, 0, 228, 136, 28, 127, 241, 57, 205, 34, 139, 57, 34, 51, 159, 142, 171, 64, 200, 177, 101, 63, 0, 126, 247, 0, 105, 251, 186, 127, 158, 56, 205, 34, 20, 202, 29, 179, 103, 10, 129, 64, 122, 170, 43, 64, 0, 62, 110, 0, 82, 173, 47, 127, 140, 57, 227, 51, 104, 229, 195, 60, 230, 145, 127, 64, 229, 208, 42, 64, 81, 185, 65, 0, 14, 181, 155, 127, 153, 57, 227, 51, 46, 111, 163, 61, 11, 99, 67, 64, 162, 180, 77, 192, 1, 110, 62, 0, 74, 49, 167, 127, 151, 55, 115, 55, 7, 209, 114, 191, 61, 15, 178, 63, 108, 178, 36, 192, 171, 244, 93, 0, 253, 126, 13, 127, 115, 55, 108, 55, 7, 209, 114, 191, 61, 15, 178, 63, 108, 178, 36, 192, 171, 244, 93, 0, 162, 11, 172, 127, 117, 57, 94, 52, 140, 214, 141, 63, 61, 15, 178, 63, 108, 178, 36, 192, 79, 251, 98, 0, 158, 252, 79, 127, 99, 57, 94, 52, 140, 214, 141, 63, 61, 15, 178, 63, 108, 178, 36, 192, 79, 251, 98, 0, 247, 125, 14, 127, 250, 49, 144, 59, 46, 111, 163, 61, 11, 99, 67, 64, 162, 180, 77, 192, 1, 110, 62, 0, 180, 50, 168, 127, 66, 50, 141, 59 ),
@@ -101,8 +102,7 @@ surfaces/0 = {
 "vertex_count": 65
 }
 
-[sub_resource type="ArrayMesh" id=6]
-resource_name = "Cylinder001"
+[sub_resource type="ArrayMesh" id=7]
 surfaces/0 = {
 "aabb": AABB( -0.998675, 0.00938791, -1.63655, 0.959339, 2.46919, 1.64128 ),
 "array_data": PoolByteArray( 245, 40, 33, 189, 192, 207, 25, 60, 241, 214, 113, 191, 86, 193, 188, 0, 61, 224, 106, 127, 60, 56, 202, 46, 33, 172, 230, 190, 66, 67, 147, 63, 161, 185, 146, 191, 21, 191, 150, 0, 118, 233, 38, 127, 97, 56, 90, 55, 88, 199, 193, 190, 66, 67, 147, 63, 219, 191, 130, 191, 66, 76, 76, 0, 212, 194, 101, 127, 179, 56, 24, 55, 197, 140, 160, 190, 192, 207, 25, 60, 124, 221, 154, 59, 34, 218, 116, 0, 172, 79, 51, 127, 182, 57, 37, 36, 197, 140, 160, 190, 192, 207, 25, 60, 124, 221, 154, 59, 34, 218, 116, 0, 99, 79, 254, 127, 154, 52, 235, 59, 88, 199, 193, 190, 66, 67, 147, 63, 219, 191, 130, 191, 66, 76, 76, 0, 107, 200, 220, 127, 94, 50, 81, 56, 101, 200, 5, 191, 66, 67, 147, 63, 219, 191, 130, 191, 144, 58, 6, 0, 58, 109, 24, 127, 61, 49, 89, 56, 42, 169, 127, 191, 192, 207, 25, 60, 176, 28, 53, 191, 141, 205, 250, 0, 0, 240, 125, 127, 16, 33, 34, 59, 33, 172, 230, 190, 66, 67, 147, 63, 161, 185, 146, 191, 21, 191, 150, 0, 154, 186, 22, 127, 126, 54, 238, 56, 101, 200, 5, 191, 66, 67, 147, 63, 219, 191, 130, 191, 144, 58, 6, 0, 0, 241, 126, 127, 40, 55, 4, 57, 101, 200, 5, 191, 166, 237, 207, 63, 6, 129, 193, 191, 133, 255, 28, 0, 27, 33, 119, 127, 93, 54, 19, 53, 33, 172, 230, 190, 166, 237, 207, 63, 120, 122, 209, 191, 0, 227, 133, 0, 130, 3, 0, 127, 178, 53, 230, 52, 42, 169, 127, 191, 192, 207, 25, 60, 176, 28, 53, 191, 141, 205, 250, 0, 208, 102, 57, 127, 19, 56, 235, 59, 245, 40, 33, 189, 192, 207, 25, 60, 241, 214, 113, 191, 86, 193, 188, 0, 164, 188, 203, 127, 235, 52, 159, 59, 245, 40, 33, 189, 192, 207, 25, 60, 241, 214, 113, 191, 86, 193, 188, 0, 91, 36, 80, 127, 235, 59, 235, 59, 197, 140, 160, 190, 192, 207, 25, 60, 124, 221, 154, 59, 34, 218, 116, 0, 121, 23, 228, 127, 235, 59, 142, 57, 42, 169, 127, 191, 192, 207, 25, 60, 176, 28, 53, 191, 141, 205, 250, 0, 41, 156, 64, 127, 223, 57, 188, 58, 101, 200, 5, 191, 14, 161, 30, 64, 219, 80, 169, 191, 167, 64, 63, 0, 41, 207, 109, 127, 19, 56, 116, 45, 33, 172, 230, 190, 14, 161, 30, 64, 161, 74, 185, 191, 0, 80, 158, 0, 190, 83, 68, 127, 124, 55, 192, 44, 88, 199, 193, 190, 166, 237, 207, 63, 6, 129, 193, 191, 123, 255, 28, 0, 26, 217, 139, 127, 55, 50, 44, 51, 101, 200, 5, 191, 166, 237, 207, 63, 6, 129, 193, 191, 133, 255, 28, 0, 26, 200, 110, 127, 22, 49, 75, 51, 33, 172, 230, 190, 166, 237, 207, 63, 120, 122, 209, 191, 0, 227, 133, 0, 123, 28, 250, 127, 72, 56, 47, 58, 88, 199, 193, 190, 166, 237, 207, 63, 6, 129, 193, 191, 123, 255, 28, 0, 230, 47, 114, 127, 154, 56, 14, 58, 88, 199, 193, 190, 14, 161, 30, 64, 219, 80, 169, 191, 89, 64, 63, 0, 89, 183, 206, 127, 154, 52, 88, 41, 33, 172, 230, 190, 14, 161, 30, 64, 161, 74, 185, 191, 0, 80, 158, 0, 126, 9, 8, 127, 3, 52, 248, 37, 101, 200, 5, 191, 14, 161, 30, 64, 219, 80, 169, 191, 167, 64, 63, 0, 89, 52, 72, 127, 10, 52, 211, 41, 33, 172, 230, 190, 14, 161, 30, 64, 161, 74, 185, 191, 0, 80, 158, 0, 59, 86, 71, 127, 100, 57, 235, 59, 88, 199, 193, 190, 14, 161, 30, 64, 219, 80, 169, 191, 89, 64, 63, 0, 197, 232, 109, 127, 182, 57, 203, 59 ),
@@ -116,7 +116,7 @@ surfaces/0 = {
 "vertex_count": 28
 }
 
-[sub_resource type="ArrayMesh" id=9]
+[sub_resource type="ArrayMesh" id=8]
 resource_name = "Cylinder002"
 surfaces/0 = {
 "aabb": AABB( -0.522589, 0.00938791, -1.82925, 1.16482, 2.42947, 0.855829 ),
@@ -131,7 +131,7 @@ surfaces/0 = {
 "vertex_count": 28
 }
 
-[sub_resource type="ArrayMesh" id=12]
+[sub_resource type="ArrayMesh" id=9]
 resource_name = "Cylinder003"
 surfaces/0 = {
 "aabb": AABB( 0.287508, -0.369013, -0.954441, 3.75858, 2.03183, 1.5 ),
@@ -146,7 +146,7 @@ surfaces/0 = {
 "vertex_count": 28
 }
 
-[sub_resource type="ArrayMesh" id=15]
+[sub_resource type="ArrayMesh" id=10]
 resource_name = "Cylinder004"
 surfaces/0 = {
 "aabb": AABB( 0.287508, -0.369013, -0.954441, 3.75858, 2.03183, 1.5 ),
@@ -161,7 +161,7 @@ surfaces/0 = {
 "vertex_count": 28
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=11]
 resource_name = "heronAdultFlapAway"
 length = 0.5
 tracks/0/type = "value"
@@ -333,7 +333,7 @@ tracks/13/keys = {
 "values": [ Vector3( -1, -1, -1 ) ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=12]
 resource_name = "heronAdultFlapAwayStart"
 length = 0.4
 tracks/0/type = "value"
@@ -505,7 +505,7 @@ tracks/13/keys = {
 "values": [ Vector3( -1, -1, -1 ) ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=13]
 resource_name = "heronBabyGrowUp"
 length = 2.5
 tracks/0/type = "value"
@@ -557,7 +557,7 @@ tracks/3/keys = {
 "values": [ Vector3( 1, 1, 1 ), Vector3( 0.8, 0.8, 1 ), Vector3( 0.8, 0.8, 1 ), Vector3( 1.8, 1.8, 1.2 ), Vector3( 1, 1.2, 1.8 ), Vector3( 1.5, 1.8, 1 ), Vector3( 1.3, 1.3, 1.3 ) ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=14]
 resource_name = "heronBabyPeck"
 length = 1.5
 tracks/0/type = "value"
@@ -681,7 +681,107 @@ tracks/9/keys = {
 "values": [ Vector3( 0, 167.534, 165.365 ), Vector3( 14.6384, 153.254, 162.055 ), Vector3( 0, 167.534, 165.365 ), Vector3( 14.6384, 153.254, 162.055 ), Vector3( 0, 167.534, 165.365 ), Vector3( 14.6384, 153.254, 162.055 ), Vector3( 0, 167.534, 165.365 ) ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=15]
+resource_name = "heronBabyStartle"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("heronbaby/Wing_L:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.581055, 4.03714, -0.256 ), Vector3( 0.587646, 3.866, -0.256 ), Vector3( -0.581055, 4.03714, -0.256 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("heronbaby/Wing_L:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 3.78302, -25.0084, 8.05033 ), Vector3( -3.46373e-008, 34.868, -12.9086 ), Vector3( 3.78302, -25.0084, 8.05033 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("heronbaby/Wing_R:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.722694, 3.86563, -0.340868 ), Vector3( -0.607422, 3.86563, -0.32094 ), Vector3( 0.722694, 3.86563, -0.340868 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("heronbaby/Wing_R:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 347, 223, 188 ), Vector3( 360, 167.534, 165.365 ), Vector3( 347, 223, 188 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("heronbaby/Body:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.291133, 0.780917 ), Vector3( 0, -0.0312427, 0.617839 ), Vector3( 0, 0.291133, 0.780917 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("heronbaby/Body:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("heron:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("heronbaby:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=16]
 tracks/0/type = "value"
 tracks/0/path = NodePath("heronbaby/Wing_L:translation")
 tracks/0/interp = 1
@@ -779,87 +879,90 @@ tracks/7/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="CylinderShape" id=24]
+[sub_resource type="CylinderShape" id=17]
 radius = 2.0
 height = 4.0
 
-[sub_resource type="CylinderShape" id=25]
+[sub_resource type="CylinderShape" id=18]
 height = 1.5
 
 [node name="Heron" type="KinematicBody"]
 script = ExtResource( 1 )
 
 [node name="heronbaby" type="Spatial" parent="."]
+editor/display_folded = true
 transform = Transform( 1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0 )
 
 [node name="Wing_L" type="MeshInstance" parent="heronbaby"]
 transform = Transform( 0.799736, 0.18329, 0.571688, -0.223396, 0.974727, 6.04535e-010, -0.55724, -0.127713, 0.820471, 0.587646, 3.866, -0.256 )
-mesh = SubResource( 16 )
+mesh = SubResource( 1 )
 material/0 = null
 
 [node name="Wing_R" type="MeshInstance" parent="heronbaby"]
 transform = Transform( -0.944744, -0.246704, -0.21586, -0.25266, 0.967555, 1.74845e-007, -0.208856, -0.0545394, 0.976424, -0.607422, 3.86563, -0.32094 )
-mesh = SubResource( 17 )
+mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Body" type="MeshInstance" parent="heronbaby"]
 transform = Transform( 1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -0.0312427, 0.617839 )
-mesh = SubResource( 18 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Foot_L" type="MeshInstance" parent="heronbaby"]
 transform = Transform( 0.269423, 0, 0, 0, 0.269423, 0, 0, 0, 0.269423, 0.180079, 0, 0 )
-mesh = SubResource( 19 )
+mesh = SubResource( 4 )
 material/0 = null
 
 [node name="Foot_R" type="MeshInstance" parent="heronbaby"]
 transform = Transform( 0.269423, 0, 0, 0, 0.269423, 0, 0, 0, 0.269423, -0.021962, 0, 0 )
-mesh = SubResource( 20 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="heron" type="Spatial" parent="."]
+editor/display_folded = true
 transform = Transform( 1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 1.58863 )
 visible = false
 
 [node name="Body" type="MeshInstance" parent="heron"]
 transform = Transform( 1, 0, 0, 0, 0.943936, 0.330127, 0, -0.330127, 0.943936, 0, 0.537136, 0.286208 )
-mesh = SubResource( 3 )
+mesh = SubResource( 6 )
 material/0 = null
 
 [node name="Foot_R" type="MeshInstance" parent="heron"]
 transform = Transform( 1, 0, 0, 0, 0.78678, -0.181047, 0, 0.144837, 0.983474, 0, 0, -0.414143 )
-mesh = SubResource( 6 )
+mesh = SubResource( 7 )
 material/0 = null
 
 [node name="Foot_L" type="MeshInstance" parent="heron"]
 transform = Transform( 1, 0, 0, 0, 0.782449, -0.208315, 0, 0.166652, 0.978062, 0.7499, 0, -0.484203 )
-mesh = SubResource( 9 )
+mesh = SubResource( 8 )
 material/0 = null
 
 [node name="Wing_L" type="MeshInstance" parent="heron"]
 transform = Transform( 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0, 3.80664, -1.23931 )
-mesh = SubResource( 12 )
+mesh = SubResource( 9 )
 material/0 = null
 
 [node name="Wing_R" type="MeshInstance" parent="heron"]
 transform = Transform( -0.965926, -0.258819, 8.74228e-008, -0.258819, 0.965926, 0, 8.44439e-008, 2.26267e-008, 1, 0, 3.80773, -1.17857 )
-mesh = SubResource( 15 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "heronBabyWingFlap"
-anims/heronAdultFlapAway = SubResource( 27 )
-anims/heronAdultFlapAwayStart = SubResource( 26 )
-anims/heronBabyGrowUp = SubResource( 21 )
-anims/heronBabyPeck = SubResource( 22 )
-anims/heronBabyWingFlap = SubResource( 23 )
+anims/heronAdultFlapAway = SubResource( 11 )
+anims/heronAdultFlapAwayStart = SubResource( 12 )
+anims/heronBabyGrowUp = SubResource( 13 )
+anims/heronBabyPeck = SubResource( 14 )
+anims/heronBabyStartle = SubResource( 15 )
+anims/heronBabyWingFlap = SubResource( 16 )
 
 [node name="InteractionArea" type="Area" parent="."]
 script = ExtResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
-shape = SubResource( 24 )
+shape = SubResource( 17 )
 
 [node name="Sounds" type="Spatial" parent="."]
 
@@ -873,7 +976,8 @@ stream = ExtResource( 7 )
 
 [node name="PeckSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource( 8 )
-pitch_scale = 2.0
+unit_size = 1.5
+pitch_scale = 1.9
 
 [node name="WingSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource( 9 )
@@ -884,6 +988,14 @@ max_db = 6.0
 stream = ExtResource( 10 )
 unit_size = 3.0
 
+[node name="BabyQuackSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource( 11 )
+pitch_scale = 1.5
+
+[node name="AdultQuackSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource( 12 )
+unit_size = 2.0
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.174 )
-shape = SubResource( 25 )
+shape = SubResource( 18 )

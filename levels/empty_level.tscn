@@ -1,843 +1,937 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://assets/textures/yellowgrassfloor.png" type="Texture" id=1]
-[ext_resource path="res://objects/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://objects/ThrowableObject.tscn" type="PackedScene" id=3]
-[ext_resource path="res://materials/EnvironmentSprite.tres" type="Material" id=4]
-[ext_resource path="res://assets/sprites/yellowgrass.png" type="Texture" id=5]
-[ext_resource path="res://scripts/Sprite.gd" type="Script" id=6]
-[ext_resource path="res://objects/Heron.tscn" type="PackedScene" id=7]
-
-[sub_resource type="BoxShape" id=5]
-extents = Vector3( 28.0235, 1, 12.1285 )
+[ext_resource path="res://objects/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/ThrowableObject.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/Heron.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/water_normal_3.png" type="Texture" id=4]
+[ext_resource path="res://materials/EnvironmentSprite.tres" type="Material" id=5]
+[ext_resource path="res://assets/sprites/yellowgrass.png" type="Texture" id=6]
+[ext_resource path="res://scripts/Sprite.gd" type="Script" id=7]
+[ext_resource path="res://assets/textures/tree_trunk_small_brown.png" type="Texture" id=8]
+[ext_resource path="res://assets/textures/tree_top_brown.png" type="Texture" id=9]
+[ext_resource path="res://objects/Tree.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/textures/yellowgrassfloor.png" type="Texture" id=11]
 
 [sub_resource type="SpatialMaterial" id=1]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 7.27, 4.33, 1 )
+flags_transparent = true
+flags_unshaded = true
+params_use_alpha_scissor = true
+params_alpha_scissor_threshold = 0.98
+albedo_color = Color( 0.482353, 0.482353, 0.482353, 1 )
+albedo_texture = ExtResource( 4 )
 
 [sub_resource type="CubeMesh" id=2]
 
 [sub_resource type="BoxShape" id=3]
+extents = Vector3( 28.0235, 1, 12.1285 )
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=6]
 flags_transparent = true
 flags_unshaded = true
 params_billboard_mode = 2
 
+[sub_resource type="SpatialMaterial" id=7]
+albedo_texture = ExtResource( 8 )
+uv1_scale = Vector3( 3, 7, 1 )
+
+[sub_resource type="CubeMesh" id=8]
+material = SubResource( 7 )
+size = Vector3( 1.5, 6, 1.5 )
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_texture = ExtResource( 9 )
+uv1_scale = Vector3( 3, 2, 1 )
+
+[sub_resource type="CubeMesh" id=10]
+material = SubResource( 9 )
+size = Vector3( 4, 4, 4 )
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 2, 2, 2 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 11 )
+uv1_scale = Vector3( 7.27, 4.33, 1 )
+
+[sub_resource type="BoxShape" id=5]
+
 [node name="level" type="Spatial"]
 
-[node name="Water2" type="Area" parent="."]
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 20, -2, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Water2" groups=[
-"water",
-]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, -0.6 )
-shape = SubResource( 5 )
-
-[node name="StaticBody" type="StaticBody" parent="."]
-editor/display_folded = true
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
-
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
-material_override = SubResource( 1 )
-mesh = SubResource( 2 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-shape = SubResource( 3 )
-
-[node name="StaticBody2" type="StaticBody" parent="."]
-editor/display_folded = true
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 7, 1, -15 )
-
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody2"]
-material_override = SubResource( 1 )
-mesh = SubResource( 2 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody2"]
-shape = SubResource( 3 )
-
-[node name="StaticBody8" type="StaticBody" parent="."]
-editor/display_folded = true
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 15, 1, -35 )
-
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody8"]
-material_override = SubResource( 1 )
-mesh = SubResource( 2 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody8"]
-shape = SubResource( 3 )
-
-[node name="StaticBody3" type="StaticBody" parent="."]
-editor/display_folded = true
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -5, 2, -20 )
-
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody3"]
-material_override = SubResource( 1 )
-mesh = SubResource( 2 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody3"]
-shape = SubResource( 3 )
-
-[node name="StaticBody7" type="StaticBody" parent="."]
-editor/display_folded = true
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -5, 2, -40 )
-
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody7"]
-material_override = SubResource( 1 )
-mesh = SubResource( 2 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody7"]
-shape = SubResource( 3 )
-
-[node name="StaticBody5" type="StaticBody" parent="."]
-editor/display_folded = true
-transform = Transform( 9.65926, 0.258819, 0, -2.58819, 0.965926, 0, 0, 0, 10, -25, 5, -20 )
-
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody5"]
-transform = Transform( 1, -1.11759e-008, 0, 1.19209e-006, 1, 0, 0, 0, 1, 0.0324204, -0.317774, 0 )
-material_override = SubResource( 1 )
-mesh = SubResource( 2 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody5"]
-shape = SubResource( 3 )
-
-[node name="StaticBody6" type="StaticBody" parent="."]
-editor/display_folded = true
-transform = Transform( 9.65926, 0.258819, 0, -2.58819, 0.965926, 0, 0, 0, 10, -25, 5, -40 )
-
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody6"]
-transform = Transform( 1, -1.11759e-008, 0, 1.19209e-006, 1, 0, 0, 0, 1, 0.0324204, -0.317774, 0 )
-material_override = SubResource( 1 )
-mesh = SubResource( 2 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody6"]
-shape = SubResource( 3 )
-
-[node name="Player" parent="." instance=ExtResource( 2 )]
+[node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
 
-[node name="ThrowableObject" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.43104, -6 )
+[node name="ThrowableObject" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 17.431, -23 )
 
-[node name="Grass" type="Spatial" parent="."]
-editor/display_folded = true
+[node name="ThrowableObject2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 3.43104, -17 )
 
-[node name="Sprite3D" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, -9.57919 )
-material_override = ExtResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
+[node name="ThrowableObject3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.43104, 8 )
 
-[node name="Sprite3D23" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59312, 3, -11.9866 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D59" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.44507, 3, -10.9992 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D68" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.09797, 3, -9.58457 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D16" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -5.70651, 4, -15.052 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D24" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.11339, 4, -17.4594 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D63" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -5.26144, 4, -16.472 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D86" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -2.60854, 4, -15.0574 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D2" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, -13.5792 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D25" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.59312, 3, -15.9866 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D60" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.44507, 3, -14.9992 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D70" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.098, 3, -13.5846 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D19" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -10.6055, 4, -17.8804 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D26" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -12.0124, 4, -20.2878 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D61" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -10.1604, 4, -19.3004 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D69" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.50753, 4, -17.8858 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D3" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, -9.57919 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D32" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.59312, 3, -11.9866 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D47" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4451, 3, -10.9992 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D79" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.098, 3, -9.58457 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D21" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.25942, 4, -20.8476 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D35" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -8.6663, 4, -23.255 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D49" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -6.81435, 4, -22.2676 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D72" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -4.16145, 4, -20.853 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D4" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3, -8.57919 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D27" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.59312, 3, -10.9866 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D62" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.44507, 3, -9.99916 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D71" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.098, 3, -8.58457 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D17" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -6.03467, 4, -20.1405 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D28" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.44155, 4, -22.5479 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D64" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -5.5896, 4, -21.5605 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D88" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -2.9367, 4, -20.1459 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D5" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3, -10.5792 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D33" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.59312, 3, -12.9866 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D45" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.44507, 3, -11.9992 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D76" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.098, 3, -10.5846 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D20" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.96653, 4, -19.6228 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D29" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -9.37341, 4, -22.0302 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D65" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.52146, 4, -21.0428 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D87" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -4.86856, 4, -19.6282 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D6" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, -10.5792 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D34" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.59312, 3, -12.9866 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D48" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.44507, 3, -11.9992 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D75" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.09797, 3, -10.5846 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D22" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -6.93125, 4, -15.7591 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D30" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -8.33813, 4, -18.1665 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D66" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -6.48618, 4, -17.1791 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D85" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -3.83328, 4, -15.7645 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D7" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -4.57919 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D36" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.59312, 2, -6.98657 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D50" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.44507, 2, -5.99916 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D80" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.09797, 2, -4.58457 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D18" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -1.1357, 3, -17.312 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D37" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -2.54258, 3, -19.7194 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D55" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -0.690634, 3, -18.732 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D82" type="Sprite3D" parent="Grass"]
-transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 1.96227, 3, -17.3174 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D8" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -6.57919 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D31" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.40688, 2, -8.98657 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D46" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55493, 2, -7.99916 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D77" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.90203, 2, -6.58457 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D9" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -5.57919 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D43" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.40688, 2, -7.98657 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D57" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55493, 2, -6.99916 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D84" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90203, 2, -5.58457 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D10" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 3.42081 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D39" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.40688, 2, 1.01343 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D52" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55493, 2, 2.00084 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D78" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90203, 2, 3.41543 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D11" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 2.42081 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D38" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.40688, 2, 0.0134251 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D51" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55493, 2, 1.00084 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D73" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.902029, 2, 2.41543 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D12" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24825, 2, 3.0184 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D40" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65513, 2, 0.611015 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D53" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80318, 2, 1.59843 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D81" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150279, 2, 3.01302 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D13" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.708204, 1.37281, 1.0184 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D44" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11508, 1.37281, -1.38898 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D58" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.263138, 1.37281, -0.401573 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D67" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38977, 1.37281, 1.01302 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D14" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.304807, 1.37281, -0.395957 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D41" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71169, 1.37281, -2.80334 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D54" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140259, 1.37281, -1.81593 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D74" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79316, 1.37281, -0.401336 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D15" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.544586, 1.37281, 0.673082 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D42" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.862295, 1.37281, -1.7343 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D56" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.989652, 1.37281, -0.746891 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="Sprite3D83" type="Sprite3D" parent="Grass"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64256, 1.37281, 0.667703 )
-material_override = SubResource( 4 )
-pixel_size = 0.2
-texture = ExtResource( 5 )
-hframes = 2
-script = ExtResource( 6 )
-
-[node name="heronbaby" parent="." instance=ExtResource( 7 )]
+[node name="heronbaby" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, 0, 3, -18 )
+collision_layer = 4
+
+[node name="heronbaby2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.996195, 0, -0.0871552, 0, 1, 0, 0.0871552, 0, 0.996195, 3.60758, 3, -21 )
+collision_layer = 4
+
+[node name="heronbaby3" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, 4.40887, 3, -15 )
 collision_layer = 4
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.782701, -0.140057, 0.606435, -0.45699, 0.532155, 0.712721, -0.422539, -0.834982, 0.352513, 0, 15, 0 )
 light_energy = 0.5
+
+[node name="Map" type="Spatial" parent="."]
+
+[node name="Water2" type="Area" parent="Map" groups=[
+"water",
+]]
+transform = Transform( 10, 0, 0, 0, 20, 0, 0, 0, 10, 20, -20, 0 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Map/Water2"]
+transform = Transform( 28.024, -1.90735e-006, 0, 5.34516e-005, 1, 0, 0, 0, 12, 0, 0, 0 )
+material_override = SubResource( 1 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/Water2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, -0.6 )
+shape = SubResource( 3 )
+
+[node name="Grass" type="Spatial" parent="Map"]
+editor/display_folded = true
+
+[node name="Sprite3D" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, -9.57919 )
+material_override = ExtResource( 5 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D23" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59312, 3, -11.9866 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D59" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.44507, 3, -10.9992 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D68" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.09797, 3, -9.58457 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D16" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -5.70651, 4, -15.052 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D24" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.11339, 4, -17.4594 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D63" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -5.26144, 4, -16.472 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D86" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -2.60854, 4, -15.0574 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D2" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, -13.5792 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D25" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.59312, 3, -15.9866 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D60" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.44507, 3, -14.9992 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D70" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.098, 3, -13.5846 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D19" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -10.6055, 4, -17.8804 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D26" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -12.0124, 4, -20.2878 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D61" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -10.1604, 4, -19.3004 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D69" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.50753, 4, -17.8858 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D3" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, -9.57919 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D32" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.59312, 3, -11.9866 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D47" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4451, 3, -10.9992 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D79" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.098, 3, -9.58457 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D21" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.25942, 4, -20.8476 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D35" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -8.6663, 4, -23.255 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D49" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -6.81435, 4, -22.2676 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D72" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -4.16145, 4, -20.853 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D4" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3, -8.57919 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D27" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.59312, 3, -10.9866 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D62" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.44507, 3, -9.99916 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D71" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.098, 3, -8.58457 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D17" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -6.03467, 4, -20.1405 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D28" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.44155, 4, -22.5479 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D64" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -5.5896, 4, -21.5605 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D88" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -2.9367, 4, -20.1459 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D5" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3, -10.5792 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D33" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.59312, 3, -12.9866 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D45" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.44507, 3, -11.9992 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D76" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.098, 3, -10.5846 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D20" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.96653, 4, -19.6228 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D29" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -9.37341, 4, -22.0302 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D65" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.52146, 4, -21.0428 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D87" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -4.86856, 4, -19.6282 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D6" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, -10.5792 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D34" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.59312, 3, -12.9866 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D48" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.44507, 3, -11.9992 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D75" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.09797, 3, -10.5846 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D22" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -6.93125, 4, -15.7591 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D30" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -8.33813, 4, -18.1665 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D66" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -6.48618, 4, -17.1791 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D85" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -3.83328, 4, -15.7645 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D7" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -4.57919 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D36" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.59312, 2, -6.98657 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D50" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.44507, 2, -5.99916 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D80" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.09797, 2, -4.58457 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D18" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -1.1357, 3, -17.312 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D37" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -2.54258, 3, -19.7194 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D55" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -0.690634, 3, -18.732 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D82" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 1.96227, 3, -17.3174 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D8" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -6.57919 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D31" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.40688, 2, -8.98657 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D46" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55493, 2, -7.99916 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D77" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.90203, 2, -6.58457 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D9" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -5.57919 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D43" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.40688, 2, -7.98657 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D57" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55493, 2, -6.99916 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D84" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90203, 2, -5.58457 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D10" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 3.42081 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D39" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.40688, 2, 1.01343 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D52" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55493, 2, 2.00084 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D78" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90203, 2, 3.41543 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D11" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 2.42081 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D38" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.40688, 2, 0.0134251 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D51" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55493, 2, 1.00084 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D73" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.902029, 2, 2.41543 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D12" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24825, 2, 3.0184 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D40" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65513, 2, 0.611015 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D53" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80318, 2, 1.59843 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D81" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150279, 2, 3.01302 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D13" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.708204, 1.37281, 1.0184 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D44" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11508, 1.37281, -1.38898 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D58" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.263138, 1.37281, -0.401573 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D67" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38977, 1.37281, 1.01302 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D14" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.304807, 1.37281, -0.395957 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D41" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71169, 1.37281, -2.80334 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D54" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140259, 1.37281, -1.81593 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D74" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79316, 1.37281, -0.401336 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D15" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.544586, 1.37281, 0.673082 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D42" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.862295, 1.37281, -1.7343 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D56" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.989652, 1.37281, -0.746891 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Sprite3D83" type="Sprite3D" parent="Map/Grass"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64256, 1.37281, 0.667703 )
+material_override = SubResource( 6 )
+pixel_size = 0.2
+texture = ExtResource( 6 )
+hframes = 2
+script = ExtResource( 7 )
+
+[node name="Trees" type="Spatial" parent="Map"]
+
+[node name="Tree" type="Spatial" parent="Map/Trees"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3, -23 )
+
+[node name="Trunk" type="MeshInstance" parent="Map/Trees/Tree"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="Top" type="MeshInstance" parent="Map/Trees/Tree"]
+editor/display_folded = true
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 8, 0 )
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Map/Trees/Tree/Top"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/Trees/Tree/Top/StaticBody"]
+shape = SubResource( 11 )
+
+[node name="Top2" type="MeshInstance" parent="Map/Trees/Tree"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0 )
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="StaticBody2" type="StaticBody" parent="Map/Trees/Tree/Top2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/Trees/Tree/Top2/StaticBody2"]
+shape = SubResource( 11 )
+
+[node name="Tree2" parent="Map/Trees" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -33 )
+
+[node name="Tree3" parent="Map/Trees" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -1, -27 )
+
+[node name="Tree4" parent="Map/Trees" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -4, -35 )
+
+[node name="StaticBody" type="StaticBody" parent="Map"]
+editor/display_folded = true
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/StaticBody"]
+material_override = SubResource( 4 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="StaticBody2" type="StaticBody" parent="Map"]
+editor/display_folded = true
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 7, 1, -15 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/StaticBody2"]
+material_override = SubResource( 4 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/StaticBody2"]
+shape = SubResource( 5 )
+
+[node name="StaticBody8" type="StaticBody" parent="Map"]
+editor/display_folded = true
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 15, 1, -35 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/StaticBody8"]
+material_override = SubResource( 4 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/StaticBody8"]
+shape = SubResource( 5 )
+
+[node name="StaticBody3" type="StaticBody" parent="Map"]
+transform = Transform( 12, 0, 0, 0, 1, 0, 0, 0, 10, -5.90652, 2, -20 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/StaticBody3"]
+material_override = SubResource( 4 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/StaticBody3"]
+shape = SubResource( 5 )
+
+[node name="StaticBody7" type="StaticBody" parent="Map"]
+editor/display_folded = true
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -5, 2, -40 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/StaticBody7"]
+material_override = SubResource( 4 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/StaticBody7"]
+shape = SubResource( 5 )
+
+[node name="StaticBody5" type="StaticBody" parent="Map"]
+editor/display_folded = true
+transform = Transform( 9.65926, 0.258819, 0, -2.58819, 0.965926, 0, 0, 0, 10, -25, 5, -20 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/StaticBody5"]
+transform = Transform( 1, -1.11759e-008, 0, 1.19209e-006, 1, 0, 0, 0, 1, 0.0324204, -0.317774, 0 )
+material_override = SubResource( 4 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/StaticBody5"]
+shape = SubResource( 5 )
+
+[node name="StaticBody6" type="StaticBody" parent="Map"]
+editor/display_folded = true
+transform = Transform( 9.65926, 0.258819, 0, -2.58819, 0.965926, 0, 0, 0, 10, -25, 5, -40 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/StaticBody6"]
+transform = Transform( 1, -1.11759e-008, 0, 1.19209e-006, 1, 0, 0, 0, 1, 0.0324204, -0.317774, 0 )
+material_override = SubResource( 4 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/StaticBody6"]
+shape = SubResource( 5 )

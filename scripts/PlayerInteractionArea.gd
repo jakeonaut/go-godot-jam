@@ -57,6 +57,7 @@ func _process(delta):
     if Input.is_action_just_pressed("ui_interact"):
         if nearest_area:
             nearest_area.InteractActivate()
+            player.startChargeSound.stop()
         # Give secondary priority to held objects action.
         elif global.activeThrowableObject:
             player.is_interact_charging = true
@@ -72,7 +73,8 @@ func _process(delta):
                 player.startChargeSound.play()
             
             if player.interact_charge_timer >= player.interact_charge_time_max:
-                player.fullChargeSound.play()
+                #player.fullChargeSound.play()
+                pass
     elif player.is_interact_charging:
         player.is_interact_charging = 0
         if global.activeThrowableObject:

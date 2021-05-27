@@ -19,6 +19,8 @@ var pauseGame = false
 var can_broom = false
 
 func _ready():
+    randomize()
+
     # somehow this gets rid of errors LOL
     if hasLoadedGame: pass
     if memory: pass
