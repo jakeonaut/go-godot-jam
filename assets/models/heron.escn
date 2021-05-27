@@ -1,0 +1,833 @@
+[gd_scene load_steps=1 format=2]
+
+[ext_resource id=1 path="heronbody.png" type="Texture"]
+
+[ext_resource id=2 path="Material.003 Base Color.png" type="Texture"]
+
+[ext_resource id=3 path="Material.002 Base Color.png" type="Texture"]
+
+[ext_resource id=4 path="Material.004 Base Color.001.png" type="Texture"]
+
+[ext_resource id=5 path="Material.005 Base Color.001.png" type="Texture"]
+
+[sub_resource id=1 type="Shader"]
+
+resource_name = "Shader Nodetree"
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform sampler2D texture_0;
+
+
+void node_bsdf_principled(vec4 color, float subsurface, vec4 subsurface_color,
+        float metallic, float specular, float roughness, float clearcoat,
+        float clearcoat_roughness, float anisotropy, float transmission,
+        float IOR, out vec3 albedo, out float sss_strength_out,
+        out float metallic_out, out float specular_out,
+        out float roughness_out, out float clearcoat_out,
+        out float clearcoat_gloss_out, out float anisotropy_out,
+        out float transmission_out, out float ior) {
+    metallic = clamp(metallic, 0.0, 1.0);
+    transmission = clamp(transmission, 0.0, 1.0);
+
+    subsurface = subsurface * (1.0 - metallic);
+
+    albedo = mix(color.rgb, subsurface_color.rgb, subsurface);
+    sss_strength_out = subsurface;
+    metallic_out = metallic;
+    specular_out = pow((IOR - 1.0)/(IOR + 1.0), 2)/0.08;
+    roughness_out = roughness;
+    clearcoat_out = clearcoat * (1.0 - transmission);
+    clearcoat_gloss_out = 1.0 - clearcoat_roughness;
+    anisotropy_out = clamp(anisotropy, 0.0, 1.0);
+    transmission_out = (1.0 - transmission) * (1.0 - metallic);
+    ior = IOR;
+}
+
+
+void node_tex_image(vec3 co, sampler2D ima, out vec4 color, out float alpha) {
+    color = texture(ima, co.xy);
+    alpha = color.a;
+}
+
+void vertex () {
+}
+
+void fragment () {
+	
+	// node: 'Image Texture'
+	// type: 'ShaderNodeTexImage'
+	// input sockets handling
+	vec3 node0_in0_vector = vec3(0.0, 0.0, 0.0);
+	// output sockets definitions
+	vec4 node0_out0_color;
+	float node0_out1_alpha;
+	
+	node0_in0_vector = vec3(UV, 0.0);
+	node_tex_image(node0_in0_vector, texture_0, node0_out0_color, node0_out1_alpha);
+	
+	
+	// node: 'Principled BSDF'
+	// type: 'ShaderNodeBsdfPrincipled'
+	// input sockets handling
+	vec4 node1_in0_basecolor = node0_out0_color;
+	float node1_in1_subsurface = float(0.0);
+	vec3 node1_in2_subsurfaceradius = vec3(1.0, 0.20000000298023224,
+		0.10000000149011612);
+	vec4 node1_in3_subsurfacecolor = vec4(0.800000011920929, 0.800000011920929,
+		0.800000011920929, 1.0);
+	float node1_in4_metallic = float(0.0);
+	float node1_in5_specular = float(0.5);
+	float node1_in6_speculartint = float(0.0);
+	float node1_in7_roughness = float(0.5);
+	float node1_in8_anisotropic = float(0.0);
+	float node1_in9_anisotropicrotation = float(0.0);
+	float node1_in10_sheen = float(0.0);
+	float node1_in11_sheentint = float(0.5);
+	float node1_in12_clearcoat = float(0.0);
+	float node1_in13_clearcoatroughness = float(0.029999999329447746);
+	float node1_in14_ior = float(1.4500000476837158);
+	float node1_in15_transmission = float(0.0);
+	float node1_in16_transmissionroughness = float(0.0);
+	vec4 node1_in17_emission = vec4(0.0, 0.0, 0.0, 1.0);
+	float node1_in18_alpha = float(1.0);
+	vec3 node1_in19_normal = NORMAL;
+	vec3 node1_in20_clearcoatnormal = vec3(0.0, 0.0, 0.0);
+	vec3 node1_in21_tangent = TANGENT;
+	// output sockets definitions
+	vec3 node1_bsdf_out0_albedo;
+	float node1_bsdf_out1_sss_strength;
+	float node1_bsdf_out3_specular;
+	float node1_bsdf_out2_metallic;
+	float node1_bsdf_out4_roughness;
+	float node1_bsdf_out5_clearcoat;
+	float node1_bsdf_out6_clearcoat_gloss;
+	float node1_bsdf_out7_anisotropy;
+	float node1_bsdf_out8_transmission;
+	float node1_bsdf_out9_ior;
+	
+	node_bsdf_principled(node1_in0_basecolor, node1_in1_subsurface,
+		node1_in3_subsurfacecolor, node1_in4_metallic, node1_in5_specular,
+		node1_in7_roughness, node1_in12_clearcoat, node1_in13_clearcoatroughness,
+		node1_in8_anisotropic, node1_in15_transmission, node1_in14_ior,
+		node1_bsdf_out0_albedo, node1_bsdf_out1_sss_strength, node1_bsdf_out2_metallic,
+		node1_bsdf_out3_specular, node1_bsdf_out4_roughness, node1_bsdf_out5_clearcoat,
+		node1_bsdf_out6_clearcoat_gloss, node1_bsdf_out7_anisotropy,
+		node1_bsdf_out8_transmission, node1_bsdf_out9_ior);
+	
+	
+	ALBEDO = node1_bsdf_out0_albedo;
+	SSS_STRENGTH = node1_bsdf_out1_sss_strength;
+	SPECULAR = node1_bsdf_out3_specular;
+	METALLIC = node1_bsdf_out2_metallic;
+	ROUGHNESS = node1_bsdf_out4_roughness;
+	CLEARCOAT = node1_bsdf_out5_clearcoat;
+	CLEARCOAT_GLOSS = node1_bsdf_out6_clearcoat_gloss;
+	NORMAL = node1_in19_normal;
+	// uncomment it when you need it
+	// TRANSMISSION = vec3(1.0, 1.0, 1.0) * node1_bsdf_out8_transmission;
+	// uncomment it when you are modifing TANGENT
+	// TANGENT = normalize(cross(cross(node1_in21_tangent, NORMAL), NORMAL));
+	// BINORMAL = cross(TANGENT, NORMAL);
+	// uncomment it when you have tangent(UV) set
+	// ANISOTROPY = node1_bsdf_out7_anisotropy;
+}
+"
+
+[sub_resource id=2 type="ShaderMaterial"]
+
+resource_name = ""
+shader = SubResource(1)
+shader_param/texture_0 = ExtResource(1)
+
+[sub_resource id=3 type="ArrayMesh"]
+
+resource_name = "Cylinder"
+surfaces/0 = {
+	"material":SubResource(2),
+	"primitive":4,
+	"arrays":[
+		Vector3Array(0.016856, 2.45722, -2.14826, -0.323777, 1.90673, -1.93601, -0.814059, 1.80024, -1.03649, 4.47035e-08, 2.74807, -2.08038, -0.814059, 2.35666, -0.531283, 4.47035e-08, 3.30448, -1.57517, -0.323777, 1.90673, -1.93601, 0.357489, 1.90673, -1.93601, 0.814059, 1.80024, -1.03649, -0.814059, 1.80024, -1.03649, 0.357489, 1.90673, -1.93601, 0.016856, 2.45722, -2.14826, 4.47035e-08, 2.74807, -2.08038, 0.814059, 1.80024, -1.03649, -0.422291, 3.18122, -0.0881162, 0.0, 3.6729, -0.629631, -0.814059, 1.80024, -1.03649, 0.814059, 1.80024, -1.03649, 0.814059, 2.35666, -0.531283, -0.814059, 2.35666, -0.531283, 4.47035e-08, 3.30448, -1.57517, 0.814059, 2.35666, -0.531283, -0.164907, 3.32601, -0.157365, -3.72529e-08, 3.51801, -0.36883, 0.422291, 3.18122, -0.0881162, -0.422291, 3.18122, -0.0881162, 0.0, 3.6729, -0.629631, 0.422291, 3.18122, -0.0881162, -0.101078, 4.66258, 0.552699, -4.16053e-08, 4.82841, 0.60883, 0.164907, 3.32601, -0.157365, -0.164907, 3.32601, -0.157365, -3.72529e-08, 3.51801, -0.36883, 0.164907, 3.32601, -0.157365, -4.16053e-08, 4.82841, 0.60883, -0.101078, 4.66258, 0.552699, -0.618176, 4.34697, 0.553959, 3.77709e-08, 5.36116, 0.897244, 0.101078, 4.66258, 0.552699, -0.101078, 4.66258, 0.552699, -4.16053e-08, 4.82841, 0.60883, 0.101078, 4.66258, 0.552699, 3.77709e-08, 5.36116, 0.897244, -0.618176, 4.34697, 0.553959, -0.0239132, 3.99328, 2.669, -3.67382e-08, 4.03252, 2.68228, 0.101078, 4.66258, 0.552699, 0.618176, 4.34697, 0.553959, 0.0239131, 3.99328, 2.669, -3.67382e-08, 4.03252, 2.68228, -0.0239132, 3.99328, 2.669, -0.618176, 4.34697, 0.553959, 0.618176, 4.34697, 0.553959, 0.0239131, 3.99328, 2.669, -0.0239132, 3.99328, 2.669, 0.618176, 4.34697, 0.553959, 3.77709e-08, 5.36116, 0.897244, -3.67382e-08, 4.03252, 2.68228, 0.0239131, 3.99328, 2.669, 0.0798019, 3.05292, -3.21415, -0.948502, 1.39109, -2.57339, -0.948502, 1.39109, -2.57339, 1.10811, 1.39109, -2.57339, 1.10811, 1.39109, -2.57339, 0.0798019, 3.05292, -3.21415),
+		Vector3Array(-0.0158086, 0.984313, -0.175634, -0.851802, -0.497177, 0.164983, -0.775018, -0.626484, 0.082461, -0.0146794, 0.597186, -0.801935, -0.847621, -0.177221, 0.500076, 0.0, 0.809656, -0.58684, -0.851802, -0.497177, 0.164983, 0.83993, -0.4785, 0.255959, 0.775933, -0.624378, 0.0896939, -0.775018, -0.626484, 0.082461, 0.83993, -0.4785, 0.255959, -0.0158086, 0.984313, -0.175634, -0.0146794, 0.597186, -0.801935, 0.775933, -0.624378, 0.0896939, -0.632374, 0.260353, 0.729576, 0.0, 0.996673, -0.0813318, -0.775018, -0.626484, 0.082461, 0.775933, -0.624378, 0.0896939, 0.847621, -0.177221, 0.500076, -0.847621, -0.177221, 0.500076, 0.0, 0.809656, -0.58684, 0.847621, -0.177221, 0.500076, -0.342326, 0.539262, 0.769372, 0.0, 0.989898, 0.141728, 0.632374, 0.260353, 0.729576, -0.632374, 0.260353, 0.729576, 0.0, 0.996673, -0.0813318, 0.632374, 0.260353, 0.729576, -0.491623, 0.237892, -0.837672, 0.0, 0.487259, -0.873226, 0.342326, 0.539262, 0.769372, -0.342326, 0.539262, 0.769372, 0.0, 0.989898, 0.141728, 0.342326, 0.539262, 0.769372, 0.0, 0.487259, -0.873226, -0.491623, 0.237892, -0.837672, -0.797113, -0.310587, -0.517777, 0.0, 0.997162, -0.0751061, 0.491623, 0.237892, -0.837672, -0.491623, 0.237892, -0.837672, 0.0, 0.487259, -0.873226, 0.491623, 0.237892, -0.837672, 0.0, 0.997162, -0.0751061, -0.797113, -0.310587, -0.517777, -0.643574, -0.566485, 0.514634, 0.0, 0.489364, 0.872036, 0.491623, 0.237892, -0.837672, 0.797113, -0.310587, -0.517777, 0.643574, -0.566485, 0.514634, 0.0, 0.489364, 0.872036, -0.643574, -0.566485, 0.514634, -0.797113, -0.310587, -0.517777, 0.797113, -0.310587, -0.517777, 0.643574, -0.566485, 0.514634, -0.643574, -0.566485, 0.514634, 0.797113, -0.310587, -0.517777, 0.0, 0.997162, -0.0751061, 0.0, 0.489364, 0.872036, 0.643574, -0.566485, 0.514634, 0.0112308, 0.872555, 0.488327, -0.669393, -0.0990631, 0.736259, -0.669393, -0.0990631, 0.736259, 0.628224, -0.0455031, 0.776666, 0.628224, -0.0455031, 0.776666, 0.0112308, 0.872555, 0.488327),
+		FloatArray(0.832238, -0.0843704, -0.547961, 1.0, -0.441684, 0.512434, -0.736428, 1.0, -0.366463, 0.339505, -0.86628, 1.0, 0.904388, 0.350049, 0.244027, 1.0, -0.300104, 0.937414, -0.176613, 1.0, 0.999997, -0.00135069, -0.0020829, 1.0, -0.523883, 0.80844, -0.268273, 1.0, -0.54272, -0.740612, 0.396168, 1.0, -0.630832, -0.768035, 0.110331, 1.0, -0.631971, 0.768365, -0.101136, 1.0, 0.53413, 0.646023, -0.545306, 1.0, -0.85388, -0.104641, -0.509842, 1.0, -0.851125, 0.413507, 0.323415, 1.0, 0.403911, 0.382692, -0.830905, 1.0, 0.244837, 0.96072, -0.130657, 1.0, 0.768354, -0.0520288, -0.637907, 1.0, 0.631971, -0.768365, 0.101136, 1.0, 0.630832, 0.768035, -0.110331, 1.0, 0.530639, 0.283125, -0.798913, 1.0, 0.530639, -0.283125, 0.798913, 1.0, -0.99632, 0.0504044, 0.0693239, 1.0, 0.270841, 0.955019, -0.120767, 1.0, 0.54972, 0.779048, -0.301482, 1.0, 0.72209, 0.0980563, -0.684815, 1.0, 0.774673, -0.212535, -0.595576, 1.0, 0.774673, 0.212535, 0.595576, 1.0, -0.846254, -0.0433051, -0.531016, 1.0, -0.330984, 0.942341, -0.0494256, 1.0, 0.869393, 0.188853, -0.456608, 1.0, 0.993145, -0.102061, -0.0569847, 1.0, 0.939586, -0.196475, -0.280314, 1.0, 0.939586, 0.196475, 0.280314, 1.0, -0.892272, 0.0639984, -0.446939, 1.0, -0.745469, 0.654336, -0.126964, 1.0, -0.863352, 0.440645, 0.245878, 1.0, -0.738469, 0.395902, 0.545825, 1.0, -0.575615, 0.649927, 0.496248, 1.0, -0.958739, 0.0213652, 0.283485, 1.0, 0.870811, -0.134304, 0.472917, 1.0, 0.870811, 0.134304, -0.472917, 1.0, -0.952639, 0.265572, 0.148159, 1.0, -0.802447, 0.497371, -0.329698, 1.0, 0.82809, 0.0421408, 0.559008, 1.0, -0.224203, 0.948526, -0.223676, 1.0, 0.11211, 0.595443, 0.795537, 1.0, 0.653273, 0.660294, -0.370467, 1.0, -0.741828, 0.618221, -0.259796, 1.0, -0.338564, 0.480271, -0.809144, 1.0, -0.556693, 0.115072, 0.82271, 1.0, -0.924154, 0.333164, -0.186926, 1.0, -0.666798, 0.745114, -0.0136329, 1.0, -0.603859, 0.410023, 0.683547, 1.0, -0.603859, -0.410023, -0.683547, 1.0, -0.7654, -0.47634, 0.43274, 1.0, -0.7654, 0.47634, -0.43274, 1.0, -0.224203, -0.948526, 0.223676, 1.0, 0.82809, -0.0421408, -0.559008, 1.0, 0.653273, -0.660295, 0.370467, 1.0, 0.11211, -0.595443, -0.795537, 1.0, 0.589266, 0.388821, -0.708226, 1.0, -0.0311445, 0.993943, 0.10539, 1.0, -0.742915, 0.089261, -0.663408, 1.0, -0.778047, -0.0367422, 0.627131, 1.0, -0.0719798, 0.990614, 0.116203, 1.0, -0.599555, 0.396756, -0.695067, 1.0),
+		null, ; no Vertex Colors,
+		Vector2Array(0.479181, 0.559768, 0.387803, 0.541015, 0.290716, 0.613996, 0.505098, 0.5797, 0.317107, 0.697826, 0.531489, 0.66353, 0.73324, 0.388558, 0.639848, 0.388558, 0.577259, 0.512715, 0.800451, 0.512715, 0.113588, 0.850821, 0.20548, 0.834151, 0.230907, 0.803635, 0.0132854, 0.75457, 0.397226, 0.80828, 0.508436, 0.790489, 0.577259, 0.986715, 0.800451, 0.986715, 0.800451, 0.884875, 0.577259, 0.884875, 0.253395, 0.703208, 0.0357736, 0.654143, 0.431037, 0.821044, 0.474465, 0.814096, 0.746745, 0.757091, 0.630965, 0.757091, 0.229469, 0.568812, 0.116578, 0.54336, 0.531206, 0.967111, 0.550688, 0.986715, 0.711461, 0.745789, 0.666248, 0.745789, 0.197707, 0.552158, 0.153622, 0.542219, 0.875556, 0.147966, 0.875556, 0.175678, 0.916482, 0.246565, 0.916482, 0.0770791, 0.702711, 0.539286, 0.674998, 0.539286, 0.264145, 0.33922, 0.244201, 0.357601, 0.182314, 0.0217425, 0.0132854, 0.0217425, 0.0976355, 0.31265, 0.104174, 0.31265, 0.851556, 0.161822, 0.769703, 0.161822, 0.208885, 0.309618, 0.214514, 0.31265, 0.214514, 0.306256, 0.460202, 0.0847659, 0.290716, 0.0847659, 0.372181, 0.378152, 0.378737, 0.378152, 0.743132, 0.0132854, 0.577259, 0.0132854, 0.693724, 0.246565, 0.70014, 0.246565, 0.474368, 0.465799, 0.465719, 0.464024, 0.682335, 0.273136, 0.673495, 0.273136, 0.186863, 0.945538, 0.19556, 0.94396),
+		null, ; No UV2,
+		null, ; No Bones,
+		null, ; No Weights,
+		IntArray(0, 2, 1, 0, 3, 2, 3, 4, 2, 3, 5, 4, 6, 8, 7, 6, 9, 8, 10, 12, 11, 10, 13, 12, 5, 14, 4, 5, 15, 14, 16, 18, 17, 16, 19, 18, 13, 20, 12, 13, 21, 20, 15, 22, 14, 15, 23, 22, 19, 24, 18, 19, 25, 24, 21, 26, 20, 21, 27, 26, 23, 28, 22, 23, 29, 28, 25, 30, 24, 25, 31, 30, 27, 32, 26, 27, 33, 32, 34, 36, 35, 34, 37, 36, 31, 38, 30, 31, 39, 38, 33, 40, 32, 33, 41, 40, 42, 44, 43, 42, 45, 44, 35, 47, 46, 35, 36, 47, 46, 37, 34, 46, 47, 37, 48, 50, 49, 51, 53, 52, 51, 54, 53, 55, 57, 56, 55, 58, 57, 1, 59, 0, 1, 60, 59, 7, 61, 6, 7, 62, 61, 11, 63, 10, 11, 64, 63)
+	],
+	"morph_arrays":[]
+}
+
+[sub_resource id=4 type="Shader"]
+
+resource_name = "Shader Nodetree"
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform sampler2D texture_0;
+
+
+void node_bsdf_principled(vec4 color, float subsurface, vec4 subsurface_color,
+        float metallic, float specular, float roughness, float clearcoat,
+        float clearcoat_roughness, float anisotropy, float transmission,
+        float IOR, out vec3 albedo, out float sss_strength_out,
+        out float metallic_out, out float specular_out,
+        out float roughness_out, out float clearcoat_out,
+        out float clearcoat_gloss_out, out float anisotropy_out,
+        out float transmission_out, out float ior) {
+    metallic = clamp(metallic, 0.0, 1.0);
+    transmission = clamp(transmission, 0.0, 1.0);
+
+    subsurface = subsurface * (1.0 - metallic);
+
+    albedo = mix(color.rgb, subsurface_color.rgb, subsurface);
+    sss_strength_out = subsurface;
+    metallic_out = metallic;
+    specular_out = pow((IOR - 1.0)/(IOR + 1.0), 2)/0.08;
+    roughness_out = roughness;
+    clearcoat_out = clearcoat * (1.0 - transmission);
+    clearcoat_gloss_out = 1.0 - clearcoat_roughness;
+    anisotropy_out = clamp(anisotropy, 0.0, 1.0);
+    transmission_out = (1.0 - transmission) * (1.0 - metallic);
+    ior = IOR;
+}
+
+
+void node_tex_image(vec3 co, sampler2D ima, out vec4 color, out float alpha) {
+    color = texture(ima, co.xy);
+    alpha = color.a;
+}
+
+void vertex () {
+}
+
+void fragment () {
+	
+	// node: 'Image Texture'
+	// type: 'ShaderNodeTexImage'
+	// input sockets handling
+	vec3 node0_in0_vector = vec3(0.0, 0.0, 0.0);
+	// output sockets definitions
+	vec4 node0_out0_color;
+	float node0_out1_alpha;
+	
+	node0_in0_vector = vec3(UV, 0.0);
+	node_tex_image(node0_in0_vector, texture_0, node0_out0_color, node0_out1_alpha);
+	
+	
+	// node: 'Principled BSDF'
+	// type: 'ShaderNodeBsdfPrincipled'
+	// input sockets handling
+	vec4 node1_in0_basecolor = node0_out0_color;
+	float node1_in1_subsurface = float(0.0);
+	vec3 node1_in2_subsurfaceradius = vec3(1.0, 0.20000000298023224,
+		0.10000000149011612);
+	vec4 node1_in3_subsurfacecolor = vec4(0.800000011920929, 0.800000011920929,
+		0.800000011920929, 1.0);
+	float node1_in4_metallic = float(0.0);
+	float node1_in5_specular = float(0.5);
+	float node1_in6_speculartint = float(0.0);
+	float node1_in7_roughness = float(0.5);
+	float node1_in8_anisotropic = float(0.0);
+	float node1_in9_anisotropicrotation = float(0.0);
+	float node1_in10_sheen = float(0.0);
+	float node1_in11_sheentint = float(0.5);
+	float node1_in12_clearcoat = float(0.0);
+	float node1_in13_clearcoatroughness = float(0.029999999329447746);
+	float node1_in14_ior = float(1.4500000476837158);
+	float node1_in15_transmission = float(0.0);
+	float node1_in16_transmissionroughness = float(0.0);
+	vec4 node1_in17_emission = vec4(0.0, 0.0, 0.0, 1.0);
+	float node1_in18_alpha = float(1.0);
+	vec3 node1_in19_normal = NORMAL;
+	vec3 node1_in20_clearcoatnormal = vec3(0.0, 0.0, 0.0);
+	vec3 node1_in21_tangent = TANGENT;
+	// output sockets definitions
+	vec3 node1_bsdf_out0_albedo;
+	float node1_bsdf_out1_sss_strength;
+	float node1_bsdf_out3_specular;
+	float node1_bsdf_out2_metallic;
+	float node1_bsdf_out4_roughness;
+	float node1_bsdf_out5_clearcoat;
+	float node1_bsdf_out6_clearcoat_gloss;
+	float node1_bsdf_out7_anisotropy;
+	float node1_bsdf_out8_transmission;
+	float node1_bsdf_out9_ior;
+	
+	node_bsdf_principled(node1_in0_basecolor, node1_in1_subsurface,
+		node1_in3_subsurfacecolor, node1_in4_metallic, node1_in5_specular,
+		node1_in7_roughness, node1_in12_clearcoat, node1_in13_clearcoatroughness,
+		node1_in8_anisotropic, node1_in15_transmission, node1_in14_ior,
+		node1_bsdf_out0_albedo, node1_bsdf_out1_sss_strength, node1_bsdf_out2_metallic,
+		node1_bsdf_out3_specular, node1_bsdf_out4_roughness, node1_bsdf_out5_clearcoat,
+		node1_bsdf_out6_clearcoat_gloss, node1_bsdf_out7_anisotropy,
+		node1_bsdf_out8_transmission, node1_bsdf_out9_ior);
+	
+	
+	ALBEDO = node1_bsdf_out0_albedo;
+	SSS_STRENGTH = node1_bsdf_out1_sss_strength;
+	SPECULAR = node1_bsdf_out3_specular;
+	METALLIC = node1_bsdf_out2_metallic;
+	ROUGHNESS = node1_bsdf_out4_roughness;
+	CLEARCOAT = node1_bsdf_out5_clearcoat;
+	CLEARCOAT_GLOSS = node1_bsdf_out6_clearcoat_gloss;
+	NORMAL = node1_in19_normal;
+	// uncomment it when you need it
+	// TRANSMISSION = vec3(1.0, 1.0, 1.0) * node1_bsdf_out8_transmission;
+	// uncomment it when you are modifing TANGENT
+	// TANGENT = normalize(cross(cross(node1_in21_tangent, NORMAL), NORMAL));
+	// BINORMAL = cross(TANGENT, NORMAL);
+	// uncomment it when you have tangent(UV) set
+	// ANISOTROPY = node1_bsdf_out7_anisotropy;
+}
+"
+
+[sub_resource id=5 type="ShaderMaterial"]
+
+resource_name = ""
+shader = SubResource(4)
+shader_param/texture_0 = ExtResource(2)
+
+[sub_resource id=6 type="ArrayMesh"]
+
+resource_name = "Cylinder001"
+surfaces/0 = {
+	"material":SubResource(5),
+	"primitive":4,
+	"arrays":[
+		Vector3Array(-0.0393457, 0.00938791, -0.944686, -0.450532, 1.15049, -1.14629, -0.378474, 1.15049, -1.02148, -0.313574, 0.00938791, 0.00472611, -0.313574, 0.00938791, 0.00472611, -0.378474, 1.15049, -1.02148, -0.522589, 1.15049, -1.02148, -0.998675, 0.00938791, -0.707469, -0.450532, 1.15049, -1.14629, -0.522589, 1.15049, -1.02148, -0.522589, 1.62444, -1.51175, -0.450532, 1.62444, -1.63655, -0.998675, 0.00938791, -0.707469, -0.0393457, 0.00938791, -0.944686, -0.0393457, 0.00938791, -0.944686, -0.313574, 0.00938791, 0.00472611, -0.998675, 0.00938791, -0.707469, -0.522589, 2.47858, -1.32278, -0.450532, 2.47858, -1.44759, -0.378474, 1.62444, -1.51175, -0.522589, 1.62444, -1.51175, -0.450532, 1.62444, -1.63655, -0.378474, 1.62444, -1.51175, -0.378474, 2.47858, -1.32278, -0.450532, 2.47858, -1.44759, -0.522589, 2.47858, -1.32278, -0.450532, 2.47858, -1.44759, -0.378474, 2.47858, -1.32278),
+		Vector3Array(0.677236, -0.499039, -0.540605, 0.171087, -0.519364, -0.837214, 0.520859, 0.60387, 0.60332, 0.269631, -0.304697, 0.91345, 0.269631, -0.304697, 0.91345, 0.520859, 0.60387, 0.60332, -0.88464, 0.462996, 0.0547807, -0.911649, -0.407971, -0.0491958, 0.171087, -0.519364, -0.837214, -0.88464, 0.462996, 0.0547807, -0.973785, -0.0140996, 0.226997, 0.0, -0.233467, -0.97235, -0.911649, -0.407971, -0.0491958, 0.677236, -0.499039, -0.540605, 0.677236, -0.499039, -0.540605, 0.269631, -0.304697, 0.91345, -0.911649, -0.407971, -0.0491958, -0.70217, 0.50734, 0.499496, 0.0, 0.634175, -0.773186, 0.973785, -0.0140996, 0.226997, -0.973785, -0.0140996, 0.226997, 0.0, -0.233467, -0.97235, 0.973785, -0.0140996, 0.226997, 0.70217, 0.50734, 0.499496, 0.0, 0.634175, -0.773186, -0.70217, 0.50734, 0.499496, 0.0, 0.634175, -0.773186, 0.70217, 0.50734, 0.499496),
+		FloatArray(0.482172, -0.253808, 0.838506, 1.0, 0.933599, -0.186013, 0.306253, 1.0, -0.35077, -0.492819, 0.796298, 1.0, -0.669152, 0.622844, 0.405341, 1.0, 0.781528, 0.623459, -0.022663, 1.0, 0.848075, -0.446726, -0.284966, 1.0, 0.464355, 0.863967, 0.194773, 1.0, 0.0033975, -0.127058, 0.991889, 1.0, -0.811018, -0.556721, 0.179755, 1.0, -0.00314341, -0.123329, 0.992361, 1.0, 0.215302, 0.264287, 0.940105, 1.0, -0.999704, 0.0236562, -0.00562818, 1.0, -0.384658, 0.804952, 0.451765, 1.0, -0.73116, -0.5389, -0.41832, 1.0, 0.718167, 0.288602, 0.633202, 1.0, 0.957924, 0.181868, -0.222049, 1.0, 0.327893, -0.794224, 0.51156, 1.0, 0.328638, -0.391237, 0.859611, 1.0, -0.527306, 0.656957, 0.538846, 1.0, 0.211759, -0.308717, -0.927282, 1.0, 0.20944, -0.445371, 0.870505, 1.0, 0.972335, 0.227148, -0.0544878, 1.0, -0.205075, 0.376989, 0.903229, 1.0, 0.706653, -0.582644, -0.401458, 1.0, 0.994875, 0.0781751, 0.0641208, 1.0, 0.706907, 0.412684, 0.574434, 1.0, 0.467078, 0.683664, 0.560751, 1.0, -0.47091, -0.195029, 0.860353, 1.0),
+		null, ; no Vertex Colors,
+		Vector2Array(0.529417, 0.106104, 0.547402, 0.459484, 0.587475, 0.443564, 0.714268, 0.0161955, 0.287748, 0.990112, 0.199066, 0.539822, 0.163771, 0.543583, 0.00988805, 0.892021, 0.405803, 0.616239, 0.447498, 0.627231, 0.397836, 0.317252, 0.35614, 0.30626, 0.509641, 0.990112, 0.307524, 0.952664, 0.990112, 0.990112, 0.990112, 0.694431, 0.734044, 0.842271, 0.509641, 0.0852153, 0.467946, 0.0742238, 0.19431, 0.22424, 0.159015, 0.228, 0.53533, 0.773184, 0.575403, 0.757264, 0.287748, 0.0417674, 0.250812, 0.0233251, 0.252453, 0.0455279, 0.674195, 0.990112, 0.714268, 0.974192),
+		null, ; No UV2,
+		null, ; No Bones,
+		null, ; No Weights,
+		IntArray(0, 2, 1, 0, 3, 2, 4, 6, 5, 4, 7, 6, 8, 10, 9, 8, 11, 10, 12, 8, 9, 12, 13, 8, 14, 16, 15, 11, 17, 10, 11, 18, 17, 6, 19, 5, 6, 20, 19, 2, 21, 1, 2, 22, 21, 23, 25, 24, 20, 23, 19, 20, 25, 23, 22, 26, 21, 22, 27, 26)
+	],
+	"morph_arrays":[]
+}
+
+[sub_resource id=7 type="Shader"]
+
+resource_name = "Shader Nodetree"
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform sampler2D texture_0;
+
+
+void node_bsdf_principled(vec4 color, float subsurface, vec4 subsurface_color,
+        float metallic, float specular, float roughness, float clearcoat,
+        float clearcoat_roughness, float anisotropy, float transmission,
+        float IOR, out vec3 albedo, out float sss_strength_out,
+        out float metallic_out, out float specular_out,
+        out float roughness_out, out float clearcoat_out,
+        out float clearcoat_gloss_out, out float anisotropy_out,
+        out float transmission_out, out float ior) {
+    metallic = clamp(metallic, 0.0, 1.0);
+    transmission = clamp(transmission, 0.0, 1.0);
+
+    subsurface = subsurface * (1.0 - metallic);
+
+    albedo = mix(color.rgb, subsurface_color.rgb, subsurface);
+    sss_strength_out = subsurface;
+    metallic_out = metallic;
+    specular_out = pow((IOR - 1.0)/(IOR + 1.0), 2)/0.08;
+    roughness_out = roughness;
+    clearcoat_out = clearcoat * (1.0 - transmission);
+    clearcoat_gloss_out = 1.0 - clearcoat_roughness;
+    anisotropy_out = clamp(anisotropy, 0.0, 1.0);
+    transmission_out = (1.0 - transmission) * (1.0 - metallic);
+    ior = IOR;
+}
+
+
+void node_tex_image(vec3 co, sampler2D ima, out vec4 color, out float alpha) {
+    color = texture(ima, co.xy);
+    alpha = color.a;
+}
+
+void vertex () {
+}
+
+void fragment () {
+	
+	// node: 'Image Texture'
+	// type: 'ShaderNodeTexImage'
+	// input sockets handling
+	vec3 node0_in0_vector = vec3(0.0, 0.0, 0.0);
+	// output sockets definitions
+	vec4 node0_out0_color;
+	float node0_out1_alpha;
+	
+	node0_in0_vector = vec3(UV, 0.0);
+	node_tex_image(node0_in0_vector, texture_0, node0_out0_color, node0_out1_alpha);
+	
+	
+	// node: 'Principled BSDF'
+	// type: 'ShaderNodeBsdfPrincipled'
+	// input sockets handling
+	vec4 node1_in0_basecolor = node0_out0_color;
+	float node1_in1_subsurface = float(0.0);
+	vec3 node1_in2_subsurfaceradius = vec3(1.0, 0.20000000298023224,
+		0.10000000149011612);
+	vec4 node1_in3_subsurfacecolor = vec4(0.800000011920929, 0.800000011920929,
+		0.800000011920929, 1.0);
+	float node1_in4_metallic = float(0.0);
+	float node1_in5_specular = float(0.5);
+	float node1_in6_speculartint = float(0.0);
+	float node1_in7_roughness = float(0.5);
+	float node1_in8_anisotropic = float(0.0);
+	float node1_in9_anisotropicrotation = float(0.0);
+	float node1_in10_sheen = float(0.0);
+	float node1_in11_sheentint = float(0.5);
+	float node1_in12_clearcoat = float(0.0);
+	float node1_in13_clearcoatroughness = float(0.029999999329447746);
+	float node1_in14_ior = float(1.4500000476837158);
+	float node1_in15_transmission = float(0.0);
+	float node1_in16_transmissionroughness = float(0.0);
+	vec4 node1_in17_emission = vec4(0.0, 0.0, 0.0, 1.0);
+	float node1_in18_alpha = float(1.0);
+	vec3 node1_in19_normal = NORMAL;
+	vec3 node1_in20_clearcoatnormal = vec3(0.0, 0.0, 0.0);
+	vec3 node1_in21_tangent = TANGENT;
+	// output sockets definitions
+	vec3 node1_bsdf_out0_albedo;
+	float node1_bsdf_out1_sss_strength;
+	float node1_bsdf_out3_specular;
+	float node1_bsdf_out2_metallic;
+	float node1_bsdf_out4_roughness;
+	float node1_bsdf_out5_clearcoat;
+	float node1_bsdf_out6_clearcoat_gloss;
+	float node1_bsdf_out7_anisotropy;
+	float node1_bsdf_out8_transmission;
+	float node1_bsdf_out9_ior;
+	
+	node_bsdf_principled(node1_in0_basecolor, node1_in1_subsurface,
+		node1_in3_subsurfacecolor, node1_in4_metallic, node1_in5_specular,
+		node1_in7_roughness, node1_in12_clearcoat, node1_in13_clearcoatroughness,
+		node1_in8_anisotropic, node1_in15_transmission, node1_in14_ior,
+		node1_bsdf_out0_albedo, node1_bsdf_out1_sss_strength, node1_bsdf_out2_metallic,
+		node1_bsdf_out3_specular, node1_bsdf_out4_roughness, node1_bsdf_out5_clearcoat,
+		node1_bsdf_out6_clearcoat_gloss, node1_bsdf_out7_anisotropy,
+		node1_bsdf_out8_transmission, node1_bsdf_out9_ior);
+	
+	
+	ALBEDO = node1_bsdf_out0_albedo;
+	SSS_STRENGTH = node1_bsdf_out1_sss_strength;
+	SPECULAR = node1_bsdf_out3_specular;
+	METALLIC = node1_bsdf_out2_metallic;
+	ROUGHNESS = node1_bsdf_out4_roughness;
+	CLEARCOAT = node1_bsdf_out5_clearcoat;
+	CLEARCOAT_GLOSS = node1_bsdf_out6_clearcoat_gloss;
+	NORMAL = node1_in19_normal;
+	// uncomment it when you need it
+	// TRANSMISSION = vec3(1.0, 1.0, 1.0) * node1_bsdf_out8_transmission;
+	// uncomment it when you are modifing TANGENT
+	// TANGENT = normalize(cross(cross(node1_in21_tangent, NORMAL), NORMAL));
+	// BINORMAL = cross(TANGENT, NORMAL);
+	// uncomment it when you have tangent(UV) set
+	// ANISOTROPY = node1_bsdf_out7_anisotropy;
+}
+"
+
+[sub_resource id=8 type="ShaderMaterial"]
+
+resource_name = ""
+shader = SubResource(7)
+shader_param/texture_0 = ExtResource(3)
+
+[sub_resource id=9 type="ArrayMesh"]
+
+resource_name = "Cylinder002"
+surfaces/0 = {
+	"material":SubResource(8),
+	"primitive":4,
+	"arrays":[
+		Vector3Array(0.148121, 0.00938791, -1.82925, 0.00663245, 1.15049, -1.3419, 0.0786898, 1.15049, -1.21709, 0.642232, 0.00938791, -0.973421, 0.642232, 0.00938791, -0.973421, 0.0786898, 1.15049, -1.21709, -0.0654248, 1.15049, -1.21709, -0.345991, 0.00938791, -0.973421, 0.00663245, 1.15049, -1.3419, -0.0654248, 1.15049, -1.21709, -0.522589, 1.58473, -1.51024, -0.450532, 1.58473, -1.63505, -0.345991, 0.00938791, -0.973421, 0.148121, 0.00938791, -1.82925, 0.642232, 0.00938791, -0.973421, -0.522589, 2.43886, -1.32278, -0.450532, 2.43886, -1.44759, -0.378474, 1.58473, -1.51024, -0.522589, 1.58473, -1.51024, -0.450532, 1.58473, -1.63505, -0.378474, 1.58473, -1.51024, -0.378474, 2.43886, -1.32278, -0.450532, 2.43886, -1.44759, -0.522589, 2.43886, -1.32278, -0.378474, 2.43886, -1.32278, -0.522589, 2.43886, -1.32278, -0.450532, 2.43886, -1.44759, -0.378474, 2.43886, -1.32278),
+		Vector3Array(0.0434278, -0.406903, -0.912412, 0.202643, 0.194403, -0.959746, 0.685293, 0.585986, 0.432386, 0.811945, -0.377239, 0.445387, 0.811945, -0.377239, 0.445387, 0.685293, 0.585986, 0.432386, -0.720237, 0.193976, 0.666005, -0.764824, -0.44203, 0.468612, 0.202643, 0.194403, -0.959746, -0.720237, 0.193976, 0.666005, -0.883236, -0.341838, 0.320933, -0.0997955, -0.218299, -0.970733, -0.764824, -0.44203, 0.468612, 0.0434278, -0.406903, -0.912412, 0.811945, -0.377239, 0.445387, -0.702322, 0.507767, 0.498886, 0.0, 0.633534, -0.773675, 0.762932, 0.536699, 0.360332, -0.883236, -0.341838, 0.320933, -0.0997955, -0.218299, -0.970733, 0.762932, 0.536699, 0.360332, 0.702322, 0.507767, 0.498886, 0.0, 0.633534, -0.773675, -0.702322, 0.507767, 0.498886, 0.702322, 0.507767, 0.498886, -0.702322, 0.507767, 0.498886, 0.0, 0.633534, -0.773675, 0.702322, 0.507767, 0.498886),
+		FloatArray(0.960085, -0.23555, 0.150843, 1.0, 0.843938, 0.46243, 0.271894, 1.0, -0.210269, -0.409176, 0.887898, 1.0, -0.128841, 0.628338, 0.767197, 1.0, 0.564551, 0.701564, -0.434846, 1.0, 0.675795, -0.290329, -0.677503, 1.0, 0.652261, 0.516418, 0.554859, 1.0, 0.584692, -0.1706, 0.793115, 1.0, 0.940598, 0.23409, 0.245923, 1.0, -0.226582, 0.841577, -0.490316, 1.0, -0.309757, -0.088319, -0.946705, 1.0, 0.82231, 0.531188, -0.204072, 1.0, -0.383597, -0.271785, -0.882602, 1.0, 0.40438, 0.842268, -0.356458, 1.0, 0.420457, -0.151204, -0.894625, 1.0, 0.087171, 0.756895, -0.647697, 1.0, 0.85613, -0.399763, -0.327461, 1.0, 0.619258, -0.446538, -0.645851, 1.0, 0.337172, 0.0129122, 0.941355, 1.0, 0.988683, 0.0882495, -0.121318, 1.0, -0.188558, -0.348329, 0.918212, 1.0, 0.657842, -0.195174, -0.727427, 1.0, 0.939144, -0.265767, -0.217661, 1.0, 0.512785, 0.846981, -0.140264, 1.0, 0.663494, -0.212919, -0.717246, 1.0, 0.696955, 0.633154, 0.336706, 1.0, 0.526442, 0.657785, 0.538682, 1.0, -0.330609, -0.387922, 0.860357, 1.0),
+		null, ; no Vertex Colors,
+		Vector2Array(0.00986385, 0.0918627, 0.210157, 0.419465, 0.253089, 0.407923, 0.304256, 0.0127175, 0.928883, 0.990136, 0.881171, 0.595268, 0.839144, 0.580775, 0.640693, 0.890749, 0.53755, 0.434743, 0.494241, 0.444775, 0.577656, 0.770293, 0.620965, 0.760261, 0.323984, 0.190017, 0.620965, 0.121221, 0.442796, 0.0275018, 0.577177, 0.990136, 0.620486, 0.980103, 0.845283, 0.26677, 0.803256, 0.252276, 0.144613, 0.748904, 0.187545, 0.737363, 0.987111, 0.990136, 0.987111, 0.94568, 0.948611, 0.967908, 0.928883, 0.0243578, 0.886856, 0.00986397, 0.261324, 0.990136, 0.304256, 0.978594),
+		null, ; No UV2,
+		null, ; No Bones,
+		null, ; No Weights,
+		IntArray(0, 2, 1, 0, 3, 2, 4, 6, 5, 4, 7, 6, 8, 10, 9, 8, 11, 10, 12, 8, 9, 12, 13, 8, 13, 12, 14, 11, 15, 10, 11, 16, 15, 6, 17, 5, 6, 18, 17, 2, 19, 1, 2, 20, 19, 21, 23, 22, 18, 24, 17, 18, 25, 24, 20, 26, 19, 20, 27, 26)
+	],
+	"morph_arrays":[]
+}
+
+[sub_resource id=10 type="Shader"]
+
+resource_name = "Shader Nodetree"
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform sampler2D texture_0;
+
+
+void node_bsdf_principled(vec4 color, float subsurface, vec4 subsurface_color,
+        float metallic, float specular, float roughness, float clearcoat,
+        float clearcoat_roughness, float anisotropy, float transmission,
+        float IOR, out vec3 albedo, out float sss_strength_out,
+        out float metallic_out, out float specular_out,
+        out float roughness_out, out float clearcoat_out,
+        out float clearcoat_gloss_out, out float anisotropy_out,
+        out float transmission_out, out float ior) {
+    metallic = clamp(metallic, 0.0, 1.0);
+    transmission = clamp(transmission, 0.0, 1.0);
+
+    subsurface = subsurface * (1.0 - metallic);
+
+    albedo = mix(color.rgb, subsurface_color.rgb, subsurface);
+    sss_strength_out = subsurface;
+    metallic_out = metallic;
+    specular_out = pow((IOR - 1.0)/(IOR + 1.0), 2)/0.08;
+    roughness_out = roughness;
+    clearcoat_out = clearcoat * (1.0 - transmission);
+    clearcoat_gloss_out = 1.0 - clearcoat_roughness;
+    anisotropy_out = clamp(anisotropy, 0.0, 1.0);
+    transmission_out = (1.0 - transmission) * (1.0 - metallic);
+    ior = IOR;
+}
+
+
+void node_tex_image(vec3 co, sampler2D ima, out vec4 color, out float alpha) {
+    color = texture(ima, co.xy);
+    alpha = color.a;
+}
+
+void vertex () {
+}
+
+void fragment () {
+	
+	// node: 'Image Texture.001'
+	// type: 'ShaderNodeTexImage'
+	// input sockets handling
+	vec3 node0_in0_vector = vec3(0.0, 0.0, 0.0);
+	// output sockets definitions
+	vec4 node0_out0_color;
+	float node0_out1_alpha;
+	
+	node0_in0_vector = vec3(UV, 0.0);
+	node_tex_image(node0_in0_vector, texture_0, node0_out0_color, node0_out1_alpha);
+	
+	
+	// node: 'Gradient Texture'
+	// type: 'ShaderNodeTexGradient'
+	// input sockets handling
+	vec3 node1_in0_vector = vec3(0.0, 0.0, 0.0);
+	// output sockets definitions
+	
+	// Warn: node not supported
+	
+	
+	// node: 'Principled BSDF'
+	// type: 'ShaderNodeBsdfPrincipled'
+	// input sockets handling
+	vec4 node2_in0_basecolor = vec4(0.800000011920929, 0.800000011920929,
+		0.800000011920929, 1.0);
+	float node2_in1_subsurface = float(0.0);
+	vec3 node2_in2_subsurfaceradius = vec3(1.0, 0.20000000298023224,
+		0.10000000149011612);
+	vec4 node2_in3_subsurfacecolor = vec4(0.800000011920929, 0.800000011920929,
+		0.800000011920929, 1.0);
+	float node2_in4_metallic = float(0.0);
+	float node2_in5_specular = float(0.5);
+	float node2_in6_speculartint = float(0.0);
+	float node2_in7_roughness = float(0.5);
+	float node2_in8_anisotropic = float(0.0);
+	float node2_in9_anisotropicrotation = float(0.0);
+	float node2_in10_sheen = float(0.0);
+	float node2_in11_sheentint = float(0.5);
+	float node2_in12_clearcoat = float(0.0);
+	float node2_in13_clearcoatroughness = float(0.029999999329447746);
+	float node2_in14_ior = float(1.4500000476837158);
+	float node2_in15_transmission = float(0.0);
+	float node2_in16_transmissionroughness = float(0.0);
+	vec4 node2_in17_emission = vec4(0.0, 0.0, 0.0, 1.0);
+	float node2_in18_alpha = float(1.0);
+	vec3 node2_in19_normal = NORMAL;
+	vec3 node2_in20_clearcoatnormal = vec3(0.0, 0.0, 0.0);
+	vec3 node2_in21_tangent = TANGENT;
+	// output sockets definitions
+	vec3 node2_bsdf_out0_albedo;
+	float node2_bsdf_out1_sss_strength;
+	float node2_bsdf_out3_specular;
+	float node2_bsdf_out2_metallic;
+	float node2_bsdf_out4_roughness;
+	float node2_bsdf_out5_clearcoat;
+	float node2_bsdf_out6_clearcoat_gloss;
+	float node2_bsdf_out7_anisotropy;
+	float node2_bsdf_out8_transmission;
+	float node2_bsdf_out9_ior;
+	
+	node_bsdf_principled(node2_in0_basecolor, node2_in1_subsurface,
+		node2_in3_subsurfacecolor, node2_in4_metallic, node2_in5_specular,
+		node2_in7_roughness, node2_in12_clearcoat, node2_in13_clearcoatroughness,
+		node2_in8_anisotropic, node2_in15_transmission, node2_in14_ior,
+		node2_bsdf_out0_albedo, node2_bsdf_out1_sss_strength, node2_bsdf_out2_metallic,
+		node2_bsdf_out3_specular, node2_bsdf_out4_roughness, node2_bsdf_out5_clearcoat,
+		node2_bsdf_out6_clearcoat_gloss, node2_bsdf_out7_anisotropy,
+		node2_bsdf_out8_transmission, node2_bsdf_out9_ior);
+	
+	
+	ALBEDO = node2_bsdf_out0_albedo;
+	SSS_STRENGTH = node2_bsdf_out1_sss_strength;
+	SPECULAR = node2_bsdf_out3_specular;
+	METALLIC = node2_bsdf_out2_metallic;
+	ROUGHNESS = node2_bsdf_out4_roughness;
+	CLEARCOAT = node2_bsdf_out5_clearcoat;
+	CLEARCOAT_GLOSS = node2_bsdf_out6_clearcoat_gloss;
+	NORMAL = node2_in19_normal;
+	// uncomment it when you need it
+	// TRANSMISSION = vec3(1.0, 1.0, 1.0) * node2_bsdf_out8_transmission;
+	// uncomment it when you are modifing TANGENT
+	// TANGENT = normalize(cross(cross(node2_in21_tangent, NORMAL), NORMAL));
+	// BINORMAL = cross(TANGENT, NORMAL);
+	// uncomment it when you have tangent(UV) set
+	// ANISOTROPY = node2_bsdf_out7_anisotropy;
+}
+"
+
+[sub_resource id=11 type="ShaderMaterial"]
+
+resource_name = ""
+shader = SubResource(10)
+shader_param/texture_0 = ExtResource(4)
+
+[sub_resource id=12 type="ArrayMesh"]
+
+resource_name = "Cylinder003"
+surfaces/0 = {
+	"material":SubResource(11),
+	"primitive":4,
+	"arrays":[
+		Vector3Array(1.85849, 1.15949, -0.954441, 4.04039, 0.798211, -0.0318657, 4.0347, 0.731401, 0.0842713, 2.56323, 0.656163, 0.545559, 2.56323, 0.656163, 0.545559, 4.0347, 0.731401, 0.0842713, 4.04609, 0.865021, 0.0842713, 1.15374, 1.66282, 0.545559, 4.0347, 0.731401, 0.0842713, 4.04039, 0.798211, -0.0318657, 4.04609, 0.865021, 0.0842713, 1.15374, 1.66282, 0.545559, 4.04609, 0.865021, 0.0842713, 4.04039, 0.798211, -0.0318657, 1.85849, 1.15949, -0.954441, 1.15374, 1.66282, 0.545559, 1.85849, 1.15949, -0.954441, 0.389671, -0.296048, -0.0994065, 0.287508, -0.223083, 0.118042, 0.389671, -0.296048, -0.0994065, 0.491835, -0.369013, 0.118042, 0.287508, -0.223083, 0.118042, 0.287508, -0.223083, 0.118042, 0.491835, -0.369013, 0.118042, 1.85849, 1.15949, -0.954441, 2.56323, 0.656163, 0.545559, 0.491835, -0.369013, 0.118042, 0.389671, -0.296048, -0.0994065),
+		Vector3Array(0.070864, 0.21952, -0.973022, 0.79928, -0.0945769, -0.593463, 0.638783, -0.631092, 0.440046, 0.308878, -0.626911, 0.715232, 0.308878, -0.626911, 0.715232, 0.638783, -0.631092, 0.440046, 0.61269, 0.688284, 0.388348, -0.454207, 0.755882, 0.47148, 0.638783, -0.631092, 0.440046, 0.79928, -0.0945769, -0.593463, 0.61269, 0.688284, 0.388348, -0.454207, 0.755882, 0.47148, 0.61269, 0.688284, 0.388348, 0.79928, -0.0945769, -0.593463, 0.070864, 0.21952, -0.973022, -0.454207, 0.755882, 0.47148, 0.070864, 0.21952, -0.973022, -0.474807, -0.50972, -0.717429, -0.930296, -0.133366, 0.341655, -0.474807, -0.50972, -0.717429, 0.0234993, -0.926572, 0.375347, -0.930296, -0.133366, 0.341655, -0.930296, -0.133366, 0.341655, 0.0234993, -0.926572, 0.375347, 0.070864, 0.21952, -0.973022, 0.308878, -0.626911, 0.715232, 0.0234993, -0.926572, 0.375347, -0.474807, -0.50972, -0.717429),
+		FloatArray(0.992505, 0.0818714, 0.0907247, 1.0, -0.217287, 0.875231, -0.432155, 1.0, 0.707709, 0.257632, -0.657856, 1.0, 0.877722, -0.101741, -0.468245, 1.0, 0.0490387, -0.740533, -0.670228, 1.0, -0.356294, -0.749623, -0.557781, 1.0, 0.665574, -0.714397, 0.215981, 1.0, -0.405169, -0.646671, 0.646262, 1.0, -0.261104, -0.715855, -0.647593, 1.0, -0.347161, -0.878754, -0.327522, 1.0, 0.790082, -0.523418, -0.319066, 1.0, 0.485068, -0.234046, 0.842574, 1.0, -0.322634, -0.230653, 0.917991, 1.0, 0.575259, 0.406079, 0.710054, 1.0, 0.571128, 0.790818, 0.220044, 1.0, 0.0647398, 0.555785, -0.828802, 1.0, 0.593045, -0.793621, -0.135881, 1.0, 0.832635, 0.00382656, -0.553809, 1.0, -0.238944, -0.486249, -0.840517, 1.0, 0.873091, -0.375359, -0.311157, 1.0, 0.730367, -0.240471, -0.639326, 1.0, -0.00253422, -0.929142, -0.369715, 1.0, 0.0986808, -0.98821, -0.11706, 1.0, 0.296392, -0.352157, -0.887771, 1.0, 0.877929, 0.449346, 0.165314, 1.0, 0.852338, 0.516147, 0.0843254, 1.0, 0.942799, 0.145434, 0.299964, 1.0, 0.795564, 0.100064, -0.597549, 1.0),
+		null, ; no Vertex Colors,
+		Vector2Array(0.84331, 0.56306, 0.84331, 0.131316, 0.825383, 0.11555, 0.647021, 0.283542, 0.276876, 0.563062, 0.327017, 0.262883, 0.303169, 0.255189, 0.0114243, 0.777826, 0.100055, 0.232341, 0.100055, 0.205896, 0.0771531, 0.219118, 0.624173, 0.988576, 0.624173, 0.39001, 0.599501, 0.384045, 0.349866, 0.785204, 0.647021, 0.988576, 0.988576, 0.988575, 0.808112, 0.585908, 0.758598, 0.585908, 0.0543044, 0.232341, 0.0543044, 0.182827, 0.0114243, 0.207584, 0.288535, 0.988576, 0.327017, 0.957442, 0.600177, 0.361196, 0.600177, 0.052845, 0.349865, 0.0670259, 0.349865, 0.111726),
+		null, ; No UV2,
+		null, ; No Bones,
+		null, ; No Weights,
+		IntArray(0, 2, 1, 0, 3, 2, 4, 6, 5, 4, 7, 6, 8, 10, 9, 11, 13, 12, 11, 14, 13, 15, 17, 16, 15, 18, 17, 19, 21, 20, 4, 22, 7, 4, 23, 22, 24, 26, 25, 24, 27, 26)
+	],
+	"morph_arrays":[]
+}
+
+[sub_resource id=13 type="Shader"]
+
+resource_name = "Shader Nodetree"
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform sampler2D texture_0;
+
+
+void node_bsdf_principled(vec4 color, float subsurface, vec4 subsurface_color,
+        float metallic, float specular, float roughness, float clearcoat,
+        float clearcoat_roughness, float anisotropy, float transmission,
+        float IOR, out vec3 albedo, out float sss_strength_out,
+        out float metallic_out, out float specular_out,
+        out float roughness_out, out float clearcoat_out,
+        out float clearcoat_gloss_out, out float anisotropy_out,
+        out float transmission_out, out float ior) {
+    metallic = clamp(metallic, 0.0, 1.0);
+    transmission = clamp(transmission, 0.0, 1.0);
+
+    subsurface = subsurface * (1.0 - metallic);
+
+    albedo = mix(color.rgb, subsurface_color.rgb, subsurface);
+    sss_strength_out = subsurface;
+    metallic_out = metallic;
+    specular_out = pow((IOR - 1.0)/(IOR + 1.0), 2)/0.08;
+    roughness_out = roughness;
+    clearcoat_out = clearcoat * (1.0 - transmission);
+    clearcoat_gloss_out = 1.0 - clearcoat_roughness;
+    anisotropy_out = clamp(anisotropy, 0.0, 1.0);
+    transmission_out = (1.0 - transmission) * (1.0 - metallic);
+    ior = IOR;
+}
+
+
+void node_tex_image(vec3 co, sampler2D ima, out vec4 color, out float alpha) {
+    color = texture(ima, co.xy);
+    alpha = color.a;
+}
+
+void vertex () {
+}
+
+void fragment () {
+	
+	// node: 'Image Texture.001'
+	// type: 'ShaderNodeTexImage'
+	// input sockets handling
+	vec3 node0_in0_vector = vec3(0.0, 0.0, 0.0);
+	// output sockets definitions
+	vec4 node0_out0_color;
+	float node0_out1_alpha;
+	
+	node0_in0_vector = vec3(UV, 0.0);
+	node_tex_image(node0_in0_vector, texture_0, node0_out0_color, node0_out1_alpha);
+	
+	
+	// node: 'Gradient Texture'
+	// type: 'ShaderNodeTexGradient'
+	// input sockets handling
+	vec3 node1_in0_vector = vec3(0.0, 0.0, 0.0);
+	// output sockets definitions
+	
+	// Warn: node not supported
+	
+	
+	// node: 'Principled BSDF'
+	// type: 'ShaderNodeBsdfPrincipled'
+	// input sockets handling
+	vec4 node2_in0_basecolor = vec4(0.800000011920929, 0.800000011920929,
+		0.800000011920929, 1.0);
+	float node2_in1_subsurface = float(0.0);
+	vec3 node2_in2_subsurfaceradius = vec3(1.0, 0.20000000298023224,
+		0.10000000149011612);
+	vec4 node2_in3_subsurfacecolor = vec4(0.800000011920929, 0.800000011920929,
+		0.800000011920929, 1.0);
+	float node2_in4_metallic = float(0.0);
+	float node2_in5_specular = float(0.5);
+	float node2_in6_speculartint = float(0.0);
+	float node2_in7_roughness = float(0.5);
+	float node2_in8_anisotropic = float(0.0);
+	float node2_in9_anisotropicrotation = float(0.0);
+	float node2_in10_sheen = float(0.0);
+	float node2_in11_sheentint = float(0.5);
+	float node2_in12_clearcoat = float(0.0);
+	float node2_in13_clearcoatroughness = float(0.029999999329447746);
+	float node2_in14_ior = float(1.4500000476837158);
+	float node2_in15_transmission = float(0.0);
+	float node2_in16_transmissionroughness = float(0.0);
+	vec4 node2_in17_emission = vec4(0.0, 0.0, 0.0, 1.0);
+	float node2_in18_alpha = float(1.0);
+	vec3 node2_in19_normal = NORMAL;
+	vec3 node2_in20_clearcoatnormal = vec3(0.0, 0.0, 0.0);
+	vec3 node2_in21_tangent = TANGENT;
+	// output sockets definitions
+	vec3 node2_bsdf_out0_albedo;
+	float node2_bsdf_out1_sss_strength;
+	float node2_bsdf_out3_specular;
+	float node2_bsdf_out2_metallic;
+	float node2_bsdf_out4_roughness;
+	float node2_bsdf_out5_clearcoat;
+	float node2_bsdf_out6_clearcoat_gloss;
+	float node2_bsdf_out7_anisotropy;
+	float node2_bsdf_out8_transmission;
+	float node2_bsdf_out9_ior;
+	
+	node_bsdf_principled(node2_in0_basecolor, node2_in1_subsurface,
+		node2_in3_subsurfacecolor, node2_in4_metallic, node2_in5_specular,
+		node2_in7_roughness, node2_in12_clearcoat, node2_in13_clearcoatroughness,
+		node2_in8_anisotropic, node2_in15_transmission, node2_in14_ior,
+		node2_bsdf_out0_albedo, node2_bsdf_out1_sss_strength, node2_bsdf_out2_metallic,
+		node2_bsdf_out3_specular, node2_bsdf_out4_roughness, node2_bsdf_out5_clearcoat,
+		node2_bsdf_out6_clearcoat_gloss, node2_bsdf_out7_anisotropy,
+		node2_bsdf_out8_transmission, node2_bsdf_out9_ior);
+	
+	
+	ALBEDO = node2_bsdf_out0_albedo;
+	SSS_STRENGTH = node2_bsdf_out1_sss_strength;
+	SPECULAR = node2_bsdf_out3_specular;
+	METALLIC = node2_bsdf_out2_metallic;
+	ROUGHNESS = node2_bsdf_out4_roughness;
+	CLEARCOAT = node2_bsdf_out5_clearcoat;
+	CLEARCOAT_GLOSS = node2_bsdf_out6_clearcoat_gloss;
+	NORMAL = node2_in19_normal;
+	// uncomment it when you need it
+	// TRANSMISSION = vec3(1.0, 1.0, 1.0) * node2_bsdf_out8_transmission;
+	// uncomment it when you are modifing TANGENT
+	// TANGENT = normalize(cross(cross(node2_in21_tangent, NORMAL), NORMAL));
+	// BINORMAL = cross(TANGENT, NORMAL);
+	// uncomment it when you have tangent(UV) set
+	// ANISOTROPY = node2_bsdf_out7_anisotropy;
+}
+"
+
+[sub_resource id=14 type="ShaderMaterial"]
+
+resource_name = ""
+shader = SubResource(13)
+shader_param/texture_0 = ExtResource(5)
+
+[sub_resource id=15 type="ArrayMesh"]
+
+resource_name = "Cylinder004"
+surfaces/0 = {
+	"material":SubResource(14),
+	"primitive":4,
+	"arrays":[
+		Vector3Array(1.85849, 1.15949, -0.954441, 4.04039, 0.798211, -0.0318657, 4.0347, 0.731401, 0.0842713, 2.56323, 0.656163, 0.545559, 2.56323, 0.656163, 0.545559, 4.0347, 0.731401, 0.0842713, 4.04609, 0.865021, 0.0842713, 1.15374, 1.66282, 0.545559, 4.0347, 0.731401, 0.0842713, 4.04039, 0.798211, -0.0318657, 4.04609, 0.865021, 0.0842713, 1.15374, 1.66282, 0.545559, 4.04609, 0.865021, 0.0842713, 4.04039, 0.798211, -0.0318657, 1.85849, 1.15949, -0.954441, 1.15374, 1.66282, 0.545559, 1.85849, 1.15949, -0.954441, 0.389671, -0.296048, -0.0994065, 0.287508, -0.223083, 0.118042, 0.389671, -0.296048, -0.0994065, 0.491835, -0.369013, 0.118042, 0.287508, -0.223083, 0.118042, 0.287508, -0.223083, 0.118042, 0.491835, -0.369013, 0.118042, 1.85849, 1.15949, -0.954441, 2.56323, 0.656163, 0.545559, 0.491835, -0.369013, 0.118042, 0.389671, -0.296048, -0.0994065),
+		Vector3Array(0.070864, 0.21952, -0.973022, 0.79928, -0.0945769, -0.593463, 0.638783, -0.631092, 0.440046, 0.308878, -0.626911, 0.715232, 0.308878, -0.626911, 0.715232, 0.638783, -0.631092, 0.440046, 0.61269, 0.688284, 0.388348, -0.454207, 0.755882, 0.47148, 0.638783, -0.631092, 0.440046, 0.79928, -0.0945769, -0.593463, 0.61269, 0.688284, 0.388348, -0.454207, 0.755882, 0.47148, 0.61269, 0.688284, 0.388348, 0.79928, -0.0945769, -0.593463, 0.070864, 0.21952, -0.973022, -0.454207, 0.755882, 0.47148, 0.070864, 0.21952, -0.973022, -0.474807, -0.50972, -0.717429, -0.930296, -0.133366, 0.341655, -0.474807, -0.50972, -0.717429, 0.0234993, -0.926572, 0.375347, -0.930296, -0.133366, 0.341655, -0.930296, -0.133366, 0.341655, 0.0234993, -0.926572, 0.375347, 0.070864, 0.21952, -0.973022, 0.308878, -0.626911, 0.715232, 0.0234993, -0.926572, 0.375347, -0.474807, -0.50972, -0.717429),
+		FloatArray(0.992505, 0.0818714, 0.0907247, 1.0, -0.217287, 0.875231, -0.432155, 1.0, 0.707709, 0.257632, -0.657856, 1.0, 0.877722, -0.101741, -0.468245, 1.0, 0.0490387, -0.740533, -0.670228, 1.0, -0.356294, -0.749623, -0.557781, 1.0, 0.665574, -0.714397, 0.215981, 1.0, -0.405169, -0.646671, 0.646262, 1.0, -0.261104, -0.715855, -0.647593, 1.0, -0.347161, -0.878754, -0.327522, 1.0, 0.790082, -0.523418, -0.319066, 1.0, 0.485068, -0.234046, 0.842574, 1.0, -0.322634, -0.230653, 0.917991, 1.0, 0.575259, 0.406079, 0.710054, 1.0, 0.571128, 0.790818, 0.220044, 1.0, 0.0647398, 0.555785, -0.828802, 1.0, 0.593045, -0.793621, -0.135881, 1.0, 0.832635, 0.00382656, -0.553809, 1.0, -0.238944, -0.486249, -0.840517, 1.0, 0.873091, -0.375359, -0.311157, 1.0, 0.730367, -0.240471, -0.639326, 1.0, -0.00253422, -0.929142, -0.369715, 1.0, 0.0986808, -0.98821, -0.11706, 1.0, 0.296392, -0.352157, -0.887771, 1.0, 0.877929, 0.449346, 0.165314, 1.0, 0.852338, 0.516147, 0.0843254, 1.0, 0.942799, 0.145434, 0.299964, 1.0, 0.795564, 0.100064, -0.597549, 1.0),
+		null, ; no Vertex Colors,
+		Vector2Array(0.84331, 0.56306, 0.84331, 0.131316, 0.825383, 0.11555, 0.647021, 0.283542, 0.276876, 0.563062, 0.327017, 0.262883, 0.303169, 0.255189, 0.0114243, 0.777826, 0.100055, 0.232341, 0.100055, 0.205896, 0.0771531, 0.219118, 0.624173, 0.988576, 0.624173, 0.39001, 0.599501, 0.384045, 0.349866, 0.785204, 0.647021, 0.988576, 0.988576, 0.988575, 0.808112, 0.585908, 0.758598, 0.585908, 0.0543044, 0.232341, 0.0543044, 0.182827, 0.0114243, 0.207584, 0.288535, 0.988576, 0.327017, 0.957442, 0.600177, 0.361196, 0.600177, 0.052845, 0.349865, 0.0670259, 0.349865, 0.111726),
+		null, ; No UV2,
+		null, ; No Bones,
+		null, ; No Weights,
+		IntArray(0, 2, 1, 0, 3, 2, 4, 6, 5, 4, 7, 6, 8, 10, 9, 11, 13, 12, 11, 14, 13, 15, 17, 16, 15, 18, 17, 19, 21, 20, 4, 22, 7, 4, 23, 22, 24, 26, 25, 24, 27, 26)
+	],
+	"morph_arrays":[]
+}
+
+[node type="Spatial" name="Scene"]
+
+[node name="Light" type="OmniLight" parent="."]
+
+light_specular = 1.0
+light_color = Color(1.0, 1.0, 1.0, 1.0)
+shadow_color = Color(0.0, 0.0, 0.0, 1.0)
+light_energy = 10.0
+omni_range = 40.0
+transform = Transform(-0.290865, -0.771101, 0.566393, -0.0551891, 0.604525, 0.794672, -0.955171, 0.199883, -0.218391, 4.07625, 5.90386, -1.00545)
+light_negative = false
+shadow_enabled = true
+
+[node name="Camera" type="Camera" parent="."]
+
+far = 100.0
+near = 0.1
+size = 7.31429
+projection = 0
+fov = 39.5978
+transform = Transform(0.685921, -0.324014, 0.651558, 0.0, 0.895396, 0.445271, -0.727676, -0.305421, 0.61417, 7.35889, 4.95831, 6.92579)
+
+[node name="Body" type="MeshInstance" parent="."]
+
+mesh = SubResource(3)
+visible = true
+transform = Transform(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.537136, 0.0)
+
+[node name="Foot_R" type="MeshInstance" parent="."]
+
+mesh = SubResource(6)
+visible = true
+transform = Transform(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+
+[node name="Foot_L" type="MeshInstance" parent="."]
+
+mesh = SubResource(9)
+visible = true
+transform = Transform(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.7499, 0.0, 0.0)
+
+[node name="Wing_L" type="MeshInstance" parent="."]
+
+mesh = SubResource(12)
+visible = true
+transform = Transform(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 4.11163, -1.03741)
+
+[node name="Wing_R" type="MeshInstance" parent="."]
+
+mesh = SubResource(15)
+visible = true
+transform = Transform(-1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 4.11163, -1.03741)

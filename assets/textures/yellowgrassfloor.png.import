@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/yellowgrassfloor.png-c941ac37f5b3fefacae883a1aacac77e.s3tc.stex"
-path.etc="res://.import/yellowgrassfloor.png-c941ac37f5b3fefacae883a1aacac77e.etc.stex"
+path.s3tc="res://.import/yellowgrassfloor.png-390c2d31866002789833b7ea89ae2fc8.s3tc.stex"
+path.etc="res://.import/yellowgrassfloor.png-390c2d31866002789833b7ea89ae2fc8.etc.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/yellowgrassfloor.png"
-dest_files=[ "res://.import/yellowgrassfloor.png-c941ac37f5b3fefacae883a1aacac77e.s3tc.stex", "res://.import/yellowgrassfloor.png-c941ac37f5b3fefacae883a1aacac77e.etc.stex" ]
+source_file="res://assets/textures/yellowgrassfloor.png"
+dest_files=[ "res://.import/yellowgrassfloor.png-390c2d31866002789833b7ea89ae2fc8.s3tc.stex", "res://.import/yellowgrassfloor.png-390c2d31866002789833b7ea89ae2fc8.etc.stex" ]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Material.003 Base Color.png-1c01923f52dacfa5b1f432c4e1e5a634.s3tc.stex"
-path.etc="res://.import/Material.003 Base Color.png-1c01923f52dacfa5b1f432c4e1e5a634.etc.stex"
+path.s3tc="res://.import/Material.005 Base Color.png-1464fee359970f2c1a80e50d903061d4.s3tc.stex"
+path.etc="res://.import/Material.005 Base Color.png-1464fee359970f2c1a80e50d903061d4.etc.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/models/Material.003 Base Color.png"
-dest_files=[ "res://.import/Material.003 Base Color.png-1c01923f52dacfa5b1f432c4e1e5a634.s3tc.stex", "res://.import/Material.003 Base Color.png-1c01923f52dacfa5b1f432c4e1e5a634.etc.stex" ]
+source_file="res://assets/models/Material.005 Base Color.png"
+dest_files=[ "res://.import/Material.005 Base Color.png-1464fee359970f2c1a80e50d903061d4.s3tc.stex", "res://.import/Material.005 Base Color.png-1464fee359970f2c1a80e50d903061d4.etc.stex" ]
 
 [params]
 

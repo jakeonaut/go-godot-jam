@@ -70,16 +70,16 @@ func _process(delta):
         current_rotation += curr_step_y*delta
         rotate_y(curr_step_y * delta)
         player_sprite.fixSpriteFacing()
-        if player.activeThrowableObject:
-            player.facing = player.getCameraForward(true)
+        if global.activeThrowableObject:
+            player.facing = player.getCameraForward()
         if current_rotation > target_rotation:
             self.tryNormalizeCurrent()
     elif target_rotation < current_rotation:
         current_rotation -= curr_step_y*delta
         rotate_y(-curr_step_y * delta)
         player_sprite.fixSpriteFacing()
-        if player.activeThrowableObject:
-            player.facing = player.getCameraForward(true)
+        if global.activeThrowableObject:
+            player.facing = player.getCameraForward()
         if current_rotation < target_rotation:
             self.tryNormalizeCurrent()
     else:

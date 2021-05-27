@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Material.001 Metallic.png-0a05548e69f598f4fce07a7ef30ad024.s3tc.stex"
-path.etc="res://.import/Material.001 Metallic.png-0a05548e69f598f4fce07a7ef30ad024.etc.stex"
+path.s3tc="res://.import/heronFoot.png-75eeaf07de4809293963f955d23680ac.s3tc.stex"
+path.etc="res://.import/heronFoot.png-75eeaf07de4809293963f955d23680ac.etc.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/models/Material.001 Metallic.png"
-dest_files=[ "res://.import/Material.001 Metallic.png-0a05548e69f598f4fce07a7ef30ad024.s3tc.stex", "res://.import/Material.001 Metallic.png-0a05548e69f598f4fce07a7ef30ad024.etc.stex" ]
+source_file="res://assets/models/heronFoot.png"
+dest_files=[ "res://.import/heronFoot.png-75eeaf07de4809293963f955d23680ac.s3tc.stex", "res://.import/heronFoot.png-75eeaf07de4809293963f955d23680ac.etc.stex" ]
 
 [params]
 

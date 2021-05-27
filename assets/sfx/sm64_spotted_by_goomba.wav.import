@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sm64_spotted_by_goomba.wav-57fdd851483fa02e00a9dcc9a3fa346e.sample"
+
+[deps]
+
+source_file="res://assets/sfx/sm64_spotted_by_goomba.wav"
+dest_files=[ "res://.import/sm64_spotted_by_goomba.wav-57fdd851483fa02e00a9dcc9a3fa346e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

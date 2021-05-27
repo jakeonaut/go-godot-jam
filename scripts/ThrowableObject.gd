@@ -20,6 +20,8 @@ var throw_force = 1
 var throw_speed = 14
 var jump_force = 10
 
+var is_being_eaten = false
+
 func _ready():
     set_process(true)
     set_physics_process(true)
@@ -104,7 +106,7 @@ func isActive():
     # since "isActive" is used for determining when the object is "interacted" with
     # by the player, don't count as "active" when player is holding this object.
     # BECAUSE player will already know about it through the global var.
-    return visible and !global.activeThrowableObject
+    return visible and not global.activeThrowableObject and not is_being_eaten
 
 func activate(interact_charge_timer = 1):
     # Should be able to talk while holding an object.
@@ -112,6 +114,9 @@ func activate(interact_charge_timer = 1):
         pickup()
     elif pickupCounter >= pickupCounterMax and (global.activeThrowableObject == self or is_held):
         throw(interact_charge_timer)
+		
+func getEaten():
+	is_being_eaten = true
 
 func pickup():
     is_floating = false

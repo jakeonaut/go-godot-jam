@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/capybara.jpg-2d653913ab8ed311c56359273b3994e1.stex"
+path="res://.import/bugnet0000.png-275448e2fdd70c7becc85583a9e1603d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/capybara.jpg"
-dest_files=[ "res://.import/capybara.jpg-2d653913ab8ed311c56359273b3994e1.stex" ]
+source_file="res://assets/sprites/bugnet0000.png"
+dest_files=[ "res://.import/bugnet0000.png-275448e2fdd70c7becc85583a9e1603d.stex" ]
 
 [params]
 

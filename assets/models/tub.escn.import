@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/heronbaby.dae-be00be63dfbae270f850700758c937a8.scn"
+path="res://.import/tub.escn-5dfe79e9dbb9bd01577c798d445cc497.scn"
 
 [deps]
 
-source_file="res://assets/models/heronbaby.dae"
-dest_files=[ "res://.import/heronbaby.dae-be00be63dfbae270f850700758c937a8.scn" ]
+source_file="res://assets/models/tub.escn"
+dest_files=[ "res://.import/tub.escn-5dfe79e9dbb9bd01577c798d445cc497.scn" ]
 
 [params]
 

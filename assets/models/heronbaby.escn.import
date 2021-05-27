@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/fish.dae-d39870327cfb894ba69161130ce5feb4.scn"
+path="res://.import/heronbaby.escn-c5c59a9d63c9929be33027338f3d471e.scn"
 
 [deps]
 
-source_file="res://assets/models/fish.dae"
-dest_files=[ "res://.import/fish.dae-d39870327cfb894ba69161130ce5feb4.scn" ]
+source_file="res://assets/models/heronbaby.escn"
+dest_files=[ "res://.import/heronbaby.escn-c5c59a9d63c9929be33027338f3d471e.scn" ]
 
 [params]
 

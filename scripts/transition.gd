@@ -29,12 +29,13 @@ func interrupt():
 
 # PRIVATE FUNCTION. CALLED AT THE MIDDLE OF THE TRANSITION ANIMATION
 func change_scene():
-    print(was_i_interrupted)
-    if was_i_interrupted:
-        was_i_interrupted = false
-        return
+	print(was_i_interrupted)
+	if was_i_interrupted:
+		was_i_interrupted = false
+		return
 
-    if self.path != "":
-        get_tree().change_scene(self.path)
-    if global.activeThrowableObject:
-        global.activeThrowableObjectPath = global.activeThrowableObject.filename
+	if self.path != "":
+		get_tree().change_scene(self.path)
+	if global.activeThrowableObject:
+		global.activeThrowableObjectPath = global.activeThrowableObject.filename
+		global.activeThrowableObject = null
