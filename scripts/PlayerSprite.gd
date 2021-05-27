@@ -22,16 +22,6 @@ func preProcess():
 
 func setNormalClothes():
     updateBaseFrame(0, 0)
-func setMothCostume():
-    updateBaseFrame(0, 6)
-func setBugCatcherCostume():
-    updateBaseFrame(0, 2)
-func setClericCostume():
-    updateBaseFrame(4, 0)
-func setLuckyCatCostume():
-    updateBaseFrame(0, 4)
-func setNightgown():
-    updateBaseFrame(4, 2)
 
 # @override
 func animate(delta):

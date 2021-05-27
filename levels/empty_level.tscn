@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/textures/yellowgrassfloor.png" type="Texture" id=1]
 [ext_resource path="res://objects/Player.tscn" type="PackedScene" id=2]
@@ -6,7 +6,10 @@
 [ext_resource path="res://materials/EnvironmentSprite.tres" type="Material" id=4]
 [ext_resource path="res://assets/sprites/yellowgrass.png" type="Texture" id=5]
 [ext_resource path="res://scripts/Sprite.gd" type="Script" id=6]
-[ext_resource path="res://objects/heronbaby.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/Heron.tscn" type="PackedScene" id=7]
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 28.0235, 1, 12.1285 )
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 1 )
@@ -22,6 +25,15 @@ flags_unshaded = true
 params_billboard_mode = 2
 
 [node name="level" type="Spatial"]
+
+[node name="Water2" type="Area" parent="."]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 20, -2, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Water2" groups=[
+"water",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, -0.6 )
+shape = SubResource( 5 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 editor/display_folded = true
@@ -47,6 +59,18 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody2"]
 shape = SubResource( 3 )
 
+[node name="StaticBody8" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 15, 1, -35 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody8"]
+material_override = SubResource( 1 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody8"]
+shape = SubResource( 3 )
+
 [node name="StaticBody3" type="StaticBody" parent="."]
 editor/display_folded = true
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -5, 2, -20 )
@@ -59,10 +83,49 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody3"]
 shape = SubResource( 3 )
 
+[node name="StaticBody7" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -5, 2, -40 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody7"]
+material_override = SubResource( 1 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody7"]
+shape = SubResource( 3 )
+
+[node name="StaticBody5" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 9.65926, 0.258819, 0, -2.58819, 0.965926, 0, 0, 0, 10, -25, 5, -20 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody5"]
+transform = Transform( 1, -1.11759e-008, 0, 1.19209e-006, 1, 0, 0, 0, 1, 0.0324204, -0.317774, 0 )
+material_override = SubResource( 1 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody5"]
+shape = SubResource( 3 )
+
+[node name="StaticBody6" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 9.65926, 0.258819, 0, -2.58819, 0.965926, 0, 0, 0, 10, -25, 5, -40 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody6"]
+transform = Transform( 1, -1.11759e-008, 0, 1.19209e-006, 1, 0, 0, 0, 1, 0.0324204, -0.317774, 0 )
+material_override = SubResource( 1 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody6"]
+shape = SubResource( 3 )
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
 
 [node name="ThrowableObject" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.43104, -6 )
 
 [node name="Grass" type="Spatial" parent="."]
 editor/display_folded = true
@@ -772,7 +835,7 @@ hframes = 2
 script = ExtResource( 6 )
 
 [node name="heronbaby" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1.37888, 0, 1.15702, 0, 1.8, 0, -1.15702, 0, 1.37888, 0, 3, -18 )
+transform = Transform( 0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, 0, 3, -18 )
 collision_layer = 4
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]

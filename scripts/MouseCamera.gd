@@ -53,7 +53,7 @@ func _input(ev):
     if ev is InputEventMouseButton: # and ev.button_index == BUTTON_RIGHT:
         mouseDown = ev.is_pressed()
         startClickPos = ev.position
-    elif ev is InputEventMouseMotion and not (global.pauseMoveInput or global.pauseGame):
+    elif ev is InputEventMouseMotion and not global.pauseGame:
         #if mouseDown:
         mouseDiffX = -ev.relative.x
         mouseDiffY = -ev.relative.y
@@ -123,7 +123,7 @@ func processMouseInput(delta):
     mouseDiffY /= 2
 
     rotate_y(mouseDiffX * delta)
-    if mouseDiffX != 0 and not player.is_pressing_horizontal_input:
+    if mouseDiffX != 0 and not player.is_pressing_horizontal_input and global.activeThrowableObject:
         player.facing = player.getCameraForward()
 
     if (mouseDiffY > 0 and not self.gateKeepDownCondition_(camera_x.rotation.x)) or \
