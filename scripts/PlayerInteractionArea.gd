@@ -57,7 +57,9 @@ func _process(delta):
     if Input.is_action_just_pressed("ui_interact"):
         if nearest_area:
             nearest_area.InteractActivate()
+            player.walk_speed = 12
             player.startChargeSound.stop()
+            player.sprint_timer = 0
         # Give secondary priority to held objects action.
         elif global.activeThrowableObject:
             player.is_interact_charging = true

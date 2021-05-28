@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/throwitem2.wav-24c1e182963437dbded279a7f390cc60.sample"
+
+[deps]
+
+source_file="res://assets/sfx/throwitem2.wav"
+dest_files=[ "res://.import/throwitem2.wav-24c1e182963437dbded279a7f390cc60.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

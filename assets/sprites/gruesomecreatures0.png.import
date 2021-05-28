@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/player_sheet.png-a57ad25fe907c7e4181b43212d555b82.s3tc.stex"
-path.etc="res://.import/player_sheet.png-a57ad25fe907c7e4181b43212d555b82.etc.stex"
+path.s3tc="res://.import/gruesomecreatures0.png-5ae4dbb6ab18baf476c4d8963ed7c3e0.s3tc.stex"
+path.etc="res://.import/gruesomecreatures0.png-5ae4dbb6ab18baf476c4d8963ed7c3e0.etc.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/sprites/player_sheet.png"
-dest_files=[ "res://.import/player_sheet.png-a57ad25fe907c7e4181b43212d555b82.s3tc.stex", "res://.import/player_sheet.png-a57ad25fe907c7e4181b43212d555b82.etc.stex" ]
+source_file="res://assets/sprites/gruesomecreatures0.png"
+dest_files=[ "res://.import/gruesomecreatures0.png-5ae4dbb6ab18baf476c4d8963ed7c3e0.s3tc.stex", "res://.import/gruesomecreatures0.png-5ae4dbb6ab18baf476c4d8963ed7c3e0.etc.stex" ]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=false
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=1
 process/fix_alpha_border=true

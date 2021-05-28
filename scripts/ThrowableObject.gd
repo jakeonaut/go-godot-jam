@@ -2,6 +2,7 @@ extends "GameMover.gd"
 
 onready var pickupSound = get_node("Sounds/PickupSound")
 onready var throwSound = get_node("Sounds/ThrowSound")
+onready var splashSound = get_node("Sounds/SplashSound")
 onready var player = get_tree().get_root().get_node("level").get_node("Player")
 onready var interactionArea = get_node("InteractionArea")
 
@@ -43,6 +44,8 @@ func _physics_process(delta):
 
     if self.repositionSelf(): return
 
+    if not was_touching_water and interactionArea.is_touching_water:
+        splashSound.play()
     is_touching_water = interactionArea.is_touching_water
     .processPhysics(delta)
     if not has_initially_landed and on_ground:
@@ -109,11 +112,14 @@ func isActive():
     return visible and not global.activeThrowableObject and not is_being_eaten
 
 func activate(interact_charge_timer = 1):
-    # Should be able to talk while holding an object.
-    if not is_held and global.activeThrowableObject == null:
-        pickup()
-    elif pickupCounter >= pickupCounterMax and (global.activeThrowableObject == self or is_held):
-        throw(interact_charge_timer)
+    if not player.has_bug_net:
+        player.errorSound.play()
+    else:
+        # Should be able to talk while holding an object.
+        if not is_held and global.activeThrowableObject == null:
+            pickup()
+        elif pickupCounter >= pickupCounterMax and (global.activeThrowableObject == self or is_held):
+            throw(interact_charge_timer)
 		
 func getEaten():
 	is_being_eaten = true

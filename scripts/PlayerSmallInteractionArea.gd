@@ -5,12 +5,15 @@ onready var parent = get_parent()
 var is_touching_a_ladder = false
 var is_touching_enemy = false
 var is_touching_water = false
+var was_touching_water = false
 var water_y = 0
 
 func _ready():
     set_process(true)
 
 func _process(delta):
+    was_touching_water = is_touching_water
+
     is_touching_a_ladder = false
     is_touching_enemy = false
     is_touching_water = false
@@ -24,3 +27,6 @@ func _process(delta):
             var collision_shape = area.get_node("CollisionShape")
             is_touching_water = true
             water_y = collision_shape.global_transform.origin.y + (collision_shape.get_shape().get_extents().y) + 1
+
+    if is_touching_water and not was_touching_water and not parent.splashSound.playing:
+        parent.splashSound.play()

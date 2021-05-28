@@ -880,7 +880,7 @@ tracks/7/keys = {
 }
 
 [sub_resource type="CylinderShape" id=17]
-radius = 2.0
+radius = 3.0
 height = 4.0
 
 [sub_resource type="CylinderShape" id=18]

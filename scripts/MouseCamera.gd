@@ -53,7 +53,7 @@ func _input(ev):
     if ev is InputEventMouseButton: # and ev.button_index == BUTTON_RIGHT:
         mouseDown = ev.is_pressed()
         startClickPos = ev.position
-    elif ev is InputEventMouseMotion and not global.pauseGame:
+    elif ev is InputEventMouseMotion:
         #if mouseDown:
         mouseDiffX = -ev.relative.x
         mouseDiffY = -ev.relative.y
