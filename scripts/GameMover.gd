@@ -21,7 +21,7 @@ var was_just_on_ground_time_limit = 5
 var just_landed = false
 var fallCounter = 0
 var fallCountMin = 0.5
-var fallCountMax = 3
+var fallCountMax = 30
 var take_fall_damage = false
 var spawn_origin
 var last_grounded_y = 0
@@ -122,7 +122,7 @@ func processPhysics(delta):
     if not was_on_ground and on_ground: # I just landed!!
         landed()
         # Falling fast and far
-        if vv == -terminal_vel and fallCounter >= fallCountMax: 
+        if fallCounter >= fallCountMax: 
             landedFast()
         elif take_fall_damage == false:
             landedNormally()

@@ -43,6 +43,7 @@ func _ready():
 	set_process(true)
 	set_physics_process(true)
 
+	idle_time_max = 10 + randi() % 10
 	randomIdlePos = Vector3(
 						self.global_transform.origin.x + (randi() % 3) - 2, 
 						self.global_transform.origin.y, 
@@ -96,6 +97,7 @@ func processInputs(delta):
 					wingSound.play()
 					animationPlayer.play("heronBabyWingFlap")
 				idle_timer = 0
+				idle_time_max = 10 + randi() % 10
 
 	if state == State.BABY_JUST_STARTLED:
 		true_terminal_vel = 16
@@ -142,8 +144,6 @@ func processInputs(delta):
 		if not animationPlayer.is_playing():
 			animationPlayer.play("heronAdultFlapAway")
 			wingSound.play()
-			if randi() % 4 == 0 and not adultQuackSound.playing:
-				adultQuackSound.play()
 
 	if state == State.ADULT_FLY_AWAY_HOLD_PLAYER:
 		vv = jump_force/2

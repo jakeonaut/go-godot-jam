@@ -4,6 +4,8 @@ onready var camera = get_node("CameraY") # the "camera"
 onready var jumpSound = get_node("Sounds/JumpSound")
 onready var doubleJumpSound = get_node("Sounds/DoubleJumpSound")
 onready var wetJumpSound = get_node("Sounds/WetJumpSound")
+onready var weakWetJumpSound = get_node("Sounds/WeakWetJumpSound")
+onready var drownSound = get_node("Sounds/DrownSound")
 onready var fallSound = get_node("Sounds/FallSound")
 onready var smallInteractionArea = get_node("SmallInteractionArea")
 onready var collisionShape = get_node("CollisionShape")
@@ -67,6 +69,8 @@ func getCamera(): return camera
 func getCameraX(): return camera.get_node("CameraX")
 func getTrueCamera(): return camera.get_node("CameraX/Camera")
 
+var has_zora_flippers = false
+
 func _ready():
     set_physics_process(true)
 
@@ -127,6 +131,9 @@ func _physics_process(delta):
 
     if not on_ground and translation.y < (last_grounded_y - falling_y_offset) and not transitioning:
         fallSound.play()
+        if smallInteractionArea.is_touching_water:
+            weakWetJumpSound.play()
+            wetJumpSound.play()
         self.playerRespawn("long_fade")
         is_falling = true
 
@@ -195,7 +202,7 @@ func processJumpInputs(delta):
     # jump
     if (Input.is_action_just_pressed("ui_jump") or should_magic_jump) and not global.pauseMoveInput: 
         # Jump from the water
-        if smallInteractionArea.is_touching_water or self.is_holding_chicken and self.chicken_jumps < 1:
+        if not weakWetJumpSound.playing and smallInteractionArea.is_touching_water or self.is_holding_chicken and self.chicken_jumps < 1:
             is_recovering = false
             if is_floating:
                 vv = -jump_force / 2
@@ -205,7 +212,12 @@ func processJumpInputs(delta):
                 vv = jump_force / 2
 
             if smallInteractionArea.is_touching_water:
-                wetJumpSound.play()
+                if not has_zora_flippers:
+                    if not weakWetJumpSound.playing:
+                        # vv = 2
+                        weakWetJumpSound.play()
+                else:
+                    wetJumpSound.play()
             else: 
                 jumpSound.play()
             on_ground = false
@@ -214,7 +226,7 @@ func processJumpInputs(delta):
             feather_fall_timer = 0
             chicken_jumps += 1
         # Jump from the ground
-        elif is_lunging == 0 or should_magic_jump or (glitch_form == GlitchForm.JUMP && fallCounter >= fallCountMin):
+        elif not weakWetJumpSound.playing and is_lunging == 0 or should_magic_jump or (glitch_form == GlitchForm.JUMP && fallCounter >= fallCountMin):
             is_recovering = false
             var curr_jump_force = jump_force
             # a11y hack for jessica. if walking into a wall, make it a bit easier to jump right on it
@@ -230,7 +242,7 @@ func processJumpInputs(delta):
             feather_fall_timer = 0
             should_magic_jump = false
         # Double jump
-        elif (is_lunging == -1) and not glitch_form == GlitchForm.JUMP and not Input.is_action_pressed("ui_ctrl_jump"):
+        elif not weakWetJumpSound.playing and (is_lunging == -1) and not glitch_form == GlitchForm.JUMP and not Input.is_action_pressed("ui_ctrl_jump"):
             vv = jump_force / 1.5
             doubleJumpSound.play()
             is_lunging = -2
@@ -238,7 +250,7 @@ func processJumpInputs(delta):
             feather_fall_timer = 0
             startRotateSprite(1)
         # Jump from dash (grounded)
-        elif is_lunging == 2 and on_ground:
+        elif not weakWetJumpSound.playing and is_lunging == 2 and on_ground:
             is_lunging = 0
             if mySprite: mySprite.setLungeSprite(false)
 
