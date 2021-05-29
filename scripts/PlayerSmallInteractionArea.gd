@@ -28,5 +28,5 @@ func _process(delta):
             is_touching_water = true
             water_y = collision_shape.global_transform.origin.y + (collision_shape.get_shape().get_extents().y) + 1
 
-    if is_touching_water and not was_touching_water and not parent.splashSound.playing:
+    if is_touching_water and not was_touching_water and not parent.splashSound.playing and not parent.is_floating:
         parent.splashSound.play()

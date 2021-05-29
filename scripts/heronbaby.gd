@@ -14,6 +14,9 @@ onready var pickupSound = get_node("Sounds/PickupSound")
 onready var babyQuackSound = get_node("Sounds/BabyQuackSound")
 onready var adultQuackSound = get_node("Sounds/AdultQuackSound")
 
+onready var myFlightTarget = get_node("Target").global_transform.origin
+onready var NPC = get_tree().get_root().get_node("level").get_node("NPC")
+
 var idle_timer = 0
 var idle_time_max = 10
 var jump_force = 20
@@ -153,10 +156,22 @@ func processInputs(delta):
 			animationPlayer.play("heronAdultFlapAway")
 			wingSound.play()
 		
-		fly_away_timer += (delta*22)
-		if fly_away_timer >= fly_away_time_max:
+		var closeX = abs(self.global_transform.origin.x - myFlightTarget.x)
+		var closeY = abs(self.global_transform.origin.y - myFlightTarget.y)
+		var closeZ = abs(self.global_transform.origin.z - myFlightTarget.z)
+		# print(str(closeX) + ", " + str(closeY) + ", " + str(closeZ))
+		if closeX < 2 and closeY < 10 and closeZ < 2:
 			state = State.ADULT_FLY_AWAY
 			adultQuackSound.play()
+		else:
+			TurnTo(myFlightTarget)
+			self.global_transform.origin = lerp(self.global_transform.origin, myFlightTarget, delta)
+			
+
+		# fly_away_timer += (delta*22)
+		# if fly_away_timer >= fly_away_time_max:
+		# 	state = State.ADULT_FLY_AWAY
+		# 	adultQuackSound.play()
 
 	if state == State.ADULT_FLY_AWAY:
 		vv = jump_force/2
@@ -224,3 +239,4 @@ func FinishEatingFish():
 	myfish.queue_free()
 	growthSound.play()
 	animationPlayer.play("heronBabyGrowUp")
+	NPC.textBox = NPC.get_node("TextContainerPostHeronBaby").get_node("TextBox")

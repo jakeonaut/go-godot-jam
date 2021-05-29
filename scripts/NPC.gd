@@ -1,4 +1,4 @@
-extends "GameMover.gd"
+extends StaticBody
 
 # for backwards compatibility keep TextBox export var nextTextBoxPath if that is set (???)
 # otherwise, try to set the textBox, and textBox->portrait.texture, textBox->text.bbtext to the set variables
@@ -14,7 +14,6 @@ onready var textBoxportrait = get_node("NPC TextBox/TextBox/Portrait")
 
 func _ready():
     set_process(true)
-    set_physics_process(true)
 
     set_collision_mask_bit(1, true)
 
@@ -44,11 +43,3 @@ func passiveActivate(delta):
 
 func stopPassiveActivate():
     pass
-
-func _physics_process(delta):
-    #._physics_process(delta) # NOTE: This super method is called automatically
-    # https://github.com/godotengine/godot/issues/6500
-
-    if global.pauseGame: return
-
-    .processPhysics(delta)

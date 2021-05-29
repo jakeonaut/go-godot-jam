@@ -889,6 +889,9 @@ height = 1.5
 [node name="Heron" type="KinematicBody"]
 script = ExtResource( 1 )
 
+[node name="Target" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
+
 [node name="heronbaby" type="Spatial" parent="."]
 editor/display_folded = true
 transform = Transform( 1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0 )
@@ -965,6 +968,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 shape = SubResource( 17 )
 
 [node name="Sounds" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="GrowthSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource( 6 )

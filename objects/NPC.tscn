@@ -15,7 +15,7 @@ radius = 1.5
 
 [sub_resource type="BoxShape" id=3]
 
-[node name="NPC" type="KinematicBody"]
+[node name="NPC" type="StaticBody"]
 collision_layer = 2
 script = ExtResource( 1 )
 

@@ -193,7 +193,8 @@ func landedFast():
     if bumpSound: bumpSound.play()
 
 func landedNormally():
-    if landSound: landSound.play()
+    if landSound and not is_touching_water:
+        landSound.play()
 
 func landedFromBounce():
     take_fall_damage = false
