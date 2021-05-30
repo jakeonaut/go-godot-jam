@@ -5,23 +5,6 @@ onready var player = get_node("..")
 func _ready():
     set_process(true)
     set_process_input(true)
-    
-func _input(event):
-    if global.pauseGame and not global.pauseMoveInput: return
-
-    if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
-        # can short circuit and just immediately interact with "activeInteractor" AKA TextBox if 
-        # I am already looking at one (e.g. if global.activeInteractor exists   )
-        if global.activeInteractor:
-            global.activeInteractor.InteractActivate()
-            get_tree().set_input_as_handled()
-            return
-
-        var activeArea = getActiveInteractionAreaUnderMouse()
-        if activeArea:
-            activeArea.InteractActivate()
-            get_tree().set_input_as_handled()
-            return
             
 
 func _process(delta):

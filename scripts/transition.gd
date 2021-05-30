@@ -5,6 +5,7 @@ extends CanvasLayer
 # STORE THE SCENE PATH
 var path = ""
 var was_i_interrupted = false
+onready var player = get_tree().get_root().get_node("level").get_node("Player")
 
 # PUBLIC FUNCTION. CALLED WHENEVER YOU WANT TO CHANGE SCENE
 func fade_to(scn_path):
@@ -34,8 +35,10 @@ func change_scene():
 		was_i_interrupted = false
 		return
 
-	if self.path != "":
-		get_tree().change_scene(self.path)
-	if global.activeThrowableObject:
-		global.activeThrowableObjectPath = global.activeThrowableObject.filename
-		global.activeThrowableObject = null
+	# if self.path != "":
+	# 	get_tree().change_scene(self.path)
+	# if global.activeThrowableObject:
+	# 	global.activeThrowableObjectPath = global.activeThrowableObject.filename
+	# 	global.activeThrowableObject = null
+	player.global_transform.origin = player.last_grounded_pos
+	player.IJustDrowned()

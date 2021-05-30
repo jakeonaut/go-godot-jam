@@ -19,6 +19,9 @@ func isActive():
     return visible
 
 func passiveActivate(delta):
+    getItem()
+
+func getItem():
     if state == State.BUG_NET:
         player.getBugNet()
     elif state == State.ZORA_FLIPPERS:

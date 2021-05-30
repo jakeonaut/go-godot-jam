@@ -40,11 +40,11 @@ func interact():
         self.hide()
         global.pauseGame = false
         global.pauseMoveInput = false
-        if !nextTextBoxPath.is_empty():
+        if !nextTextBoxPath.is_empty() and get_node(nextTextBoxPath):
             var nextTextBox = get_node(nextTextBoxPath)
-            if nextTextBox.type == "textBox":
+            if nextTextBox and nextTextBox.type == "textBox":
                 nextTextBox.interact()
-            elif nextTextBox.type == "textBoxContainer":
+            elif nextTextBox and nextTextBox.type == "textBoxContainer":
                 nextTextBox = nextTextBox.get_node("TextBox")
                 nextTextBox.interact()
             global.activeInteractor = nextTextBox

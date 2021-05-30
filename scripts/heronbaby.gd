@@ -15,6 +15,7 @@ onready var babyQuackSound = get_node("Sounds/BabyQuackSound")
 onready var adultQuackSound = get_node("Sounds/AdultQuackSound")
 
 onready var myFlightTarget = get_node("Target").global_transform.origin
+var myHoverTarget = self.global_transform.origin
 onready var NPC = get_tree().get_root().get_node("level").get_node("NPC")
 
 var idle_timer = 0
@@ -82,6 +83,9 @@ func passiveActivate(delta):
 		pickupSound.play()
 		fly_away_timer = 0
 
+func setNewFlightTarget(newFlightTarget):
+	myFlightTarget = newFlightTarget
+
 # @override
 func processInputs(delta):
 	if state == State.BABY_IDLE:
@@ -142,6 +146,8 @@ func processInputs(delta):
 			adultQuackSound.play()
 
 	if state == State.ADULT_HOVER:
+		myHoverTarget = self.global_transform.origin
+		myHoverTarget.y -= 4
 		TurnToPlayer()
 		vv = 0
 		if not animationPlayer.is_playing():
@@ -149,7 +155,7 @@ func processInputs(delta):
 			wingSound.play()
 
 	if state == State.ADULT_FLY_AWAY_HOLD_PLAYER:
-		vv = jump_force/2
+		vv = jump_force/4
 		global.pauseMoveInput = true
 		player.translation = self.translation
 		if not animationPlayer.is_playing():
@@ -159,13 +165,14 @@ func processInputs(delta):
 		var closeX = abs(self.global_transform.origin.x - myFlightTarget.x)
 		var closeY = abs(self.global_transform.origin.y - myFlightTarget.y)
 		var closeZ = abs(self.global_transform.origin.z - myFlightTarget.z)
-		# print(str(closeX) + ", " + str(closeY) + ", " + str(closeZ))
-		if closeX < 2 and closeY < 10 and closeZ < 2:
+		print(str(closeX) + ", " + str(closeY) + ", " + str(closeZ))
+		if closeX < 1.5 and closeY < 12 and closeZ < 1.5:
 			state = State.ADULT_FLY_AWAY
+			global.pauseMoveInput = false
 			adultQuackSound.play()
 		else:
 			TurnTo(myFlightTarget)
-			self.global_transform.origin = lerp(self.global_transform.origin, myFlightTarget, delta)
+			self.global_transform.origin = lerp(self.global_transform.origin, myFlightTarget, 2*delta/3)
 			
 
 		# fly_away_timer += (delta*22)
@@ -174,11 +181,20 @@ func processInputs(delta):
 		# 	adultQuackSound.play()
 
 	if state == State.ADULT_FLY_AWAY:
-		vv = jump_force/2
-		global.pauseMoveInput = false
+		vv = jump_force/4
 		if not animationPlayer.is_playing():
 			animationPlayer.play("heronAdultFlapAway")
 			wingSound.play()
+		
+		var closeX = abs(self.global_transform.origin.x - myHoverTarget.x)
+		var closeY = abs(self.global_transform.origin.y - myHoverTarget.y)
+		var closeZ = abs(self.global_transform.origin.z - myHoverTarget.z)
+		if closeX < 2 and closeY < 10 and closeZ < 2:
+			state = State.ADULT_HOVER
+			adultQuackSound.play()
+		else:
+			TurnTo(myHoverTarget)
+			self.global_transform.origin = lerp(self.global_transform.origin, myHoverTarget, 2*delta/3)
 
 func BabyTryToFindFish():
 	var areas = interactionArea.get_overlapping_areas()

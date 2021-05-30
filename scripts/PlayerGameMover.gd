@@ -50,7 +50,7 @@ var recover_time_limit = 3
 var is_walking = false
 var is_pressing_horizontal_input = false
 var was_pressing_horizontal_input = false
-var facing = Vector3(0, 0, 1) #default to facing "down" toward the player behind the screen
+var facing = Vector3(0, 0, -1) #default to facing "up" away from the camera
 var transitioning = false
 var is_falling = false
 
@@ -122,7 +122,7 @@ func _physics_process(delta):
             recover_timer = 0
             is_recovering = false
 
-    if not on_ground and translation.y < (last_grounded_y - falling_y_offset) and not transitioning:
+    if ((not has_zora_flippers and translation.y < -12) or (translation.y < -40)) and not on_ground and not transitioning:
         fallSound.play()
         if smallInteractionArea.is_touching_water:
             weakWetJumpSound.play()
@@ -195,7 +195,7 @@ func processJumpInputs(delta):
     # jump
     if (Input.is_action_just_pressed("ui_jump") or should_magic_jump) and not global.pauseMoveInput: 
         # Jump from the water
-        if not weakWetJumpSound.playing and smallInteractionArea.is_touching_water or self.is_holding_chicken and self.chicken_jumps < 1:
+        if not on_ground and smallInteractionArea.is_touching_water or self.is_holding_chicken and self.chicken_jumps < 1:
             is_recovering = false
             if is_floating:
                 vv = -jump_force / 4
@@ -206,7 +206,7 @@ func processJumpInputs(delta):
 
             if smallInteractionArea.is_touching_water:
                 if not has_zora_flippers:
-                    vv = jump_force / 2
+                    vv = -jump_force / 2
                     if not weakWetJumpSound.playing:
                         # vv = 2
                         weakWetJumpSound.play()
@@ -220,7 +220,7 @@ func processJumpInputs(delta):
             feather_fall_timer = 0
             chicken_jumps += 1
         # Jump from the ground
-        elif not weakWetJumpSound.playing and is_lunging == 0 or should_magic_jump or (glitch_form == GlitchForm.JUMP && fallCounter >= fallCountMin):
+        elif is_lunging == 0 or should_magic_jump or (glitch_form == GlitchForm.JUMP && fallCounter >= fallCountMin):
             is_recovering = false
             var curr_jump_force = jump_force
             # a11y hack for jessica. if walking into a wall, make it a bit easier to jump right on it
@@ -290,15 +290,15 @@ func processJumpInputs(delta):
         vv = 0
 
     if is_touching_water:
-        if Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput:
+        if has_zora_flippers and Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput:
             float_timer = 0
             is_floating = false
-        elif Input.is_action_pressed("ui_jump") and not global.pauseMoveInput:
+        elif has_zora_flippers and Input.is_action_pressed("ui_jump") and not global.pauseMoveInput:
             float_timer += (delta*22)
             if float_timer >= big_float_time_limit:
                 is_floating = true
                 float_timer = 0
-        elif not Input.is_action_pressed("ui_jump"):
+        elif has_zora_flippers and not Input.is_action_pressed("ui_jump"):
             float_timer += (delta*22)
             if on_ground:
                 is_floating = true

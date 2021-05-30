@@ -14,6 +14,9 @@ onready var slowDownSound = get_node("Sounds/SlowDownSound")
 onready var errorSound = get_node("Sounds/ErrorSound")
 onready var splashSound = get_node("Sounds/SplashSound")
 
+onready var drownedTextbox = get_node("TextBoxes/DrownedTextContainer/TextBox")
+onready var zoraDrownedTextbox = get_node("TextBoxes/ZoraDrownedTextContainer/TextBox")
+
 var has_bug_net = false
 var has_sprint_boots = false
 var playerWithBugNetTex = load("res://assets/sprites/player_sheet.png") 
@@ -132,3 +135,11 @@ func faceDown():
 
 func tryEmptyInteract():
     pass    
+
+func IJustDrowned():
+    if has_zora_flippers:
+        zoraDrownedTextbox.interact()
+        global.activeInteractor = zoraDrownedTextbox
+    else:
+        drownedTextbox.interact()
+        global.activeInteractor = drownedTextbox

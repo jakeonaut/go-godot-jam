@@ -24,7 +24,7 @@ var fallCountMin = 0.5
 var fallCountMax = 30
 var take_fall_damage = false
 var spawn_origin
-var last_grounded_y = 0
+var last_grounded_pos = 0
 var falling_y_offset = 16
 
 var linear_velocity = Vector3()
@@ -53,13 +53,13 @@ func _ready():
     set_physics_process(true)
     float_timer = float_time_limit
     spawn_origin = self.global_transform.origin
-    last_grounded_y = spawn_origin.y
+    last_grounded_pos = spawn_origin
 
 func _process(delta):
     pass
 
 func _physics_process(delta):
-    if not on_ground and translation.y < (last_grounded_y - falling_y_offset):
+    if not on_ground and translation.y < -40: # translation.y < (last_grounded_pos.y - falling_y_offset):
         respawn()
 
 func respawn():
@@ -68,7 +68,7 @@ func respawn():
 
     self.global_transform.origin = spawn_origin
     self.global_transform.origin.y += 2
-    last_grounded_y = self.global_transform.origin.y 
+    last_grounded_pos = self.global_transform.origin
 
 func processPhysics(delta):
     lv = linear_velocity
@@ -142,7 +142,7 @@ func processPhysics(delta):
         was_just_on_ground_timer += (delta*22)
     
 func applyGravity(delta):
-    if is_floating:
+    if is_floating and not abs(translation.y - spawn_origin.y) > 2:
         g = Vector3(0, grav/10, 0)
         if float_timer >= big_float_time_limit:
             g = Vector3(0, grav/2, 0)
@@ -186,7 +186,7 @@ func postProcessInputs(delta):
     pass
     
 func landed():
-    last_grounded_y = self.global_transform.origin.y 
+    last_grounded_pos = self.global_transform.origin
 
 func landedFast():
     take_fall_damage = true
