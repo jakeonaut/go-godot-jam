@@ -13,6 +13,9 @@ onready var fullChargeSound = get_node("Sounds/FullyChargedSound")
 onready var slowDownSound = get_node("Sounds/SlowDownSound")
 onready var errorSound = get_node("Sounds/ErrorSound")
 onready var splashSound = get_node("Sounds/SplashSound")
+onready var growthSound = get_node("Sounds/GrowthSound")
+
+onready var animationPlayer = get_node("AnimationPlayer")
 
 onready var drownedTextbox = get_node("TextBoxes/DrownedTextContainer/TextBox")
 onready var zoraDrownedTextbox = get_node("TextBoxes/ZoraDrownedTextContainer/TextBox")
@@ -20,6 +23,7 @@ onready var zoraDrownedTextbox = get_node("TextBoxes/ZoraDrownedTextContainer/Te
 var has_bug_net = false
 var has_sprint_boots = false
 var playerWithBugNetTex = load("res://assets/sprites/player_sheet.png") 
+var bugCounter = 0
 
 func _ready():
     set_process_input(true)
@@ -103,6 +107,13 @@ func getSprintBoots():
     has_sprint_boots = true
     itemGetSound.play()
 
+func getBug():
+    bugCounter = bugCounter + 1
+    print("got bug!: " + str(bugCounter))
+    if bugCounter == 4:
+        animationPlayer.play("growth")
+        growthSound.play()
+
 func tryRotateCamera(delta):
     # if not Input.is_action_pressed("ui_ctrl"):
     if Input.is_action_pressed("ui_rotate_left"):
@@ -125,10 +136,10 @@ func tryRotateCamera(delta):
     if Input.is_action_pressed("ui_rotate_down"):
         getCamera().rotate_down(3*(delta*66))
 
-    if Input.is_action_just_pressed("ui_focus_next"):
-        getCamera().toggleNext()
-    if Input.is_action_just_pressed("ui_focus_forward"):
-        getCamera().focusForward(facing)
+    # if Input.is_action_just_pressed("ui_focus_next"):
+    #     getCamera().toggleNext()
+    # if Input.is_action_just_pressed("ui_focus_forward"):
+    #     getCamera().focusForward(facing)
 
 func faceDown():
     mySprite.faceDown()
@@ -137,6 +148,7 @@ func tryEmptyInteract():
     pass    
 
 func IJustDrowned():
+    transitioning = false
     if has_zora_flippers:
         zoraDrownedTextbox.interact()
         global.activeInteractor = zoraDrownedTextbox

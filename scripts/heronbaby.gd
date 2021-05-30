@@ -147,7 +147,7 @@ func processInputs(delta):
 
 	if state == State.ADULT_HOVER:
 		myHoverTarget = self.global_transform.origin
-		myHoverTarget.y -= 4
+		myHoverTarget.y -= 6
 		TurnToPlayer()
 		vv = 0
 		if not animationPlayer.is_playing():
@@ -165,7 +165,7 @@ func processInputs(delta):
 		var closeX = abs(self.global_transform.origin.x - myFlightTarget.x)
 		var closeY = abs(self.global_transform.origin.y - myFlightTarget.y)
 		var closeZ = abs(self.global_transform.origin.z - myFlightTarget.z)
-		print(str(closeX) + ", " + str(closeY) + ", " + str(closeZ))
+		# print(str(closeX) + ", " + str(closeY) + ", " + str(closeZ))
 		if closeX < 1.5 and closeY < 12 and closeZ < 1.5:
 			state = State.ADULT_FLY_AWAY
 			global.pauseMoveInput = false
@@ -252,6 +252,8 @@ func TurnTo(target):
 func FinishEatingFish():
 	state = State.BABY_GROW_UP
 	myfish.visible = false
+	if global.activeThrowableObject == myfish:
+		global.activeThrowableObject = null
 	myfish.queue_free()
 	growthSound.play()
 	animationPlayer.play("heronBabyGrowUp")
