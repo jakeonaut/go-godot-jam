@@ -35,6 +35,8 @@ enum State {
 	ADULT_FLY_AWAY = 7,
 	BABY_JUST_STARTLED = 8,
 	BABY_STARTLED = 9,
+	ADULT_JUST_STARTLED = 10,
+	ADULT_STARTLED = 11,
 }
 
 var state = State.BABY_IDLE
@@ -71,17 +73,24 @@ func isActive():
 	return state == State.ADULT_HOVER or state == State.BABY_IDLE
 
 func passiveActivate(delta):
-	if state == State.BABY_IDLE:
+	if state == State.BABY_IDLE and not global.activeThrowableObject:
 		state = State.BABY_JUST_STARTLED
 		animationPlayer.stop()
 		animationPlayer.play("heronBabyStartle")
 		wingSound.play()
 		babyQuackSound.play()
-	if state == State.ADULT_HOVER:
-		state = State.ADULT_FLY_AWAY_HOLD_PLAYER
-		global.pauseMoveInput = true
-		pickupSound.play()
-		fly_away_timer = 0
+	if state == State.ADULT_HOVER and not player.is_being_carried:
+		if not player.am_i_big:
+			state = State.ADULT_FLY_AWAY_HOLD_PLAYER
+			global.pauseMoveInput = true
+			pickupSound.play()
+			fly_away_timer = 0
+		else:
+			state = State.ADULT_JUST_STARTLED
+			animationPlayer.stop()
+			animationPlayer.play("heronAdultFlapAway")
+			wingSound.play()
+			babyQuackSound.play()
 
 func setNewFlightTarget(newFlightTarget):
 	myFlightTarget = newFlightTarget
@@ -119,6 +128,19 @@ func processInputs(delta):
 			wingSound.play()
 		if on_ground:
 			state = State.BABY_IDLE
+	elif state == State.ADULT_JUST_STARTLED:
+		true_terminal_vel = 16
+		if on_ground:
+			vv = jump_force*1.5
+			on_ground = false
+			wingSound.play()
+			state = State.ADULT_STARTLED
+	elif state == State.ADULT_STARTLED:
+		if not animationPlayer.is_playing():
+			animationPlayer.play("heronAdultFlapAway")
+			wingSound.play()
+		if on_ground:
+			state = State.ADULT_START_FLY
 	else:
 		true_terminal_vel = 32
 
@@ -147,7 +169,7 @@ func processInputs(delta):
 
 	if state == State.ADULT_HOVER:
 		myHoverTarget = self.global_transform.origin
-		myHoverTarget.y -= 6
+		myHoverTarget.y -= 8
 		TurnToPlayer()
 		vv = 0
 		if not animationPlayer.is_playing():
@@ -158,6 +180,8 @@ func processInputs(delta):
 		vv = jump_force/4
 		global.pauseMoveInput = true
 		player.translation = self.translation
+		player.is_lunging = 0
+		player.is_being_carried = true
 		if not animationPlayer.is_playing():
 			animationPlayer.play("heronAdultFlapAway")
 			wingSound.play()
@@ -168,6 +192,7 @@ func processInputs(delta):
 		# print(str(closeX) + ", " + str(closeY) + ", " + str(closeZ))
 		if closeX < 1.5 and closeY < 12 and closeZ < 1.5:
 			state = State.ADULT_FLY_AWAY
+			player.is_being_carried = false
 			global.pauseMoveInput = false
 			adultQuackSound.play()
 		else:

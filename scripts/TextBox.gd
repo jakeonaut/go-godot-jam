@@ -36,6 +36,10 @@ func interact():
         if player.glitch_form != player.GlitchForm.FLOOR: player.on_ground = true
         player.vv = 0
         player.is_lunging = 0
+        player.should_i_sprint = false
+        player.sprint_timer = 0
+        player.walk_speed = 12
+        player.just_tried_to_sprint = false
     else:
         self.hide()
         global.pauseGame = false

@@ -133,6 +133,11 @@ func pickup():
     global.activeThrowableObject = self
     pickupCounter = 0
     self.repositionSelf()
+    player.is_lunging = 0
+    player.should_i_sprint = false
+    player.sprint_timer = 0
+    player.walk_speed = 12
+    player.just_tried_to_sprint = false
 
 func throw(interact_charge_timer = 1):
     spawn_origin = self.global_transform.origin

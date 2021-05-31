@@ -8,7 +8,6 @@ export var should_randomize_frame_delay = false
 var is_active = true
 
 onready var mySprite = get_node("Sprite3D")
-onready var NPC = get_tree().get_root().get_node("level").get_node("player")
 
 func _ready():
     state = State.BUG

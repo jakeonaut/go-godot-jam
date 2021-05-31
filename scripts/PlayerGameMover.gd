@@ -24,12 +24,13 @@ var is_holding_chicken = false
 var chicken_jumps = 0
 
 func isFeatherLike():
-    return glitch_form == GlitchForm.FEATHER or is_holding_chicken
+    return glitch_form == GlitchForm.FEATHER or is_holding_chicken or is_touching_water
 
 # Physics variables
 var recover_walk_speed = 4
 var swimming_walk_speed = 6
 var lunge_speed = 24
+var water_lunge_speed = 12
 var is_lunging = 0
 var should_magic_jump = false
 var jump_force = 20
@@ -65,9 +66,14 @@ func getCamera(): return camera
 func getCameraX(): return camera.get_node("CameraX")
 func getTrueCamera(): return camera.get_node("CameraX/Camera")
 
+var just_tried_to_sprint = false
 var sprint_timer = 0
-var sprint_time_max = 50
+var sprint_time_max = 35
 var has_zora_flippers = false
+var has_double_jump = false
+var has_lunge_jump = false
+var has_water_sprint = false
+var am_i_big = false
 
 func _ready():
     set_physics_process(true)
@@ -122,7 +128,7 @@ func _physics_process(delta):
             recover_timer = 0
             is_recovering = false
 
-    if ((not has_zora_flippers and translation.y < -12) or (translation.y < -40)) and not on_ground and not transitioning:
+    if ((not has_zora_flippers and translation.y < -12) or (translation.y < -80)) and not on_ground and not transitioning:
         fallSound.play()
         if smallInteractionArea.is_touching_water:
             weakWetJumpSound.play()
@@ -137,7 +143,10 @@ func applyGravity(delta):
         g = Vector3(0, grav/2, 0)
         # on_ground = false
     elif smallInteractionArea.is_touching_water:
-        g = Vector3(0, -grav/3, 0)
+        if just_tried_to_sprint or sprint_timer > 0 and not global.activeThrowableObject:
+            g = Vector3(0, 0, 0)
+        else:
+            g = Vector3(0, -grav/3, 0)
     elif self.isFeatherLike():
         g = Vector3(0, -grav/2, 0)
     elif broom_state > 0:
@@ -170,6 +179,9 @@ func applyTerminalVelocity(delta):
 func processInputs(delta):
     processJumpInputs(delta)
     processHorizontalInputs(delta)
+    if sprint_timer > 0 and sprint_timer < sprint_time_max and self.isWalkingIntoWall():
+        bumpSound.play()
+        sprint_timer = sprint_time_max
     if Input.is_action_pressed("ui_ctrl"):
         if mySprite: mySprite.setLungeSprite(true)
     elif not Input.is_action_pressed("ui_ctrl") and is_lunging == 0:
@@ -187,7 +199,7 @@ func magicJump():
 func isWalkingIntoWall():
     return linear_velocity.x < 2 and linear_velocity.x > -2 \
             and linear_velocity.z < 2 and linear_velocity.z > -2 \
-            and self.is_pressing_horizontal_input
+            and (self.is_pressing_horizontal_input or (sprint_timer > 5 and sprint_timer < sprint_time_max))
 
 func processJumpInputs(delta):
     has_just_lunged = false
@@ -202,7 +214,8 @@ func processJumpInputs(delta):
             elif is_holding_chicken:
                 vv = (2*jump_force) / 3
             else:
-                vv = jump_force
+                vv = (3*jump_force) / 4
+                has_just_lunged = true
 
             if smallInteractionArea.is_touching_water:
                 if not has_zora_flippers:
@@ -236,7 +249,7 @@ func processJumpInputs(delta):
             feather_fall_timer = 0
             should_magic_jump = false
         # Double jump
-        elif not weakWetJumpSound.playing and (is_lunging == -1) and not glitch_form == GlitchForm.JUMP and not Input.is_action_pressed("ui_ctrl"):
+        elif has_double_jump and not weakWetJumpSound.playing and (is_lunging == -1) and not glitch_form == GlitchForm.JUMP and not Input.is_action_pressed("ui_ctrl"):
             vv = jump_force / 1.5
             doubleJumpSound.play()
             is_lunging = -2
@@ -244,7 +257,7 @@ func processJumpInputs(delta):
             feather_fall_timer = 0
             startRotateSprite(1)
         # Jump from dash (grounded)
-        elif not weakWetJumpSound.playing and is_lunging == 2 and on_ground:
+        elif has_double_jump and not weakWetJumpSound.playing and is_lunging == 2 and on_ground:
             is_lunging = 0
             if mySprite: mySprite.setLungeSprite(false)
 
@@ -269,25 +282,26 @@ func processJumpInputs(delta):
         take_fall_damage = false
         on_ground = false
 
-    if Input.is_action_pressed("ui_ctrl") and Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput:
-        # Dash lunge
-        if is_lunging < 0:
-            vv = jump_force / 2
-            jumpSound.play()
-            has_just_lunged = true
-            is_lunging = 2
-            has_just_jumped_timer = 0
-            feather_fall_timer = 0
-            if mySprite: mySprite.setLungeSprite(true)
-        if is_lunging == 2 and on_ground:
-            vv = jump_force / 2
-            is_lunging = 2
-            has_just_jumped_timer = 0
-            feather_fall_timer = 0
-            jumpSound.play()
-    if Input.is_action_just_pressed("ui_ctrl") and not on_ground and not global.pauseMoveInput:
-        startFlipRotateSprite(1)
-        vv = 0
+    if has_lunge_jump:
+        if Input.is_action_pressed("ui_ctrl") and Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput:
+            # Dash lunge
+            if is_lunging < 0:
+                vv = jump_force / 2
+                jumpSound.play()
+                has_just_lunged = true
+                is_lunging = 2
+                has_just_jumped_timer = 0
+                feather_fall_timer = 0
+                if mySprite: mySprite.setLungeSprite(true)
+            if is_lunging == 2 and on_ground:
+                vv = jump_force / 2
+                is_lunging = 2
+                has_just_jumped_timer = 0
+                feather_fall_timer = 0
+                jumpSound.play()
+        if Input.is_action_just_pressed("ui_ctrl") and not on_ground and not global.pauseMoveInput:
+            startFlipRotateSprite(1)
+            vv = 0
 
     if is_touching_water:
         if has_zora_flippers and Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput:
@@ -306,6 +320,7 @@ func processJumpInputs(delta):
             elif float_timer >= big_float_time_limit:
                 is_floating = false
                 float_timer = 0
+
     else: 
         is_floating = false
         float_timer = 0
@@ -314,7 +329,8 @@ func processJumpInputs(delta):
             vv = (3*jump_force) / 5
 
             on_ground = false
-            jumpSound.play()
+            if Input.is_action_just_pressed("ui_jump"):
+                jumpSound.play()
             has_just_jumped_timer = -has_just_jumped_time_limit
 
 func getCameraForward(should_snap = false):
@@ -432,6 +448,8 @@ func processHorizontalInputs(delta):
     var curr_walk_speed = walk_speed
     if smallInteractionArea.is_touching_water or (not on_ground and self.isFeatherLike()):
         curr_walk_speed = swimming_walk_speed
+        if has_water_sprint:
+            curr_walk_speed = walk_speed
     elif is_recovering or should_recover or (not on_ground and self.glitch_form == GlitchForm.LADDER):
         curr_walk_speed = recover_walk_speed
     elif Input.is_action_pressed("ui_ctrl") and sprint_timer == 0:
@@ -442,7 +460,9 @@ func processHorizontalInputs(delta):
         hv = dir * curr_walk_speed
     elif has_just_lunged:
         dir = Vector3(0.0, 0.0, 0.0)
-        hv = facing * lunge_speed
+        var effective_lunge_speed = lunge_speed
+        if is_touching_water: effective_lunge_speed = water_lunge_speed
+        hv = facing * effective_lunge_speed
     elif is_lunging >= 2 and on_ground:
         hv -= (hv.normalized()*delta*30)
         if abs(hv.length()) < delta*22:
