@@ -3,6 +3,7 @@ extends "GameMover.gd"
 onready var camera = get_node("CameraY") # the "camera"
 onready var jumpSound = get_node("Sounds/JumpSound")
 onready var doubleJumpSound = get_node("Sounds/DoubleJumpSound")
+onready var tripleJumpSound = get_node("Sounds/TripleJumpSound")
 onready var wetJumpSound = get_node("Sounds/WetJumpSound")
 onready var weakWetJumpSound = get_node("Sounds/WeakWetJumpSound")
 onready var fallSound = get_node("Sounds/FallSound")
@@ -73,7 +74,9 @@ var has_zora_flippers = false
 var has_double_jump = false
 var has_lunge_jump = false
 var has_water_sprint = false
+var has_venomous_jump = false
 var am_i_big = false
+var has_triple_jump = false
 
 func _ready():
     set_physics_process(true)
@@ -203,6 +206,9 @@ func isWalkingIntoWall():
 
 func processJumpInputs(delta):
     has_just_lunged = false
+    if has_venomous_jump:
+        jump_force = 30
+        weaker_jump_force = 25
 
     # jump
     if (Input.is_action_just_pressed("ui_jump") or should_magic_jump) and not global.pauseMoveInput: 
@@ -251,8 +257,19 @@ func processJumpInputs(delta):
         # Double jump
         elif has_double_jump and not weakWetJumpSound.playing and (is_lunging == -1) and not glitch_form == GlitchForm.JUMP and not Input.is_action_pressed("ui_ctrl"):
             vv = jump_force / 1.5
+            if has_venomous_jump:
+                vv = jump_force / 1.2
             doubleJumpSound.play()
             is_lunging = -2
+            has_just_jumped_timer = 0
+            feather_fall_timer = 0
+            startRotateSprite(1)
+        elif has_triple_jump and not weakWetJumpSound.playing and (is_lunging <= -2 and is_lunging >= -4) and not glitch_form == GlitchForm.JUMP and not Input.is_action_pressed("ui_ctrl"):
+            vv = jump_force
+            if has_venomous_jump:
+                vv = jump_force / 1.2
+            tripleJumpSound.play()
+            is_lunging -= 1
             has_just_jumped_timer = 0
             feather_fall_timer = 0
             startRotateSprite(1)

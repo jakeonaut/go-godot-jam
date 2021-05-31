@@ -25,6 +25,7 @@ func passiveActivate(delta):
 
 # @override
 func getItem():
+    global.numBugs += 1
     player.getBug()
 
     if global.activeInteractor == null:

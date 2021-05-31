@@ -10,6 +10,7 @@ func _ready():
 func _process(delta):
     if global.pauseGame and not global.pauseMoveInput: return
 
+    # print(global.activeInteractor)
     # can short circuit and just immediately interact with "activeInteractor" AKA TextBox if 
     # I am already looking at one (e.g. if global.activeInteractor exists   )
     if Input.is_action_just_pressed("ui_interact") and global.activeInteractor:

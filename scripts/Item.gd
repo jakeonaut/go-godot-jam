@@ -9,6 +9,7 @@ enum State {
     ZORA_FLIPPERS = 1,
     SPRINT_BOOTS = 2,
     BUG = 3,
+    MUSHROOM = 4,
 }
 
 export var state = State.BUG_NET
@@ -29,8 +30,8 @@ func getItem():
         player.getZoraFlippers()
     elif state == State.SPRINT_BOOTS:
         player.getSprintBoots()
-    # elif state == State.BUG:
-    #     player.getBug()
+    elif state == State.MUSHROOM:
+        player.getMushroom()
 
     visible = false
     if global.activeInteractor == null:

@@ -15,8 +15,16 @@ var cameraRotation = 0
 
 var pauseMoveInput = false # don't allow player physics or camera input??
 var pauseGame = false   
+var is_in_cutscene = false
 
 var can_broom = false
+
+var startTimer = false
+var nightfallTimer = 0
+var numHerons = 0
+var numFish = 0
+var numBugs = 0
+var numMushrooms = 0
 
 func _ready():
     randomize()
@@ -34,6 +42,12 @@ func _ready():
     if pauseMoveInput: pass
     if pauseGame: pass
     if can_broom: pass
+    if startTimer: pass
+    if numHerons: pass
+    if numBugs: pass
+    if numMushrooms: pass
+    if nightfallTimer: pass
+    if is_in_cutscene: pass
 
 
 var save_game_file = "user://savegame.save"

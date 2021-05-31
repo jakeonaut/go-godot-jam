@@ -23,9 +23,11 @@ onready var zoraDrownedTextbox = get_node("TextBoxes/ZoraDrownedTextContainer/Te
 var has_bug_net = false
 var has_sprint_boots = false
 var playerWithBugNetTex = load("res://assets/sprites/player_sheet.png") 
+var playerWithWingsTex = load("res://assets/sprites/player_sheet_with_wings.png") 
 var bugCounter = 0
 var should_i_sprint = true # used by textboxes to prevent player from trying to sprint mid conversation
 var is_being_carried = false
+var mushroomCounter = 0
 
 func _ready():
     set_process_input(true)
@@ -59,7 +61,7 @@ func _process(delta):
                     walk_speed = 4
                     if not Input.is_action_pressed("ui_interact"):
                         just_tried_to_sprint = false
-                        walk_speed = 12
+                        walk_speed = 16
                         startChargeSound.stop()
                         fullChargeSound.stop()
                         sprint_timer = 0
@@ -78,25 +80,25 @@ func _process(delta):
                 if slowDownSound.playing:
                     walk_speed = 4
                 else:
-                    walk_speed = 12
+                    walk_speed = 16
                     sprint_timer = 0
             elif not Input.is_action_pressed("ui_interact"):
                 just_tried_to_sprint = false
-                walk_speed = 12
+                walk_speed = 16
                 startChargeSound.stop()
                 sprint_timer = 0
                 should_i_sprint = true
         elif sprint_timer != 0:
             just_tried_to_sprint = false
             slowDownSound.play()
-            walk_speed = 12
+            walk_speed = 16
             startChargeSound.stop()
             fullChargeSound.stop()
             sprint_timer = 0
             should_i_sprint = true
         elif not Input.is_action_pressed("ui_interact"):
             should_i_sprint = true
-            walk_speed = 12
+            walk_speed = 16
             sprint_timer = 0
                 
 
@@ -106,7 +108,8 @@ func _process(delta):
     #     is_rotating = true
 
 
-    tryRotateCamera(delta)
+    if not global.is_in_cutscene:
+        tryRotateCamera(delta)
 
     if global.pauseGame: return
 
@@ -140,8 +143,16 @@ func getBug():
     itemGetSound.play()
     # print("got bug!: " + str(bugCounter))
     if bugCounter == 4:
+        mySprite.texture = playerWithWingsTex
+
+func getMushroom():
+    itemGetSound.play()
+    mushroomCounter = mushroomCounter + 1
+    global.numMushrooms = mushroomCounter
+    if mushroomCounter == 9:
         animationPlayer.play("growth")
         growthSound.play()
+        am_i_big = true
 
 func tryRotateCamera(delta):
     # if not Input.is_action_pressed("ui_ctrl"):

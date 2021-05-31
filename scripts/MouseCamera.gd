@@ -102,8 +102,9 @@ func _process(delta):
     if not is_rotating:
         # if curr_step.y > 3.5:
         curr_step.y = 4
-            
-    self.processMouseInput(delta)
+    
+    if not global.is_in_cutscene:
+        self.processMouseInput(delta)
 
 func processMouseInput(delta):
     if mouseDiffX < -highest_mouse_rotation_step:
