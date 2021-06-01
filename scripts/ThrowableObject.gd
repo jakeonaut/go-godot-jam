@@ -20,6 +20,7 @@ var pickupCounterMax = 3
 var throw_force = 1
 var throw_speed = 14
 var jump_force = 10
+var am_i_big = false
 
 var is_being_eaten = false
 

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dreadmystery_firered.wav-92f1657629db3cb93f7270874bd2812b.sample"
+
+[deps]
+
+source_file="res://assets/sfx/dreadmystery_firered.wav"
+dest_files=[ "res://.import/dreadmystery_firered.wav-92f1657629db3cb93f7270874bd2812b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

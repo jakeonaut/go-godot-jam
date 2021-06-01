@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://materials/Sprite.tres" type="Material" id=2]
@@ -18,10 +18,12 @@
 [ext_resource path="res://assets/sfx/splashy.wav" type="AudioStream" id=16]
 [ext_resource path="res://assets/sfx/mario_grow_sound.wav" type="AudioStream" id=17]
 [ext_resource path="res://assets/sfx/wingflap.wav" type="AudioStream" id=18]
-[ext_resource path="res://scripts/PlayerSmallInteractionArea.gd" type="Script" id=19]
-[ext_resource path="res://scripts/PlayerInteractionArea.gd" type="Script" id=20]
-[ext_resource path="res://objects/TextBox.tscn" type="PackedScene" id=21]
-[ext_resource path="res://assets/textures/playerportrait.png" type="Texture" id=22]
+[ext_resource path="res://assets/sfx/menu_confirm.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/sfx/ui_cancel.wav" type="AudioStream" id=20]
+[ext_resource path="res://scripts/PlayerSmallInteractionArea.gd" type="Script" id=21]
+[ext_resource path="res://scripts/PlayerInteractionArea.gd" type="Script" id=22]
+[ext_resource path="res://objects/TextBox.tscn" type="PackedScene" id=23]
+[ext_resource path="res://assets/textures/playerportrait.png" type="Texture" id=24]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -157,39 +159,47 @@ unit_size = 2.0
 stream = ExtResource( 18 )
 unit_size = 10.0
 
+[node name="MenuOpenSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource( 19 )
+unit_size = 5.0
+
+[node name="MenuCloseSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource( 20 )
+unit_size = 5.0
+
 [node name="SmallInteractionArea" type="Area" parent="." groups=[
 "player",
 ]]
-script = ExtResource( 19 )
+script = ExtResource( 21 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SmallInteractionArea"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0 )
 shape = SubResource( 3 )
 
 [node name="InteractionArea" type="Area" parent="."]
-script = ExtResource( 20 )
+script = ExtResource( 22 )
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
 shape = SubResource( 4 )
 
 [node name="TextBoxes" type="Node" parent="."]
 
-[node name="ZoraDrownedTextContainer" parent="TextBoxes" instance=ExtResource( 21 )]
+[node name="ZoraDrownedTextContainer" parent="TextBoxes" instance=ExtResource( 23 )]
 bbText = "i guess i still
 can't swim THAT low"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="DrownedTextContainer" parent="TextBoxes" instance=ExtResource( 21 )]
+[node name="DrownedTextContainer" parent="TextBoxes" instance=ExtResource( 23 )]
 bbText = "wow, that was really
 scary. please dont'
 do that again."
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="TripleJumpTextContainer" parent="TextBoxes" instance=ExtResource( 21 )]
+[node name="TripleJumpTextContainer" parent="TextBoxes" instance=ExtResource( 23 )]
 bbText = "wow! now i can
 fly a little by 
 trying to jump a lot"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/growth = SubResource( 5 )

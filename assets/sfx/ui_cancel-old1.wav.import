@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ui_cancel-old1.wav-e80b47e097f1ef0cfc9a084c240f8022.sample"
+
+[deps]
+
+source_file="res://assets/sfx/ui_cancel-old1.wav"
+dest_files=[ "res://.import/ui_cancel-old1.wav-e80b47e097f1ef0cfc9a084c240f8022.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -25,6 +25,8 @@ var numHerons = 0
 var numFish = 0
 var numBugs = 0
 var numMushrooms = 0
+var game_over = false
+var did_i_win = false
 
 func _ready():
     randomize()
@@ -48,6 +50,8 @@ func _ready():
     if numMushrooms: pass
     if nightfallTimer: pass
     if is_in_cutscene: pass
+    if game_over: pass
+    if did_i_win: pass
 
 
 var save_game_file = "user://savegame.save"

@@ -94,11 +94,11 @@ func playerRespawn(transition_name):
     transitioning = true
 
     if transition_name == "long_fade":
-        transition.long_fade_to(currLevelPath)
+        transition.long_fade_to()
     elif transition_name == "blink_fade":
-        transition.blink_fade_to(currLevelPath)
+        transition.blink_fade_to()
     else:
-        transition.fade_to(currLevelPath)
+        transition.fade_to()
 
 func _physics_process(delta):
     # ._process_physics(delta) #NOTE: this super method is called automatically 

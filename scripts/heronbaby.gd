@@ -23,6 +23,7 @@ var idle_time_max = 10
 var jump_force = 20
 var fly_away_timer = 0
 var fly_away_time_max = 120
+export var am_i_big = false
 
 enum State {
 	BABY_IDLE = 0,
@@ -98,7 +99,7 @@ func setNewFlightTarget(newFlightTarget):
 # @override
 func processInputs(delta):
 	if state == State.BABY_IDLE:
-		TurnToPos(randomIdlePos)
+		TurnToPos(randomIdlePos, delta)
 		if not animationPlayer.is_playing():
 			idle_timer += (delta*22)
 			if idle_timer >= idle_time_max:
@@ -148,7 +149,7 @@ func processInputs(delta):
 		BabyTryToFindFish()
 			
 	if state == State.BABY_FOUND_A_FISH or state == State.BABY_EATING_FISH:
-		TurnToFish()
+		TurnToFish(delta)
 			
 	if state == State.BABY_EATING_FISH and not animationPlayer.is_playing():
 		FinishEatingFish()
@@ -171,7 +172,7 @@ func processInputs(delta):
 	if state == State.ADULT_HOVER:
 		myHoverTarget = self.global_transform.origin
 		myHoverTarget.y -= 8
-		TurnToPlayer()
+		TurnToPlayer(delta)
 		vv = 0
 		if not animationPlayer.is_playing():
 			animationPlayer.play("heronAdultFlapAway")
@@ -197,7 +198,7 @@ func processInputs(delta):
 			global.pauseMoveInput = false
 			adultQuackSound.play()
 		else:
-			TurnTo(myFlightTarget)
+			TurnTo(myFlightTarget, delta)
 			self.global_transform.origin = lerp(self.global_transform.origin, myFlightTarget, 2*delta/3)
 			
 
@@ -219,14 +220,14 @@ func processInputs(delta):
 			state = State.ADULT_HOVER
 			adultQuackSound.play()
 		else:
-			TurnTo(myHoverTarget)
+			TurnTo(myHoverTarget, delta)
 			self.global_transform.origin = lerp(self.global_transform.origin, myHoverTarget, 2*delta/3)
 
 func BabyTryToFindFish():
 	var areas = interactionArea.get_overlapping_areas()
 	var still_near_my_fish = false
 	for area in areas:
-		if state == State.BABY_IDLE and area.get_node("..") is ThrowableObject:
+		if state == State.BABY_IDLE and area.get_node("..") is ThrowableObject and (not am_i_big or area.get_node("..").am_i_big):
 			state = State.BABY_FOUND_A_FISH
 			vv = jump_force
 			spottedSound.play()
@@ -249,17 +250,17 @@ func BabyTryToFindFish():
 		if state == State.BABY_FOUND_A_FISH or state == State.BABY_EATING_FISH:
 			state = State.BABY_IDLE
 
-func TurnToPos(pos):
-	TurnTo(pos)
+func TurnToPos(pos, delta):
+	TurnTo(pos, delta)
 
-func TurnToFish():
+func TurnToFish(delta):
 	if myfish:
-		TurnTo(myfish.global_transform.origin)
+		TurnTo(myfish.global_transform.origin, delta)
 
-func TurnToPlayer():
-	TurnTo(player.global_transform.origin)
+func TurnToPlayer(delta):
+	TurnTo(player.global_transform.origin, delta)
 
-func TurnTo(target):
+func TurnTo(target, delta):
 	var mypos = self.global_transform.origin
 	
 	var original_scale = self.transform.basis.get_scale()
@@ -269,7 +270,7 @@ func TurnTo(target):
 	look_at(Vector3(target.x, mypos.y, target.z), Vector3(0, 1, 0))
 	self.rotate_object_local(Vector3(0,1,0), 3.14)
 	
-	self.rotation.y = lerp(previous_y_rotation, self.rotation.y, 0.1)
+	self.rotation.y = lerp(previous_y_rotation, self.rotation.y, delta/5)
 	
 	var current_scale = self.transform.basis.get_scale()
 	var fix_scale = original_scale / current_scale

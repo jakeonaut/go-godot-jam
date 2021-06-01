@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/midnight.wav-c06fcfcfca43b82af661ad154986ecbd.sample"
+
+[deps]
+
+source_file="res://assets/music/midnight.wav"
+dest_files=[ "res://.import/midnight.wav-c06fcfcfca43b82af661ad154986ecbd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

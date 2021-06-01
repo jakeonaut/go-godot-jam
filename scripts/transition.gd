@@ -8,17 +8,17 @@ var was_i_interrupted = false
 onready var player = get_tree().get_root().get_node("level").get_node("Player")
 
 # PUBLIC FUNCTION. CALLED WHENEVER YOU WANT TO CHANGE SCENE
-func fade_to(scn_path):
+func fade_to(scn_path = null):
     was_i_interrupted = false
     self.path = scn_path # store the scene path
     get_node("AnimationPlayer").play("fade") # play the transition animation
 # PUBLIC FUNCTION. CALLED WHENEVER YOU WANT TO CHANGE SCENE
-func long_fade_to(scn_path):
+func long_fade_to(scn_path = null):
     was_i_interrupted = false
     self.path = scn_path # store the scene path
     get_node("AnimationPlayer").play("long_fade") # play the long transition animation
 # PUBLIC FUNCTION. CALLED WHENEVER YOU WANT TO CHANGE SCENE
-func blink_fade_to(scn_path):
+func blink_fade_to(scn_path = null):
     was_i_interrupted = false
     self.path = scn_path # store the scene path
     get_node("AnimationPlayer").play("blink_fade") # play the blink transition animation
@@ -30,15 +30,14 @@ func interrupt():
 
 # PRIVATE FUNCTION. CALLED AT THE MIDDLE OF THE TRANSITION ANIMATION
 func change_scene():
-	print(was_i_interrupted)
-	if was_i_interrupted:
-		was_i_interrupted = false
-		return
+	# print(was_i_interrupted)
+	# if was_i_interrupted:
+	# 	was_i_interrupted = false
+	# 	return
 
-	# if self.path != "":
-	# 	get_tree().change_scene(self.path)
-	# if global.activeThrowableObject:
-	# 	global.activeThrowableObjectPath = global.activeThrowableObject.filename
-	# 	global.activeThrowableObject = null
-	player.global_transform.origin = player.last_grounded_pos
-	player.IJustDrowned()
+	print(self.path)
+	if self.path != null:
+		get_tree().change_scene(self.path)
+	else:
+		player.global_transform.origin = player.last_grounded_pos
+		player.IJustDrowned()

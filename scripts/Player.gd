@@ -14,6 +14,8 @@ onready var slowDownSound = get_node("Sounds/SlowDownSound")
 onready var errorSound = get_node("Sounds/ErrorSound")
 onready var splashSound = get_node("Sounds/SplashSound")
 onready var growthSound = get_node("Sounds/GrowthSound")
+onready var menuOpenSound = get_node("Sounds/MenuOpenSound")
+onready var menuCloseSound = get_node("Sounds/MenuCloseSound")
 
 onready var animationPlayer = get_node("AnimationPlayer")
 
@@ -35,6 +37,12 @@ func _ready():
     set_physics_process(true)
     
 func _process(delta):
+	# while global.numMushrooms > mushroomCounter:
+	# 	getMushroom()
+
+	# while global.bugCounter > bugCounter:
+	# 	getBug()
+
     # ._process(delta) #NOTE: this super method is called automatically 
     # https://github.com/godotengine/godot/issues/6500
 
@@ -44,8 +52,10 @@ func _process(delta):
     if Input.is_action_just_pressed("ui_accept") and not global.pauseMoveInput:
         if not global.pauseGame:
             global.pauseGame = true
+            menuOpenSound.play()
         else:
             global.pauseGame = false
+            menuCloseSound.play()
 
     # using enum state machines is so much easier than relying on states of timers and booleans..
     if has_sprint_boots:

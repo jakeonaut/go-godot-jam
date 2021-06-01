@@ -3,6 +3,9 @@ extends KinematicBody
 var ThrowableObject = preload('ThrowableObject.gd')
 
 onready var player = get_tree().get_root().get_node("level").get_node("Player")
+onready var npc = get_tree().get_root().get_node("level").get_node("NPC")
+onready var npc2 = get_tree().get_root().get_node("level").get_node("NPC2")
+onready var map = get_tree().get_root().get_node("level").get_node("Map")
 onready var animationPlayer = get_node("AnimationPlayer")
 onready var interactionArea = get_node("InteractionArea")
 
@@ -15,7 +18,8 @@ onready var babyQuackSound = get_node("Sounds/BabyQuackSound")
 onready var adultQuackSound = get_node("Sounds/AdultQuackSound")
 
 onready var myFlightTarget = get_node("Target").global_transform.origin
-onready var NPC = get_tree().get_root().get_node("level").get_node("NPC")
+
+onready var heron1 = get_tree().get_root().get_node("level").get_node("Heron")
 
 var idle_timer = 0
 var idle_time_max = 10
@@ -31,6 +35,7 @@ enum State {
 	ADULT_FLY_AWAY = 7,
 	ADULT_JUST_STARTLED = 10,
 	ADULT_STARTLED = 11,
+	ADULT_GROW_HOVER = 13,
 }
 
 var rise_timer = 0
@@ -47,6 +52,8 @@ func _ready():
 	set_process(true)
 	set_physics_process(true)
 
+	adultQuackSound.play()
+
 	idle_time_max = 10 + randi() % 10
 	randomIdlePos = Vector3(
 						self.global_transform.origin.x + (randi() % 3) - 2, 
@@ -56,17 +63,13 @@ func _ready():
 func _process(delta):
 	#._process(delta) # NOTE: This super method is called automatically
 	# https://github.com/godotengine/godot/issues/6500
-
-	if global.pauseGame: return
+	pass
 
 func _physics_process(delta):
 	# ._physics_process(delta) # NOTE: This super method is called automatically
 	# https://github.com/godotengine/godot/issues/6500
 
-	if global.pauseGame: return
-
 	self.processInputs(delta)
-	global_transform.origin.y += delta*10
 
 func isActive():
 	return state == State.ADULT_HOVER
@@ -98,23 +101,45 @@ func processInputs(delta):
 			adultQuackSound.play()
 
 	if state == State.ADULT_GOD_RISE:
+		global_transform.origin.y += delta*10
 		PlayerTurnToMe()
 		if not animationPlayer.is_playing():
-			animationPlayer.play("heronAdultFlapAway")
-			print("play wing sound? " + str(rise_timer))
-			print(wingSound)
+			animationPlayer.play("heronAdultFlapAway", -1, 0.5)
 			wingSound.play()
 		rise_timer += (delta)
 		if rise_timer >= rise_time_max:
 			state = State.ADULT_FLY_AWAY
 
+	if state == State.ADULT_GROW_HOVER:
+		# myHoverTarget = self.global_transform.origin
+		# myHoverTarget.y -= 8
+		global_transform.origin.y -= delta*30
+		TurnToPlayer()
+		if not animationPlayer.is_playing():
+			peckSound.play()
+			state = State.ADULT_HOVER
+			animationPlayer.play("heronAdultFlapAway", -1, 0.5)
+			wingSound.play()
 	if state == State.ADULT_HOVER:
 		# myHoverTarget = self.global_transform.origin
 		# myHoverTarget.y -= 8
-		TurnToPlayer()
+		if global.did_i_win:
+			global_transform.origin.y += delta*16
+			if not babyQuackSound.playing and not global.activeInteractor and not global.game_over:
+				npc2.activate()
+		else:
+			global_transform.origin.y -= delta*14
+			map.global_transform.origin.y -= delta * 1.5
+			if not growthSound.playing:
+				rotation.y += delta*5
+			if not peckSound.playing:
+				peckSound.play()
+				if not global.activeInteractor and not global.game_over:
+					npc.activate()
 		if not animationPlayer.is_playing():
-			animationPlayer.play("heronAdultFlapAway")
-			wingSound.play()
+			if global.did_i_win:
+				animationPlayer.play("heronAdultFlapAway", -1, 0.5)
+				wingSound.play()
 
 	if state == State.ADULT_FLY_AWAY_HOLD_PLAYER:
 		global.pauseMoveInput = true
@@ -122,7 +147,7 @@ func processInputs(delta):
 		player.is_lunging = 0
 		player.is_being_carried = true
 		if not animationPlayer.is_playing():
-			animationPlayer.play("heronAdultFlapAway")
+			animationPlayer.play("heronAdultFlapAway", -1, 0.5)
 			wingSound.play()
 		
 		var closeX = abs(self.global_transform.origin.x - myFlightTarget.x)
@@ -145,17 +170,25 @@ func processInputs(delta):
 		# 	adultQuackSound.play()
 
 	if state == State.ADULT_FLY_AWAY:
-		PlayerTurnToMe()
+		global_transform.origin.y += delta*10
+		PlayerTurnToMeKinda()
 		if not animationPlayer.is_playing():
-			animationPlayer.play("heronAdultFlapAway")
+			animationPlayer.play("heronAdultFlapAway", -1, 0.5)
 			wingSound.play()
 		
 		var closeX = abs(self.global_transform.origin.x - myFlightTarget.x)
 		var closeY = abs(self.global_transform.origin.y - myFlightTarget.y)
 		var closeZ = abs(self.global_transform.origin.z - myFlightTarget.z)
-		if closeX < 2 and closeY < 10 and closeZ < 2:
+		# print(str(closeX) + ", " + str(closeY) + ", " + str(closeZ))
+		if closeX < 15 and closeY < 20 and closeZ < 15:
 			state = State.ADULT_HOVER
-			adultQuackSound.play()
+			if global.did_i_win:
+				heron1.state = heron1.State.ADULT_FLY_AWAY_HOLD_PLAYER
+				babyQuackSound.play()
+			else:
+				animationPlayer.play("heronBabyGrowUp")
+				growthSound.play()
+				peckSound.play()
 		else:
 			TurnTo(myFlightTarget)
 			self.global_transform.origin = lerp(self.global_transform.origin, myFlightTarget, 2*delta/3)
@@ -178,6 +211,20 @@ func PlayerTurnToMe():
 	
 
 	player.look_at(Vector3(mypos.x, mypos.y+150, mypos.z), Vector3(0, 1, 0))
+	
+	var current_scale = player.transform.basis.get_scale()
+	var fix_scale = original_scale / current_scale
+	player.transform.basis = player.transform.basis.scaled(fix_scale)
+
+func PlayerTurnToMeKinda():
+	var target = player.global_transform.origin
+	var mypos = self.global_transform.origin
+	
+	var original_scale = player.transform.basis.get_scale()
+	
+	var previous_rotation = player.rotation
+	player.look_at(Vector3(mypos.x, mypos.y+50, mypos.z), Vector3(0, 1, 0))
+	player.rotation = lerp(previous_rotation, player.rotation, 0.1)
 	
 	var current_scale = player.transform.basis.get_scale()
 	var fix_scale = original_scale / current_scale

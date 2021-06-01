@@ -1,6 +1,8 @@
 extends Area
 
 onready var player = get_node("..")
+var next_text_timer = 0
+var next_text_time_max = 3.5
 
 func _ready():
     set_process(true)
@@ -8,12 +10,20 @@ func _ready():
             
 
 func _process(delta):
-    if global.pauseGame and not global.pauseMoveInput: return
+    if not global.is_in_cutscene and global.pauseGame and not global.pauseMoveInput: return
+    
+    if global.is_in_cutscene and global.activeInteractor:
+        next_text_timer += (delta)
+        # print(next_text_timer)
+        if next_text_timer > next_text_time_max and global.activeInteractor and is_instance_valid(global.activeInteractor):
+            global.activeInteractor.InteractActivate()
+            next_text_timer = 0
+        return
 
     # print(global.activeInteractor)
     # can short circuit and just immediately interact with "activeInteractor" AKA TextBox if 
     # I am already looking at one (e.g. if global.activeInteractor exists   )
-    if Input.is_action_just_pressed("ui_interact") and global.activeInteractor:
+    if Input.is_action_just_pressed("ui_interact") and global.activeInteractor and is_instance_valid(global.activeInteractor):
         global.activeInteractor.InteractActivate()
         return
 
