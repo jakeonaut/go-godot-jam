@@ -27,6 +27,10 @@ var is_rotating_slow = false
 var is_rotating_x = false
 var last_obstructing_objects = []
 var debug_print = false
+var autoRotate = false
+
+var game_start_timer = 0
+var game_start_time_max = 1
 
 # TODO(jaketrower): There are a lot of "same but for X" code repetition here
 # TODO(jaketrower): can we somehow consolidate them into common methods?
@@ -60,6 +64,21 @@ func _input(ev):
         startClickPos = ev.position
 
 func _process(delta):
+    if autoRotate:
+        self.curr_step.y = 4
+        if curr_step.y >= highest_rotation_step:
+            curr_step.y = highest_rotation_step
+
+        if not is_rotating:
+            target_rotation += deg2rad(4)
+            real_rotation_target = rotation_degrees.y + 4
+            is_rotating = true
+
+    if game_start_timer < game_start_time_max:
+        game_start_timer += (delta)
+        # print(game_start_timer)
+        return
+
     if is_rotating and debug_print: 
         print("current_rotation: " + str(current_rotation) + ", " + str(rotation_degrees.y))
 
@@ -103,7 +122,7 @@ func _process(delta):
         # if curr_step.y > 3.5:
         curr_step.y = 4
     
-    if not global.is_in_cutscene:
+    if not global.is_in_cutscene and not autoRotate:
         self.processMouseInput(delta)
 
 func processMouseInput(delta):
@@ -124,12 +143,16 @@ func processMouseInput(delta):
     mouseDiffY /= 2
 
     rotate_y(mouseDiffX * delta)
+    # target_rotation = self.rotation.y
+    # current_rotation = target_rotation
     if mouseDiffX != 0 and not player.is_pressing_horizontal_input and global.activeThrowableObject:
         player.facing = player.getCameraForward()
 
     if (mouseDiffY > 0 and not self.gateKeepDownCondition_(camera_x.rotation.x)) or \
        (mouseDiffY < 0 and not self.gateKeepUpCondition_(camera_x.rotation.x)):
-        camera_x.rotate_x(mouseDiffY * delta)
+        target_rotation_x = camera_x.rotation.x
+        real_rotation_target_x = camera_x.rotation_degrees.x
+        self.normalizeTargetX()
 
     if mouseDiffX != 0 or mouseDiffY != 0:
         player_sprite.fixSpriteFacing()
@@ -228,6 +251,7 @@ func _physics_process(delta):
 
     
 func rotateTo(target_degrees, immediate=false, is_slow=false):
+    if autoRotate: return
     real_rotation_target = target_degrees
     target_rotation = deg2rad(target_degrees)
     is_rotating = true
@@ -240,6 +264,7 @@ func rotateTo(target_degrees, immediate=false, is_slow=false):
         current_rotation = target_rotation
 
 func rotateXTo(target_degrees, immediate=false, is_slow=false):
+    if autoRotate: return
     real_rotation_target_x = target_degrees
     target_rotation_x = deg2rad(target_degrees)
     is_rotating_x = true
@@ -273,6 +298,7 @@ func setRotationMatX(rotationMatX):
     current_rotation_x = target_rotation_x
             
 func rotate_right(step=4):
+    if autoRotate: return
     self.curr_step.y = step
     if curr_step.y >= highest_rotation_step:
         curr_step.y = highest_rotation_step
@@ -283,6 +309,7 @@ func rotate_right(step=4):
         is_rotating = true
     
 func rotate_left(step=4):
+    if autoRotate: return
     self.curr_step.y = step
     if curr_step.y >= highest_rotation_step:
         curr_step.y = highest_rotation_step

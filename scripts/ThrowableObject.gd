@@ -115,6 +115,8 @@ func isActive():
 func activate(interact_charge_timer = 1):
     if not player.has_bug_net:
         player.errorSound.play()
+        player.get_node("TextBoxes/NeedNetTextContainer/TextBox").interact()
+        global.activeInteractor = player.get_node("TextBoxes/NeedNetTextContainer/TextBox")
     else:
         # Should be able to talk while holding an object.
         if not is_held and global.activeThrowableObject == null:

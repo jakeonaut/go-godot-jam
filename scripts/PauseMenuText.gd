@@ -24,11 +24,11 @@ func _process(delta):
 		if player.has_sprint_boots:
 			myText = myText + "hold down F or mouse button to charge up a sprint\n you can jump while sprinting!\n"
 		if player.has_lunge_jump:
-			myText = myText + "while in the air, hold CTRL and press jump to do a midair dash!\n"
+			myText = myText + "while in the air, hold down jump button to hover down\n"
 		if player.am_i_big:
 			myText = myText + "hurry and save the final heron!\n"
 
-		if global.nightfallTimer < 100:
+		if global.nightfallTimer > 200:
 			myText = myText + "\n you're running out of time!"
 
 

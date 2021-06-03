@@ -139,14 +139,17 @@ func getBugNet():
     has_bug_net = true
     itemGetSound.play()
     mySprite.texture = playerWithBugNetTex
+    #getCamera().autoRotate = true
 
 func getZoraFlippers():
     has_zora_flippers = true
     itemGetSound.play()
+    #getCamera().autoRotate = true
 
 func getSprintBoots():
     has_sprint_boots = true
     itemGetSound.play()
+    #getCamera().autoRotate = true
 
 func getBug():
     bugCounter = bugCounter + 1
@@ -154,6 +157,7 @@ func getBug():
     # print("got bug!: " + str(bugCounter))
     if bugCounter == 4:
         mySprite.texture = playerWithWingsTex
+    #getCamera().autoRotate = true
 
 func getMushroom():
     itemGetSound.play()

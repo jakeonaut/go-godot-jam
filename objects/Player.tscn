@@ -94,6 +94,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 10 )
 far = 500.0
 
 [node name="Sounds" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="LandSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource( 6 )
@@ -144,8 +145,9 @@ stream = ExtResource( 15 )
 unit_size = 2.0
 
 [node name="ErrorSound" type="AudioStreamPlayer3D" parent="Sounds"]
-stream = ExtResource( 7 )
-unit_size = 5.0
+stream = ExtResource( 10 )
+unit_size = 3.0
+pitch_scale = 0.5
 
 [node name="SplashSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource( 16 )
@@ -190,12 +192,29 @@ can't swim THAT low"
 portrait = ExtResource( 24 )
 
 [node name="DrownedTextContainer" parent="TextBoxes" instance=ExtResource( 23 )]
-bbText = "wow, that was really
-scary. please dont'
-do that again."
+bbText = "guess i can't
+swim... yet."
+portrait = ExtResource( 24 )
+
+[node name="NeedNetTextContainer" parent="TextBoxes" instance=ExtResource( 23 )]
+bbText = "I guess I need
+a net to catch that.."
+portrait = ExtResource( 24 )
+
+[node name="NeedToBeBigTextContainer" parent="TextBoxes" instance=ExtResource( 23 )]
+bbText = "I guess I'm not
+big or strong enough
+to pick that up"
+portrait = ExtResource( 24 )
+
+[node name="NeedToBeBigTextContainer2" parent="TextBoxes" instance=ExtResource( 23 )]
+bbText = "I guess a heron
+this big needs a 
+bigger meal..."
 portrait = ExtResource( 24 )
 
 [node name="TripleJumpTextContainer" parent="TextBoxes" instance=ExtResource( 23 )]
+editor/display_folded = true
 bbText = "wow! now i can
 fly a little by 
 trying to jump a lot"

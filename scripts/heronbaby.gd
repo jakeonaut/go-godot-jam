@@ -1,6 +1,7 @@
 extends "GameMover.gd"
 
 var ThrowableObject = preload('ThrowableObject.gd')
+var BigThrowableObject = preload('BigThrowableObject.gd')
 
 onready var player = get_tree().get_root().get_node("level").get_node("Player")
 onready var animationPlayer = get_node("AnimationPlayer")
@@ -16,7 +17,8 @@ onready var adultQuackSound = get_node("Sounds/AdultQuackSound")
 
 onready var myFlightTarget = get_node("Target").global_transform.origin
 var myHoverTarget = self.global_transform.origin
-onready var NPC = get_tree().get_root().get_node("level").get_node("NPC")
+onready var npc = get_tree().get_root().get_node("level").get_node("NPC")
+onready var underwaterNPC = get_tree().get_root().get_node("level").get_node("UnderwaterNPC")
 
 var idle_timer = 0
 var idle_time_max = 10
@@ -24,6 +26,7 @@ var jump_force = 20
 var fly_away_timer = 0
 var fly_away_time_max = 120
 export var am_i_big = false
+export var is_underwater = false
 
 enum State {
 	BABY_IDLE = 0,
@@ -81,11 +84,17 @@ func passiveActivate(delta):
 		wingSound.play()
 		babyQuackSound.play()
 	if state == State.ADULT_HOVER and not player.is_being_carried:
-		if not player.am_i_big:
+		if not player.am_i_big or am_i_big:
 			state = State.ADULT_FLY_AWAY_HOLD_PLAYER
 			global.pauseMoveInput = true
 			pickupSound.play()
 			fly_away_timer = 0
+			if global.numHerons >= 5:
+				global.pauseGame = true
+				global.pauseMoveInput = true
+				global.is_in_cutscene = true
+				transition.interrupt()
+				transition.long_fade_to("res://levels/nighttimefinale.tscn")
 		else:
 			state = State.ADULT_JUST_STARTLED
 			animationPlayer.stop()
@@ -156,6 +165,12 @@ func processInputs(delta):
 
 	if state == State.BABY_GROW_UP and not animationPlayer.is_playing():
 		global.numHerons += 1
+		if global.numHerons == 1:
+			npc.textBox = npc.get_node("TextContainerPostHeronBaby").get_node("TextBox")
+			if global.activeInteractor:
+				global.activeInteractor.abort()
+			global.activeInteractor = npc.textBox
+			global.activeInteractor.interact()
 		state = State.ADULT_START_FLY
 		animationPlayer.play("heronAdultFlapAwayStart")
 		adultQuackSound.play()
@@ -227,15 +242,24 @@ func BabyTryToFindFish():
 	var areas = interactionArea.get_overlapping_areas()
 	var still_near_my_fish = false
 	for area in areas:
-		if state == State.BABY_IDLE and area.get_node("..") is ThrowableObject and (not am_i_big or area.get_node("..").am_i_big):
-			state = State.BABY_FOUND_A_FISH
-			vv = jump_force
-			spottedSound.play()
-			myfish = area.get_node("..")
-			still_near_my_fish = true
-			animationPlayer.stop()
-			animationPlayer.play("heronBabyStartle")
-			break
+		if state == State.BABY_IDLE and (area.get_node("..") is ThrowableObject or area.get_node("..") is BigThrowableObject):
+			if (not am_i_big or area.get_node("..").am_i_big):
+				state = State.BABY_FOUND_A_FISH
+				vv = jump_force
+				spottedSound.play()
+				myfish = area.get_node("..")
+				still_near_my_fish = true
+				animationPlayer.stop()
+				animationPlayer.play("heronBabyStartle")
+				break
+			else:
+				if global.activeThrowableObject == area.get_node(".."):
+					global.activeThrowableObject = null
+				area.get_node("..").queue_free()
+				player.get_node("TextBoxes/NeedToBeBigTextContainer2/TextBox").interact()
+				global.activeInteractor = player.get_node("TextBoxes/NeedToBeBigTextContainer2/TextBox")
+				player.errorSound.play()
+				break
 			
 		elif area.get_node("..") == myfish:
 			still_near_my_fish = true
@@ -270,7 +294,7 @@ func TurnTo(target, delta):
 	look_at(Vector3(target.x, mypos.y, target.z), Vector3(0, 1, 0))
 	self.rotate_object_local(Vector3(0,1,0), 3.14)
 	
-	self.rotation.y = lerp(previous_y_rotation, self.rotation.y, delta/5)
+	self.rotation.y = lerp(previous_y_rotation, self.rotation.y, delta*2)
 	
 	var current_scale = self.transform.basis.get_scale()
 	var fix_scale = original_scale / current_scale
@@ -284,4 +308,6 @@ func FinishEatingFish():
 	myfish.queue_free()
 	growthSound.play()
 	animationPlayer.play("heronBabyGrowUp")
-	NPC.textBox = NPC.get_node("TextContainerPostHeronBaby").get_node("TextBox")
+
+	if is_underwater:
+		underwaterNPC.textBox = underwaterNPC.get_node("UnderwaterTextContainer").get_node("TextBox")

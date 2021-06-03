@@ -15,7 +15,7 @@ func _ready():
 
 # @override
 func isActive():
-    return is_active and player.has_bug_net
+    return is_active
 
 # @override
 func passiveActivate(delta):

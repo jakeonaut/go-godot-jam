@@ -115,15 +115,21 @@ func isActive():
 func activate(interact_charge_timer = 1):
     if not player.has_bug_net or not player.am_i_big:
         player.errorSound.play()
+        if not player.has_bug_net:
+            player.get_node("TextBoxes/NeedNetTextContainer/TextBox").interact()
+            global.activeInteractor = player.get_node("TextBoxes/NeedNetTextContainer/TextBox")
+        else:
+            player.get_node("TextBoxes/NeedToBeBigTextContainer/TextBox").interact()
+            global.activeInteractor = player.get_node("TextBoxes/NeedToBeBigTextContainer/TextBox")
     else:
         # Should be able to talk while holding an object.
         if not is_held and global.activeThrowableObject == null:
             pickup()
         elif pickupCounter >= pickupCounterMax and (global.activeThrowableObject == self or is_held):
             throw(interact_charge_timer)
-		
+
 func getEaten():
-	is_being_eaten = true
+    is_being_eaten = true
 
 func pickup():
     is_floating = false

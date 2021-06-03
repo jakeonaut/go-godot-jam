@@ -13,7 +13,7 @@
 [ext_resource path="res://assets/sfx/whoopingcrane.wav" type="AudioStream" id=11]
 [ext_resource path="res://assets/sfx/whoopingcranebig.wav" type="AudioStream" id=12]
 
-[sub_resource type="ArrayMesh" id=52]
+[sub_resource type="ArrayMesh" id=1]
 resource_name = "Cylinder008"
 surfaces/0 = {
 "aabb": AABB( 0.288138, -2.97367, -0.747285, 0.855312, 0.73266, 0.675186 ),
@@ -28,7 +28,7 @@ surfaces/0 = {
 "vertex_count": 28
 }
 
-[sub_resource type="ArrayMesh" id=53]
+[sub_resource type="ArrayMesh" id=2]
 resource_name = "Cylinder010"
 surfaces/0 = {
 "aabb": AABB( 0.288138, -2.97367, -0.747285, 0.855312, 0.73266, 0.675186 ),
@@ -43,7 +43,7 @@ surfaces/0 = {
 "vertex_count": 28
 }
 
-[sub_resource type="ArrayMesh" id=54]
+[sub_resource type="ArrayMesh" id=3]
 resource_name = "Cylinder007"
 surfaces/0 = {
 "aabb": AABB( -0.542919, 0.377607, -1.78768, 1.03079, 1.28066, 2.101 ),
@@ -897,17 +897,17 @@ transform = Transform( 1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0 )
 
 [node name="Wing_L" type="MeshInstance" parent="heronbaby"]
 transform = Transform( 0.799736, 0.18329, 0.571688, -0.223396, 0.974727, 6.04535e-010, -0.55724, -0.127713, 0.820471, 0.587646, 3.866, -0.256 )
-mesh = SubResource( 52 )
+mesh = SubResource( 1 )
 material/0 = null
 
 [node name="Wing_R" type="MeshInstance" parent="heronbaby"]
 transform = Transform( -0.944744, -0.246704, -0.21586, -0.25266, 0.967555, 1.74845e-007, -0.208856, -0.0545394, 0.976424, -0.607422, 3.86563, -0.32094 )
-mesh = SubResource( 53 )
+mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Body" type="MeshInstance" parent="heronbaby"]
 transform = Transform( 1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -0.0312427, 0.617839 )
-mesh = SubResource( 54 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Foot_L" type="MeshInstance" parent="heronbaby"]

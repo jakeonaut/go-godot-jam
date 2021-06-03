@@ -1,13 +1,13 @@
 extends RichTextLabel
 
 var myText = "nighttime: 5:00    herons: 0/5    fish: 1/20    bugs: 0/4    shrooms: 0/10"
-var finale_timer = 3
+var finale_timer = 300
 
 func _ready():
 	pass
 
 func _process(delta):
-	if global.startTimer:
+	if global.startTimer and not global.is_in_cutscene:
 		get_node("..").visible = true
 
 		if global.nightfallTimer >= finale_timer:

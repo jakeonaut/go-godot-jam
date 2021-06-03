@@ -131,7 +131,7 @@ func _physics_process(delta):
             recover_timer = 0
             is_recovering = false
 
-    if ((not has_zora_flippers and translation.y < -12) or (translation.y < -80)) and not on_ground and not transitioning:
+    if ((not has_zora_flippers and translation.y < -2) or (translation.y < -80)) and not on_ground and not transitioning:
         fallSound.play()
         if smallInteractionArea.is_touching_water:
             weakWetJumpSound.play()
@@ -164,7 +164,7 @@ func applyGravity(delta):
 # @override
 func applyTerminalVelocity(delta):
     feather_fall_timer += (delta*22)
-    if smallInteractionArea.is_touching_water or (
+    if (has_lunge_jump and Input.is_action_pressed("ui_jump")) or smallInteractionArea.is_touching_water or (
        self.glitch_form == GlitchForm.FEATHER and self.feather_fall_timer < self.feather_fall_time_limit) or \
        self.is_holding_chicken:
         terminal_vel = water_terminal_vel
@@ -207,8 +207,8 @@ func isWalkingIntoWall():
 func processJumpInputs(delta):
     has_just_lunged = false
     if has_venomous_jump:
-        jump_force = 30
-        weaker_jump_force = 25
+        jump_force = 25
+        weaker_jump_force = 20
 
     # jump
     if (Input.is_action_just_pressed("ui_jump") or should_magic_jump) and not global.pauseMoveInput: 
@@ -299,26 +299,26 @@ func processJumpInputs(delta):
         take_fall_damage = false
         on_ground = false
 
-    if has_lunge_jump:
-        if Input.is_action_pressed("ui_ctrl") and Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput:
-            # Dash lunge
-            if is_lunging < 0:
-                vv = jump_force / 2
-                jumpSound.play()
-                has_just_lunged = true
-                is_lunging = 2
-                has_just_jumped_timer = 0
-                feather_fall_timer = 0
-                if mySprite: mySprite.setLungeSprite(true)
-            if is_lunging == 2 and on_ground:
-                vv = jump_force / 2
-                is_lunging = 2
-                has_just_jumped_timer = 0
-                feather_fall_timer = 0
-                jumpSound.play()
-        if Input.is_action_just_pressed("ui_ctrl") and not on_ground and not global.pauseMoveInput:
-            startFlipRotateSprite(1)
-            vv = 0
+    # if has_lunge_jump:
+    #     if Input.is_action_pressed("ui_ctrl") and Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput:
+    #         # Dash lunge
+    #         if is_lunging < 0:
+    #             vv = jump_force / 2
+    #             jumpSound.play()
+    #             has_just_lunged = true
+    #             is_lunging = 2
+    #             has_just_jumped_timer = 0
+    #             feather_fall_timer = 0
+    #             if mySprite: mySprite.setLungeSprite(true)
+    #         if is_lunging == 2 and on_ground:
+    #             vv = jump_force / 2
+    #             is_lunging = 2
+    #             has_just_jumped_timer = 0
+    #             feather_fall_timer = 0
+    #             jumpSound.play()
+    #     if Input.is_action_just_pressed("ui_ctrl") and not on_ground and not global.pauseMoveInput:
+    #         startFlipRotateSprite(1)
+    #         vv = 0
 
     if is_touching_water:
         if has_zora_flippers and Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput:
