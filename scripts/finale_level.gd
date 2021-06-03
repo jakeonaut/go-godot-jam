@@ -21,7 +21,7 @@ func _ready():
 	global.did_i_win = true
 	
 
-	if global.numMushrooms >= 9:
+	if global.numMushrooms >= 7:
 		player.animationPlayer.play("growth")
 		player.growthSound.play()
 	if global.numBugs >= 4:

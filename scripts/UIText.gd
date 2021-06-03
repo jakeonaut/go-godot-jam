@@ -29,7 +29,7 @@ func _process(delta):
 			if global.numBugs > 0:
 				myText = myText + "    bugs: " + str(global.numBugs) + "/4"
 			if global.numMushrooms > 0:
-				myText = myText + "    shrooms: " + str(global.numMushrooms) + "/9"
+				myText = myText + "    shrooms: " + str(global.numMushrooms) + "/7"
 			set_bbcode(myText)
 	else:
 		get_node("..").visible = false

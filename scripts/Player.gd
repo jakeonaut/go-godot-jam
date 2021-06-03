@@ -160,10 +160,11 @@ func getBug():
     #getCamera().autoRotate = true
 
 func getMushroom():
+    mySprite.pixel_size += 0.0025
     itemGetSound.play()
     mushroomCounter = mushroomCounter + 1
     global.numMushrooms = mushroomCounter
-    if mushroomCounter == 9:
+    if mushroomCounter == 7:
         animationPlayer.play("growth")
         growthSound.play()
         am_i_big = true

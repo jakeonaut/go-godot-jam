@@ -1176,17 +1176,6 @@ frame = 3
 [node name="TextContainer" parent="Mushrooms/Item2" index="3"]
 bbText = "cool! a mushroom!"
 
-[node name="Item3" parent="Mushrooms" instance=ExtResource( 5 )]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -63, 0.34293, -93 )
-state = 4
-
-[node name="Sprite3D" parent="Mushrooms/Item3" index="1"]
-frame = 3
-
-[node name="TextContainer" parent="Mushrooms/Item3" index="3"]
-bbText = "cool! a mushroom!"
-
 [node name="Item4" parent="Mushrooms" instance=ExtResource( 5 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -93, 4.94613, -31 )
@@ -1326,11 +1315,12 @@ portrait = ExtResource( 8 )
 script = ExtResource( 9 )
 
 [node name="buggie4" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45.953, -9.96822, 13 )
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45.953, -9.96822, 8 )
 script = ExtResource( 6 )
 
 [node name="Sprite3D" parent="buggie4" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 pixel_size = 0.04
 frame = 7
 
@@ -1405,6 +1395,7 @@ portrait = ExtResource( 13 )
 
 [node name="Player" parent="." instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
+grav = 80
 
 [node name="NPC" parent="." instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.07504, -2 )
@@ -1634,7 +1625,7 @@ nextTextBoxPath = NodePath("../TextContainer")
 [node name="TextContainer" parent="NPC3" instance=ExtResource( 7 )]
 bbText = "but maybe... if someone
 could collect all
-9 power mushrooms..."
+7 power mushrooms..."
 portrait = ExtResource( 13 )
 
 [node name="NPC7" parent="." instance=ExtResource( 16 )]
@@ -1650,8 +1641,15 @@ weird cat.. perhaps i
 just don't have the
 powers i need yet.."
 
+[node name="NPC10" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.8178, -82 )
+bbText = "remember, you can
+move the camera
+with arrow keys
+or mouse! :)"
+
 [node name="NPC9" parent="." instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32, -0.1822, 14 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32, -0.1822, 7 )
 bbText = "hey... there's cool stuff
 underwater. if you
 let yourself sink"
@@ -4274,6 +4272,19 @@ mesh = SubResource( 27 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 35 )
+
+[node name="QuiltIsland28" type="StaticBody" parent="Map/QuiltIsland"]
+transform = Transform( 5, 0, 0, 0, 8, 0, 0, 0, 5, 29.0935, -6, -82 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland28"]
+material_override = SubResource( 57 )
+mesh = SubResource( 27 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland28"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 35 )
 
 [node name="QuiltIsland12" type="StaticBody" parent="Map/QuiltIsland"]
@@ -4428,8 +4439,6 @@ shape = SubResource( 64 )
 [editable path="Mushrooms/Item"]
 
 [editable path="Mushrooms/Item2"]
-
-[editable path="Mushrooms/Item3"]
 
 [editable path="Mushrooms/Item4"]
 
