@@ -1,7 +1,7 @@
 extends RichTextLabel
 
 var myText = "nighttime: 5:00    herons: 0/5    fish: 1/20    bugs: 0/4    shrooms: 0/10"
-var finale_timer = 300
+var finale_timer = 500
 
 func _ready():
 	pass
@@ -29,7 +29,7 @@ func _process(delta):
 			if global.numBugs > 0:
 				myText = myText + "    bugs: " + str(global.numBugs) + "/4"
 			if global.numMushrooms > 0:
-				myText = myText + "    shrooms: " + str(global.numMushrooms) + "/7"
+				myText = myText + "    shrooms: " + str(global.numMushrooms) + "/8"
 			set_bbcode(myText)
 	else:
 		get_node("..").visible = false

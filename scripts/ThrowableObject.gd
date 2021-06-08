@@ -28,6 +28,21 @@ func _ready():
     set_process(true)
     set_physics_process(true)
 
+    var randNum = (randi() % 6)
+    if randNum == 0:
+        mySprite.start_frame = 0
+    elif randNum == 1:
+        mySprite.start_frame = 2
+    elif randNum == 2:
+        mySprite.start_frame = 8
+    elif randNum == 3:
+        mySprite.start_frame = 10
+    elif randNum == 4:
+        mySprite.start_frame = 16
+    else:
+        mySprite.start_frame = 18
+    # 0, 2, 8, 10, 16, 18
+
 func _process(delta):
     #._process(delta) # NOTE: This super method is called automatically
     # https://github.com/godotengine/godot/issues/6500

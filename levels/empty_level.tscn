@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=2]
+[gd_scene load_steps=117 format=2]
 
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Quirk.ttf" type="DynamicFontData" id=2]
@@ -80,6 +80,11 @@ size = 18
 extra_spacing_char = 1
 extra_spacing_space = 2
 font_data = ExtResource( 2 )
+
+[sub_resource type="SphereShape" id=67]
+
+[sub_resource type="BoxShape" id=66]
+extents = Vector3( 3, 3, 3 )
 
 [sub_resource type="CylinderShape" id=7]
 radius = 2.2
@@ -966,6 +971,9 @@ extents = Vector3( 28.0235, 1, 12.1285 )
 
 [sub_resource type="BoxShape" id=30]
 
+[sub_resource type="CubeMesh" id=65]
+size = Vector3( 2, 1.5, 2 )
+
 [sub_resource type="SpatialMaterial" id=31]
 flags_unshaded = true
 params_specular_mode = 4
@@ -1157,6 +1165,7 @@ script = ExtResource( 4 )
 [node name="Mushrooms" type="Spatial" parent="."]
 
 [node name="Item" parent="Mushrooms" instance=ExtResource( 5 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3, -31 )
 state = 4
 
@@ -1188,8 +1197,7 @@ frame = 3
 bbText = "cool! a mushroom!"
 
 [node name="Item5" parent="Mushrooms" instance=ExtResource( 5 )]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -123, 13.9461, -35 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -46, -10.0539, 7 )
 state = 4
 
 [node name="Sprite3D" parent="Mushrooms/Item5" index="1"]
@@ -1210,7 +1218,7 @@ frame = 3
 bbText = "cool! a mushroom!"
 
 [node name="Item7" parent="Mushrooms" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35, -8.0539, 15 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 9.9461, 54 )
 state = 4
 
 [node name="Sprite3D" parent="Mushrooms/Item7" index="1"]
@@ -1220,7 +1228,7 @@ frame = 3
 bbText = "cool! a mushroom!"
 
 [node name="Item8" parent="Mushrooms" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -132, -7.0539, -30 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -129, 11.9461, -27 )
 state = 4
 
 [node name="Sprite3D" parent="Mushrooms/Item8" index="1"]
@@ -1229,29 +1237,23 @@ frame = 3
 [node name="TextContainer" parent="Mushrooms/Item8" index="3"]
 bbText = "cool! a mushroom!"
 
-[node name="Item9" parent="Mushrooms" instance=ExtResource( 5 )]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -146, 24.9461, -16 )
-state = 4
-
-[node name="Sprite3D" parent="Mushrooms/Item9" index="1"]
-frame = 3
-
-[node name="TextContainer" parent="Mushrooms/Item9" index="3"]
-bbText = "cool! a mushroom!"
-
 [node name="Item10" parent="Mushrooms" instance=ExtResource( 5 )]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -9.05387, -11 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 5.94613, -82 )
 state = 4
+
+[node name="CollisionShape" parent="Mushrooms/Item10" index="0"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+shape = SubResource( 67 )
 
 [node name="Sprite3D" parent="Mushrooms/Item10" index="1"]
+pixel_size = 0.07
 frame = 3
 
 [node name="TextContainer" parent="Mushrooms/Item10" index="3"]
 bbText = "cool! a mushroom!"
 
 [node name="buggie" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 29, -48 )
 script = ExtResource( 6 )
 
@@ -1315,8 +1317,7 @@ portrait = ExtResource( 8 )
 script = ExtResource( 9 )
 
 [node name="buggie4" parent="." instance=ExtResource( 5 )]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45.953, -9.96822, 8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -128.953, -9.96822, -26 )
 script = ExtResource( 6 )
 
 [node name="Sprite3D" parent="buggie4" index="1"]
@@ -1347,15 +1348,15 @@ wanted me to
 talk to him?"
 
 [node name="SprintShoes" parent="." instance=ExtResource( 5 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 23, -1 )
 state = 2
 
 [node name="Sprite3D" parent="SprintShoes" index="1"]
+pixel_size = 0.07
 frame = 2
 
 [node name="TextContainer" parent="SprintShoes" index="3"]
-bbText = "cool boots!
+bbText = "cool shoes!
 i bet i can run
 fast now!"
 
@@ -1369,7 +1370,7 @@ frame = 1
 
 [node name="TextContainer" parent="ZoraFlippers" index="3"]
 nextTextBoxPath = NodePath("../TextContainer2")
-bbText = "yeah! zora flippers!
+bbText = "yeah! frog flippers!
 now I can swim
 by pressing or holding
 jump in the water"
@@ -1395,7 +1396,6 @@ portrait = ExtResource( 13 )
 
 [node name="Player" parent="." instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
-grav = 80
 
 [node name="NPC" parent="." instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.07504, -2 )
@@ -1489,13 +1489,15 @@ to progress the game..."
 portrait = ExtResource( 13 )
 
 [node name="NPC2" parent="." instance=ExtResource( 16 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 6.07504, 45 )
 nextTextBoxPath = NodePath("TextContainer")
 bbText = "do you wish to know
 the secret of
 heron mountain?"
 portrait = ExtResource( 18 )
+
+[node name="CollisionShape" parent="NPC2" index="0"]
+shape = SubResource( 66 )
 
 [node name="NPC TextBox" parent="NPC2" index="3"]
 nextTextBoxPath = NodePath("../TextContainer")
@@ -1625,7 +1627,7 @@ nextTextBoxPath = NodePath("../TextContainer")
 [node name="TextContainer" parent="NPC3" instance=ExtResource( 7 )]
 bbText = "but maybe... if someone
 could collect all
-7 power mushrooms..."
+8 power mushrooms..."
 portrait = ExtResource( 13 )
 
 [node name="NPC7" parent="." instance=ExtResource( 16 )]
@@ -1649,7 +1651,7 @@ with arrow keys
 or mouse! :)"
 
 [node name="NPC9" parent="." instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32, -0.1822, 7 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45, -0.1822, 1 )
 bbText = "hey... there's cool stuff
 underwater. if you
 let yourself sink"
@@ -1678,7 +1680,11 @@ portrait = ExtResource( 13 )
 [node name="fishies" type="Spatial" parent="."]
 
 [node name="fish0" parent="fishies" instance=ExtResource( 20 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7073, 2.43104, -4.00499 )
+
+[node name="Sprite3D" parent="fishies/fish0" index="0"]
+frame = 18
 
 [node name="fish21" parent="fishies" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2927, 3.43104, -14.005 )
@@ -1687,7 +1693,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2927, 3.43104, -14.005 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7073, 7.43104, -55.005 )
 
 [node name="fish1" parent="fishies" instance=ExtResource( 20 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -109, 0.146533, 8 )
+
+[node name="Sprite3D" parent="fishies/fish1" index="0"]
+frame = 0
 
 [node name="fish15" parent="fishies" instance=ExtResource( 20 )]
 transform = Transform( 0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.573576, -109.903, 3.14653, -45.2646 )
@@ -1702,25 +1712,45 @@ transform = Transform( 0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.573576, -
 transform = Transform( 0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.573576, -124.082, -8.85347, -41.0013 )
 
 [node name="fish5" parent="fishies" instance=ExtResource( 20 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -119, -1.85347, 10 )
+
+[node name="Sprite3D" parent="fishies/fish5" index="0"]
+frame = 18
 
 [node name="fish16" parent="fishies" instance=ExtResource( 20 )]
 transform = Transform( 0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.573576, -117.277, 1.14653, -52.309 )
 
 [node name="fish6" parent="fishies" instance=ExtResource( 20 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -125, -3.85347, 12 )
 
+[node name="Sprite3D" parent="fishies/fish6" index="0"]
+frame = 0
+
 [node name="fish7" parent="fishies" instance=ExtResource( 20 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -134.865, 0.265043, 8.251 )
 
+[node name="Sprite3D" parent="fishies/fish7" index="0"]
+frame = 16
+
 [node name="fish8" parent="fishies" instance=ExtResource( 20 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -134.865, 0.265043, 10.251 )
+
+[node name="Sprite3D" parent="fishies/fish8" index="0"]
+frame = 10
 
 [node name="fish23" parent="fishies" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -142.865, 10.265, -24.749 )
 
 [node name="fish9" parent="fishies" instance=ExtResource( 20 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -136.865, 0.265043, 9.251 )
+
+[node name="Sprite3D" parent="fishies/fish9" index="0"]
+frame = 2
 
 [node name="fish10" parent="fishies" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -140.865, -2.73496, 3.251 )
@@ -1729,8 +1759,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -140.865, -2.73496, 3.251 )
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -142.865, -5.73496, -3.749 )
 
+[node name="Sprite3D" parent="fishies/fish11" index="0"]
+frame = 2
+
 [node name="fish12" parent="fishies" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -142.865, -5.73496, -3.749 )
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -145.865, -5.73496, -0.749 )
+
+[node name="Sprite3D" parent="fishies/fish12" index="0"]
+frame = 10
 
 [node name="fish13" parent="fishies" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -144.865, -3.73496, -9.749 )
@@ -1743,10 +1780,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -153.865, -6.73496, 19.251 )
 script = ExtResource( 21 )
 
 [node name="Sprite3D" parent="fishies/fish14" index="0"]
-pixel_size = 0.16
+pixel_size = 0.32
+frame = 16
 
 [node name="CollisionShape" parent="fishies/fish14/InteractionArea" index="0"]
 shape = SubResource( 7 )
+
+[node name="fish20" parent="fishies" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -46.865, -6.73496, 19.251 )
+
+[node name="fish28" parent="fishies" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.865, -7.73496, 23.251 )
+
+[node name="fish27" parent="fishies" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44.865, -9.73496, 15.251 )
 
 [node name="fish19" parent="fishies" instance=ExtResource( 20 )]
 editor/display_folded = true
@@ -1772,8 +1819,11 @@ shape = SubResource( 8 )
 [node name="fish2" parent="fishies" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 0.185934, 10 )
 
+[node name="Sprite3D" parent="fishies/fish2" index="0"]
+frame = 2
+
 [node name="fish3" parent="fishies" instance=ExtResource( 20 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -111, 0.208925, 13 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -111, -1.79107, 13 )
 
 [node name="heronbaby" parent="." instance=ExtResource( 22 )]
 editor/display_folded = true
@@ -2113,9 +2163,15 @@ shape = SubResource( 30 )
 transform = Transform( 3, 0, 0, 0, 10, 0, 0, 0, 3, -129, 2, -27 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/Pool5"]
-transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0.238339, 0 )
 material_override = ExtResource( 24 )
-mesh = SubResource( 29 )
+mesh = SubResource( 65 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="Map/Pool5"]
+transform = Transform( 1, -4.76838e-007, 0, 1.90735e-006, 0.25, 0, 0, 0, 1, 0, -1.33475, 0 )
+material_override = ExtResource( 24 )
+mesh = SubResource( 65 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/Pool5"]
@@ -4272,7 +4328,6 @@ mesh = SubResource( 27 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland6"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 35 )
 
 [node name="QuiltIsland28" type="StaticBody" parent="Map/QuiltIsland"]
@@ -4284,7 +4339,6 @@ mesh = SubResource( 27 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland28"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 35 )
 
 [node name="QuiltIsland12" type="StaticBody" parent="Map/QuiltIsland"]
@@ -4450,8 +4504,6 @@ shape = SubResource( 64 )
 
 [editable path="Mushrooms/Item8"]
 
-[editable path="Mushrooms/Item9"]
-
 [editable path="Mushrooms/Item10"]
 
 [editable path="buggie"]
@@ -4500,11 +4552,31 @@ shape = SubResource( 64 )
 
 [editable path="UnderwaterNPC"]
 
+[editable path="fishies/fish0"]
+
+[editable path="fishies/fish1"]
+
+[editable path="fishies/fish5"]
+
+[editable path="fishies/fish6"]
+
+[editable path="fishies/fish7"]
+
+[editable path="fishies/fish8"]
+
+[editable path="fishies/fish9"]
+
+[editable path="fishies/fish11"]
+
+[editable path="fishies/fish12"]
+
 [editable path="fishies/fish14"]
 
 [editable path="fishies/fish26"]
 
 [editable path="fishies/fish25"]
+
+[editable path="fishies/fish2"]
 
 [editable path="heronbaby"]
 
