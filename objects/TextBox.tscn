@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/TextContainer.gd" type="Script" id=1]
 [ext_resource path="res://scripts/TextBox.gd" type="Script" id=2]
@@ -21,6 +21,14 @@ extra_spacing_top = 16
 extra_spacing_char = 2
 extra_spacing_space = 2
 font_data = ExtResource( 4 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0.0129032, 0.987097 )
+colors = PoolColorArray( 0.671875, 0.342827, 0.0524902, 1, 0.301373, 0.585938, 0.0869751, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+width = 164
 
 [node name="TextContainer" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -65,3 +73,24 @@ script = ExtResource( 6 )
 stream = ExtResource( 5 )
 volume_db = -20.0
 script = ExtResource( 6 )
+
+[node name="TextBox2" type="TextureRect" parent="TextBox"]
+margin_left = 472.0
+margin_top = 202.0
+margin_right = 605.0
+margin_bottom = 239.0
+texture = SubResource( 5 )
+expand = true
+stretch_mode = 2
+
+[node name="EPrompt" type="RichTextLabel" parent="TextBox/TextBox2"]
+margin_left = 9.0
+margin_top = -9.0
+margin_right = 222.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = "Press E"
+text = "Press E"

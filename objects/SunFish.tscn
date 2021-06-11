@@ -1,0 +1,467 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://assets/water_normal_3.png" type="Texture" id=1]
+[ext_resource path="res://assets/models/Material.001 Base Color.png" type="Texture" id=2]
+[ext_resource path="res://assets/water_normal_5.png" type="Texture" id=3]
+[ext_resource path="res://assets/models/Material.002 Base Color.png" type="Texture" id=4]
+[ext_resource path="res://objects/TextBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/textures/sunfishportrait.png" type="Texture" id=6]
+[ext_resource path="res://assets/sfx/MM_OldLady_Oh.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sfx/MM_OldLady_Sigh.wav" type="AudioStream" id=8]
+[ext_resource path="res://scripts/SunfishAbortSound.gd" type="Script" id=9]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+params_cull_mode = 2
+albedo_color = Color( 0.0431373, 0.788235, 0.541176, 0.607843 )
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="Shader" id=2]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform sampler2D texture_0;
+
+
+void node_bsdf_principled(vec4 color, float subsurface, vec4 subsurface_color,
+        float metallic, float specular, float roughness, float clearcoat,
+        float clearcoat_roughness, float anisotropy, float transmission,
+        float IOR, out vec3 albedo, out float sss_strength_out,
+        out float metallic_out, out float specular_out,
+        out float roughness_out, out float clearcoat_out,
+        out float clearcoat_gloss_out, out float anisotropy_out,
+        out float transmission_out, out float ior) {
+    metallic = clamp(metallic, 0.0, 1.0);
+    transmission = clamp(transmission, 0.0, 1.0);
+
+    subsurface = subsurface * (1.0 - metallic);
+
+    albedo = mix(color.rgb, subsurface_color.rgb, subsurface);
+    sss_strength_out = subsurface;
+    metallic_out = metallic;
+    specular_out = pow((IOR - 1.0)/(IOR + 1.0), 2)/0.08;
+    roughness_out = roughness;
+    clearcoat_out = clearcoat * (1.0 - transmission);
+    clearcoat_gloss_out = 1.0 - clearcoat_roughness;
+    anisotropy_out = clamp(anisotropy, 0.0, 1.0);
+    transmission_out = (1.0 - transmission) * (1.0 - metallic);
+    ior = IOR;
+}
+
+
+void node_tex_image(vec3 co, sampler2D ima, out vec4 color, out float alpha) {
+    color = texture(ima, co.xy);
+    alpha = color.a;
+}
+
+void vertex () {
+}
+
+void fragment () {
+	
+	// node: 'Image Texture'
+	// type: 'ShaderNodeTexImage'
+	// input sockets handling
+	vec3 node0_in0_vector = vec3(0.0, 0.0, 0.0);
+	// output sockets definitions
+	vec4 node0_out0_color;
+	float node0_out1_alpha;
+	
+	node0_in0_vector = vec3(UV, 0.0);
+	node_tex_image(node0_in0_vector, texture_0, node0_out0_color, node0_out1_alpha);
+	
+	
+	// node: 'Principled BSDF'
+	// type: 'ShaderNodeBsdfPrincipled'
+	// input sockets handling
+	vec4 node1_in0_basecolor = node0_out0_color;
+	float node1_in1_subsurface = float(0.0);
+	vec3 node1_in2_subsurfaceradius = vec3(1.0, 0.20000000298023224,
+		0.10000000149011612);
+	vec4 node1_in3_subsurfacecolor = vec4(0.800000011920929, 0.800000011920929,
+		0.800000011920929, 1.0);
+	float node1_in4_metallic = float(0.0);
+	float node1_in5_specular = float(0.5);
+	float node1_in6_speculartint = float(0.0);
+	float node1_in7_roughness = float(0.5);
+	float node1_in8_anisotropic = float(0.0);
+	float node1_in9_anisotropicrotation = float(0.0);
+	float node1_in10_sheen = float(0.0);
+	float node1_in11_sheentint = float(0.5);
+	float node1_in12_clearcoat = float(0.0);
+	float node1_in13_clearcoatroughness = float(0.029999999329447746);
+	float node1_in14_ior = float(1.4500000476837158);
+	float node1_in15_transmission = float(0.0);
+	float node1_in16_transmissionroughness = float(0.0);
+	vec4 node1_in17_emission = vec4(0.0, 0.0, 0.0, 1.0);
+	float node1_in18_alpha = float(1.0);
+	vec3 node1_in19_normal = NORMAL;
+	vec3 node1_in20_clearcoatnormal = vec3(0.0, 0.0, 0.0);
+	vec3 node1_in21_tangent = TANGENT;
+	// output sockets definitions
+	vec3 node1_bsdf_out0_albedo;
+	float node1_bsdf_out1_sss_strength;
+	float node1_bsdf_out3_specular;
+	float node1_bsdf_out2_metallic;
+	float node1_bsdf_out4_roughness;
+	float node1_bsdf_out5_clearcoat;
+	float node1_bsdf_out6_clearcoat_gloss;
+	float node1_bsdf_out7_anisotropy;
+	float node1_bsdf_out8_transmission;
+	float node1_bsdf_out9_ior;
+	
+	node_bsdf_principled(node1_in0_basecolor, node1_in1_subsurface,
+		node1_in3_subsurfacecolor, node1_in4_metallic, node1_in5_specular,
+		node1_in7_roughness, node1_in12_clearcoat, node1_in13_clearcoatroughness,
+		node1_in8_anisotropic, node1_in15_transmission, node1_in14_ior,
+		node1_bsdf_out0_albedo, node1_bsdf_out1_sss_strength, node1_bsdf_out2_metallic,
+		node1_bsdf_out3_specular, node1_bsdf_out4_roughness, node1_bsdf_out5_clearcoat,
+		node1_bsdf_out6_clearcoat_gloss, node1_bsdf_out7_anisotropy,
+		node1_bsdf_out8_transmission, node1_bsdf_out9_ior);
+	
+	
+	ALBEDO = node1_bsdf_out0_albedo;
+	SSS_STRENGTH = node1_bsdf_out1_sss_strength;
+	SPECULAR = node1_bsdf_out3_specular;
+	METALLIC = node1_bsdf_out2_metallic;
+	ROUGHNESS = node1_bsdf_out4_roughness;
+	CLEARCOAT = node1_bsdf_out5_clearcoat;
+	CLEARCOAT_GLOSS = node1_bsdf_out6_clearcoat_gloss;
+	NORMAL = node1_in19_normal;
+	// uncomment it when you need it
+	// TRANSMISSION = vec3(1.0, 1.0, 1.0) * node1_bsdf_out8_transmission;
+	// uncomment it when you are modifing TANGENT
+	// TANGENT = normalize(cross(cross(node1_in21_tangent, NORMAL), NORMAL));
+	// BINORMAL = cross(TANGENT, NORMAL);
+	// uncomment it when you have tangent(UV) set
+	// ANISOTROPY = node1_bsdf_out7_anisotropy;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=3]
+next_pass = SubResource( 1 )
+shader = SubResource( 2 )
+shader_param/texture_0 = ExtResource( 2 )
+
+[sub_resource type="ArrayMesh" id=4]
+surfaces/0 = {
+"aabb": AABB( -1.18699, 1.9418, -1.31147, 2.37398, 3.43514, 4.11823 ),
+"array_data": PoolByteArray( 103, 126, 28, 176, 177, 22, 152, 64, 216, 240, 136, 191, 108, 59, 226, 0, 194, 110, 251, 127, 108, 59, 82, 55, 136, 247, 219, 48, 228, 15, 172, 64, 71, 145, 101, 63, 108, 59, 226, 0, 194, 109, 248, 127, 236, 59, 75, 51, 74, 239, 151, 63, 30, 51, 106, 64, 214, 141, 127, 63, 108, 59, 226, 0, 194, 110, 250, 127, 104, 57, 75, 51, 211, 160, 240, 62, 206, 165, 98, 64, 214, 141, 127, 191, 108, 59, 226, 0, 195, 110, 254, 127, 165, 57, 82, 55, 211, 160, 240, 62, 206, 165, 98, 64, 214, 141, 127, 191, 108, 194, 233, 0, 195, 146, 10, 127, 246, 53, 80, 56, 74, 239, 151, 63, 30, 51, 106, 64, 214, 141, 127, 63, 108, 194, 233, 0, 194, 146, 6, 127, 123, 53, 36, 58, 0, 104, 219, 179, 231, 140, 248, 63, 67, 197, 140, 63, 108, 194, 233, 0, 194, 146, 4, 127, 66, 57, 36, 58, 66, 233, 50, 179, 100, 30, 21, 64, 218, 57, 109, 191, 108, 194, 233, 0, 194, 146, 7, 127, 193, 56, 80, 56, 0, 104, 219, 179, 231, 140, 248, 63, 67, 197, 140, 63, 95, 194, 55, 0, 184, 152, 6, 127, 66, 57, 36, 58, 74, 239, 151, 63, 30, 51, 106, 64, 214, 141, 127, 63, 95, 194, 55, 0, 184, 152, 6, 127, 123, 53, 36, 58, 159, 62, 250, 62, 190, 188, 124, 64, 214, 226, 33, 64, 95, 194, 55, 0, 184, 152, 6, 127, 11, 54, 170, 59, 169, 77, 119, 179, 83, 121, 79, 64, 176, 143, 36, 64, 95, 194, 55, 0, 184, 152, 6, 127, 14, 56, 170, 59, 66, 233, 50, 179, 100, 30, 21, 64, 218, 57, 109, 191, 148, 194, 233, 0, 194, 110, 249, 127, 159, 44, 80, 56, 0, 104, 219, 179, 231, 140, 248, 63, 67, 197, 140, 63, 148, 194, 233, 0, 194, 110, 252, 127, 212, 32, 36, 58, 74, 239, 151, 191, 30, 51, 106, 64, 214, 141, 127, 63, 148, 194, 233, 0, 194, 110, 250, 127, 46, 53, 36, 58, 211, 160, 240, 190, 206, 165, 98, 64, 214, 141, 127, 191, 148, 194, 233, 0, 195, 110, 246, 127, 180, 52, 80, 56, 211, 160, 240, 190, 206, 165, 98, 64, 214, 141, 127, 191, 148, 59, 226, 0, 195, 146, 2, 127, 175, 59, 169, 59, 74, 239, 151, 191, 30, 51, 106, 64, 214, 141, 127, 63, 148, 59, 226, 0, 194, 146, 6, 127, 236, 59, 210, 57, 136, 247, 219, 48, 228, 15, 172, 64, 71, 145, 101, 63, 148, 59, 226, 0, 194, 147, 8, 127, 104, 57, 210, 57, 103, 126, 28, 176, 177, 22, 152, 64, 216, 240, 136, 191, 148, 59, 226, 0, 194, 146, 5, 127, 233, 57, 169, 59, 100, 35, 127, 178, 0, 0, 149, 64, 38, 54, 31, 64, 152, 71, 252, 0, 184, 152, 6, 127, 54, 58, 85, 56, 192, 62, 250, 190, 190, 188, 124, 64, 214, 226, 33, 64, 152, 71, 252, 0, 184, 152, 6, 127, 64, 59, 85, 56, 192, 62, 250, 190, 123, 160, 125, 64, 48, 240, 48, 64, 152, 71, 252, 0, 184, 152, 6, 127, 64, 59, 28, 56, 100, 35, 127, 178, 222, 113, 149, 64, 87, 67, 46, 64, 152, 71, 252, 0, 184, 152, 6, 127, 54, 58, 28, 56, 74, 239, 151, 63, 30, 51, 106, 64, 214, 141, 127, 63, 100, 71, 32, 0, 184, 104, 250, 127, 104, 57, 75, 51, 136, 247, 219, 48, 228, 15, 172, 64, 71, 145, 101, 63, 100, 71, 32, 0, 184, 104, 250, 127, 236, 59, 75, 51, 100, 35, 127, 178, 0, 0, 149, 64, 38, 54, 31, 64, 100, 71, 32, 0, 184, 104, 250, 127, 30, 59, 84, 41, 159, 62, 250, 62, 190, 188, 124, 64, 214, 226, 33, 64, 100, 71, 32, 0, 184, 104, 250, 127, 21, 58, 84, 41, 74, 239, 151, 191, 30, 51, 106, 64, 214, 141, 127, 63, 161, 194, 55, 0, 184, 104, 250, 127, 46, 53, 36, 58, 0, 104, 219, 179, 231, 140, 248, 63, 67, 197, 140, 63, 161, 194, 55, 0, 184, 104, 250, 127, 212, 32, 36, 58, 169, 77, 119, 179, 83, 121, 79, 64, 176, 143, 36, 64, 161, 194, 55, 0, 184, 104, 250, 127, 25, 49, 170, 59, 192, 62, 250, 190, 190, 188, 124, 64, 214, 226, 33, 64, 161, 194, 55, 0, 184, 104, 250, 127, 159, 52, 170, 59, 136, 247, 219, 48, 228, 15, 172, 64, 71, 145, 101, 63, 156, 71, 32, 0, 184, 152, 6, 127, 104, 57, 210, 57, 74, 239, 151, 191, 30, 51, 106, 64, 214, 141, 127, 63, 156, 71, 32, 0, 184, 152, 6, 127, 236, 59, 210, 57, 192, 62, 250, 190, 190, 188, 124, 64, 214, 226, 33, 64, 156, 71, 32, 0, 184, 152, 6, 127, 64, 59, 85, 56, 100, 35, 127, 178, 0, 0, 149, 64, 38, 54, 31, 64, 156, 71, 32, 0, 184, 152, 6, 127, 54, 58, 85, 56, 211, 160, 240, 62, 206, 165, 98, 64, 214, 141, 127, 191, 119, 214, 0, 0, 214, 137, 6, 127, 246, 53, 80, 56, 66, 233, 50, 179, 100, 30, 21, 64, 218, 57, 109, 191, 119, 214, 0, 0, 214, 137, 7, 127, 193, 56, 80, 56, 169, 89, 37, 179, 48, 216, 13, 64, 204, 209, 147, 191, 119, 214, 0, 0, 214, 137, 7, 127, 218, 56, 23, 56, 135, 136, 219, 62, 206, 165, 98, 64, 48, 216, 157, 191, 119, 214, 0, 0, 214, 137, 7, 127, 211, 53, 23, 56, 103, 126, 28, 176, 177, 22, 152, 64, 216, 240, 136, 191, 119, 42, 0, 0, 214, 119, 249, 127, 108, 59, 82, 55, 211, 160, 240, 62, 206, 165, 98, 64, 214, 141, 127, 191, 119, 42, 0, 0, 214, 119, 250, 127, 165, 57, 82, 55, 135, 136, 219, 62, 206, 165, 98, 64, 48, 216, 157, 191, 119, 42, 0, 0, 214, 119, 249, 127, 155, 57, 198, 55, 173, 87, 139, 176, 203, 185, 155, 64, 64, 222, 167, 191, 119, 42, 0, 0, 214, 119, 249, 127, 140, 59, 198, 55, 66, 233, 50, 179, 100, 30, 21, 64, 218, 57, 109, 191, 137, 214, 0, 0, 214, 119, 249, 127, 159, 44, 80, 56, 211, 160, 240, 190, 206, 165, 98, 64, 214, 141, 127, 191, 137, 214, 0, 0, 214, 119, 250, 127, 180, 52, 80, 56, 135, 136, 219, 190, 206, 165, 98, 64, 48, 216, 157, 191, 137, 214, 0, 0, 214, 119, 249, 127, 214, 52, 23, 56, 169, 89, 37, 179, 48, 216, 13, 64, 204, 209, 147, 191, 137, 214, 0, 0, 214, 119, 249, 127, 168, 43, 23, 56, 211, 160, 240, 190, 206, 165, 98, 64, 214, 141, 127, 191, 137, 42, 0, 0, 214, 137, 6, 127, 175, 59, 169, 59, 103, 126, 28, 176, 177, 22, 152, 64, 216, 240, 136, 191, 137, 42, 0, 0, 214, 137, 7, 127, 233, 57, 169, 59, 173, 87, 139, 176, 203, 185, 155, 64, 64, 222, 167, 191, 137, 42, 0, 0, 214, 137, 7, 127, 200, 57, 227, 59, 135, 136, 219, 190, 206, 165, 98, 64, 48, 216, 157, 191, 137, 42, 0, 0, 214, 137, 7, 127, 185, 59, 227, 59, 192, 62, 250, 190, 123, 160, 125, 64, 48, 240, 48, 64, 244, 255, 126, 0, 103, 72, 10, 127, 207, 51, 69, 54, 169, 77, 119, 179, 16, 93, 80, 64, 10, 157, 51, 64, 244, 255, 126, 0, 103, 72, 10, 127, 207, 51, 227, 55, 176, 154, 157, 188, 119, 45, 95, 64, 245, 161, 51, 64, 244, 255, 126, 0, 103, 72, 10, 127, 46, 52, 130, 55, 9, 50, 178, 190, 123, 160, 125, 64, 61, 213, 49, 64, 244, 255, 126, 0, 103, 72, 10, 127, 46, 52, 108, 54, 169, 77, 119, 179, 83, 121, 79, 64, 176, 143, 36, 64, 104, 185, 4, 0, 184, 152, 6, 127, 14, 56, 170, 59, 159, 62, 250, 62, 190, 188, 124, 64, 214, 226, 33, 64, 104, 185, 4, 0, 184, 152, 6, 127, 11, 54, 170, 59, 159, 62, 250, 62, 123, 160, 125, 64, 48, 240, 48, 64, 104, 185, 4, 0, 184, 152, 6, 127, 11, 54, 226, 59, 169, 77, 119, 179, 16, 93, 80, 64, 10, 157, 51, 64, 104, 185, 4, 0, 184, 152, 6, 127, 14, 56, 226, 59, 192, 62, 250, 190, 190, 188, 124, 64, 214, 226, 33, 64, 152, 185, 4, 0, 184, 104, 250, 127, 159, 52, 170, 59, 169, 77, 119, 179, 83, 121, 79, 64, 176, 143, 36, 64, 152, 185, 4, 0, 184, 104, 250, 127, 25, 49, 170, 59, 169, 77, 119, 179, 16, 93, 80, 64, 10, 157, 51, 64, 152, 185, 4, 0, 184, 104, 250, 127, 25, 49, 226, 59, 192, 62, 250, 190, 123, 160, 125, 64, 48, 240, 48, 64, 152, 185, 4, 0, 184, 104, 250, 127, 159, 52, 226, 59, 159, 62, 250, 62, 190, 188, 124, 64, 214, 226, 33, 64, 104, 71, 252, 0, 184, 104, 250, 127, 21, 58, 84, 41, 100, 35, 127, 178, 0, 0, 149, 64, 38, 54, 31, 64, 104, 71, 252, 0, 184, 104, 250, 127, 30, 59, 84, 41, 100, 35, 127, 178, 222, 113, 149, 64, 87, 67, 46, 64, 104, 71, 252, 0, 184, 104, 250, 127, 30, 59, 62, 35, 159, 62, 250, 62, 123, 160, 125, 64, 48, 240, 48, 64, 104, 71, 252, 0, 184, 104, 250, 127, 21, 58, 62, 35, 100, 35, 127, 178, 222, 113, 149, 64, 87, 67, 46, 64, 244, 16, 125, 0, 104, 72, 1, 127, 215, 53, 178, 53, 192, 62, 250, 190, 123, 160, 125, 64, 48, 240, 48, 64, 244, 16, 125, 0, 104, 72, 1, 127, 207, 51, 69, 54, 9, 50, 178, 190, 123, 160, 125, 64, 61, 213, 49, 64, 244, 16, 125, 0, 104, 72, 1, 127, 46, 52, 108, 54, 176, 154, 157, 188, 192, 9, 142, 64, 133, 8, 48, 64, 244, 16, 125, 0, 104, 72, 1, 127, 124, 53, 9, 54, 169, 77, 119, 179, 16, 93, 80, 64, 10, 157, 51, 64, 9, 0, 126, 0, 104, 71, 248, 127, 207, 51, 227, 55, 159, 62, 250, 62, 123, 160, 125, 64, 48, 240, 48, 64, 9, 0, 126, 0, 104, 71, 248, 127, 215, 53, 80, 55, 166, 126, 158, 62, 123, 160, 125, 64, 61, 213, 49, 64, 9, 0, 126, 0, 104, 71, 248, 127, 124, 53, 31, 55, 176, 154, 157, 188, 119, 45, 95, 64, 245, 161, 51, 64, 9, 0, 126, 0, 104, 71, 248, 127, 46, 52, 130, 55, 159, 62, 250, 62, 123, 160, 125, 64, 48, 240, 48, 64, 9, 14, 125, 0, 104, 70, 240, 127, 215, 53, 80, 55, 100, 35, 127, 178, 222, 113, 149, 64, 87, 67, 46, 64, 9, 14, 125, 0, 104, 70, 240, 127, 215, 53, 178, 53, 176, 154, 157, 188, 192, 9, 142, 64, 133, 8, 48, 64, 9, 14, 125, 0, 104, 70, 240, 127, 124, 53, 9, 54, 166, 126, 158, 62, 123, 160, 125, 64, 61, 213, 49, 64, 9, 14, 125, 0, 104, 70, 240, 127, 124, 53, 31, 55, 135, 136, 219, 62, 206, 165, 98, 64, 48, 216, 157, 191, 0, 249, 130, 0, 71, 104, 250, 127, 121, 51, 205, 52, 169, 89, 37, 179, 48, 216, 13, 64, 204, 209, 147, 191, 0, 249, 130, 0, 71, 104, 250, 127, 247, 30, 116, 51, 135, 136, 219, 190, 206, 165, 98, 64, 48, 216, 157, 191, 0, 249, 130, 0, 71, 104, 250, 127, 247, 30, 193, 54, 173, 87, 139, 176, 203, 185, 155, 64, 64, 222, 167, 191, 0, 249, 130, 0, 71, 104, 250, 127, 121, 51, 212, 55 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 6, 0, 5, 0, 4, 0, 7, 0, 6, 0, 8, 0, 10, 0, 9, 0, 8, 0, 11, 0, 10, 0, 12, 0, 14, 0, 13, 0, 12, 0, 15, 0, 14, 0, 16, 0, 18, 0, 17, 0, 16, 0, 19, 0, 18, 0, 20, 0, 22, 0, 21, 0, 20, 0, 23, 0, 22, 0, 24, 0, 26, 0, 25, 0, 24, 0, 27, 0, 26, 0, 28, 0, 30, 0, 29, 0, 28, 0, 31, 0, 30, 0, 32, 0, 34, 0, 33, 0, 32, 0, 35, 0, 34, 0, 36, 0, 38, 0, 37, 0, 36, 0, 39, 0, 38, 0, 40, 0, 42, 0, 41, 0, 40, 0, 43, 0, 42, 0, 44, 0, 46, 0, 45, 0, 44, 0, 47, 0, 46, 0, 48, 0, 50, 0, 49, 0, 48, 0, 51, 0, 50, 0, 52, 0, 54, 0, 53, 0, 52, 0, 55, 0, 54, 0, 56, 0, 58, 0, 57, 0, 56, 0, 59, 0, 58, 0, 60, 0, 62, 0, 61, 0, 60, 0, 63, 0, 62, 0, 64, 0, 66, 0, 65, 0, 64, 0, 67, 0, 66, 0, 68, 0, 70, 0, 69, 0, 68, 0, 71, 0, 70, 0, 72, 0, 74, 0, 73, 0, 72, 0, 75, 0, 74, 0, 76, 0, 78, 0, 77, 0, 76, 0, 79, 0, 78, 0, 80, 0, 82, 0, 81, 0, 80, 0, 83, 0, 82, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 126,
+"material": SubResource( 3 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 84
+}
+
+[sub_resource type="SpatialMaterial" id=5]
+params_cull_mode = 2
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="Shader" id=6]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform sampler2D texture_0;
+uniform sampler2D texture_1;
+
+
+void node_bsdf_principled(vec4 color, float subsurface, vec4 subsurface_color,
+        float metallic, float specular, float roughness, float clearcoat,
+        float clearcoat_roughness, float anisotropy, float transmission,
+        float IOR, out vec3 albedo, out float sss_strength_out,
+        out float metallic_out, out float specular_out,
+        out float roughness_out, out float clearcoat_out,
+        out float clearcoat_gloss_out, out float anisotropy_out,
+        out float transmission_out, out float ior) {
+    metallic = clamp(metallic, 0.0, 1.0);
+    transmission = clamp(transmission, 0.0, 1.0);
+
+    subsurface = subsurface * (1.0 - metallic);
+
+    albedo = mix(color.rgb, subsurface_color.rgb, subsurface);
+    sss_strength_out = subsurface;
+    metallic_out = metallic;
+    specular_out = pow((IOR - 1.0)/(IOR + 1.0), 2)/0.08;
+    roughness_out = roughness;
+    clearcoat_out = clearcoat * (1.0 - transmission);
+    clearcoat_gloss_out = 1.0 - clearcoat_roughness;
+    anisotropy_out = clamp(anisotropy, 0.0, 1.0);
+    transmission_out = (1.0 - transmission) * (1.0 - metallic);
+    ior = IOR;
+}
+
+
+void node_tex_image(vec3 co, sampler2D ima, out vec4 color, out float alpha) {
+    color = texture(ima, co.xy);
+    alpha = color.a;
+}
+
+void vertex () {
+}
+
+void fragment () {
+	
+	// node: 'Image Texture'
+	// type: 'ShaderNodeTexImage'
+	// input sockets handling
+	vec3 node0_in0_vector = vec3(0.0, 0.0, 0.0);
+	// output sockets definitions
+	vec4 node0_out0_color;
+	float node0_out1_alpha;
+	
+	node0_in0_vector = vec3(UV, 0.0);
+	node_tex_image(node0_in0_vector, texture_0, node0_out0_color, node0_out1_alpha);
+	
+	
+	// node: 'Image Texture.001'
+	// type: 'ShaderNodeTexImage'
+	// input sockets handling
+	vec3 node1_in0_vector = vec3(0.0, 0.0, 0.0);
+	// output sockets definitions
+	vec4 node1_out0_color;
+	float node1_out1_alpha;
+	
+	node1_in0_vector = vec3(UV, 0.0);
+	node_tex_image(node1_in0_vector, texture_1, node1_out0_color, node1_out1_alpha);
+	
+	
+	// node: 'Principled BSDF'
+	// type: 'ShaderNodeBsdfPrincipled'
+	// input sockets handling
+	vec4 node2_in0_basecolor = node1_out0_color;
+	float node2_in1_subsurface = float(0.0);
+	vec3 node2_in2_subsurfaceradius = vec3(1.0, 0.20000000298023224,
+		0.10000000149011612);
+	vec4 node2_in3_subsurfacecolor = vec4(0.800000011920929, 0.800000011920929,
+		0.800000011920929, 1.0);
+	float node2_in4_metallic = float(0.0);
+	float node2_in5_specular = dot(node0_out0_color.rgb, vec3(0.2126, 0.7152,
+		0.0722));
+	float node2_in6_speculartint = float(0.0);
+	float node2_in7_roughness = float(0.5);
+	float node2_in8_anisotropic = float(0.0);
+	float node2_in9_anisotropicrotation = float(0.0);
+	float node2_in10_sheen = float(0.0);
+	float node2_in11_sheentint = float(0.5);
+	float node2_in12_clearcoat = float(0.0);
+	float node2_in13_clearcoatroughness = float(0.029999999329447746);
+	float node2_in14_ior = float(1.4500000476837158);
+	float node2_in15_transmission = float(0.0);
+	float node2_in16_transmissionroughness = float(0.0);
+	vec4 node2_in17_emission = vec4(0.0, 0.0, 0.0, 1.0);
+	float node2_in18_alpha = float(1.0);
+	vec3 node2_in19_normal = NORMAL;
+	vec3 node2_in20_clearcoatnormal = vec3(0.0, 0.0, 0.0);
+	vec3 node2_in21_tangent = TANGENT;
+	// output sockets definitions
+	vec3 node2_bsdf_out0_albedo;
+	float node2_bsdf_out1_sss_strength;
+	float node2_bsdf_out3_specular;
+	float node2_bsdf_out2_metallic;
+	float node2_bsdf_out4_roughness;
+	float node2_bsdf_out5_clearcoat;
+	float node2_bsdf_out6_clearcoat_gloss;
+	float node2_bsdf_out7_anisotropy;
+	float node2_bsdf_out8_transmission;
+	float node2_bsdf_out9_ior;
+	
+	node_bsdf_principled(node2_in0_basecolor, node2_in1_subsurface,
+		node2_in3_subsurfacecolor, node2_in4_metallic, node2_in5_specular,
+		node2_in7_roughness, node2_in12_clearcoat, node2_in13_clearcoatroughness,
+		node2_in8_anisotropic, node2_in15_transmission, node2_in14_ior,
+		node2_bsdf_out0_albedo, node2_bsdf_out1_sss_strength, node2_bsdf_out2_metallic,
+		node2_bsdf_out3_specular, node2_bsdf_out4_roughness, node2_bsdf_out5_clearcoat,
+		node2_bsdf_out6_clearcoat_gloss, node2_bsdf_out7_anisotropy,
+		node2_bsdf_out8_transmission, node2_bsdf_out9_ior);
+	
+	
+	ALBEDO = node2_bsdf_out0_albedo;
+	SSS_STRENGTH = node2_bsdf_out1_sss_strength;
+	SPECULAR = node2_bsdf_out3_specular;
+	METALLIC = node2_bsdf_out2_metallic;
+	ROUGHNESS = node2_bsdf_out4_roughness;
+	CLEARCOAT = node2_bsdf_out5_clearcoat;
+	CLEARCOAT_GLOSS = node2_bsdf_out6_clearcoat_gloss;
+	NORMAL = node2_in19_normal;
+	// uncomment it when you need it
+	// TRANSMISSION = vec3(1.0, 1.0, 1.0) * node2_bsdf_out8_transmission;
+	// uncomment it when you are modifing TANGENT
+	// TANGENT = normalize(cross(cross(node2_in21_tangent, NORMAL), NORMAL));
+	// BINORMAL = cross(TANGENT, NORMAL);
+	// uncomment it when you have tangent(UV) set
+	// ANISOTROPY = node2_bsdf_out7_anisotropy;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=7]
+next_pass = SubResource( 5 )
+shader = SubResource( 6 )
+shader_param/texture_1 = ExtResource( 4 )
+
+[sub_resource type="ArrayMesh" id=8]
+surfaces/0 = {
+"aabb": AABB( -0.553023, -5.08594, -1.72208, 1.10605, 5.98608, 2.42561 ),
+"array_data": PoolByteArray( 53, 111, 24, 178, 65, 127, 49, 190, 211, 250, 67, 191, 117, 253, 209, 0, 209, 245, 139, 127, 81, 52, 143, 58, 114, 171, 159, 178, 181, 111, 102, 63, 244, 108, 98, 191, 117, 253, 209, 0, 209, 242, 139, 127, 81, 52, 209, 56, 54, 146, 100, 61, 15, 96, 101, 63, 61, 186, 53, 191, 117, 253, 209, 0, 209, 243, 139, 127, 107, 51, 219, 56, 2, 99, 245, 62, 186, 99, 134, 189, 186, 50, 200, 62, 117, 253, 209, 0, 209, 245, 139, 127, 6, 32, 146, 58, 2, 99, 245, 62, 186, 99, 134, 189, 186, 50, 200, 62, 0, 95, 83, 0, 129, 0, 0, 127, 123, 56, 10, 52, 54, 146, 100, 61, 15, 96, 101, 63, 61, 186, 53, 191, 0, 95, 83, 0, 129, 0, 0, 127, 48, 57, 234, 55, 54, 146, 100, 189, 15, 96, 101, 63, 61, 186, 53, 191, 0, 95, 83, 0, 129, 0, 0, 127, 96, 57, 234, 55, 2, 99, 245, 190, 186, 99, 134, 189, 186, 50, 200, 62, 0, 95, 83, 0, 129, 0, 0, 127, 21, 58, 10, 52, 54, 146, 100, 61, 15, 96, 101, 63, 61, 186, 53, 191, 0, 126, 3, 0, 129, 0, 0, 127, 48, 57, 234, 55, 114, 171, 159, 178, 181, 111, 102, 63, 244, 108, 98, 191, 0, 126, 3, 0, 129, 0, 0, 127, 72, 57, 63, 56, 54, 146, 100, 189, 15, 96, 101, 63, 61, 186, 53, 191, 0, 126, 3, 0, 129, 0, 0, 127, 96, 57, 234, 55, 2, 99, 245, 190, 186, 99, 134, 189, 186, 50, 200, 62, 139, 253, 209, 0, 209, 8, 117, 127, 7, 56, 167, 54, 54, 146, 100, 189, 15, 96, 101, 63, 61, 186, 53, 191, 139, 253, 209, 0, 209, 10, 117, 127, 118, 53, 154, 50, 114, 171, 159, 178, 181, 111, 102, 63, 244, 108, 98, 191, 139, 253, 209, 0, 209, 11, 117, 127, 240, 52, 119, 50, 53, 111, 24, 178, 65, 127, 49, 190, 211, 250, 67, 191, 139, 253, 209, 0, 209, 9, 117, 127, 140, 52, 185, 54, 2, 99, 245, 190, 186, 99, 134, 189, 186, 50, 200, 62, 140, 227, 215, 0, 211, 9, 118, 127, 7, 56, 167, 54, 53, 111, 24, 178, 65, 127, 49, 190, 211, 250, 67, 191, 140, 227, 215, 0, 211, 9, 118, 127, 140, 52, 185, 54, 116, 62, 154, 177, 241, 131, 79, 191, 13, 84, 206, 190, 140, 227, 215, 0, 211, 9, 118, 127, 64, 53, 123, 56, 144, 187, 152, 190, 56, 48, 85, 191, 168, 198, 7, 63, 140, 227, 215, 0, 211, 9, 118, 127, 7, 56, 169, 56, 116, 62, 154, 177, 241, 131, 79, 191, 13, 84, 206, 190, 0, 130, 253, 0, 136, 0, 218, 127, 28, 59, 65, 47, 144, 187, 152, 62, 56, 48, 85, 191, 168, 198, 7, 63, 0, 130, 253, 0, 136, 0, 218, 127, 41, 58, 119, 52, 144, 187, 152, 190, 56, 48, 85, 191, 168, 198, 7, 63, 0, 130, 253, 0, 136, 0, 218, 127, 28, 59, 19, 53, 2, 99, 245, 62, 186, 99, 134, 189, 186, 50, 200, 62, 0, 22, 124, 0, 0, 124, 234, 127, 109, 59, 243, 59, 2, 99, 245, 190, 186, 99, 134, 189, 186, 50, 200, 62, 0, 22, 124, 0, 0, 124, 234, 127, 109, 59, 90, 58, 144, 187, 152, 190, 56, 48, 85, 191, 168, 198, 7, 63, 0, 22, 124, 0, 0, 124, 234, 127, 32, 58, 167, 58, 144, 187, 152, 62, 56, 48, 85, 191, 168, 198, 7, 63, 0, 22, 124, 0, 0, 124, 234, 127, 32, 58, 166, 59, 53, 111, 24, 178, 65, 127, 49, 190, 211, 250, 67, 191, 116, 227, 215, 0, 211, 244, 139, 127, 81, 52, 143, 58, 2, 99, 245, 62, 186, 99, 134, 189, 186, 50, 200, 62, 116, 227, 215, 0, 211, 244, 139, 127, 6, 32, 146, 58, 144, 187, 152, 62, 56, 48, 85, 191, 168, 198, 7, 63, 116, 227, 215, 0, 211, 244, 139, 127, 60, 33, 232, 59, 116, 62, 154, 177, 241, 131, 79, 191, 13, 84, 206, 190, 116, 227, 215, 0, 211, 244, 139, 127, 208, 50, 176, 59, 53, 111, 24, 178, 64, 48, 128, 192, 113, 87, 3, 191, 139, 1, 47, 0, 209, 253, 139, 127, 95, 56, 156, 58, 114, 171, 159, 178, 5, 192, 162, 192, 190, 189, 3, 191, 139, 1, 47, 0, 209, 254, 139, 127, 95, 56, 216, 56, 54, 146, 100, 61, 201, 2, 162, 192, 144, 216, 174, 190, 139, 1, 47, 0, 209, 254, 139, 127, 18, 56, 224, 56, 2, 99, 245, 62, 152, 47, 127, 192, 253, 250, 37, 63, 139, 1, 47, 0, 209, 252, 139, 127, 156, 52, 146, 58, 2, 99, 245, 62, 152, 47, 127, 192, 253, 250, 37, 63, 0, 86, 163, 0, 134, 24, 22, 127, 123, 56, 152, 57, 54, 146, 100, 61, 201, 2, 162, 192, 144, 216, 174, 190, 0, 86, 163, 0, 134, 24, 22, 127, 172, 56, 218, 59, 54, 146, 100, 189, 201, 2, 162, 192, 144, 216, 174, 190, 0, 86, 163, 0, 134, 24, 22, 127, 219, 56, 229, 59, 2, 99, 245, 190, 152, 47, 127, 192, 253, 250, 37, 63, 0, 86, 163, 0, 134, 24, 22, 127, 10, 58, 246, 57, 54, 146, 100, 61, 201, 2, 162, 192, 144, 216, 174, 190, 0, 125, 240, 0, 129, 0, 0, 127, 230, 50, 110, 56, 114, 171, 159, 178, 5, 192, 162, 192, 190, 189, 3, 191, 0, 125, 240, 0, 129, 0, 0, 127, 70, 51, 183, 56, 54, 146, 100, 189, 201, 2, 162, 192, 144, 216, 174, 190, 0, 125, 240, 0, 129, 0, 0, 127, 165, 51, 110, 56, 2, 99, 245, 190, 152, 47, 127, 192, 253, 250, 37, 63, 117, 1, 47, 0, 209, 10, 117, 127, 175, 50, 158, 54, 54, 146, 100, 189, 201, 2, 162, 192, 144, 216, 174, 190, 117, 1, 47, 0, 209, 8, 117, 127, 57, 44, 10, 51, 114, 171, 159, 178, 5, 192, 162, 192, 190, 189, 3, 191, 117, 1, 47, 0, 209, 7, 117, 127, 137, 40, 247, 50, 53, 111, 24, 178, 64, 48, 128, 192, 113, 87, 3, 191, 117, 1, 47, 0, 209, 10, 117, 127, 58, 30, 230, 54, 2, 99, 245, 190, 152, 47, 127, 192, 253, 250, 37, 63, 116, 231, 44, 0, 213, 9, 118, 127, 175, 50, 158, 54, 53, 111, 24, 178, 64, 48, 128, 192, 113, 87, 3, 191, 116, 231, 44, 0, 213, 9, 118, 127, 58, 30, 230, 54, 116, 62, 154, 177, 181, 79, 85, 192, 248, 56, 99, 190, 116, 231, 44, 0, 213, 9, 118, 127, 210, 41, 137, 56, 144, 187, 152, 190, 241, 104, 77, 192, 88, 26, 52, 63, 116, 231, 44, 0, 212, 9, 118, 127, 175, 50, 163, 56, 116, 62, 154, 177, 181, 79, 85, 192, 248, 56, 99, 190, 0, 131, 16, 0, 136, 251, 218, 127, 28, 59, 69, 53, 144, 187, 152, 62, 241, 104, 77, 192, 88, 26, 52, 63, 0, 131, 16, 0, 136, 251, 218, 127, 41, 58, 236, 55, 144, 187, 152, 190, 241, 104, 77, 192, 88, 26, 52, 63, 0, 131, 16, 0, 136, 251, 218, 127, 28, 59, 68, 56, 2, 99, 245, 62, 152, 47, 127, 192, 253, 250, 37, 63, 0, 8, 130, 0, 133, 29, 2, 127, 123, 56, 152, 57, 2, 99, 245, 190, 152, 47, 127, 192, 253, 250, 37, 63, 0, 8, 130, 0, 133, 29, 2, 127, 10, 58, 246, 57, 144, 187, 152, 190, 241, 104, 77, 192, 88, 26, 52, 63, 0, 8, 130, 0, 133, 29, 2, 127, 10, 58, 165, 56, 144, 187, 152, 62, 241, 104, 77, 192, 88, 26, 52, 63, 0, 8, 130, 0, 133, 29, 2, 127, 18, 57, 107, 56, 53, 111, 24, 178, 64, 48, 128, 192, 113, 87, 3, 191, 140, 231, 44, 0, 211, 253, 138, 127, 95, 56, 156, 58, 2, 99, 245, 62, 152, 47, 127, 192, 253, 250, 37, 63, 140, 231, 44, 0, 211, 253, 138, 127, 156, 52, 146, 58, 144, 187, 152, 62, 241, 104, 77, 192, 88, 26, 52, 63, 140, 231, 44, 0, 211, 253, 138, 127, 145, 52, 232, 59, 116, 62, 154, 177, 181, 79, 85, 192, 248, 56, 99, 190, 140, 231, 44, 0, 211, 253, 138, 127, 205, 55, 187, 59, 2, 44, 162, 62, 180, 60, 89, 192, 194, 52, 192, 191, 0, 124, 232, 0, 0, 232, 132, 127, 36, 56, 249, 49, 2, 44, 162, 190, 180, 60, 89, 192, 194, 52, 192, 191, 0, 124, 232, 0, 0, 232, 132, 127, 36, 56, 252, 42, 97, 224, 73, 190, 37, 204, 82, 192, 66, 9, 127, 191, 0, 124, 232, 0, 0, 232, 132, 127, 159, 54, 22, 45, 97, 224, 73, 62, 37, 204, 82, 192, 66, 9, 127, 191, 0, 124, 232, 0, 0, 232, 132, 127, 159, 54, 44, 49, 2, 44, 162, 190, 180, 60, 89, 192, 194, 52, 192, 191, 116, 206, 244, 0, 24, 25, 122, 127, 177, 47, 248, 39, 72, 47, 137, 178, 10, 17, 42, 192, 193, 173, 219, 191, 116, 206, 244, 0, 23, 24, 122, 127, 5, 48, 116, 50, 139, 152, 96, 178, 244, 108, 46, 192, 162, 69, 158, 191, 116, 206, 244, 0, 23, 25, 122, 127, 232, 50, 65, 49, 97, 224, 73, 190, 37, 204, 82, 192, 66, 9, 127, 191, 116, 206, 244, 0, 24, 26, 121, 127, 88, 51, 248, 39, 72, 47, 137, 178, 10, 17, 42, 192, 193, 173, 219, 191, 140, 206, 244, 0, 25, 226, 136, 127, 211, 59, 67, 58, 2, 44, 162, 62, 180, 60, 89, 192, 194, 52, 192, 191, 140, 206, 244, 0, 26, 226, 136, 127, 211, 59, 227, 56, 97, 224, 73, 62, 37, 204, 82, 192, 66, 9, 127, 191, 140, 206, 244, 0, 26, 226, 136, 127, 2, 59, 218, 56, 139, 152, 96, 178, 244, 108, 46, 192, 162, 69, 158, 191, 140, 206, 244, 0, 26, 226, 136, 127, 29, 59, 237, 57, 139, 152, 96, 178, 244, 108, 46, 192, 162, 69, 158, 191, 0, 207, 140, 0, 127, 0, 0, 127, 194, 57, 184, 46, 97, 224, 73, 62, 37, 204, 82, 192, 66, 9, 127, 191, 0, 207, 140, 0, 127, 0, 0, 127, 22, 58, 67, 26, 97, 224, 73, 190, 37, 204, 82, 192, 66, 9, 127, 191, 0, 207, 140, 0, 127, 0, 0, 127, 110, 57, 67, 26, 2, 44, 162, 190, 115, 244, 204, 191, 76, 224, 214, 191, 116, 222, 218, 0, 24, 210, 115, 127, 198, 26, 72, 39, 72, 47, 137, 178, 11, 208, 94, 191, 187, 208, 184, 191, 116, 222, 218, 0, 24, 210, 115, 127, 197, 28, 115, 50, 139, 152, 96, 178, 50, 3, 153, 191, 57, 209, 138, 191, 116, 222, 218, 0, 24, 210, 115, 127, 66, 46, 50, 49, 97, 224, 73, 190, 241, 128, 230, 191, 52, 17, 154, 191, 116, 222, 218, 0, 24, 210, 115, 127, 69, 47, 72, 39, 139, 152, 96, 178, 50, 3, 153, 191, 57, 209, 138, 191, 0, 24, 132, 0, 127, 0, 0, 127, 194, 57, 176, 51, 97, 224, 73, 62, 241, 128, 230, 191, 52, 17, 154, 191, 0, 24, 132, 0, 127, 0, 0, 127, 22, 58, 41, 47, 97, 224, 73, 190, 241, 128, 230, 191, 52, 17, 154, 191, 0, 24, 132, 0, 127, 0, 0, 127, 110, 57, 41, 47, 2, 44, 162, 62, 115, 244, 204, 191, 76, 224, 214, 191, 0, 117, 49, 0, 0, 207, 117, 127, 41, 59, 153, 32, 2, 44, 162, 190, 115, 244, 204, 191, 76, 224, 214, 191, 0, 117, 49, 0, 0, 207, 117, 127, 41, 59, 131, 48, 97, 224, 73, 190, 241, 128, 230, 191, 52, 17, 154, 191, 0, 117, 49, 0, 0, 207, 117, 127, 249, 59, 110, 47, 97, 224, 73, 62, 241, 128, 230, 191, 52, 17, 154, 191, 0, 117, 49, 0, 0, 207, 117, 127, 249, 59, 87, 40, 72, 47, 137, 178, 11, 208, 94, 191, 187, 208, 184, 191, 140, 222, 218, 0, 28, 34, 138, 127, 236, 59, 76, 53, 2, 44, 162, 62, 115, 244, 204, 191, 76, 224, 214, 191, 140, 222, 218, 0, 29, 33, 138, 127, 236, 59, 58, 49, 97, 224, 73, 62, 241, 128, 230, 191, 52, 17, 154, 191, 140, 222, 218, 0, 29, 32, 137, 127, 41, 59, 208, 48, 139, 152, 96, 178, 50, 3, 153, 191, 57, 209, 138, 191, 140, 222, 218, 0, 29, 33, 138, 127, 64, 59, 137, 52, 234, 146, 13, 191, 21, 140, 30, 192, 30, 109, 220, 191, 100, 196, 208, 0, 41, 231, 117, 127, 118, 56, 95, 42, 121, 138, 11, 178, 109, 231, 219, 191, 253, 246, 205, 191, 100, 196, 208, 0, 40, 230, 117, 127, 167, 56, 162, 51, 117, 142, 82, 177, 200, 123, 253, 191, 162, 209, 153, 191, 100, 196, 208, 0, 41, 231, 117, 127, 96, 57, 58, 50, 75, 60, 176, 190, 17, 54, 38, 192, 116, 70, 156, 191, 100, 196, 208, 0, 42, 232, 117, 127, 98, 57, 95, 42, 117, 142, 82, 177, 200, 123, 253, 191, 162, 209, 153, 191, 0, 3, 130, 0, 0, 130, 253, 127, 128, 52, 84, 47, 75, 60, 176, 62, 17, 54, 38, 192, 116, 70, 156, 191, 0, 3, 130, 0, 0, 130, 253, 127, 131, 54, 246, 49, 75, 60, 176, 190, 17, 54, 38, 192, 116, 70, 156, 191, 0, 3, 130, 0, 0, 130, 253, 127, 131, 54, 121, 41, 234, 146, 13, 63, 21, 140, 30, 192, 30, 109, 220, 191, 0, 123, 29, 0, 0, 227, 123, 127, 28, 58, 103, 56, 234, 146, 13, 191, 21, 140, 30, 192, 30, 109, 220, 191, 0, 123, 29, 0, 0, 227, 123, 127, 28, 58, 63, 58, 75, 60, 176, 190, 17, 54, 38, 192, 116, 70, 156, 191, 0, 123, 29, 0, 0, 227, 123, 127, 245, 58, 230, 57, 75, 60, 176, 62, 17, 54, 38, 192, 116, 70, 156, 191, 0, 123, 29, 0, 0, 227, 123, 127, 245, 58, 192, 56, 121, 138, 11, 178, 109, 231, 219, 191, 253, 246, 205, 191, 156, 196, 208, 0, 47, 15, 140, 127, 229, 59, 68, 56, 234, 146, 13, 63, 21, 140, 30, 192, 30, 109, 220, 191, 156, 196, 208, 0, 48, 12, 140, 127, 229, 59, 173, 53, 75, 60, 176, 62, 17, 54, 38, 192, 116, 70, 156, 191, 156, 196, 208, 0, 49, 11, 140, 127, 41, 59, 121, 53, 117, 142, 82, 177, 200, 123, 253, 191, 162, 209, 153, 191, 156, 196, 208, 0, 48, 14, 140, 127, 61, 59, 184, 55 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 6, 0, 5, 0, 4, 0, 7, 0, 6, 0, 8, 0, 10, 0, 9, 0, 11, 0, 13, 0, 12, 0, 11, 0, 14, 0, 13, 0, 15, 0, 17, 0, 16, 0, 15, 0, 18, 0, 17, 0, 19, 0, 21, 0, 20, 0, 22, 0, 24, 0, 23, 0, 22, 0, 25, 0, 24, 0, 26, 0, 28, 0, 27, 0, 26, 0, 29, 0, 28, 0, 30, 0, 32, 0, 31, 0, 30, 0, 33, 0, 32, 0, 34, 0, 36, 0, 35, 0, 34, 0, 37, 0, 36, 0, 38, 0, 40, 0, 39, 0, 41, 0, 43, 0, 42, 0, 41, 0, 44, 0, 43, 0, 45, 0, 47, 0, 46, 0, 45, 0, 48, 0, 47, 0, 49, 0, 51, 0, 50, 0, 52, 0, 54, 0, 53, 0, 52, 0, 55, 0, 54, 0, 56, 0, 58, 0, 57, 0, 56, 0, 59, 0, 58, 0, 60, 0, 62, 0, 61, 0, 60, 0, 63, 0, 62, 0, 64, 0, 66, 0, 65, 0, 64, 0, 67, 0, 66, 0, 68, 0, 70, 0, 69, 0, 68, 0, 71, 0, 70, 0, 72, 0, 74, 0, 73, 0, 75, 0, 77, 0, 76, 0, 75, 0, 78, 0, 77, 0, 79, 0, 81, 0, 80, 0, 82, 0, 84, 0, 83, 0, 82, 0, 85, 0, 84, 0, 86, 0, 88, 0, 87, 0, 86, 0, 89, 0, 88, 0, 90, 0, 92, 0, 91, 0, 90, 0, 93, 0, 92, 0, 94, 0, 96, 0, 95, 0, 97, 0, 99, 0, 98, 0, 97, 0, 100, 0, 99, 0, 101, 0, 103, 0, 102, 0, 101, 0, 104, 0, 103, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 147,
+"material": SubResource( 7 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 105
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "swimIdle"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("model/Cylinder:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.988318, 1.3, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 1, 1.2, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1.2 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("model/Cylinder:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.988318, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("model/Cylinder:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 0.988318, 1.3, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -1, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("model/Cylinder001:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 0.988318, 1.3, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 5.6867, 0 ), Vector3( 0, 5.8, 0 ), Vector3( 0, 5.6867, 0 ), Vector3( 0, 5.687, 0 ), Vector3( 0, 5.6867, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("model/Cylinder001:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 0.997267, 1.2, 1.4, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -26, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 26, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, -26, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 26, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("model/Cylinder001:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5, 0.988318, 1.3, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 1, 1.2, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 1, 1.2 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("model:translation")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.5, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, -0.5, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[node name="sunfish" type="Spatial"]
+
+[node name="model" type="Spatial" parent="."]
+
+[node name="Cylinder" type="MeshInstance" parent="model"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Cylinder001" type="MeshInstance" parent="model"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.6867, 0 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "swimIdle"
+anims/swimIdle = SubResource( 9 )
+
+[node name="TextContainer" parent="." instance=ExtResource( 5 )]
+nextTextBoxPath = NodePath("../TextContainer2")
+bbText = "oh, hello my child
+it seems you have
+found my fabled
+underwater sea fish."
+portrait = ExtResource( 6 )
+
+[node name="DialogSound" parent="TextContainer/TextBox" index="2"]
+stream = ExtResource( 7 )
+volume_db = -20.0
+
+[node name="TextContainer2" parent="." instance=ExtResource( 5 )]
+nextTextBoxPath = NodePath("../TextContainer3")
+bbText = "you have done well.
+for this, I will grant
+you unlimited time
+to finish your quest."
+portrait = ExtResource( 6 )
+
+[node name="DialogSound" parent="TextContainer2/TextBox" index="2"]
+stream = ExtResource( 7 )
+volume_db = -20.0
+
+[node name="TextContainer3" parent="." instance=ExtResource( 5 )]
+bbText = "may it help you
+to defeat my
+brother, the wretched
+sea heron."
+portrait = ExtResource( 6 )
+
+[node name="DialogSound" parent="TextContainer3/TextBox" index="2"]
+stream = ExtResource( 8 )
+volume_db = -20.0
+
+[node name="AbortSound" parent="TextContainer3/TextBox" index="3"]
+script = ExtResource( 9 )
+
+[editable path="TextContainer"]
+
+[editable path="TextContainer2"]
+
+[editable path="TextContainer3"]

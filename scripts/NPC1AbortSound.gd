@@ -5,6 +5,7 @@ func _ready():
 
 func activateScript():
     var npc = get_node("../../..")
+    npc.try_to_forget = true
     npc.textBox = npc.get_node("TextContainerTeachJump/TextBox")
 
 func isActive():

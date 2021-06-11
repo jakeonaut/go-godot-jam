@@ -69,7 +69,7 @@ func getTrueCamera(): return camera.get_node("CameraX/Camera")
 
 var just_tried_to_sprint = false
 var sprint_timer = 0
-var sprint_time_max = 35
+var sprint_time_max = 50
 var has_zora_flippers = false
 var has_double_jump = false
 var has_lunge_jump = false
@@ -264,10 +264,8 @@ func processJumpInputs(delta):
             has_just_jumped_timer = 0
             feather_fall_timer = 0
             startRotateSprite(1)
-        elif has_triple_jump and not weakWetJumpSound.playing and (is_lunging <= -2 and is_lunging >= -4) and not glitch_form == GlitchForm.JUMP and not Input.is_action_pressed("ui_ctrl"):
+        elif has_triple_jump and not weakWetJumpSound.playing and (is_lunging <= -2 and is_lunging >= -3) and not glitch_form == GlitchForm.JUMP and not Input.is_action_pressed("ui_ctrl"):
             vv = jump_force
-            if has_venomous_jump:
-                vv = jump_force / 1.2
             tripleJumpSound.play()
             is_lunging -= 1
             has_just_jumped_timer = 0
@@ -425,6 +423,9 @@ func processHorizontalInputs(delta):
             if Input.is_action_pressed("ui_up"):
                 if not global.pauseMoveInput: 
                     dir += forward
+                if mySprite.isFacingDown() and sprint_timer > 0 and sprint_timer < sprint_time_max:
+                    sprint_timer = sprint_time_max
+                    print("Seriouslyt?")
                 # only change sprite facing if i'm idle of if I just pressed this
                 if not mySprite.is_lunge_sprite and is_lunging < 2 and broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_up") or Input.is_action_just_released("ui_down") or \
                     (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"))) and not is_rotating:
@@ -432,14 +433,19 @@ func processHorizontalInputs(delta):
             elif Input.is_action_pressed("ui_down"):
                 if not global.pauseMoveInput: 
                     dir -= forward
+                if mySprite.isFacingUp() and sprint_timer > 0 and sprint_timer < sprint_time_max:
+                    sprint_timer = sprint_time_max
                 # only change sprite facing if i'm idle or if I just pressed down, or was holding down and released up
                 if not mySprite.is_lunge_sprite and is_lunging < 2 and broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_down") or Input.is_action_just_released("ui_up") or \
                     (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"))) and not is_rotating:
                     mySprite.faceDown()
+
                     
             if Input.is_action_pressed("ui_left"):
                 if not global.pauseMoveInput: 
                     dir += right
+                if mySprite.isFacingRight() and sprint_timer > 0 and sprint_timer < sprint_time_max:
+                    sprint_timer = sprint_time_max
                 # only change sprite facing if i'm idle of if I just pressed this
                 if not mySprite.is_lunge_sprite and  is_lunging < 2 and broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_left") or Input.is_action_just_released("ui_right") or \
                     (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"))) and not is_rotating:
@@ -448,6 +454,8 @@ func processHorizontalInputs(delta):
             elif Input.is_action_pressed("ui_right"):
                 if not global.pauseMoveInput: 
                     dir -= right
+                if mySprite.isFacingLeft() and sprint_timer > 0 and sprint_timer < sprint_time_max:
+                    sprint_timer = sprint_time_max
                 # only change sprite facing if i'm idle or if I just pressed right, or was holding right and released left
                 if not mySprite.is_lunge_sprite and  is_lunging < 2 and broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_right") or Input.is_action_just_released("ui_left") or \
                     (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"))) and not is_rotating:

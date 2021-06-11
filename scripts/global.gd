@@ -25,6 +25,7 @@ var numHerons = 0
 var numFish = 0
 var numBugs = 0
 var numMushrooms = 0
+var maxMushrooms = 8
 var game_over = false
 var did_i_win = false
 
@@ -48,6 +49,7 @@ func _ready():
     if numHerons: pass
     if numBugs: pass
     if numMushrooms: pass
+    if maxMushrooms: pass
     if nightfallTimer: pass
     if is_in_cutscene: pass
     if game_over: pass

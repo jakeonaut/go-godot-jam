@@ -210,11 +210,12 @@ func PlayerTurnToMe():
 	var original_scale = player.transform.basis.get_scale()
 	
 
-	player.look_at(Vector3(mypos.x, mypos.y+150, mypos.z), Vector3(0, 1, 0))
-	
-	var current_scale = player.transform.basis.get_scale()
-	var fix_scale = original_scale / current_scale
-	player.transform.basis = player.transform.basis.scaled(fix_scale)
+	if target.x != mypos.x or target.y != mypos.y+150 or target.z != mypos.z:
+		player.look_at(Vector3(mypos.x, mypos.y+150, mypos.z), Vector3(0, 1, 0))
+		
+		var current_scale = player.transform.basis.get_scale()
+		var fix_scale = original_scale / current_scale
+		player.transform.basis = player.transform.basis.scaled(fix_scale)
 
 func PlayerTurnToMeKinda():
 	var target = player.global_transform.origin
@@ -223,12 +224,13 @@ func PlayerTurnToMeKinda():
 	var original_scale = player.transform.basis.get_scale()
 	
 	var previous_rotation = player.rotation
-	player.look_at(Vector3(mypos.x, mypos.y+50, mypos.z), Vector3(0, 1, 0))
-	player.rotation = lerp(previous_rotation, player.rotation, 0.1)
-	
-	var current_scale = player.transform.basis.get_scale()
-	var fix_scale = original_scale / current_scale
-	player.transform.basis = player.transform.basis.scaled(fix_scale)
+	if target.x != mypos.x or target.y != mypos.y+50 or target.z != mypos.z:
+		player.look_at(Vector3(mypos.x, mypos.y+50, mypos.z), Vector3(0, 1, 0))
+		player.rotation = lerp(previous_rotation, player.rotation, 0.1)
+		
+		var current_scale = player.transform.basis.get_scale()
+		var fix_scale = original_scale / current_scale
+		player.transform.basis = player.transform.basis.scaled(fix_scale)
 
 func TurnTo(target):
 	var mypos = self.global_transform.origin
@@ -237,11 +239,12 @@ func TurnTo(target):
 	
 	var previous_y_rotation = self.rotation.y
 
-	look_at(Vector3(target.x, mypos.y, target.z), Vector3(0, 1, 0))
-	self.rotate_object_local(Vector3(0,1,0), 3.14)
-	
-	self.rotation.y = lerp(previous_y_rotation, self.rotation.y, 0.1)
-	
-	var current_scale = self.transform.basis.get_scale()
-	var fix_scale = original_scale / current_scale
-	self.transform.basis = self.transform.basis.scaled(fix_scale)
+	if mypos.x != target.x or mypos.z != target.z:
+		look_at(Vector3(target.x, mypos.y, target.z), Vector3(0, 1, 0))
+		self.rotate_object_local(Vector3(0,1,0), 3.14)
+		
+		self.rotation.y = lerp(previous_y_rotation, self.rotation.y, 0.1)
+		
+		var current_scale = self.transform.basis.get_scale()
+		var fix_scale = original_scale / current_scale
+		self.transform.basis = self.transform.basis.scaled(fix_scale)

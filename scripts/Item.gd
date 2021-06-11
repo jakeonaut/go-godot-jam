@@ -3,13 +3,15 @@ extends StaticBody
 onready var player = get_tree().get_root().get_node("level").get_node("Player")
 onready var textBoxContainer = get_node("TextContainer")
 onready var textBox = get_node("TextContainer").get_node("TextBox")
+onready var getMushroomSound = get_node("GetMushroomSound")
 
 enum State {
     BUG_NET = 0,
     ZORA_FLIPPERS = 1,
     SPRINT_BOOTS = 2,
     BUG = 3,
-    MUSHROOM = 4,
+	MUSHROOM = 4,
+	LEGENDARY_UNDERWATER_SEAFISH = 5,
 }
 
 export var state = State.BUG_NET
@@ -32,8 +34,12 @@ func getItem():
         player.getSprintBoots()
     elif state == State.MUSHROOM:
         player.getMushroom()
+    elif state == State.LEGENDARY_UNDERWATER_SEAFISH:
+        player.getSeaFish()
 
     visible = false
-    if global.activeInteractor == null:
+    if state != State.MUSHROOM and global.activeInteractor == null:
         global.activeInteractor = textBox
         textBox.interact()
+    elif state == State.MUSHROOM:
+        getMushroomSound.play()

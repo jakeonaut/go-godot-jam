@@ -1,20 +1,27 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/NPC.gd" type="Script" id=1]
 [ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=2]
 [ext_resource path="res://scripts/_InteractionArea_Passive.gd" type="Script" id=3]
-[ext_resource path="res://objects/TextBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/textures/npcportrait.png" type="Texture" id=5]
-[ext_resource path="res://materials/Sprite.tres" type="Material" id=6]
-[ext_resource path="res://assets/sprites/gruesomecreatures0.png" type="Texture" id=7]
-[ext_resource path="res://scripts/Sprite.gd" type="Script" id=8]
+[ext_resource path="res://scripts/_InteractionArea_SoftPassive.gd" type="Script" id=4]
+[ext_resource path="res://objects/TextBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/textures/npcportrait.png" type="Texture" id=6]
+[ext_resource path="res://materials/Sprite.tres" type="Material" id=7]
+[ext_resource path="res://assets/sprites/gruesomecreatures0.png" type="Texture" id=8]
+[ext_resource path="res://scripts/Sprite.gd" type="Script" id=9]
 
 [sub_resource type="BoxShape" id=1]
 
 [sub_resource type="SphereShape" id=2]
-radius = 2.5
+radius = 2.1
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="CapsuleShape" id=3]
+radius = 2.0
+height = 2.0
+
+[sub_resource type="CylinderShape" id=4]
+radius = 6.0
+height = 4.0
 
 [node name="NPC" type="StaticBody"]
 collision_layer = 2
@@ -28,28 +35,37 @@ shape = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 2 )
 
 [node name="SmallInteractionArea" type="Area" parent="."]
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SmallInteractionArea"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 1.37651, 0 )
 shape = SubResource( 3 )
 
-[node name="NPC TextBox" parent="." instance=ExtResource( 4 )]
+[node name="SoftPassiveInteractionArea" type="Area" parent="."]
+script = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="SoftPassiveInteractionArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37651, 0 )
+shape = SubResource( 4 )
+
+[node name="NPC TextBox" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
-portrait = ExtResource( 5 )
+portrait = ExtResource( 6 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09239, 0 )
-material_override = ExtResource( 6 )
+material_override = ExtResource( 7 )
 pixel_size = 0.035
 shaded = true
 alpha_cut = 2
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 vframes = 8
 hframes = 4
 frame = 4
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [editable path="NPC TextBox"]

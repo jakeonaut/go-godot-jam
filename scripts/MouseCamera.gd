@@ -84,7 +84,7 @@ func _process(delta):
 
     var curr_step_y = curr_step.y
     if is_rotating_slow:
-        curr_step_y = curr_step_y / 2
+        curr_step_y = curr_step_y / 4
     if target_rotation > current_rotation:
         current_rotation += curr_step_y*delta
         rotate_y(curr_step_y * delta)

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dungeon.wav-7f193ca7b8481e4d32517ba0281c177b.sample"
+
+[deps]
+
+source_file="res://assets/music/dungeon.wav"
+dest_files=[ "res://.import/dungeon.wav-7f193ca7b8481e4d32517ba0281c177b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

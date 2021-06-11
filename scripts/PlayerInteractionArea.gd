@@ -66,7 +66,7 @@ func _process(delta):
             var was_less_than_3 = player.interact_charge_timer < 3
             player.interact_charge_timer += (delta*22)
             if was_less_than_3 and player.interact_charge_timer >= 3:
-                player.startChargeSound.play()
+                player.startThrowChargeSound.play()
             
             if player.interact_charge_timer >= player.interact_charge_time_max:
                 #player.fullChargeSound.play()
@@ -74,11 +74,13 @@ func _process(delta):
     elif player.is_interact_charging:
         player.is_interact_charging = 0
         if global.activeThrowableObject:
-            player.startChargeSound.stop()
-            if Input.is_action_pressed("ui_crouch"):
-                global.activeThrowableObject.activate_crouch(player.interact_charge_timer)
-            else: 
-                global.activeThrowableObject.activate(player.interact_charge_timer)
+            player.startThrowChargeSound.stop()
+            # if Input.is_action_pressed("ui_crouch"):
+            #     global.activeThrowableObject.activate_crouch(player.interact_charge_timer)
+            # else: 
+            if player.interact_charge_timer >= player.interact_charge_time_max - 3:
+                player.fullyChargedThrowSound.play()
+            global.activeThrowableObject.activate(player.interact_charge_timer)
     # otherwise, try to interact passive areas
     elif nearest_passive_area:
         nearest_passive_area.PassiveInteractActivate(delta)     

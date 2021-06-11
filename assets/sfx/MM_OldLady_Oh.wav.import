@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/MM_OldLady_Oh.wav-e6af7a89ac7d632f7351ac6d9a3ec6ad.sample"
+
+[deps]
+
+source_file="res://assets/sfx/MM_OldLady_Oh.wav"
+dest_files=[ "res://.import/MM_OldLady_Oh.wav-e6af7a89ac7d632f7351ac6d9a3ec6ad.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -164,6 +164,8 @@ func processInputs(delta):
 		FinishEatingFish()
 
 	if state == State.BABY_GROW_UP and not animationPlayer.is_playing():
+		global.pauseMoveInput = false
+		global.is_in_cutscene = false
 		global.numHerons += 1
 		if global.numHerons == 1:
 			npc.textBox = npc.get_node("TextContainerPostHeronBaby").get_node("TextBox")
@@ -248,6 +250,9 @@ func BabyTryToFindFish():
 				vv = jump_force
 				spottedSound.play()
 				myfish = area.get_node("..")
+				myfish.getEaten()
+				global.pauseMoveInput = true
+				global.is_in_cutscene = true
 				still_near_my_fish = true
 				animationPlayer.stop()
 				animationPlayer.play("heronBabyStartle")
@@ -269,10 +274,10 @@ func BabyTryToFindFish():
 				animationPlayer.play("heronBabyPeck")
 				peckSound.play()
 				break
-	if not still_near_my_fish:
-		myfish = null
-		if state == State.BABY_FOUND_A_FISH or state == State.BABY_EATING_FISH:
-			state = State.BABY_IDLE
+	# if not still_near_my_fish:
+	# 	myfish = null
+	# 	if state == State.BABY_FOUND_A_FISH or state == State.BABY_EATING_FISH:
+	# 		state = State.BABY_IDLE
 
 func TurnToPos(pos, delta):
 	TurnTo(pos, delta)
@@ -291,14 +296,15 @@ func TurnTo(target, delta):
 	
 	var previous_y_rotation = self.rotation.y
 
-	look_at(Vector3(target.x, mypos.y, target.z), Vector3(0, 1, 0))
-	self.rotate_object_local(Vector3(0,1,0), 3.14)
-	
-	self.rotation.y = lerp(previous_y_rotation, self.rotation.y, delta*2)
-	
-	var current_scale = self.transform.basis.get_scale()
-	var fix_scale = original_scale / current_scale
-	self.transform.basis = self.transform.basis.scaled(fix_scale)
+	if mypos.x != target.x or mypos.z != target.z:
+		look_at(Vector3(target.x, mypos.y, target.z), Vector3(0, 1, 0))
+		self.rotate_object_local(Vector3(0,1,0), 3.14)
+		
+		self.rotation.y = lerp(previous_y_rotation, self.rotation.y, delta*2)
+		
+		var current_scale = self.transform.basis.get_scale()
+		var fix_scale = original_scale / current_scale
+		self.transform.basis = self.transform.basis.scaled(fix_scale)
 
 func FinishEatingFish():
 	state = State.BABY_GROW_UP

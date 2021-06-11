@@ -94,7 +94,7 @@ func processPhysics(delta):
     lv = hv + (up * vv)
     
     # move_and_slide automatically includes "delta"
-    linear_velocity = move_and_slide(lv, -g.normalized())
+    linear_velocity = move_and_slide(lv, -g.normalized(), true)
 
     postProcessInputs(delta)
     prev_dir = dir

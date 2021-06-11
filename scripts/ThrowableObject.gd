@@ -4,6 +4,7 @@ onready var pickupSound = get_node("Sounds/PickupSound")
 onready var throwSound = get_node("Sounds/ThrowSound")
 onready var splashSound = get_node("Sounds/SplashSound")
 onready var player = get_tree().get_root().get_node("level").get_node("Player")
+onready var npc = get_tree().get_root().get_node("level").get_node("NPC")
 onready var interactionArea = get_node("InteractionArea")
 
 var is_held = false
@@ -23,25 +24,14 @@ var jump_force = 10
 var am_i_big = false
 
 var is_being_eaten = false
+var im_the_first = false
 
 func _ready():
     set_process(true)
     set_physics_process(true)
 
-    var randNum = (randi() % 6)
-    if randNum == 0:
-        mySprite.start_frame = 0
-    elif randNum == 1:
-        mySprite.start_frame = 2
-    elif randNum == 2:
-        mySprite.start_frame = 8
-    elif randNum == 3:
-        mySprite.start_frame = 10
-    elif randNum == 4:
-        mySprite.start_frame = 16
-    else:
-        mySprite.start_frame = 18
-    # 0, 2, 8, 10, 16, 18
+    var randNum = (randi() % 9)
+    mySprite.start_frame = randNum*2
 
 func _process(delta):
     #._process(delta) # NOTE: This super method is called automatically
@@ -71,6 +61,8 @@ func repositionSelf():
     if is_held:
         self.translation = player.translation
         self.translation.y += 2 # nodelta
+        if player.am_i_big:
+            self.translation.y += 4
         set_collision_mask_bit(1, false)
         return true
     return false
@@ -83,8 +75,8 @@ func processInputs(delta):
 
     if was_just_thrown:
         was_just_thrown = false
-        hv = player.facing.normalized() * (throw_speed + throw_force - 1)
-        vv = jump_force + (5 * throw_force / 10)
+        hv = player.facing.normalized() * (throw_speed - 1)
+        vv = jump_force + (5 * throw_force / 5)
         if thrown_down:
             hv = player.facing.normalized() * 0
             vv = -jump_force*2
@@ -120,6 +112,13 @@ func landed():
         set_collision_mask_bit(1, true)
     if not has_initially_landed:
         has_initially_landed = true
+    if im_the_first and not is_being_eaten:
+        im_the_first = false
+        npc.textBox = npc.get_node("TextContainerPostFish").get_node("TextBox")
+        if global.activeInteractor != null:
+            global.activeInteractor.interact()
+        global.activeInteractor = npc.textBox
+        npc.textBox.interact()
 
 func isActive():
     # since "isActive" is used for determining when the object is "interacted" with
@@ -133,6 +132,9 @@ func activate(interact_charge_timer = 1):
         player.get_node("TextBoxes/NeedNetTextContainer/TextBox").interact()
         global.activeInteractor = player.get_node("TextBoxes/NeedNetTextContainer/TextBox")
     else:
+        if not player.has_gotten_a_fish:
+            player.getFirstFish()
+            im_the_first = true
         # Should be able to talk while holding an object.
         if not is_held and global.activeThrowableObject == null:
             pickup()

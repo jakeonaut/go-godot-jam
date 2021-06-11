@@ -4772,8 +4772,7 @@ mesh = SubResource( 8 )
 material/0 = null
 
 [node name="heron" type="Spatial" parent="herongod"]
-editor/display_folded = true
-transform = Transform( 1.5, 0, 3.49691e-007, 0, 1.5, 0, -5.24537e-007, 0, 1, 0, 0, 1.58863 )
+transform = Transform( 1.5, 0, 3.8743e-007, 0, 1.5, 0, -4.76837e-007, 0, 1, 4.76837e-007, 0, 1.58863 )
 
 [node name="Body" type="MeshInstance" parent="herongod/heron"]
 transform = Transform( 1, 0, 0, 0, 0.943936, 0.330127, 0, -0.330127, 0.943936, 0, 0.537136, 0.286208 )

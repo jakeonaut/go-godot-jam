@@ -1,6 +1,6 @@
 extends "AbortSound.gd"
 
-onready var NPC5 = get_node("../../..")
+onready var npc5 = get_node("../../..")
 
 func activateScript():
-    NPC5.textBox = NPC5.get_node("TextContainer/TextBox")
+    npc5.textBox = npc5.get_node("TextContainer/TextBox")

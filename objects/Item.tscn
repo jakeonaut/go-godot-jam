@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/Item.gd" type="Script" id=1]
 [ext_resource path="res://materials/Sprite.tres" type="Material" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scripts/_InteractionArea_Passive.gd" type="Script" id=4]
 [ext_resource path="res://objects/TextBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/textures/playerportrait.png" type="Texture" id=6]
+[ext_resource path="res://assets/sfx/pop.wav" type="AudioStream" id=7]
 
 [sub_resource type="SphereShape" id=1]
 
@@ -26,6 +27,7 @@ pixel_size = 0.035
 texture = ExtResource( 3 )
 vframes = 8
 hframes = 2
+frame = 3
 
 [node name="InteractionArea" type="Area" parent="."]
 script = ExtResource( 4 )
@@ -38,3 +40,8 @@ bbText = "was it just me,
 or was that guy
 really judgemental?"
 portrait = ExtResource( 6 )
+
+[node name="GetMushroomSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
+pitch_scale = 0.5

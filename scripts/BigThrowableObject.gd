@@ -28,6 +28,9 @@ func _ready():
     set_process(true)
     set_physics_process(true)
 
+    var randNum = (randi() % 9)
+    mySprite.start_frame = randNum*2
+
 func _process(delta):
     #._process(delta) # NOTE: This super method is called automatically
     # https://github.com/godotengine/godot/issues/6500
@@ -55,7 +58,7 @@ func _physics_process(delta):
 func repositionSelf():
     if is_held:
         self.translation = player.translation
-        self.translation.y += 2 # nodelta
+        self.translation.y += 6 # nodelta
         set_collision_mask_bit(1, false)
         return true
     return false

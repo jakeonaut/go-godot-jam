@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://materials/Sprite.tres" type="Material" id=2]
@@ -11,19 +11,21 @@
 [ext_resource path="res://assets/sfx/jumpvoice.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/sfx/jumpcartoon.wav" type="AudioStream" id=10]
 [ext_resource path="res://assets/sfx/charge.wav" type="AudioStream" id=11]
-[ext_resource path="res://assets/sfx/fullycharged.wav" type="AudioStream" id=12]
-[ext_resource path="res://assets/sfx/wetjump.wav" type="AudioStream" id=13]
-[ext_resource path="res://assets/sfx/slowdown.wav" type="AudioStream" id=14]
-[ext_resource path="res://assets/sfx/yes.wav" type="AudioStream" id=15]
-[ext_resource path="res://assets/sfx/splashy.wav" type="AudioStream" id=16]
-[ext_resource path="res://assets/sfx/mario_grow_sound.wav" type="AudioStream" id=17]
-[ext_resource path="res://assets/sfx/wingflap.wav" type="AudioStream" id=18]
-[ext_resource path="res://assets/sfx/menu_confirm.wav" type="AudioStream" id=19]
-[ext_resource path="res://assets/sfx/ui_cancel.wav" type="AudioStream" id=20]
-[ext_resource path="res://scripts/PlayerSmallInteractionArea.gd" type="Script" id=21]
-[ext_resource path="res://scripts/PlayerInteractionArea.gd" type="Script" id=22]
-[ext_resource path="res://objects/TextBox.tscn" type="PackedScene" id=23]
-[ext_resource path="res://assets/textures/playerportrait.png" type="Texture" id=24]
+[ext_resource path="res://assets/sfx/charge2.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/sfx/fullycharged.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/sfx/throwsound.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/sfx/wetjump.wav" type="AudioStream" id=15]
+[ext_resource path="res://assets/sfx/slowdown.wav" type="AudioStream" id=16]
+[ext_resource path="res://assets/sfx/yes.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/sfx/splashy.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/sfx/mario_grow_sound.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/sfx/wingflap.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/sfx/menu_confirm.wav" type="AudioStream" id=21]
+[ext_resource path="res://assets/sfx/ui_cancel.wav" type="AudioStream" id=22]
+[ext_resource path="res://scripts/PlayerSmallInteractionArea.gd" type="Script" id=23]
+[ext_resource path="res://scripts/PlayerInteractionArea.gd" type="Script" id=24]
+[ext_resource path="res://objects/TextBox.tscn" type="PackedScene" id=25]
+[ext_resource path="res://assets/textures/playerportrait.png" type="Texture" id=26]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -94,133 +96,146 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 10 )
 far = 500.0
 
 [node name="Sounds" type="Spatial" parent="."]
-editor/display_folded = true
 
-[node name="LandSound" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="LandSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 6 )
-unit_size = 8.0
-max_db = 6.0
+volume_db = -5.0
 
-[node name="BumpSound" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="BumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 7 )
-unit_size = 10.0
+volume_db = -5.0
 
-[node name="FallSound" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="FallSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 8 )
-unit_size = 3.0
-max_db = 6.0
+volume_db = -10.0
 
-[node name="JumpSound" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="JumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 9 )
-unit_size = 7.0
-max_db = 6.0
+volume_db = -5.0
 
-[node name="DoubleJumpSound" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="DoubleJumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 10 )
+volume_db = -25.0
 
-[node name="StartChargeSound" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="StartChargeSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 11 )
-unit_size = 2.0
+volume_db = -20.0
 pitch_scale = 1.5
 
-[node name="FullyChargedSound" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="StartThrowChargeSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 12 )
-unit_size = 1.4
+volume_db = -10.0
+pitch_scale = 0.9
+
+[node name="FullyChargedSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 13 )
+volume_db = -20.0
 pitch_scale = 1.4
 
-[node name="WetJumpSound" type="AudioStreamPlayer3D" parent="Sounds"]
-stream = ExtResource( 13 )
-unit_size = 2.0
-
-[node name="WeakWetJumpSound" type="AudioStreamPlayer3D" parent="Sounds"]
-stream = SubResource( 2 )
-unit_size = 2.0
-pitch_scale = 0.5
-
-[node name="SlowDownSound" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="FullyChargedThrowSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 14 )
+volume_db = -10.0
+pitch_scale = 1.2
 
-[node name="ItemGetSound" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="WetJumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 15 )
-unit_size = 2.0
+volume_db = -20.0
 
-[node name="ErrorSound" type="AudioStreamPlayer3D" parent="Sounds"]
-stream = ExtResource( 10 )
-unit_size = 3.0
+[node name="WeakWetJumpSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = SubResource( 2 )
+volume_db = -15.0
 pitch_scale = 0.5
 
-[node name="SplashSound" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="SlowDownSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 16 )
-unit_size = 2.5
+volume_db = -20.0
 
-[node name="GrowthSound" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="ItemGetSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 17 )
-unit_size = 2.0
+volume_db = -15.0
 
-[node name="TripleJumpSound" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="ErrorSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 10 )
+volume_db = -25.0
+pitch_scale = 0.5
+
+[node name="SplashSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 18 )
-unit_size = 10.0
+volume_db = -17.0
 
-[node name="MenuOpenSound" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="GrowthSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 19 )
-unit_size = 5.0
+volume_db = -20.0
 
-[node name="MenuCloseSound" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="TripleJumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 20 )
-unit_size = 5.0
+
+[node name="MenuOpenSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 21 )
+volume_db = -15.0
+
+[node name="MenuCloseSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 22 )
+volume_db = -20.0
 
 [node name="SmallInteractionArea" type="Area" parent="." groups=[
 "player",
 ]]
-script = ExtResource( 21 )
+script = ExtResource( 23 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SmallInteractionArea"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0 )
 shape = SubResource( 3 )
 
 [node name="InteractionArea" type="Area" parent="."]
-script = ExtResource( 22 )
+editor/display_folded = true
+script = ExtResource( 24 )
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
 shape = SubResource( 4 )
 
 [node name="TextBoxes" type="Node" parent="."]
 
-[node name="ZoraDrownedTextContainer" parent="TextBoxes" instance=ExtResource( 23 )]
+[node name="ZoraDrownedTextContainer" parent="TextBoxes" instance=ExtResource( 25 )]
 bbText = "i guess i still
 can't swim THAT low"
-portrait = ExtResource( 24 )
+portrait = ExtResource( 26 )
 
-[node name="DrownedTextContainer" parent="TextBoxes" instance=ExtResource( 23 )]
+[node name="DrownedTextContainer" parent="TextBoxes" instance=ExtResource( 25 )]
 bbText = "guess i can't
 swim... yet."
-portrait = ExtResource( 24 )
+portrait = ExtResource( 26 )
 
-[node name="NeedNetTextContainer" parent="TextBoxes" instance=ExtResource( 23 )]
+[node name="NeedNetTextContainer" parent="TextBoxes" instance=ExtResource( 25 )]
 bbText = "I guess I need
 a net to catch that.."
-portrait = ExtResource( 24 )
+portrait = ExtResource( 26 )
 
-[node name="NeedToBeBigTextContainer" parent="TextBoxes" instance=ExtResource( 23 )]
+[node name="NeedToBeBigTextContainer" parent="TextBoxes" instance=ExtResource( 25 )]
 bbText = "I guess I'm not
 big or strong enough
 to pick that up"
-portrait = ExtResource( 24 )
+portrait = ExtResource( 26 )
 
-[node name="NeedToBeBigTextContainer2" parent="TextBoxes" instance=ExtResource( 23 )]
+[node name="NeedToBeBigTextContainer2" parent="TextBoxes" instance=ExtResource( 25 )]
 bbText = "I guess a heron
 this big needs a 
 bigger meal..."
-portrait = ExtResource( 24 )
+portrait = ExtResource( 26 )
 
-[node name="TripleJumpTextContainer" parent="TextBoxes" instance=ExtResource( 23 )]
+[node name="TripleJumpTextContainer" parent="TextBoxes" instance=ExtResource( 25 )]
 editor/display_folded = true
 bbText = "wow! now i can
 fly a little by 
 trying to jump a lot"
-portrait = ExtResource( 24 )
+portrait = ExtResource( 26 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/growth = SubResource( 5 )
+
+[node name="Listener" type="Listener" parent="."]
+current = true
+
+[editable path="TextBoxes/NeedNetTextContainer"]
 
 [editable path="TextBoxes/TripleJumpTextContainer"]
