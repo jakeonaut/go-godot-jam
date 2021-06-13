@@ -25,7 +25,7 @@ var numHerons = 0
 var numFish = 0
 var numBugs = 0
 var numMushrooms = 0
-var maxMushrooms = 8
+var maxMushrooms = 39
 var game_over = false
 var did_i_win = false
 
@@ -48,6 +48,7 @@ func _ready():
     if startTimer: pass
     if numHerons: pass
     if numBugs: pass
+    if numFish: pass
     if numMushrooms: pass
     if maxMushrooms: pass
     if nightfallTimer: pass
@@ -76,5 +77,6 @@ func loadGame():
     while not save_game.eof_reached():
         # ... ??? Is this because global.memory is stored on a single line? enigmatic..
         var current_line = parse_json(save_game.get_line())
+        if current_line: pass
         
     save_game.close()

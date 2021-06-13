@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/328120__kianda__powerup.wav-f2e91d4a74609921aef5c76860a9d1ef.sample"
+
+[deps]
+
+source_file="res://assets/sfx/328120__kianda__powerup.wav"
+dest_files=[ "res://.import/328120__kianda__powerup.wav-f2e91d4a74609921aef5c76860a9d1ef.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,7 +1,6 @@
 extends StaticBody
 
 onready var player = get_tree().get_root().get_node("level").get_node("Player")
-onready var textBoxContainer = get_node("TextContainer")
 onready var textBox = get_node("TextContainer").get_node("TextBox")
 onready var getMushroomSound = get_node("GetMushroomSound")
 
@@ -10,8 +9,8 @@ enum State {
     ZORA_FLIPPERS = 1,
     SPRINT_BOOTS = 2,
     BUG = 3,
-	MUSHROOM = 4,
-	LEGENDARY_UNDERWATER_SEAFISH = 5,
+    MUSHROOM = 4,
+    LEGENDARY_UNDERWATER_SEAFISH = 5,
 }
 
 export var state = State.BUG_NET

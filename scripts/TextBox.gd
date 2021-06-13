@@ -6,6 +6,9 @@ onready var abortSound = get_node("AbortSound")
 export(NodePath) var nextTextBoxPath = NodePath("")
 onready var player = get_tree().get_root().get_node("level").get_node("Player")
 
+var doubleClickTimer = 0
+var doubleClickTimeMax = 6
+
 var type = "textBox"
 
 func _ready():
@@ -18,6 +21,19 @@ func _input_event(camera, event, click_position, click_normal, shape_idx):
     and event.pressed:
         self.interact()
 
+    if shape_idx:
+        pass
+    if camera:
+        pass
+    if click_position:
+        pass
+    if click_normal:
+        pass
+
+func _process(delta):
+    if doubleClickTimer < doubleClickTimeMax:
+        doubleClickTimer += delta*22
+
         
 func InteractActivate():
     interact()
@@ -27,6 +43,7 @@ func interact():
     if !visible and dialogSound.isActive():
         text.get_v_scroll().value = 0
         self.show()
+        doubleClickTimer = 0
         dialogSound.play()
         dialogSound.activateScript()
         if has_node("Event"):
@@ -40,7 +57,7 @@ func interact():
         player.sprint_timer = 0
         player.walk_speed = 12
         player.just_tried_to_sprint = false
-    else:
+    elif doubleClickTimer >= doubleClickTimeMax:
         self.hide()
         global.pauseGame = false
         global.pauseMoveInput = false

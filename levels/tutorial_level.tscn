@@ -1,0 +1,317 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://objects/SunFish.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/music/dungeon.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/music/poisonforest.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/music/aftermidnight.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/music/midnight.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/music/chordloop002_coolarpsinE.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/fonts/Quirk.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://scripts/UIText.gd" type="Script" id=8]
+[ext_resource path="res://assets/darkwater.png" type="Texture" id=9]
+[ext_resource path="res://scripts/PauseMenuText.gd" type="Script" id=10]
+[ext_resource path="res://objects/Player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://materials/water.tres" type="Material" id=12]
+[ext_resource path="res://assets/water_normal_3.png" type="Texture" id=13]
+[ext_resource path="res://assets/textures/clouds.png" type="Texture" id=14]
+[ext_resource path="res://assets/textures/bricks.png" type="Texture" id=15]
+[ext_resource path="res://howto.png" type="Texture" id=16]
+[ext_resource path="res://objects/NPC.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/textures/npcportrait4.png" type="Texture" id=18]
+[ext_resource path="res://scripts/TutorialAbortSound.gd" type="Script" id=19]
+
+[sub_resource type="ProceduralSky" id=1]
+ground_bottom_color = Color( 0.290196, 0.498039, 0.941176, 1 )
+ground_horizon_color = Color( 0.607843, 0.337255, 0.835294, 1 )
+ground_energy = 2.6
+texture_size = 1
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_color = Color( 0.980392, 0.937255, 0.780392, 1 )
+ambient_light_energy = 0.9
+ambient_light_sky_contribution = 0.9
+
+[sub_resource type="Gradient" id=3]
+colors = PoolColorArray( 0, 0.558594, 0.0349121, 1, 0.522195, 0, 0.949219, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 14
+extra_spacing_char = 1
+extra_spacing_space = 2
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
+extra_spacing_char = 1
+extra_spacing_space = 2
+font_data = ExtResource( 7 )
+
+[sub_resource type="CubeMesh" id=11]
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 28.0235, 1, 12.1285 )
+
+[sub_resource type="CubeMesh" id=13]
+
+[sub_resource type="BoxShape" id=14]
+
+[sub_resource type="SpatialMaterial" id=16]
+flags_unshaded = true
+params_specular_mode = 4
+params_cull_mode = 2
+params_depth_draw_mode = 3
+params_billboard_keep_scale = true
+params_grow = true
+params_grow_amount = 0.0
+albedo_color = Color( 0.917647, 0.792157, 1, 1 )
+albedo_texture = ExtResource( 13 )
+
+[sub_resource type="CubeMesh" id=17]
+
+[sub_resource type="SpatialMaterial" id=20]
+flags_transparent = true
+albedo_texture = ExtResource( 14 )
+uv1_scale = Vector3( 6, 4, 1 )
+
+[sub_resource type="SpatialMaterial" id=23]
+albedo_texture = ExtResource( 15 )
+uv1_scale = Vector3( 1.33, 0.89, 3 )
+
+[sub_resource type="BoxShape" id=22]
+
+[sub_resource type="SpatialMaterial" id=24]
+flags_unshaded = true
+albedo_texture = ExtResource( 16 )
+uv1_scale = Vector3( 2.58, 1.97, 3 )
+uv1_offset = Vector3( 0.18, 0.09, 0 )
+
+[node name="level" type="Spatial"]
+
+[node name="sunfish" parent="." instance=ExtResource( 1 )]
+transform = Transform( -8.74228e-007, 0, -20, 0, 20, 0, 20, 0, -8.74228e-007, -41, 379, 268 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -28 )
+stream = ExtResource( 2 )
+unit_size = 100.0
+max_db = -15.0
+autoplay = true
+max_distance = 50.0
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -132, 5, -11 )
+stream = ExtResource( 3 )
+unit_size = 100.0
+max_db = -15.0
+autoplay = true
+max_distance = 50.0
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -95, 54, -120 )
+stream = ExtResource( 4 )
+unit_size = 100.0
+max_db = -15.0
+autoplay = true
+max_distance = 50.0
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -63, -4, 175 )
+stream = ExtResource( 5 )
+unit_size = 100.0
+max_db = -20.0
+autoplay = true
+max_distance = 50.0
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -63, -106, -17 )
+stream = ExtResource( 6 )
+unit_size = 100.0
+max_db = -20.0
+autoplay = true
+max_distance = 50.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+editor/display_folded = true
+margin_left = 15.0
+margin_top = 451.0
+margin_right = 628.0
+margin_bottom = 475.0
+texture = SubResource( 4 )
+expand = true
+
+[node name="Text" type="RichTextLabel" parent="TextureRect"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 617.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "nighttime: 5:00    herons: 0/5    fish: 1/20    bugs: 0/4    shrooms: 0/10"
+text = "nighttime: 5:00    herons: 0/5    fish: 1/20    bugs: 0/4    shrooms: 0/10"
+scroll_active = false
+script = ExtResource( 8 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 15.0
+margin_top = 21.0
+margin_right = 628.0
+margin_bottom = 426.0
+texture = ExtResource( 9 )
+expand = true
+
+[node name="Text" type="RichTextLabel" parent="TextureRect2"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 617.0
+margin_bottom = 393.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+bbcode_text = "nighttime: 5:00    herons: 0/5    fish: 1/20    bugs: 0/4    shrooms: 0/10"
+text = "nighttime: 5:00    herons: 0/5    fish: 1/20    bugs: 0/4    shrooms: 0/10"
+scroll_active = false
+script = ExtResource( 10 )
+
+[node name="Player" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 5 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.782701, -0.140057, 0.606435, -0.45699, 0.532155, 0.712721, -0.422539, -0.834982, 0.352513, 0, 15, 0 )
+light_energy = 0.5
+
+[node name="Map" type="Spatial" parent="."]
+
+[node name="OceanWater" type="Area" parent="Map" groups=[
+"water",
+]]
+transform = Transform( 10, 0, 0, 0, 40, 0, 0, 0, 20, 20, -40, 0 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Map/OceanWater"]
+transform = Transform( 28.024, -1.90735e-006, 0, 5.34516e-005, 1, 0, 0, 0, 12, -0.11963, -0.00642335, -0.00170202 )
+material_override = ExtResource( 12 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/OceanWater"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, -0.6 )
+shape = SubResource( 12 )
+
+[node name="Pool17" type="Area" parent="Map" groups=[
+"water",
+]]
+editor/display_folded = true
+transform = Transform( 1.41421, 0, 1.41421, 0, 1, 0, -1.41421, 0, 1.41421, -46, -11, 8 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Map/Pool17"]
+transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
+material_override = ExtResource( 12 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/Pool17"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, -0.6 )
+shape = SubResource( 14 )
+
+[node name="Pool16" type="Area" parent="Map" groups=[
+"water",
+]]
+transform = Transform( 4, 0, 0, 0, 2, 0, 0, 0, 4, -137, 44, -165 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Map/Pool16"]
+transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
+material_override = ExtResource( 12 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/Pool16"]
+shape = SubResource( 14 )
+
+[node name="Pool15" type="Area" parent="Map" groups=[
+"water",
+]]
+transform = Transform( 40, 0, 0, 0, 40, 0, 0, 0, 40, -66, -39, 181 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Map/Pool15"]
+transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
+material_override = SubResource( 16 )
+mesh = SubResource( 17 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/Pool15"]
+shape = SubResource( 14 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map"]
+transform = Transform( 10, 0, 0, 0, 8, 0, 0, 0, 10, -65.9223, 9, 175.997 )
+material_override = SubResource( 20 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="YellowIsland" type="Spatial" parent="Map"]
+
+[node name="YellowIsland4" type="StaticBody" parent="Map/YellowIsland"]
+transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 10, 0, -2, 13 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/YellowIsland/YellowIsland4"]
+material_override = SubResource( 23 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/YellowIsland4"]
+shape = SubResource( 22 )
+
+[node name="YellowIsland6" type="StaticBody" parent="Map/YellowIsland"]
+transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 10, 0, 7, 13 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/YellowIsland/YellowIsland6"]
+material_override = SubResource( 23 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/YellowIsland6"]
+shape = SubResource( 22 )
+
+[node name="YellowIsland5" type="StaticBody" parent="Map/YellowIsland"]
+transform = Transform( 10, 0, 0, 0, 1.5, -8.66025, 0, 2.59808, 5, 0, 4, -20 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/YellowIsland/YellowIsland5"]
+transform = Transform( -2, 1.05333e-014, -1.96295e-007, -7.8988e-008, 1.1963, 0.340024, 3.0106e-007, 0.0282482, -1.29599, -0.0554204, 3.58872, -0.011813 )
+material_override = SubResource( 24 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/YellowIsland5"]
+shape = SubResource( 22 )
+
+[node name="NPC" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 11, 20 )
+bbText = "press E
+to board the flight
+to summer islands!!!"
+
+[node name="NPC TextBox" parent="NPC" index="4"]
+editor/display_folded = false
+portrait = ExtResource( 18 )
+
+[node name="AbortSound" parent="NPC/NPC TextBox/TextBox" index="3"]
+script = ExtResource( 19 )
+
+[node name="Sprite3D" parent="NPC" index="5"]
+frame = 14
+max_frames = 1
+
+[editable path="Player"]
+
+[editable path="NPC"]
+
+[editable path="NPC/NPC TextBox"]

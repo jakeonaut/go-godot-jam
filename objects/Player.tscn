@@ -12,7 +12,7 @@
 [ext_resource path="res://assets/sfx/jumpcartoon.wav" type="AudioStream" id=10]
 [ext_resource path="res://assets/sfx/charge.wav" type="AudioStream" id=11]
 [ext_resource path="res://assets/sfx/charge2.wav" type="AudioStream" id=12]
-[ext_resource path="res://assets/sfx/fullycharged.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/sfx/okay.wav" type="AudioStream" id=13]
 [ext_resource path="res://assets/sfx/throwsound.wav" type="AudioStream" id=14]
 [ext_resource path="res://assets/sfx/wetjump.wav" type="AudioStream" id=15]
 [ext_resource path="res://assets/sfx/slowdown.wav" type="AudioStream" id=16]
@@ -96,6 +96,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 10 )
 far = 500.0
 
 [node name="Sounds" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="LandSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 6 )
@@ -111,11 +112,11 @@ volume_db = -10.0
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 9 )
-volume_db = -5.0
+volume_db = -14.0
 
 [node name="DoubleJumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 10 )
-volume_db = -25.0
+volume_db = -28.0
 
 [node name="StartChargeSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 11 )
@@ -124,26 +125,26 @@ pitch_scale = 1.5
 
 [node name="StartThrowChargeSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 12 )
-volume_db = -10.0
-pitch_scale = 0.9
+volume_db = -20.0
+pitch_scale = 1.1
 
 [node name="FullyChargedSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 13 )
-volume_db = -20.0
-pitch_scale = 1.4
+volume_db = -80.0
+pitch_scale = 1.2
 
 [node name="FullyChargedThrowSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 14 )
-volume_db = -10.0
+volume_db = -80.0
 pitch_scale = 1.2
 
 [node name="WetJumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 15 )
-volume_db = -20.0
+volume_db = -28.0
 
 [node name="WeakWetJumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = SubResource( 2 )
-volume_db = -15.0
+volume_db = -25.0
 pitch_scale = 0.5
 
 [node name="SlowDownSound" type="AudioStreamPlayer" parent="Sounds"]
@@ -152,7 +153,7 @@ volume_db = -20.0
 
 [node name="ItemGetSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 17 )
-volume_db = -15.0
+volume_db = -24.0
 
 [node name="ErrorSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 10 )
@@ -161,7 +162,7 @@ pitch_scale = 0.5
 
 [node name="SplashSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 18 )
-volume_db = -17.0
+volume_db = -28.0
 
 [node name="GrowthSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 19 )
@@ -169,6 +170,7 @@ volume_db = -20.0
 
 [node name="TripleJumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 20 )
+volume_db = -10.0
 
 [node name="MenuOpenSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 21 )
@@ -195,6 +197,7 @@ script = ExtResource( 24 )
 shape = SubResource( 4 )
 
 [node name="TextBoxes" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="ZoraDrownedTextContainer" parent="TextBoxes" instance=ExtResource( 25 )]
 bbText = "i guess i still

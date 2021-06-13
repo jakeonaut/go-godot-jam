@@ -9,6 +9,7 @@ func activateScript():
 	print("uh huh...")
 	player.getCamera().rotateXTo(-30, false, false)
 	player.getCamera().rotateTo(0, false, false)
+	player.has_unlimited_jumps = true
 	global.is_in_cutscene = false
 
 func isActive():

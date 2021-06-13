@@ -24,6 +24,10 @@ var am_i_big = true
 
 var is_being_eaten = false
 
+var was_recently_touching_water = true
+var was_recently_touching_water_timer = 0
+var was_recently_touching_water_time_max = 5
+
 func _ready():
     set_process(true)
     set_physics_process(true)
@@ -48,12 +52,21 @@ func _physics_process(delta):
 
     if self.repositionSelf(): return
 
-    if not was_touching_water and interactionArea.is_touching_water:
+    if not was_recently_touching_water and interactionArea.is_touching_water:
         splashSound.play()
     is_touching_water = interactionArea.is_touching_water
     .processPhysics(delta)
     if not has_initially_landed and on_ground:
         has_initially_landed = true
+
+    if interactionArea.is_touching_water:
+        was_recently_touching_water = true
+        was_recently_touching_water_timer = 0
+    elif was_recently_touching_water:
+        was_recently_touching_water_timer += (delta*22)
+        if was_recently_touching_water_timer >= was_recently_touching_water_time_max:
+            was_recently_touching_water = false
+            was_recently_touching_water_timer = 0
 
 func repositionSelf():
     if is_held:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=2]
+[gd_scene load_steps=106 format=2]
 
 [ext_resource path="res://scripts/level.gd" type="Script" id=1]
 [ext_resource path="res://objects/SunFish.tscn" type="PackedScene" id=2]
@@ -6,47 +6,53 @@
 [ext_resource path="res://assets/music/poisonforest.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/music/aftermidnight.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/music/midnight.wav" type="AudioStream" id=6]
-[ext_resource path="res://assets/fonts/Quirk.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://scripts/UIText.gd" type="Script" id=8]
-[ext_resource path="res://scripts/PauseMenuText.gd" type="Script" id=9]
-[ext_resource path="res://objects/Item.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/sprites/gruesomecreatures0.png" type="Texture" id=11]
-[ext_resource path="res://assets/sfx/aurora.wav" type="AudioStream" id=12]
-[ext_resource path="res://scripts/BugItem.gd" type="Script" id=13]
-[ext_resource path="res://objects/TextBox.tscn" type="PackedScene" id=14]
-[ext_resource path="res://assets/textures/playerportrait.png" type="Texture" id=15]
-[ext_resource path="res://scripts/BugAbortSound.gd" type="Script" id=16]
-[ext_resource path="res://scripts/BugNetItem.gd" type="Script" id=17]
-[ext_resource path="res://scripts/ZoraFlippersItem.gd" type="Script" id=18]
-[ext_resource path="res://scripts/ZoraFlippersAbortSound.gd" type="Script" id=19]
-[ext_resource path="res://objects/Player.tscn" type="PackedScene" id=20]
-[ext_resource path="res://objects/NPC.tscn" type="PackedScene" id=21]
-[ext_resource path="res://assets/textures/npcportrait.png" type="Texture" id=22]
-[ext_resource path="res://scripts/NPC1AbortSound.gd" type="Script" id=23]
-[ext_resource path="res://assets/textures/npccatportrait.png" type="Texture" id=24]
-[ext_resource path="res://scripts/NPC5AbortSound.gd" type="Script" id=25]
-[ext_resource path="res://objects/ThrowableObject.tscn" type="PackedScene" id=26]
-[ext_resource path="res://scripts/BigThrowableObject.gd" type="Script" id=27]
-[ext_resource path="res://objects/Heron.tscn" type="PackedScene" id=28]
-[ext_resource path="res://materials/water.tres" type="Material" id=29]
-[ext_resource path="res://assets/water_normal_3.png" type="Texture" id=30]
-[ext_resource path="res://assets/textures/clouds.png" type="Texture" id=31]
-[ext_resource path="res://assets/textures/yellowgrassfloor.png" type="Texture" id=32]
-[ext_resource path="res://materials/EnvironmentSprite.tres" type="Material" id=33]
-[ext_resource path="res://assets/sprites/tallyellowgrass.png" type="Texture" id=34]
-[ext_resource path="res://scripts/Sprite.gd" type="Script" id=35]
-[ext_resource path="res://assets/sprites/yellowgrass.png" type="Texture" id=36]
-[ext_resource path="res://assets/textures/bricks.png" type="Texture" id=37]
-[ext_resource path="res://assets/textures/smallbricks.png" type="Texture" id=38]
-[ext_resource path="res://assets/textures/GIRLBRICK.png" type="Texture" id=39]
-[ext_resource path="res://assets/textures/tree_trunk_small_brown.png" type="Texture" id=40]
-[ext_resource path="res://materials/treetopbrown.tres" type="Material" id=41]
-[ext_resource path="res://objects/Tree.tscn" type="PackedScene" id=42]
-[ext_resource path="res://assets/textures/tree_top_brown.png" type="Texture" id=43]
-[ext_resource path="res://materials/treetopgreen.tres" type="Material" id=44]
-[ext_resource path="res://assets/textures/multigrass.png" type="Texture" id=45]
-[ext_resource path="res://assets/textures/leaves.png" type="Texture" id=46]
-[ext_resource path="res://assets/textures/redgrassfloor.png" type="Texture" id=47]
+[ext_resource path="res://assets/music/chordloop002_coolarpsinE.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/fonts/Quirk.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://scripts/UIText.gd" type="Script" id=9]
+[ext_resource path="res://assets/darkwater.png" type="Texture" id=10]
+[ext_resource path="res://scripts/PauseMenuText.gd" type="Script" id=11]
+[ext_resource path="res://objects/Item.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/sprites/gruesomecreatures0.png" type="Texture" id=13]
+[ext_resource path="res://assets/sfx/aurora.wav" type="AudioStream" id=14]
+[ext_resource path="res://scripts/BugItem.gd" type="Script" id=15]
+[ext_resource path="res://objects/TextBox.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/textures/playerportrait.png" type="Texture" id=17]
+[ext_resource path="res://scripts/BugAbortSound.gd" type="Script" id=18]
+[ext_resource path="res://scripts/BugNetItem.gd" type="Script" id=19]
+[ext_resource path="res://scripts/ZoraFlippersItem.gd" type="Script" id=20]
+[ext_resource path="res://scripts/ZoraFlippersAbortSound.gd" type="Script" id=21]
+[ext_resource path="res://objects/Player.tscn" type="PackedScene" id=22]
+[ext_resource path="res://objects/NPC.tscn" type="PackedScene" id=23]
+[ext_resource path="res://assets/textures/npcportrait.png" type="Texture" id=24]
+[ext_resource path="res://scripts/NPC1AbortSound.gd" type="Script" id=25]
+[ext_resource path="res://assets/textures/npccatportrait.png" type="Texture" id=26]
+[ext_resource path="res://assets/sfx/MM_OldLady_Oh.wav" type="AudioStream" id=27]
+[ext_resource path="res://assets/sfx/sm64_spotted_by_goomba.wav" type="AudioStream" id=28]
+[ext_resource path="res://assets/sfx/MM_OldLady_Sigh.wav" type="AudioStream" id=29]
+[ext_resource path="res://scripts/ElderCatAbortSound.gd" type="Script" id=30]
+[ext_resource path="res://assets/textures/npccatportrait2.png" type="Texture" id=31]
+[ext_resource path="res://objects/ThrowableObject.tscn" type="PackedScene" id=32]
+[ext_resource path="res://scripts/BigThrowableObject.gd" type="Script" id=33]
+[ext_resource path="res://objects/Heron.tscn" type="PackedScene" id=34]
+[ext_resource path="res://materials/water.tres" type="Material" id=35]
+[ext_resource path="res://assets/water_normal_3.png" type="Texture" id=36]
+[ext_resource path="res://assets/textures/clouds.png" type="Texture" id=37]
+[ext_resource path="res://assets/textures/yellowgrassfloor.png" type="Texture" id=38]
+[ext_resource path="res://materials/EnvironmentSprite.tres" type="Material" id=39]
+[ext_resource path="res://assets/sprites/tallyellowgrass.png" type="Texture" id=40]
+[ext_resource path="res://scripts/Sprite.gd" type="Script" id=41]
+[ext_resource path="res://assets/sprites/yellowgrass.png" type="Texture" id=42]
+[ext_resource path="res://assets/textures/bricks.png" type="Texture" id=43]
+[ext_resource path="res://assets/textures/smallbricks.png" type="Texture" id=44]
+[ext_resource path="res://assets/textures/GIRLBRICK.png" type="Texture" id=45]
+[ext_resource path="res://assets/textures/tree_trunk_small_brown.png" type="Texture" id=46]
+[ext_resource path="res://materials/treetopbrown.tres" type="Material" id=47]
+[ext_resource path="res://objects/Tree.tscn" type="PackedScene" id=48]
+[ext_resource path="res://assets/textures/tree_top_brown.png" type="Texture" id=49]
+[ext_resource path="res://materials/treetopgreen.tres" type="Material" id=50]
+[ext_resource path="res://assets/textures/multigrass.png" type="Texture" id=51]
+[ext_resource path="res://assets/textures/leaves.png" type="Texture" id=52]
+[ext_resource path="res://assets/textures/redgrassfloor.png" type="Texture" id=53]
 
 [sub_resource type="ProceduralSky" id=1]
 ground_bottom_color = Color( 0.290196, 0.498039, 0.941176, 1 )
@@ -71,15 +77,18 @@ gradient = SubResource( 3 )
 size = 14
 extra_spacing_char = 1
 extra_spacing_space = 2
-font_data = ExtResource( 7 )
+font_data = ExtResource( 8 )
 
 [sub_resource type="DynamicFont" id=6]
-size = 18
+size = 24
 extra_spacing_char = 1
 extra_spacing_space = 2
-font_data = ExtResource( 7 )
+font_data = ExtResource( 8 )
 
 [sub_resource type="SphereShape" id=7]
+
+[sub_resource type="SphereShape" id=52]
+radius = 3.0
 
 [sub_resource type="BoxShape" id=8]
 extents = Vector3( 3, 3, 3 )
@@ -113,40 +122,38 @@ params_billboard_keep_scale = true
 params_grow = true
 params_grow_amount = 0.0
 albedo_color = Color( 0.917647, 0.792157, 1, 1 )
-albedo_texture = ExtResource( 30 )
+albedo_texture = ExtResource( 36 )
 
 [sub_resource type="CubeMesh" id=17]
 
-[sub_resource type="SpatialMaterial" id=18]
+[sub_resource type="CubeMesh" id=18]
+size = Vector3( 2, 0.5, 2 )
+
+[sub_resource type="BoxShape" id=19]
+extents = Vector3( 1, 0.2, 1 )
+
+[sub_resource type="SpatialMaterial" id=20]
 flags_transparent = true
-albedo_texture = ExtResource( 31 )
+albedo_texture = ExtResource( 37 )
 uv1_scale = Vector3( 6, 4, 1 )
-
-[sub_resource type="SpatialMaterial" id=19]
-albedo_texture = ExtResource( 32 )
-uv1_scale = Vector3( 6, 4, 1 )
-
-[sub_resource type="BoxShape" id=20]
 
 [sub_resource type="SpatialMaterial" id=21]
+albedo_texture = ExtResource( 38 )
+uv1_scale = Vector3( 6, 4, 1 )
+
+[sub_resource type="BoxShape" id=22]
+
+[sub_resource type="SpatialMaterial" id=23]
 flags_transparent = true
 flags_unshaded = true
 params_billboard_mode = 2
 
-[sub_resource type="SpatialMaterial" id=22]
-albedo_texture = ExtResource( 32 )
+[sub_resource type="SpatialMaterial" id=24]
+albedo_texture = ExtResource( 38 )
 uv1_scale = Vector3( 7.27, 4.33, 1 )
 
-[sub_resource type="SpatialMaterial" id=23]
-albedo_texture = ExtResource( 37 )
-uv1_scale = Vector3( 3, 7, 1 )
-
-[sub_resource type="CubeMesh" id=24]
-material = SubResource( 23 )
-size = Vector3( 1.5, 6, 1.5 )
-
 [sub_resource type="SpatialMaterial" id=25]
-albedo_texture = ExtResource( 38 )
+albedo_texture = ExtResource( 43 )
 uv1_scale = Vector3( 3, 7, 1 )
 
 [sub_resource type="CubeMesh" id=26]
@@ -154,7 +161,7 @@ material = SubResource( 25 )
 size = Vector3( 1.5, 6, 1.5 )
 
 [sub_resource type="SpatialMaterial" id=27]
-albedo_texture = ExtResource( 39 )
+albedo_texture = ExtResource( 44 )
 uv1_scale = Vector3( 3, 7, 1 )
 
 [sub_resource type="CubeMesh" id=28]
@@ -162,83 +169,91 @@ material = SubResource( 27 )
 size = Vector3( 1.5, 6, 1.5 )
 
 [sub_resource type="SpatialMaterial" id=29]
-albedo_texture = ExtResource( 40 )
+albedo_texture = ExtResource( 45 )
 uv1_scale = Vector3( 3, 7, 1 )
 
 [sub_resource type="CubeMesh" id=30]
 material = SubResource( 29 )
 size = Vector3( 1.5, 6, 1.5 )
 
-[sub_resource type="CubeMesh" id=31]
-material = ExtResource( 41 )
-size = Vector3( 4, 4, 4 )
-
-[sub_resource type="BoxShape" id=32]
-extents = Vector3( 2, 2, 2 )
-
-[sub_resource type="CubeMesh" id=33]
-material = ExtResource( 41 )
-size = Vector3( 4, 4, 4 )
-
-[sub_resource type="SpatialMaterial" id=34]
-albedo_texture = ExtResource( 40 )
+[sub_resource type="SpatialMaterial" id=31]
+albedo_texture = ExtResource( 46 )
 uv1_scale = Vector3( 3, 7, 1 )
 
-[sub_resource type="CubeMesh" id=35]
-material = SubResource( 34 )
+[sub_resource type="CubeMesh" id=32]
+material = SubResource( 31 )
 size = Vector3( 1.5, 6, 1.5 )
 
+[sub_resource type="CubeMesh" id=33]
+material = ExtResource( 47 )
+size = Vector3( 4, 4, 4 )
+
+[sub_resource type="BoxShape" id=34]
+extents = Vector3( 2, 2, 2 )
+
+[sub_resource type="CubeMesh" id=35]
+material = ExtResource( 47 )
+size = Vector3( 4, 4, 4 )
+
 [sub_resource type="SpatialMaterial" id=36]
-albedo_texture = ExtResource( 43 )
-uv1_scale = Vector3( 3, 2, 1 )
+albedo_texture = ExtResource( 46 )
+uv1_scale = Vector3( 3, 7, 1 )
 
 [sub_resource type="CubeMesh" id=37]
 material = SubResource( 36 )
-size = Vector3( 4, 4, 4 )
+size = Vector3( 1.5, 6, 1.5 )
 
-[sub_resource type="BoxShape" id=38]
-extents = Vector3( 2, 2, 2 )
-
-[sub_resource type="CubeMesh" id=39]
-material = ExtResource( 44 )
-size = Vector3( 4, 4, 4 )
-
-[sub_resource type="CubeMesh" id=40]
-material = ExtResource( 44 )
-size = Vector3( 4, 4, 4 )
-
-[sub_resource type="BoxShape" id=41]
-
-[sub_resource type="SpatialMaterial" id=42]
-albedo_texture = ExtResource( 45 )
-uv1_scale = Vector3( 6, 4, 1 )
-
-[sub_resource type="SpatialMaterial" id=43]
-albedo_texture = ExtResource( 46 )
-uv1_scale = Vector3( 6, 4, 1 )
-
-[sub_resource type="SpatialMaterial" id=44]
-albedo_texture = ExtResource( 46 )
+[sub_resource type="SpatialMaterial" id=38]
+albedo_texture = ExtResource( 49 )
 uv1_scale = Vector3( 3, 2, 1 )
 
+[sub_resource type="CubeMesh" id=39]
+material = SubResource( 38 )
+size = Vector3( 4, 4, 4 )
+
+[sub_resource type="BoxShape" id=40]
+extents = Vector3( 2, 2, 2 )
+
+[sub_resource type="CubeMesh" id=41]
+material = ExtResource( 50 )
+size = Vector3( 4, 4, 4 )
+
+[sub_resource type="CubeMesh" id=42]
+material = ExtResource( 50 )
+size = Vector3( 4, 4, 4 )
+
+[sub_resource type="BoxShape" id=43]
+
+[sub_resource type="SpatialMaterial" id=44]
+albedo_texture = ExtResource( 51 )
+uv1_scale = Vector3( 6, 4, 1 )
+
 [sub_resource type="SpatialMaterial" id=45]
-albedo_texture = ExtResource( 47 )
+albedo_texture = ExtResource( 52 )
 uv1_scale = Vector3( 6, 4, 1 )
 
 [sub_resource type="SpatialMaterial" id=46]
-flags_transparent = true
-albedo_texture = ExtResource( 31 )
-uv1_scale = Vector3( 6, 4, 1 )
-
-[sub_resource type="SpatialMaterial" id=47]
-albedo_texture = ExtResource( 47 )
+albedo_texture = ExtResource( 52 )
 uv1_scale = Vector3( 3, 2, 1 )
 
-[sub_resource type="CubeMesh" id=48]
+[sub_resource type="SpatialMaterial" id=47]
+albedo_texture = ExtResource( 53 )
+uv1_scale = Vector3( 6, 4, 1 )
+
+[sub_resource type="SpatialMaterial" id=49]
+albedo_texture = ExtResource( 53 )
+uv1_scale = Vector3( 3, 2, 1 )
+
+[sub_resource type="CubeMesh" id=50]
 size = Vector3( 1, 2, 1 )
 
-[sub_resource type="BoxShape" id=49]
+[sub_resource type="BoxShape" id=51]
 extents = Vector3( 0.5, 1, 0.5 )
+
+[sub_resource type="SpatialMaterial" id=48]
+flags_transparent = true
+albedo_texture = ExtResource( 37 )
+uv1_scale = Vector3( 6, 4, 1 )
 
 [node name="level" type="Spatial"]
 script = ExtResource( 1 )
@@ -250,7 +265,7 @@ transform = Transform( -8.74228e-007, 0, -20, 0, 20, 0, 20, 0, -8.74228e-007, -4
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -28 )
 stream = ExtResource( 3 )
 unit_size = 100.0
-max_db = -10.0
+max_db = -15.0
 autoplay = true
 max_distance = 50.0
 
@@ -258,7 +273,7 @@ max_distance = 50.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -132, 5, -11 )
 stream = ExtResource( 4 )
 unit_size = 100.0
-max_db = -10.0
+max_db = -15.0
 autoplay = true
 max_distance = 50.0
 
@@ -266,13 +281,29 @@ max_distance = 50.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -95, 54, -120 )
 stream = ExtResource( 5 )
 unit_size = 100.0
-max_db = -10.0
+max_db = -15.0
+autoplay = true
+max_distance = 50.0
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -95, 170, -72 )
+stream = ExtResource( 5 )
+unit_size = 100.0
+max_db = -15.0
 autoplay = true
 max_distance = 50.0
 
 [node name="AudioStreamPlayer4" type="AudioStreamPlayer3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -63, -4, 175 )
 stream = ExtResource( 6 )
+unit_size = 100.0
+max_db = -20.0
+autoplay = true
+max_distance = 50.0
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -63, -106, -17 )
+stream = ExtResource( 7 )
 unit_size = 100.0
 max_db = -20.0
 autoplay = true
@@ -302,15 +333,14 @@ bbcode_enabled = true
 bbcode_text = "nighttime: 5:00    herons: 0/5    fish: 1/20    bugs: 0/4    shrooms: 0/10"
 text = "nighttime: 5:00    herons: 0/5    fish: 1/20    bugs: 0/4    shrooms: 0/10"
 scroll_active = false
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-editor/display_folded = true
 margin_left = 15.0
 margin_top = 21.0
 margin_right = 628.0
 margin_bottom = 426.0
-texture = SubResource( 4 )
+texture = ExtResource( 10 )
 expand = true
 
 [node name="Text" type="RichTextLabel" parent="TextureRect2"]
@@ -325,16 +355,16 @@ bbcode_enabled = true
 bbcode_text = "nighttime: 5:00    herons: 0/5    fish: 1/20    bugs: 0/4    shrooms: 0/10"
 text = "nighttime: 5:00    herons: 0/5    fish: 1/20    bugs: 0/4    shrooms: 0/10"
 scroll_active = false
-script = ExtResource( 9 )
+script = ExtResource( 11 )
 
-[node name="Item3" parent="." instance=ExtResource( 10 )]
+[node name="Item3" parent="." instance=ExtResource( 12 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -67, -23, 188 )
 state = 5
 
 [node name="Sprite3D" parent="Item3" index="1"]
 pixel_size = 0.1
-texture = ExtResource( 11 )
+texture = ExtResource( 13 )
 hframes = 4
 frame = 9
 
@@ -345,46 +375,62 @@ wait... what's
 happening???"
 
 [node name="DialogSound" parent="Item3/TextContainer/TextBox" index="2"]
-stream = ExtResource( 12 )
+stream = ExtResource( 14 )
 
 [node name="Mushrooms" type="Spatial" parent="."]
 
-[node name="Item" parent="Mushrooms" instance=ExtResource( 10 )]
+[node name="Item" parent="Mushrooms" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 6.48542, -35 )
 state = 4
 
 [node name="TextContainer" parent="Mushrooms/Item" index="3"]
 bbText = "cool! a mushroom!"
 
-[node name="Item3" parent="Mushrooms" instance=ExtResource( 10 )]
+[node name="Item3" parent="Mushrooms" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 16.4854, -23 )
 state = 4
 
-[node name="Item9" parent="Mushrooms" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3.48542, -33 )
-state = 4
-
-[node name="Item11" parent="Mushrooms" instance=ExtResource( 10 )]
+[node name="Item11" parent="Mushrooms" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 3.48542, -41 )
 state = 4
 
-[node name="Item15" parent="Mushrooms" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.48542, -38 )
+[node name="Item36" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 20.4854, -36 )
 state = 4
 
-[node name="Item12" parent="Mushrooms" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.48542, -54 )
+[node name="Item37" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 20.4854, -48 )
 state = 4
 
-[node name="Item13" parent="Mushrooms" instance=ExtResource( 10 )]
+[node name="Item38" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 20.4854, -48 )
+state = 4
+
+[node name="Item39" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 20.4854, -36 )
+state = 4
+
+[node name="Item15" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.48542, -40 )
+state = 4
+
+[node name="Item12" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.48542, -54 )
+state = 4
+
+[node name="Item24" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.48542, -55 )
+state = 4
+
+[node name="Item13" parent="Mushrooms" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.48542, -79 )
 state = 4
 
-[node name="Item14" parent="Mushrooms" instance=ExtResource( 10 )]
+[node name="Item14" parent="Mushrooms" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.485416, -70 )
 state = 4
 
-[node name="Item2" parent="Mushrooms" instance=ExtResource( 10 )]
+[node name="Item2" parent="Mushrooms" instance=ExtResource( 12 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 7.34293, -12 )
 state = 4
@@ -392,79 +438,127 @@ state = 4
 [node name="TextContainer" parent="Mushrooms/Item2" index="3"]
 bbText = "cool! a mushroom!"
 
-[node name="Item4" parent="Mushrooms" instance=ExtResource( 10 )]
+[node name="Item4" parent="Mushrooms" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -113, 5.94613, -10 )
 state = 4
 
 [node name="TextContainer" parent="Mushrooms/Item4" index="3"]
 bbText = "cool! a mushroom!"
 
-[node name="Item21" parent="Mushrooms" instance=ExtResource( 10 )]
+[node name="Item21" parent="Mushrooms" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 10.9461, -14 )
 state = 4
 
-[node name="Item22" parent="Mushrooms" instance=ExtResource( 10 )]
+[node name="Item22" parent="Mushrooms" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -126, 13.9461, -20 )
 state = 4
 
-[node name="Item23" parent="Mushrooms" instance=ExtResource( 10 )]
+[node name="Item23" parent="Mushrooms" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -120, 15.7038, -21.0706 )
 state = 4
 
-[node name="Item5" parent="Mushrooms" instance=ExtResource( 10 )]
+[node name="Item5" parent="Mushrooms" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -46, -9.45853, 7 )
 state = 4
 
 [node name="TextContainer" parent="Mushrooms/Item5" index="3"]
 bbText = "cool! a mushroom!"
 
-[node name="Item16" parent="Mushrooms" instance=ExtResource( 10 )]
+[node name="Item16" parent="Mushrooms" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -53, -7.45853, 2 )
 state = 4
 
-[node name="Item17" parent="Mushrooms" instance=ExtResource( 10 )]
+[node name="Item17" parent="Mushrooms" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -64, -5.45853, -2 )
 state = 4
 
-[node name="Item18" parent="Mushrooms" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76, -1.45853, -7 )
+[node name="Item18" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76, -0.458533, -7 )
 state = 4
 
-[node name="Item19" parent="Mushrooms" instance=ExtResource( 10 )]
+[node name="Item19" parent="Mushrooms" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -86, 0.541467, -3 )
 state = 4
 
-[node name="Item20" parent="Mushrooms" instance=ExtResource( 10 )]
+[node name="Item20" parent="Mushrooms" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -101, 5.54147, -8 )
 state = 4
 
-[node name="Item6" parent="Mushrooms" instance=ExtResource( 10 )]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -126, 5.94613, 40 )
+[node name="Item6" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 9.94613, 82 )
 state = 4
 
 [node name="TextContainer" parent="Mushrooms/Item6" index="3"]
 bbText = "cool! a mushroom!"
 
-[node name="Item7" parent="Mushrooms" instance=ExtResource( 10 )]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 9.9461, 54 )
+[node name="Item29" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 11.9461, 85 )
+state = 4
+
+[node name="Item30" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59, 13.9461, 91 )
+state = 4
+
+[node name="Item31" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 16.9461, 91 )
+state = 4
+
+[node name="Item7" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 12.9461, 58 )
 state = 4
 
 [node name="TextContainer" parent="Mushrooms/Item7" index="3"]
 bbText = "cool! a mushroom!"
 
-[node name="Item8" parent="Mushrooms" instance=ExtResource( 10 )]
+[node name="Item28" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 12.9461, 67 )
+state = 4
+
+[node name="Item9" parent="Mushrooms" instance=ExtResource( 12 )]
 editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 8.9461, 48 )
+state = 4
+
+[node name="Item25" parent="Mushrooms" instance=ExtResource( 12 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 9.9461, 35 )
+state = 4
+
+[node name="Item26" parent="Mushrooms" instance=ExtResource( 12 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 6.60222, 24 )
+state = 4
+
+[node name="Item27" parent="Mushrooms" instance=ExtResource( 12 )]
+editor/display_folded = true
+transform = Transform( 0.55138, 0.822651, -0.138653, 0.541865, -0.479521, -0.690248, -0.634321, 0.305458, -0.710164, -55, 3.60222, 17 )
+state = 4
+
+[node name="Item8" parent="Mushrooms" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -129, 11.9461, -27 )
 state = 4
 
 [node name="TextContainer" parent="Mushrooms/Item8" index="3"]
 bbText = "cool! a mushroom!"
 
-[node name="Item10" parent="Mushrooms" instance=ExtResource( 10 )]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -79, 32.9461, -90 )
+[node name="Item32" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -129, -8.0539, -27 )
+state = 4
+
+[node name="Item33" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -129, -17.0539, -9 )
+state = 4
+
+[node name="Item34" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -129, -13.0539, -17 )
+state = 4
+
+[node name="Item35" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -128, -22.0539, -3 )
+state = 4
+
+[node name="Item10" parent="Mushrooms" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 61.9461, -120 )
 state = 4
 
 [node name="CollisionShape" parent="Mushrooms/Item10" index="0"]
@@ -472,17 +566,21 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 shape = SubResource( 7 )
 
 [node name="Sprite3D" parent="Mushrooms/Item10" index="1"]
-pixel_size = 0.07
+pixel_size = 0.2
+
+[node name="CollisionShape2" parent="Mushrooms/Item10/InteractionArea" index="0"]
+shape = SubResource( 52 )
 
 [node name="TextContainer" parent="Mushrooms/Item10" index="3"]
 bbText = "cool! a mushroom!"
 
-[node name="buggie" parent="." instance=ExtResource( 10 )]
+[node name="buggie" parent="." instance=ExtResource( 12 )]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 4, -59 )
-script = ExtResource( 13 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -30, 4, -59 )
+script = ExtResource( 15 )
 
 [node name="Sprite3D" parent="buggie" index="1"]
+pixel_size = 0.05
 frame = 4
 
 [node name="TextContainer" parent="buggie" index="3"]
@@ -491,22 +589,21 @@ bbText = "wow cool!
 a rare hercules 
 fairy beetle!"
 
-[node name="TextContainer2" parent="buggie" instance=ExtResource( 14 )]
+[node name="TextContainer2" parent="buggie" instance=ExtResource( 16 )]
 bbText = "now I can
 double jump!"
-portrait = ExtResource( 15 )
+portrait = ExtResource( 17 )
 
 [node name="AbortSound" parent="buggie/TextContainer2/TextBox" index="3"]
-script = ExtResource( 16 )
+script = ExtResource( 18 )
 
-[node name="buggie2" parent="." instance=ExtResource( 10 )]
+[node name="buggie2" parent="." instance=ExtResource( 12 )]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -139, 12.8202, 26 )
-script = ExtResource( 13 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59, 21.8202, 84.731 )
+script = ExtResource( 15 )
 
 [node name="Sprite3D" parent="buggie2" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.017683, 0 )
-pixel_size = 0.025
 frame = 6
 
 [node name="TextContainer" parent="buggie2" index="3"]
@@ -516,12 +613,12 @@ venomous bug worm!
 are stronger!!"
 
 [node name="AbortSound" parent="buggie2/TextContainer/TextBox" index="3"]
-script = ExtResource( 16 )
+script = ExtResource( 18 )
 
-[node name="buggie3" parent="." instance=ExtResource( 10 )]
+[node name="buggie3" parent="." instance=ExtResource( 12 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -146, 41.1207, -14 )
-script = ExtResource( 13 )
+script = ExtResource( 15 )
 
 [node name="Sprite3D" parent="buggie3" index="1"]
 pixel_size = 0.06
@@ -533,19 +630,18 @@ bbText = "ah, just a common
 wisteria smiling
 dragonfly.."
 
-[node name="TextContainer2" parent="buggie3" instance=ExtResource( 14 )]
+[node name="TextContainer2" parent="buggie3" instance=ExtResource( 16 )]
 bbText = "now hover as i fall
 by holding down
 the jump button!"
-portrait = ExtResource( 15 )
+portrait = ExtResource( 17 )
 
 [node name="AbortSound" parent="buggie3/TextContainer2/TextBox" index="3"]
-script = ExtResource( 16 )
+script = ExtResource( 18 )
 
-[node name="buggie4" parent="." instance=ExtResource( 10 )]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -128.953, -14.9682, -26 )
-script = ExtResource( 13 )
+[node name="buggie4" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -128.953, -28.9682, 0 )
+script = ExtResource( 15 )
 
 [node name="Sprite3D" parent="buggie4" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -559,12 +655,12 @@ I can move faster
 in water!"
 
 [node name="AbortSound" parent="buggie4/TextContainer/TextBox" index="3"]
-script = ExtResource( 16 )
+script = ExtResource( 18 )
 
-[node name="BugNet" parent="." instance=ExtResource( 10 )]
+[node name="BugNet" parent="." instance=ExtResource( 12 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3, -7 )
-script = ExtResource( 17 )
+script = ExtResource( 19 )
 
 [node name="Sprite3D" parent="BugNet" index="1"]
 frame = 0
@@ -574,9 +670,9 @@ bbText = "uh, so that guy
 wanted me to 
 talk to him?"
 
-[node name="SprintShoes" parent="." instance=ExtResource( 10 )]
+[node name="SprintShoes" parent="." instance=ExtResource( 12 )]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 23, -1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 33, -1 )
 state = 2
 
 [node name="Sprite3D" parent="SprintShoes" index="1"]
@@ -588,9 +684,10 @@ bbText = "cool shoes!
 i bet i can run
 fast now!"
 
-[node name="ZoraFlippers" parent="." instance=ExtResource( 10 )]
+[node name="ZoraFlippers" parent="." instance=ExtResource( 12 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 22, -23 )
-script = ExtResource( 18 )
+script = ExtResource( 20 )
 
 [node name="Sprite3D" parent="ZoraFlippers" index="1"]
 pixel_size = 0.045
@@ -603,13 +700,14 @@ by pressing or holding
 jump in the water"
 
 [node name="AbortSound" parent="ZoraFlippers/TextContainer/TextBox" index="3"]
-script = ExtResource( 19 )
+script = ExtResource( 21 )
 
-[node name="Player" parent="." instance=ExtResource( 20 )]
+[node name="Player" parent="." instance=ExtResource( 22 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
 
-[node name="NPC" parent="." instance=ExtResource( 21 )]
+[node name="NPC" parent="." instance=ExtResource( 23 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.07504, -2 )
 nextTextBoxPath = NodePath("TextContainer")
 bbText = "hey! welcome to summer islands!
@@ -621,233 +719,290 @@ editor/display_folded = true
 [node name="SmallInteractionArea" parent="NPC" index="2"]
 editor/display_folded = true
 
-[node name="TextContainer" parent="NPC" instance=ExtResource( 14 )]
+[node name="TextContainer" parent="NPC" instance=ExtResource( 16 )]
 editor/display_folded = true
 bbText = "grab that fish net,
 & then come talk to me"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
 [node name="AbortSound" parent="NPC/TextContainer/TextBox" index="3"]
-script = ExtResource( 23 )
+script = ExtResource( 25 )
 
-[node name="TextContainerTeachJump" parent="NPC" instance=ExtResource( 14 )]
+[node name="TextContainerTeachJump" parent="NPC" instance=ExtResource( 16 )]
 nextTextBoxPath = NodePath("../TextContainerTeachJump2")
 bbText = "oh yeah, you can
 press \"WASD\"
 to run around"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="TextContainerTeachJump2" parent="NPC" instance=ExtResource( 14 )]
+[node name="TextContainerTeachJump2" parent="NPC" instance=ExtResource( 16 )]
 bbText = "and press \"space\"
 to jump!!!!"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="TextContainerTeachJump3" parent="NPC" instance=ExtResource( 14 )]
+[node name="TextContainerTeachJump3" parent="NPC" instance=ExtResource( 16 )]
 bbText = "oh, before I forget!
 ROTATE the CAMERA
 use the arrow keys
 or mouse"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="TextContainerPostFish" parent="NPC" instance=ExtResource( 14 )]
+[node name="TextContainerPostFish" parent="NPC" instance=ExtResource( 16 )]
 nextTextBoxPath = NodePath("../TextContainerPostFish2")
 bbText = "not quite...
 use the arrow keys
 or mouse to turn
 the camera"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="TextContainerPostFish2" parent="NPC" instance=ExtResource( 14 )]
+[node name="TextContainerPostFish2" parent="NPC" instance=ExtResource( 16 )]
 bbText = "and throw the fish
 while looking at the 
 heron!"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="TextContainer2" parent="NPC" instance=ExtResource( 14 )]
+[node name="TextContainer2" parent="NPC" instance=ExtResource( 16 )]
 editor/display_folded = true
 nextTextBoxPath = NodePath("../TextContainer3")
 bbText = "good job! now you
 can catch fish!!"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="TextContainer3" parent="NPC" instance=ExtResource( 14 )]
+[node name="TextContainer3" parent="NPC" instance=ExtResource( 16 )]
 bbText = "to catch a fish, just 
 \"press E\" or \"click\"
 when you're nearby!"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="TextContainer4" parent="NPC" instance=ExtResource( 14 )]
+[node name="TextContainer4" parent="NPC" instance=ExtResource( 16 )]
 nextTextBoxPath = NodePath("../TextContainer5")
 bbText = "good job! 
 .... now \"press E\" or \"click\"
 again to throw it."
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="TextContainer5" parent="NPC" instance=ExtResource( 14 )]
+[node name="TextContainer5" parent="NPC" instance=ExtResource( 16 )]
 bbText = "please feed it
 to that heron baby
 over there.."
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="TextContainer6" parent="NPC" instance=ExtResource( 14 )]
+[node name="TextContainer6" parent="NPC" instance=ExtResource( 16 )]
 bbText = "if you get stuck...
 to remember controls,
 and take a break.
 press ENTER to pause"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="TextContainerPostHeronBaby" parent="NPC" instance=ExtResource( 14 )]
+[node name="TextContainerPostHeronBaby" parent="NPC" instance=ExtResource( 16 )]
 nextTextBoxPath = NodePath("../TextContainerPostHeronBaby2")
 bbText = "he's all grown up..
 let him fly you 
 somewhere!"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="TextContainerPostHeronBaby2" parent="NPC" instance=ExtResource( 14 )]
+[node name="TextContainerPostHeronBaby2" parent="NPC" instance=ExtResource( 16 )]
 bbText = "every heron you grow
 will take you to
 a new location.."
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="TextContainerPostHeronGrowth" parent="NPC" instance=ExtResource( 14 )]
+[node name="TextContainerPostHeronGrowth" parent="NPC" instance=ExtResource( 16 )]
 nextTextBoxPath = NodePath("../TextContainerPostHeronGrowth2")
 bbText = "please, before you
 go off exploring..."
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="TextContainerPostHeronGrowth2" parent="NPC" instance=ExtResource( 14 )]
+[node name="TextContainerPostHeronGrowth2" parent="NPC" instance=ExtResource( 16 )]
 nextTextBoxPath = NodePath("../TextContainerPostHeronGrowth3")
 bbText = "go speak to
 our elder! 
 she knows the
 QUEST."
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="TextContainerPostHeronGrowth3" parent="NPC" instance=ExtResource( 14 )]
-nextTextBoxPath = NodePath("../TextContainerPostHeronGrowth4")
+[node name="TextContainerPostHeronGrowth3" parent="NPC" instance=ExtResource( 16 )]
 bbText = "she is the cat
 on the highest 
 tree of this island"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="TextContainerPostHeronGrowth4" parent="NPC" instance=ExtResource( 14 )]
+[node name="TextContainerPostHeronGrowth4" parent="NPC" instance=ExtResource( 16 )]
 bbText = "to get to her
 feed the other
 heron :)"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="NPC2" parent="." instance=ExtResource( 21 )]
+[node name="NPC2" parent="." instance=ExtResource( 23 )]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 24.075, -43 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 25.075, -43 )
 nextTextBoxPath = NodePath("TextContainer")
 bbText = "do you wish to know
 the secret of
 summer islands?"
-portrait = ExtResource( 24 )
+portrait = ExtResource( 26 )
 
 [node name="CollisionShape" parent="NPC2" index="0"]
 transform = Transform( 0.8, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0 )
 shape = SubResource( 8 )
 
+[node name="CollisionShape" parent="NPC2/InteractionArea" index="0"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 2, 1 )
+
+[node name="CollisionShape" parent="NPC2/SmallInteractionArea" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 1.94208, 1.0497 )
+
 [node name="NPC TextBox" parent="NPC2" index="4"]
 nextTextBoxPath = NodePath("../TextContainer")
-portrait = ExtResource( 24 )
+portrait = ExtResource( 26 )
+
+[node name="DialogSound" parent="NPC2/NPC TextBox/TextBox" index="2"]
+stream = ExtResource( 27 )
 
 [node name="Sprite3D" parent="NPC2" index="5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0748, 1.4697 )
 pixel_size = 0.05
 frame = 0
 
-[node name="TextContainer" parent="NPC2" instance=ExtResource( 14 )]
+[node name="TextContainer" parent="NPC2" instance=ExtResource( 16 )]
 nextTextBoxPath = NodePath("../TextContainer2")
-bbText = "well.. let me tell you
-.....
-.......
-....."
-portrait = ExtResource( 24 )
-
-[node name="TextContainer2" parent="NPC2" instance=ExtResource( 14 )]
-nextTextBoxPath = NodePath("../TextContainer3")
 bbText = "i know many things,
 strange and unknown
 to these naive
 summer island pups "
-portrait = ExtResource( 24 )
+portrait = ExtResource( 26 )
 
-[node name="TextContainer3" parent="NPC2" instance=ExtResource( 14 )]
-nextTextBoxPath = NodePath("../TextContainer4")
-bbText = "anyway, in order to get
-to the top of heron 
-mountain, you must
-first collect 4 bugs"
-portrait = ExtResource( 24 )
+[node name="TextContainer2" parent="NPC2" instance=ExtResource( 16 )]
+nextTextBoxPath = NodePath("../TextContainer3")
+bbText = "tonight is the night
+that the wrathful sea
+heron god will rise
+from the ocean depths"
+portrait = ExtResource( 26 )
 
-[node name="TextContainer4" parent="NPC2" instance=ExtResource( 14 )]
-nextTextBoxPath = NodePath("../TextContainer5")
-bbText = "this will give you
-limited flight!! a very
-powerful tool indeed."
-portrait = ExtResource( 24 )
-
-[node name="TextContainer5" parent="NPC2" instance=ExtResource( 14 )]
-nextTextBoxPath = NodePath("../TextContainer6")
-bbText = "then, you must collect
-9 hidden
-mushrooms"
-portrait = ExtResource( 24 )
-
-[node name="TextContainer6" parent="NPC2" instance=ExtResource( 14 )]
-nextTextBoxPath = NodePath("../TextContainer7")
-bbText = "this will allow you to
-harvest their power
-spores. growing into
-a GIANT!!"
-portrait = ExtResource( 24 )
-
-[node name="TextContainer7" parent="NPC2" instance=ExtResource( 14 )]
-nextTextBoxPath = NodePath("../TextContainer8")
-bbText = "only with these powers
-can you reach the top
-to find the fabled
-mountain heron."
-portrait = ExtResource( 24 )
-
-[node name="TextContainer8" parent="NPC2" instance=ExtResource( 14 )]
-bbText = "then, our islands
-can truly be saved
-from the wrath of
-our gods.."
-portrait = ExtResource( 24 )
-
-[node name="NPC5" parent="." instance=ExtResource( 21 )]
+[node name="TextContainer3" parent="NPC2" instance=ExtResource( 16 )]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 16.075, -2 )
+nextTextBoxPath = NodePath("../TextContainer4")
+bbText = "if 5 heron babies
+are not well fed...
+he will sink the islands
+we call home!!!"
+portrait = ExtResource( 26 )
+
+[node name="TextBox" parent="NPC2/TextContainer3" index="0"]
+margin_bottom = 253.0
+
+[node name="Text" parent="NPC2/TextContainer3/TextBox" index="1"]
+margin_right = 621.0
+margin_bottom = 275.0
+bbcode_text = "if 5 heron babies
+are not well fed...
+he will sink the islands
+we call home!!!	"
+text = "if 5 heron babies
+are not well fed...
+he will sink the islands
+we call home!!!	"
+
+[node name="DialogSound" parent="NPC2/TextContainer3/TextBox" index="2"]
+stream = ExtResource( 28 )
+pitch_scale = 0.5
+
+[node name="TextContainer4" parent="NPC2" instance=ExtResource( 16 )]
+editor/display_folded = true
+nextTextBoxPath = NodePath("../TextContainer5")
+bbText = "please adventurer,
+your QUEST is to
+feed all 5 heron babes"
+portrait = ExtResource( 26 )
+
+[node name="DialogSound" parent="NPC2/TextContainer4/TextBox" index="2"]
+stream = ExtResource( 29 )
+volume_db = -17.0
+
+[node name="TextContainer5" parent="NPC2" instance=ExtResource( 16 )]
+bbText = "BUGS and 
+MUSHROOMS will
+help you on your 
+QUEST."
+portrait = ExtResource( 26 )
+
+[node name="AbortSound" parent="NPC2/TextContainer5/TextBox" index="3"]
+script = ExtResource( 30 )
+
+[node name="TextContainer6" parent="NPC2" instance=ExtResource( 16 )]
+nextTextBoxPath = NodePath("../TextContainer7")
+bbText = "you have already fed
+the 2 on YELLOW
+ISLAND"
+portrait = ExtResource( 26 )
+
+[node name="TextContainer7" parent="NPC2" instance=ExtResource( 16 )]
+nextTextBoxPath = NodePath("../TextContainer8")
+bbText = "two more remain 
+in FOREST ISLANDS"
+portrait = ExtResource( 26 )
+
+[node name="TextContainer8" parent="NPC2" instance=ExtResource( 16 )]
+bbText = "the fifth heron lives
+on top of RED MOUNTAIN
+ISLAND"
+portrait = ExtResource( 26 )
+
+[node name="NPC13" parent="." instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -103, 21.075, -102 )
+nextTextBoxPath = NodePath("TextContainer")
+bbText = "if you haven't found
+the last bug...
+try searching underwater"
+portrait = ExtResource( 31 )
+
+[node name="CollisionShape" parent="NPC13" index="0"]
+transform = Transform( 0.8, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape" parent="NPC13/InteractionArea" index="0"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 2, 1 )
+
+[node name="CollisionShape" parent="NPC13/SmallInteractionArea" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 1.94208, 1.0497 )
+
+[node name="NPC TextBox" parent="NPC13" index="4"]
+editor/display_folded = false
+nextTextBoxPath = NodePath("../TextContainer")
+portrait = ExtResource( 31 )
+
+[node name="Sprite3D" parent="NPC13" index="5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0748, 1.4697 )
+pixel_size = 0.05
+frame = 2
+frame_delay = 0.8
+
+[node name="TextContainer" parent="NPC13" instance=ExtResource( 16 )]
+bbText = "you will need 39 total
+mushrooms to feed
+the final heron!"
+portrait = ExtResource( 31 )
+
+[node name="NPC5" parent="." instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 17.075, -2 )
 bbText = "with those boots
-you can sprint fast
-if you hold down
-the \"F\" button!"
+you can run fast!
+jumps will go farther
+too!"
 
 [node name="NPC TextBox" parent="NPC5" index="4"]
 editor/display_folded = false
 nextTextBoxPath = NodePath("../TextContainer2")
 
-[node name="TextContainer2" parent="NPC5" instance=ExtResource( 14 )]
+[node name="TextContainer2" parent="NPC5" instance=ExtResource( 16 )]
 bbText = "you can use this skill
 to jump to new
 islands you couldn't
 reach before"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="AbortSound" parent="NPC5/TextContainer2/TextBox" index="3"]
-script = ExtResource( 25 )
-
-[node name="TextContainer" parent="NPC5" instance=ExtResource( 14 )]
-bbText = ".oh, but don't
-accidentally talk
-to me instead.."
-portrait = ExtResource( 22 )
-
-[node name="NPC4" parent="." instance=ExtResource( 21 )]
+[node name="NPC4" parent="." instance=ExtResource( 23 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -127, 5.07504, -9 )
 bbText = "i can't get up to that
 platform...
@@ -857,14 +1012,21 @@ jump?"
 [node name="NPC TextBox" parent="NPC4" index="4"]
 nextTextBoxPath = NodePath("../TextContainer")
 
-[node name="TextContainer" parent="NPC4" instance=ExtResource( 14 )]
+[node name="TextContainer" parent="NPC4" instance=ExtResource( 16 )]
 bbText = "I heard a rare hercules 
 beetle from yellow
 island can grant such
 powers"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="NPC3" parent="." instance=ExtResource( 21 )]
+[node name="NPC11" parent="." instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -143, 28.075, -15 )
+bbText = "i keep trying to jump
+up here,, but I
+guess it's just too
+high... sorry"
+
+[node name="NPC3" parent="." instance=ExtResource( 23 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -87, 4.8178, -83 )
 bbText = "heron mountain,,.
@@ -880,14 +1042,14 @@ editor/display_folded = true
 [node name="NPC TextBox" parent="NPC3" index="4"]
 nextTextBoxPath = NodePath("../TextContainer")
 
-[node name="TextContainer" parent="NPC3" instance=ExtResource( 14 )]
+[node name="TextContainer" parent="NPC3" instance=ExtResource( 16 )]
 bbText = "but maybe... if
 someone could gain
 the powers of all 
 4 bugs.."
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="NPC7" parent="." instance=ExtResource( 21 )]
+[node name="NPC7" parent="." instance=ExtResource( 23 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 8.8178, -16 )
 bbText = "forest island over there,
 has many treasures
@@ -902,46 +1064,55 @@ editor/display_folded = true
 [node name="SoftPassiveInteractionArea" parent="NPC7" index="3"]
 editor/display_folded = true
 
-[node name="TextContainer" parent="NPC7" instance=ExtResource( 14 )]
+[node name="TextContainer" parent="NPC7" instance=ExtResource( 16 )]
 bbText = "!but make sure
 you talk to our
 elder first!"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
-[node name="NPC8" parent="." instance=ExtResource( 21 )]
+[node name="NPC8" parent="." instance=ExtResource( 23 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -78, 2.8178, 14 )
 bbText = "i can't get over to that
-weird cat.. perhaps i 
-just don't have the
-powers i need yet.."
+island.. maybe if 
+i had some cool new
+SPRINT SHOES"
 
-[node name="NPC10" parent="." instance=ExtResource( 21 )]
+[node name="NPC12" parent="." instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -103, 6.8178, -15 )
+bbText = "do you see that heron
+up in the tree top?
+look up with DOWN
+or mouse"
+
+[node name="NPC10" parent="." instance=ExtResource( 23 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.8178, -82 )
+nextTextBoxPath = NodePath("TextContainer")
 bbText = "remember, you can
 move the camera
 with arrow keys
-or mouse! :)"
+or mouse!"
 
-[node name="NPC9" parent="." instance=ExtResource( 21 )]
+[node name="TextContainer" parent="NPC10" instance=ExtResource( 16 )]
+bbText = "sometimes looking
+UP and DOWN
+can help you get
+a better look"
+portrait = ExtResource( 24 )
+
+[node name="NPC9" parent="." instance=ExtResource( 23 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45, -0.1822, 1 )
 bbText = "hey... there's cool stuff
 underwater. if you
 let yourself sink"
 
-[node name="NPC6" parent="." instance=ExtResource( 21 )]
+[node name="NPC6" parent="." instance=ExtResource( 23 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 3.2978, -53 )
 bbText = "they say if you
 find all four bugs
 something amazing
 happens"
 
-[node name="NPC11" parent="." instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 4.2978, -41 )
-bbText = "i guess to get up
-to this tree top.
-i gotta fly a heron!"
-
-[node name="UnderwaterNPC" parent="." instance=ExtResource( 21 )]
+[node name="UnderwaterNPC" parent="." instance=ExtResource( 23 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -136, -8.925, -33.0174 )
 nextTextBoxPath = NodePath("../UnderwaterNPC/TextContainer")
 bbText = "ah, I see you're
@@ -949,112 +1120,138 @@ looking for the
 legendary underwater
 sea fish"
 
-[node name="UnderwaterTextContainer" parent="UnderwaterNPC" instance=ExtResource( 14 )]
+[node name="UnderwaterTextContainer" parent="UnderwaterNPC" instance=ExtResource( 16 )]
 bbText = "so the legends are true...
 this should make
 your quest easier"
-portrait = ExtResource( 22 )
+portrait = ExtResource( 24 )
 
 [node name="fishies" type="Spatial" parent="."]
 
-[node name="fish0" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish0" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7073, 3.43104, -4.00499 )
 
 [node name="Sprite3D" parent="fishies/fish0" index="0"]
 frame = 18
 
-[node name="fish21" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish21" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2927, 3.43104, -14.005 )
 
-[node name="fish24" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish24" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7073, 7.43104, -55.005 )
 
-[node name="fish1" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish1" parent="fishies" instance=ExtResource( 32 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -109, 0.146533, 8 )
 
 [node name="Sprite3D" parent="fishies/fish1" index="0"]
 frame = 0
 
-[node name="fish15" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish15" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.573576, -109.903, 3.14653, -45.2646 )
 
-[node name="fish4" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish4" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -112, -2.85347, 11 )
 
-[node name="fish17" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish17" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.573576, -114.082, 0.146533, -46.0013 )
 
-[node name="fish22" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish22" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.573576, -124.082, -8.85347, -41.0013 )
 
-[node name="fish5" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish5" parent="fishies" instance=ExtResource( 32 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -119, -1.85347, 10 )
 
 [node name="Sprite3D" parent="fishies/fish5" index="0"]
 frame = 18
 
-[node name="fish16" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish16" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.573576, -117.277, 1.14653, -52.309 )
 
-[node name="fish6" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish6" parent="fishies" instance=ExtResource( 32 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -125, -3.85347, 12 )
 
 [node name="Sprite3D" parent="fishies/fish6" index="0"]
 frame = 0
 
-[node name="fish7" parent="fishies" instance=ExtResource( 26 )]
-editor/display_folded = true
+[node name="fish7" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -134.865, 0.265043, 8.251 )
 
 [node name="Sprite3D" parent="fishies/fish7" index="0"]
 frame = 16
 
-[node name="fish8" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish35" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.865, 29.265, 89.251 )
+
+[node name="fish36" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.865, 0.265043, 134.251 )
+
+[node name="fish43" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38.865, 0.265043, 136.251 )
+
+[node name="fish37" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -53.865, 0.265043, 129.251 )
+
+[node name="fish38" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.865, 0.265043, 137.251 )
+
+[node name="fish39" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -65.865, 0.265043, 134.251 )
+
+[node name="fish40" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -75.865, 0.265043, 130.251 )
+
+[node name="fish41" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -85.865, 0.265043, 134.251 )
+
+[node name="fish42" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -93.865, 0.265043, 129.251 )
+
+[node name="fish8" parent="fishies" instance=ExtResource( 32 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -134.865, 0.265043, 10.251 )
 
 [node name="Sprite3D" parent="fishies/fish8" index="0"]
 frame = 10
 
-[node name="fish23" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish23" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -142.865, 10.265, -24.749 )
 
-[node name="fish9" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish9" parent="fishies" instance=ExtResource( 32 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -136.865, 0.265043, 9.251 )
 
 [node name="Sprite3D" parent="fishies/fish9" index="0"]
 frame = 2
 
-[node name="fish10" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish10" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -140.865, -2.73496, 3.251 )
 
-[node name="fish11" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish11" parent="fishies" instance=ExtResource( 32 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -142.865, -5.73496, -3.749 )
 
 [node name="Sprite3D" parent="fishies/fish11" index="0"]
 frame = 2
 
-[node name="fish12" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish12" parent="fishies" instance=ExtResource( 32 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -145.865, -5.73496, -0.749 )
 
 [node name="Sprite3D" parent="fishies/fish12" index="0"]
 frame = 10
 
-[node name="fish13" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish13" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -144.865, -3.73496, -9.749 )
 
-[node name="fish18" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish18" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -144.865, -3.73496, -43.749 )
 
-[node name="fish14" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish14" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -153.865, -6.73496, 19.251 )
-script = ExtResource( 27 )
+script = ExtResource( 33 )
 
 [node name="Sprite3D" parent="fishies/fish14" index="0"]
 pixel_size = 0.32
@@ -1063,29 +1260,31 @@ frame = 16
 [node name="CollisionShape" parent="fishies/fish14/InteractionArea" index="0"]
 shape = SubResource( 9 )
 
-[node name="fish20" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish20" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -46.865, -6.73496, 19.251 )
 
-[node name="fish28" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish28" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.865, -7.73496, 23.251 )
 
-[node name="fish27" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish27" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44.865, -9.73496, 15.251 )
 
-[node name="fish19" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish19" parent="fishies" instance=ExtResource( 32 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -192.865, -17.735, -103.749 )
 
-[node name="fish26" parent="fishies" instance=ExtResource( 26 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -136.865, 48.265, -163.749 )
-script = ExtResource( 27 )
+[node name="fish26" parent="fishies" instance=ExtResource( 32 )]
+editor/display_folded = true
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -136.865, 82.265, -163.749 )
+script = ExtResource( 33 )
 
 [node name="Sprite3D" parent="fishies/fish26" index="0"]
 pixel_size = 0.32
 
-[node name="fish25" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish25" parent="fishies" instance=ExtResource( 32 )]
+editor/display_folded = true
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -61.865, -21.735, 201.251 )
-script = ExtResource( 27 )
+script = ExtResource( 33 )
 
 [node name="Sprite3D" parent="fishies/fish25" index="0"]
 pixel_size = 0.24
@@ -1093,55 +1292,115 @@ pixel_size = 0.24
 [node name="CollisionShape" parent="fishies/fish25/InteractionArea" index="0"]
 shape = SubResource( 10 )
 
-[node name="fish31" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish31" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -79.865, -32.735, 183.251 )
-script = ExtResource( 27 )
+script = ExtResource( 33 )
 
 [node name="Sprite3D" parent="fishies/fish31" index="0"]
 pixel_size = 0.2
 
-[node name="fish32" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish44" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -79.865, 1.265, 157.251 )
+script = ExtResource( 33 )
+
+[node name="Sprite3D" parent="fishies/fish44" index="0"]
+pixel_size = 0.24
+
+[node name="fish45" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -62.865, 1.265, 147.251 )
+script = ExtResource( 33 )
+
+[node name="Sprite3D" parent="fishies/fish45" index="0"]
+pixel_size = 0.16
+
+[node name="fish46" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -49.865, 1.265, 155.251 )
+script = ExtResource( 33 )
+
+[node name="Sprite3D" parent="fishies/fish46" index="0"]
+pixel_size = 0.16
+
+[node name="fish47" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -38.865, 1.265, 150.251 )
+script = ExtResource( 33 )
+
+[node name="Sprite3D" parent="fishies/fish47" index="0"]
+pixel_size = 0.16
+
+[node name="fish48" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -38.865, -15.735, 128.251 )
+script = ExtResource( 33 )
+
+[node name="Sprite3D" parent="fishies/fish48" index="0"]
+pixel_size = 0.16
+
+[node name="fish49" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -48.865, -10.735, 135.251 )
+script = ExtResource( 33 )
+
+[node name="Sprite3D" parent="fishies/fish49" index="0"]
+pixel_size = 0.16
+
+[node name="fish50" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -71.865, -16.735, 138.251 )
+script = ExtResource( 33 )
+
+[node name="Sprite3D" parent="fishies/fish50" index="0"]
+pixel_size = 0.16
+
+[node name="fish51" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -93.865, -29.735, 138.251 )
+script = ExtResource( 33 )
+
+[node name="Sprite3D" parent="fishies/fish51" index="0"]
+pixel_size = 0.16
+
+[node name="fish52" parent="fishies" instance=ExtResource( 32 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -56.865, -39.735, 132.251 )
+script = ExtResource( 33 )
+
+[node name="fish32" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -76.865, -25.735, 191.251 )
-script = ExtResource( 27 )
+script = ExtResource( 33 )
 
 [node name="Sprite3D" parent="fishies/fish32" index="0"]
 pixel_size = 0.2
 
-[node name="fish33" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish33" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -53.865, -28.735, 191.251 )
-script = ExtResource( 27 )
+script = ExtResource( 33 )
 
 [node name="Sprite3D" parent="fishies/fish33" index="0"]
 pixel_size = 0.2
 
-[node name="fish34" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish34" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -61.865, -35.735, 195.251 )
-script = ExtResource( 27 )
+script = ExtResource( 33 )
 
-[node name="fish29" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish29" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -73.865, -27.735, 201.251 )
-script = ExtResource( 27 )
+script = ExtResource( 33 )
 
 [node name="Sprite3D" parent="fishies/fish29" index="0"]
 pixel_size = 0.2
 
-[node name="fish30" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish30" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -48.865, -30.735, 204.251 )
-script = ExtResource( 27 )
+script = ExtResource( 33 )
 
 [node name="Sprite3D" parent="fishies/fish30" index="0"]
 pixel_size = 0.2
 
-[node name="fish2" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish2" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -114, 0.185934, 10 )
 
 [node name="Sprite3D" parent="fishies/fish2" index="0"]
 frame = 2
 
-[node name="fish3" parent="fishies" instance=ExtResource( 26 )]
+[node name="fish3" parent="fishies" instance=ExtResource( 32 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -111, -1.79107, 13 )
 
-[node name="heronbaby" parent="." instance=ExtResource( 28 )]
+[node name="heronbaby" parent="." instance=ExtResource( 34 )]
 transform = Transform( 0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, 0, 3, -14 )
 collision_layer = 4
 
@@ -1151,32 +1410,29 @@ transform = Transform( 1, 0, 2.98023e-008, 0, 1, 0, -2.98023e-008, 0, 1, -1.8753
 [node name="InteractionArea" parent="heronbaby" index="4"]
 editor/display_folded = true
 
-[node name="heronbaby3" parent="." instance=ExtResource( 28 )]
+[node name="heronbaby3" parent="." instance=ExtResource( 34 )]
 transform = Transform( 0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, -5.5911, 3, -46 )
 collision_layer = 4
 
 [node name="Target" parent="heronbaby3" index="0"]
 transform = Transform( 1, 0, 2.98023e-008, 0, 1, 0, -2.98023e-008, 0, 1, -8.38281, 33, 17.7688 )
 
-[node name="heronbaby4" parent="." instance=ExtResource( 28 )]
-editor/display_folded = true
+[node name="heronbaby4" parent="." instance=ExtResource( 34 )]
 transform = Transform( 0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, -108.461, 18.276, -20.91 )
 collision_layer = 4
 
 [node name="Target" parent="heronbaby4" index="0"]
-transform = Transform( 1, 0, 2.98023e-008, 0, 1, 0, -2.98023e-008, 0, 1, 20.0841, 12, 42.9608 )
+transform = Transform( 1, 0, 2.98023e-008, 0, 1, 0, -2.98023e-008, 0, 1, 20.0841, 20, 42.9608 )
 
-[node name="heronbaby6" parent="." instance=ExtResource( 28 )]
-editor/display_folded = true
-transform = Transform( 0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, -130.541, 17.0487, 27.1605 )
+[node name="heronbaby6" parent="." instance=ExtResource( 34 )]
+transform = Transform( 0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, -52.541, 22.0487, 75.1605 )
 collision_layer = 4
 
 [node name="Target" parent="heronbaby6" index="0"]
-transform = Transform( 1, 0, 2.98023e-008, 0, 1, 0, -2.98023e-008, 0, 1, 10.5139, 28, -42.0887 )
+transform = Transform( 1, 0, 2.98023e-008, 0, 1, 0, -2.98023e-008, 0, 1, -15.3196, 28, -126.425 )
 
-[node name="heronbaby5" parent="." instance=ExtResource( 28 )]
-editor/display_folded = true
-transform = Transform( 2.29813, 0, 1.92836, 0, 3, 0, -1.92836, 0, 2.29813, -84, 56.276, -120 )
+[node name="heronbaby5" parent="." instance=ExtResource( 34 )]
+transform = Transform( 3.06418, 0, 2.57115, 0, 4, 0, -2.57115, 0, 3.06418, -94, 161.276, -74 )
 collision_layer = 4
 am_i_big = true
 
@@ -1192,12 +1448,11 @@ light_energy = 0.5
 [node name="OceanWater" type="Area" parent="Map" groups=[
 "water",
 ]]
-editor/display_folded = true
 transform = Transform( 10, 0, 0, 0, 40, 0, 0, 0, 20, 20, -40, 0 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/OceanWater"]
-transform = Transform( 28.024, -1.90735e-006, 0, 5.34516e-005, 1, 0, 0, 0, 12, 0.00103807, -0.00153196, -0.000495243 )
-material_override = ExtResource( 29 )
+transform = Transform( 28.024, -1.90735e-006, 0, 5.34516e-005, 1, 0, 0, 0, 12, -0.11963, -0.00642335, -0.00170202 )
+material_override = ExtResource( 35 )
 mesh = SubResource( 11 )
 material/0 = null
 
@@ -1213,7 +1468,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2, -5 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/Pool1"]
 transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
-material_override = ExtResource( 29 )
+material_override = ExtResource( 35 )
 mesh = SubResource( 13 )
 material/0 = null
 
@@ -1229,7 +1484,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2, -5 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/Pool2"]
 transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
-material_override = ExtResource( 29 )
+material_override = ExtResource( 35 )
 mesh = SubResource( 13 )
 material/0 = null
 
@@ -1245,7 +1500,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2, -3 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/Pool3"]
 transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
-material_override = ExtResource( 29 )
+material_override = ExtResource( 35 )
 mesh = SubResource( 13 )
 material/0 = null
 
@@ -1260,7 +1515,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2, -3 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/Pool4"]
 transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
-material_override = ExtResource( 29 )
+material_override = ExtResource( 35 )
 mesh = SubResource( 13 )
 material/0 = null
 
@@ -1276,7 +1531,7 @@ transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, -3, 4, -56 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/Pool11"]
 transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
-material_override = ExtResource( 29 )
+material_override = ExtResource( 35 )
 mesh = SubResource( 13 )
 material/0 = null
 
@@ -1292,7 +1547,7 @@ transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, -1, 4, -54 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/Pool12"]
 transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
-material_override = ExtResource( 29 )
+material_override = ExtResource( 35 )
 mesh = SubResource( 13 )
 material/0 = null
 
@@ -1308,7 +1563,7 @@ transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, -3, 4, -54 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/Pool13"]
 transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
-material_override = ExtResource( 29 )
+material_override = ExtResource( 35 )
 mesh = SubResource( 13 )
 material/0 = null
 
@@ -1324,7 +1579,7 @@ transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, -1, 4, -56 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/Pool14"]
 transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
-material_override = ExtResource( 29 )
+material_override = ExtResource( 35 )
 mesh = SubResource( 13 )
 material/0 = null
 
@@ -1340,7 +1595,7 @@ transform = Transform( 1.41421, 0, 1.41421, 0, 1, 0, -1.41421, 0, 1.41421, -46, 
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/Pool17"]
 transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
-material_override = ExtResource( 29 )
+material_override = ExtResource( 35 )
 mesh = SubResource( 13 )
 material/0 = null
 
@@ -1351,17 +1606,17 @@ shape = SubResource( 14 )
 [node name="Pool5" type="Area" parent="Map" groups=[
 "water",
 ]]
-transform = Transform( 3, 0, 0, 0, 10, 0, 0, 0, 3, -129, 2, -27 )
+transform = Transform( 2.9, 0, 0, 0, 10, 0, 0, 0, 2.9, -129, 2, -27 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/Pool5"]
 transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0.238339, 0 )
-material_override = ExtResource( 29 )
+material_override = ExtResource( 35 )
 mesh = SubResource( 15 )
 material/0 = null
 
 [node name="MeshInstance3" type="MeshInstance" parent="Map/Pool5"]
-transform = Transform( 1, -4.76838e-007, 0, 1.90735e-006, 0.25, 0, 0, 0, 1, 0, -1.93475, 0 )
-material_override = ExtResource( 29 )
+transform = Transform( 1, -4.76838e-007, 0, 1.90735e-006, 0.25, 0, 0, 0, 1, 0, -3.33475, 9.31034 )
+material_override = ExtResource( 35 )
 mesh = SubResource( 15 )
 material/0 = null
 
@@ -1371,15 +1626,113 @@ shape = SubResource( 14 )
 [node name="Pool16" type="Area" parent="Map" groups=[
 "water",
 ]]
-transform = Transform( 4, 0, 0, 0, 2, 0, 0, 0, 4, -137, 44, -165 )
+transform = Transform( 4, 0, 0, 0, 2, 0, 0, 0, 4, -137, 78, -165 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/Pool16"]
 transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
-material_override = ExtResource( 29 )
+material_override = ExtResource( 35 )
 mesh = SubResource( 13 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/Pool16"]
+shape = SubResource( 14 )
+
+[node name="Pool22" type="Area" parent="Map" groups=[
+"water",
+]]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 6, -123, 106, -165 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Map/Pool22"]
+transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
+material_override = ExtResource( 35 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/Pool22"]
+shape = SubResource( 14 )
+
+[node name="Pool23" type="Area" parent="Map" groups=[
+"water",
+]]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 6, -75, 134, -118 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Map/Pool23"]
+transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
+material_override = ExtResource( 35 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/Pool23"]
+shape = SubResource( 14 )
+
+[node name="Pool24" type="Area" parent="Map" groups=[
+"water",
+]]
+transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 6, -107, 151, -118 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Map/Pool24"]
+transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
+material_override = ExtResource( 35 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/Pool24"]
+shape = SubResource( 14 )
+
+[node name="Pool18" type="Area" parent="Map" groups=[
+"water",
+]]
+transform = Transform( 2.45746, 0, -1.72073, 0, 3, 0, 1.72073, 0, 2.45746, -105, 13, -95 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Map/Pool18"]
+transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
+material_override = ExtResource( 35 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/Pool18"]
+shape = SubResource( 14 )
+
+[node name="Pool19" type="Area" parent="Map" groups=[
+"water",
+]]
+transform = Transform( 2.45746, 0, -4.01504, 0, 3, 0, 1.72073, 0, 5.73406, -113.574, 28, -124.075 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Map/Pool19"]
+transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
+material_override = ExtResource( 35 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/Pool19"]
+shape = SubResource( 14 )
+
+[node name="Pool20" type="Area" parent="Map" groups=[
+"water",
+]]
+transform = Transform( 2.45746, 0, -4.01504, 0, 3, 0, 1.72073, 0, 5.73406, -106.25, 28.8907, -135.075 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Map/Pool20"]
+transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
+material_override = ExtResource( 35 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/Pool20"]
+shape = SubResource( 14 )
+
+[node name="Pool21" type="Area" parent="Map" groups=[
+"water",
+]]
+transform = Transform( 3.27661, 0, -2.29431, 0, 4, 0, 2.29431, 0, 3.27661, -95.2496, 33.8907, -150.075 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Map/Pool21"]
+transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
+material_override = ExtResource( 35 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/Pool21"]
 shape = SubResource( 14 )
 
 [node name="Pool15" type="Area" parent="Map" groups=[
@@ -1399,12 +1752,11 @@ shape = SubResource( 14 )
 [node name="Pool10" type="Area" parent="Map" groups=[
 "water",
 ]]
-editor/display_folded = true
-transform = Transform( 4, 0, 0, 0, 6, 0, 0, 0, 4, -128, -1, -7 )
+transform = Transform( 3.9, 0, 0, 0, 6, 0, 0, 0, 3.9, -128, -1, -7 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/Pool10"]
 transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
-material_override = ExtResource( 29 )
+material_override = ExtResource( 35 )
 mesh = SubResource( 13 )
 material/0 = null
 
@@ -1415,11 +1767,11 @@ shape = SubResource( 14 )
 "water",
 ]]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -127, 15, 37 )
+transform = Transform( 1, 0, 0, 0, 5, 0, 0, 0, 1, -50, 24, 88 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/Pool6"]
 transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
-material_override = ExtResource( 29 )
+material_override = ExtResource( 35 )
 mesh = SubResource( 13 )
 material/0 = null
 
@@ -1430,28 +1782,27 @@ shape = SubResource( 14 )
 [node name="Pool7" type="Area" parent="Map" groups=[
 "water",
 ]]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -125, 15, 37 )
+transform = Transform( 1, 0, 0, 0, 4, 0, 0, 0, 1, -48, 24, 88 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/Pool7"]
-transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
-material_override = ExtResource( 29 )
-mesh = SubResource( 13 )
+transform = Transform( 1, -9.53675e-006, 0, 1.90735e-006, 5, 0, 0, 0, 1, 0, 0, 0 )
+material_override = ExtResource( 35 )
+mesh = SubResource( 18 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/Pool7"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, -0.6 )
-shape = SubResource( 14 )
+transform = Transform( 1, 0, 0, 0, 5, 0, 0, 0, 1, -0.9, 0, -0.6 )
+shape = SubResource( 19 )
 
 [node name="Pool8" type="Area" parent="Map" groups=[
 "water",
 ]]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -125, 15, 39 )
+transform = Transform( 1, 0, 0, 0, 5, 0, 0, 0, 1, -48, 24, 90 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/Pool8"]
 transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
-material_override = ExtResource( 29 )
+material_override = ExtResource( 35 )
 mesh = SubResource( 13 )
 material/0 = null
 
@@ -1463,11 +1814,11 @@ shape = SubResource( 14 )
 "water",
 ]]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -127, 15, 39 )
+transform = Transform( 1, 0, 0, 0, 5, 0, 0, 0, 1, -50, 24, 90 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Map/Pool9"]
 transform = Transform( 1, -1.90735e-006, 0, 1.90735e-006, 1, 0, 0, 0, 1, 0, 0, 0 )
-material_override = ExtResource( 29 )
+material_override = ExtResource( 35 )
 mesh = SubResource( 13 )
 material/0 = null
 
@@ -1477,7 +1828,7 @@ shape = SubResource( 14 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map"]
 transform = Transform( 10, 0, 0, 0, 8, 0, 0, 0, 10, -65.9223, 9, 175.997 )
-material_override = SubResource( 18 )
+material_override = SubResource( 20 )
 mesh = SubResource( 11 )
 material/0 = null
 
@@ -1486,12 +1837,12 @@ transform = Transform( 4, 0, 0, 0, 3, 0, 0, 0, 4, -65.9065, -31, 188 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/Land2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00157928, -1.19209e-007, -0.000331879 )
-material_override = SubResource( 19 )
+material_override = SubResource( 21 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/Land2"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="TallGrasses" type="Spatial" parent="Map"]
 editor/display_folded = true
@@ -1499,31 +1850,31 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 0 )
 
 [node name="Sprite3D" type="Sprite3D" parent="Map/TallGrasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525416, 0 )
-material_override = ExtResource( 33 )
+material_override = ExtResource( 39 )
 pixel_size = 0.12
-texture = ExtResource( 34 )
+texture = ExtResource( 40 )
 hframes = 4
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 should_randomize_frame_delay = true
 max_frames = 4
 
 [node name="Sprite3D2" type="Sprite3D" parent="Map/TallGrasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.525416, 2 )
-material_override = ExtResource( 33 )
+material_override = ExtResource( 39 )
 pixel_size = 0.12
-texture = ExtResource( 34 )
+texture = ExtResource( 40 )
 hframes = 4
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 should_randomize_frame_delay = true
 max_frames = 4
 
 [node name="Sprite3D3" type="Sprite3D" parent="Map/TallGrasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18462, -0.525416, 2.51764 )
-material_override = ExtResource( 33 )
+material_override = ExtResource( 39 )
 pixel_size = 0.12
-texture = ExtResource( 34 )
+texture = ExtResource( 40 )
 hframes = 4
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 should_randomize_frame_delay = true
 max_frames = 4
 
@@ -1532,707 +1883,707 @@ editor/display_folded = true
 
 [node name="Sprite3D" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, -9.57919 )
-material_override = ExtResource( 33 )
+material_override = ExtResource( 39 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D23" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59312, 3, -11.9866 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D59" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.44507, 3, -10.9992 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D68" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.09797, 3, -9.58457 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D16" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -5.70651, 4, -15.052 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D24" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.11339, 4, -17.4594 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D63" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -5.26144, 4, -16.472 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D86" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -2.60854, 4, -15.0574 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D2" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, -13.5792 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D25" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.59312, 3, -15.9866 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D60" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.44507, 3, -14.9992 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D70" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.098, 3, -13.5846 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D19" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -10.6055, 4, -17.8804 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D26" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -12.0124, 4, -20.2878 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D61" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -10.1604, 4, -19.3004 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D69" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.50753, 4, -17.8858 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D3" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, -9.57919 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D32" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.59312, 3, -11.9866 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D47" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4451, 3, -10.9992 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D79" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.098, 3, -9.58457 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D21" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.25942, 4, -20.8476 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D35" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -8.6663, 4, -23.255 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D49" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -6.81435, 4, -22.2676 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D72" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -4.16145, 4, -20.853 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D4" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3, -8.57919 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D27" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.59312, 3, -10.9866 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D62" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.44507, 3, -9.99916 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D71" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.098, 3, -8.58457 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D17" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -6.03467, 4, -20.1405 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D28" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.44155, 4, -22.5479 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D64" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -5.5896, 4, -21.5605 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D88" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -2.9367, 4, -20.1459 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D5" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3, -10.5792 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D33" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.59312, 3, -12.9866 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D45" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.44507, 3, -11.9992 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D76" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.098, 3, -10.5846 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D20" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.96653, 4, -19.6228 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D29" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -9.37341, 4, -22.0302 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D65" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -7.52146, 4, -21.0428 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D87" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -4.86856, 4, -19.6282 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D6" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, -10.5792 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D34" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.59312, 3, -12.9866 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D48" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.44507, 3, -11.9992 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D75" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.09797, 3, -10.5846 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D22" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -6.93125, 4, -15.7591 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D30" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -8.33813, 4, -18.1665 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D66" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -6.48618, 4, -17.1791 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D85" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -3.83328, 4, -15.7645 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D7" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -4.57919 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D36" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.59312, 2, -6.98657 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D50" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.44507, 2, -5.99916 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D80" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.09797, 2, -4.58457 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D18" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -1.1357, 3, -17.312 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D37" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -2.54258, 3, -19.7194 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D55" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -0.690634, 3, -18.732 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D82" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 1.96227, 3, -17.3174 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D8" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -6.57919 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D31" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.40688, 2, -8.98657 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D46" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55493, 2, -7.99916 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D77" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.90203, 2, -6.58457 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D9" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -5.57919 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D43" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.40688, 2, -7.98657 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D57" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55493, 2, -6.99916 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D84" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90203, 2, -5.58457 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D10" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 3.42081 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D39" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.40688, 2, 1.01343 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D52" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55493, 2, 2.00084 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D78" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90203, 2, 3.41543 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D11" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 2.42081 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D38" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.40688, 2, 0.0134251 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D51" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55493, 2, 1.00084 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D73" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.902029, 2, 2.41543 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D12" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24825, 2, 3.0184 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D40" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65513, 2, 0.611015 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D53" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80318, 2, 1.59843 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D81" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150279, 2, 3.01302 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D13" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.708204, 1.37281, 1.0184 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D44" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11508, 1.37281, -1.38898 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D58" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.263138, 1.37281, -0.401573 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D67" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38977, 1.37281, 1.01302 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D14" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.304807, 1.37281, -0.395957 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D41" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71169, 1.37281, -2.80334 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D54" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140259, 1.37281, -1.81593 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D74" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79316, 1.37281, -0.401336 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D15" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.544586, 1.37281, 0.673082 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D42" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.862295, 1.37281, -1.7343 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D56" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.989652, 1.37281, -0.746891 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="Sprite3D83" type="Sprite3D" parent="Map/Grasses"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64256, 1.37281, 0.667703 )
-material_override = SubResource( 21 )
+material_override = SubResource( 23 )
 pixel_size = 0.2
-texture = ExtResource( 36 )
+texture = ExtResource( 42 )
 hframes = 2
-script = ExtResource( 35 )
+script = ExtResource( 41 )
 
 [node name="YellowIsland" type="Spatial" parent="Map"]
 
@@ -2241,116 +2592,115 @@ editor/display_folded = true
 transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 10, 0, -2, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/YellowIsland/YellowIsland4"]
-material_override = SubResource( 22 )
+material_override = SubResource( 24 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/YellowIsland4"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="YellowIsland5" type="StaticBody" parent="Map/YellowIsland"]
 transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 10, -1, -2, -52 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/YellowIsland/YellowIsland5"]
-material_override = SubResource( 22 )
+material_override = SubResource( 24 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/YellowIsland5"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="YellowIsland6" type="StaticBody" parent="Map/YellowIsland"]
 editor/display_folded = true
 transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 10, -21, -2, -48 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/YellowIsland/YellowIsland6"]
-material_override = SubResource( 22 )
+material_override = SubResource( 24 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/YellowIsland6"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="YellowIsland9" type="StaticBody" parent="Map/YellowIsland"]
 transform = Transform( 5, 0, 0, 0, 3, 0, 0, 0, 5, -12, -1.76174, -5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/YellowIsland/YellowIsland9"]
-material_override = SubResource( 22 )
+material_override = SubResource( 24 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/YellowIsland9"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="YellowIsland7" type="StaticBody" parent="Map/YellowIsland"]
 transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 10, 7, -1, -15 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/YellowIsland/YellowIsland7"]
-material_override = SubResource( 22 )
+material_override = SubResource( 24 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/YellowIsland7"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="YellowIsland11" type="StaticBody" parent="Map/YellowIsland"]
 transform = Transform( 4, 0, 0, 0, 0.491381, -0.554616, 0, 0.0924359, 2.94829, 7, 1, -2.21741 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/YellowIsland/YellowIsland11"]
-material_override = SubResource( 22 )
+material_override = SubResource( 24 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/YellowIsland11"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="YellowIsland8" type="StaticBody" parent="Map/YellowIsland"]
 editor/display_folded = true
 transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 10, 15, -1, -35 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/YellowIsland/YellowIsland8"]
-material_override = SubResource( 22 )
+material_override = SubResource( 24 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/YellowIsland8"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="YellowIsland10" type="StaticBody" parent="Map/YellowIsland"]
 transform = Transform( 12, 0, 0, 0, 4, 0, 0, 0, 10, -5.90652, -1, -20 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/YellowIsland/YellowIsland10"]
-material_override = SubResource( 22 )
+material_override = SubResource( 24 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/YellowIsland10"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="YellowIsland1" type="StaticBody" parent="Map/YellowIsland"]
-editor/display_folded = true
 transform = Transform( 10, 0, 0, 0, 4, 0, 0, 0, 10, -5, -1, -40 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/YellowIsland/YellowIsland1"]
-material_override = SubResource( 22 )
+material_override = SubResource( 24 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/YellowIsland1"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="YellowIsland2" type="StaticBody" parent="Map/YellowIsland"]
 transform = Transform( 9.65926, 1.03528, 0, -2.58819, 3.8637, 0, 0, 0, 10, -25, 3, -20 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/YellowIsland/YellowIsland2"]
 transform = Transform( 1, -1.11759e-008, 0, 1.19209e-006, 1, 0, 0, 0, 1, 0.0324204, -0.317774, 0 )
-material_override = SubResource( 22 )
+material_override = SubResource( 24 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/YellowIsland2"]
 transform = Transform( 1, 2.23517e-008, 0, -1.19209e-007, 1, 0, 0, 0, 1, 0.0335529, -0.313045, 0 )
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="YellowIsland3" type="StaticBody" parent="Map/YellowIsland"]
 editor/display_folded = true
@@ -2358,13 +2708,13 @@ transform = Transform( 9.65926, 1.03528, 0, -2.58819, 3.8637, 0, 0, 0, 10, -25, 
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/YellowIsland/YellowIsland3"]
 transform = Transform( 1, -1.11759e-008, 0, 1.19209e-006, 1, 0, 0, 0, 1, 0.0324204, -0.317774, 0 )
-material_override = SubResource( 22 )
+material_override = SubResource( 24 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/YellowIsland3"]
 transform = Transform( 1, 2.98023e-008, 0, -1.78814e-007, 1, 0, 0, 0, 0.999999, 0.0344162, -0.321101, 0 )
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="Trees" type="Spatial" parent="Map/YellowIsland"]
 
@@ -2373,42 +2723,42 @@ transform = Transform( 0.992617, 0, 0.121293, 0, 1, 0, -0.121293, 0, 0.992617, -
 
 [node name="Trunk2" type="MeshInstance" parent="Map/YellowIsland/Trees/Gate"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2 )
-mesh = SubResource( 24 )
+mesh = SubResource( 26 )
 material/0 = null
 
 [node name="Trunk5" type="MeshInstance" parent="Map/YellowIsland/Trees/Gate"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 2 )
-mesh = SubResource( 24 )
+mesh = SubResource( 26 )
 material/0 = null
 
 [node name="Trunk3" type="MeshInstance" parent="Map/YellowIsland/Trees/Gate"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
-mesh = SubResource( 26 )
+mesh = SubResource( 28 )
 material/0 = null
 
 [node name="Trunk6" type="MeshInstance" parent="Map/YellowIsland/Trees/Gate"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62939e-006, 3, -3 )
-mesh = SubResource( 26 )
+mesh = SubResource( 28 )
 material/0 = null
 
 [node name="Trunk4" type="MeshInstance" parent="Map/YellowIsland/Trees/Gate"]
 transform = Transform( 1, 0, 0, 0, -6.55671e-008, -1, 0, 1.5, -4.37114e-008, 0.0893135, 3.78355, -0.406882 )
-mesh = SubResource( 28 )
+mesh = SubResource( 30 )
 material/0 = null
 
 [node name="Trunk7" type="MeshInstance" parent="Map/YellowIsland/Trees/Gate"]
 transform = Transform( 1, -1.49012e-008, -8.88178e-016, 0, -6.55671e-008, -1, -1.49012e-008, 1.5, -4.37114e-008, -0.0387077, 6.68245, -0.52937 )
-mesh = SubResource( 28 )
+mesh = SubResource( 30 )
 material/0 = null
 
 [node name="Trunk8" type="MeshInstance" parent="Map/YellowIsland/Trees/Gate"]
 transform = Transform( 0.999419, 0.0014282, -0.0337709, -0.0337709, 0.0829107, -0.960458, 0.00476079, 0.288312, 0.276369, 0.0782471, 6.9363, 4.73141 )
-mesh = SubResource( 28 )
+mesh = SubResource( 30 )
 material/0 = null
 
 [node name="Trunk9" type="MeshInstance" parent="Map/YellowIsland/Trees/Gate"]
 transform = Transform( 0.999213, 0.00193384, 0.0391563, 0.0391563, -0.0961322, -0.946459, 0.00644623, 0.284174, -0.320441, -0.121048, 6.98927, -5.36733 )
-mesh = SubResource( 28 )
+mesh = SubResource( 30 )
 material/0 = null
 
 [node name="Gate2" type="Spatial" parent="Map/YellowIsland/Trees"]
@@ -2416,42 +2766,42 @@ transform = Transform( -0.324849, 0, -0.945766, 0, 1, 0, 0.945766, 0, -0.324849,
 
 [node name="Trunk2" type="MeshInstance" parent="Map/YellowIsland/Trees/Gate2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2 )
-mesh = SubResource( 24 )
+mesh = SubResource( 26 )
 material/0 = null
 
 [node name="Trunk5" type="MeshInstance" parent="Map/YellowIsland/Trees/Gate2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 2 )
-mesh = SubResource( 24 )
+mesh = SubResource( 26 )
 material/0 = null
 
 [node name="Trunk3" type="MeshInstance" parent="Map/YellowIsland/Trees/Gate2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
-mesh = SubResource( 26 )
+mesh = SubResource( 28 )
 material/0 = null
 
 [node name="Trunk6" type="MeshInstance" parent="Map/YellowIsland/Trees/Gate2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62939e-006, 3, -3 )
-mesh = SubResource( 26 )
+mesh = SubResource( 28 )
 material/0 = null
 
 [node name="Trunk4" type="MeshInstance" parent="Map/YellowIsland/Trees/Gate2"]
 transform = Transform( 1, 0, 0, 0, -6.55671e-008, -1, 0, 1.5, -4.37114e-008, 0.0893135, 3.78355, -0.406882 )
-mesh = SubResource( 28 )
+mesh = SubResource( 30 )
 material/0 = null
 
 [node name="Trunk7" type="MeshInstance" parent="Map/YellowIsland/Trees/Gate2"]
 transform = Transform( 1, -1.49012e-008, -8.88178e-016, 0, -6.55671e-008, -1, -1.49012e-008, 1.5, -4.37114e-008, -0.0387077, 6.68245, -0.52937 )
-mesh = SubResource( 28 )
+mesh = SubResource( 30 )
 material/0 = null
 
 [node name="Trunk8" type="MeshInstance" parent="Map/YellowIsland/Trees/Gate2"]
 transform = Transform( 0.999419, 0.0014282, -0.0337709, -0.0337709, 0.0829107, -0.960458, 0.00476079, 0.288312, 0.276369, 0.0782471, 6.9363, 4.73141 )
-mesh = SubResource( 28 )
+mesh = SubResource( 30 )
 material/0 = null
 
 [node name="Trunk9" type="MeshInstance" parent="Map/YellowIsland/Trees/Gate2"]
 transform = Transform( 0.999213, 0.00193384, 0.0391563, 0.0391563, -0.0961322, -0.946459, 0.00644623, 0.284174, -0.320441, -0.121048, 6.98927, -5.36733 )
-mesh = SubResource( 28 )
+mesh = SubResource( 30 )
 material/0 = null
 
 [node name="Tree" type="Spatial" parent="Map/YellowIsland/Trees"]
@@ -2459,105 +2809,104 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3, -23 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/YellowIsland/Trees/Tree"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/YellowIsland/Trees/Tree"]
 editor/display_folded = true
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 8, 0 )
-mesh = SubResource( 31 )
+mesh = SubResource( 33 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/YellowIsland/Trees/Tree/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/Trees/Tree/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Top2" type="MeshInstance" parent="Map/YellowIsland/Trees/Tree"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0 )
-mesh = SubResource( 33 )
+mesh = SubResource( 35 )
 material/0 = null
 
 [node name="StaticBody2" type="StaticBody" parent="Map/YellowIsland/Trees/Tree/Top2"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/Trees/Tree/Top2/StaticBody2"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree6" type="Spatial" parent="Map/YellowIsland/Trees"]
 transform = Transform( 2, 0, 0, 0, 1.5, 0, 0, 0, 2, -24, 5, -42 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/YellowIsland/Trees/Tree6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/YellowIsland/Trees/Tree6"]
 editor/display_folded = true
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 8, 0 )
-mesh = SubResource( 31 )
+mesh = SubResource( 33 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/YellowIsland/Trees/Tree6/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/Trees/Tree6/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Top2" type="MeshInstance" parent="Map/YellowIsland/Trees/Tree6"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0 )
-mesh = SubResource( 33 )
+mesh = SubResource( 35 )
 material/0 = null
 
 [node name="StaticBody2" type="StaticBody" parent="Map/YellowIsland/Trees/Tree6/Top2"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/Trees/Tree6/Top2/StaticBody2"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
-[node name="Tree2" parent="Map/YellowIsland/Trees" instance=ExtResource( 42 )]
+[node name="Tree2" parent="Map/YellowIsland/Trees" instance=ExtResource( 48 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -33 )
 
-[node name="Tree7" parent="Map/YellowIsland/Trees" instance=ExtResource( 42 )]
+[node name="Tree7" parent="Map/YellowIsland/Trees" instance=ExtResource( 48 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, -35 )
 
-[node name="Tree8" parent="Map/YellowIsland/Trees" instance=ExtResource( 42 )]
+[node name="Tree8" parent="Map/YellowIsland/Trees" instance=ExtResource( 48 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 6, -31 )
 
-[node name="Tree9" parent="Map/YellowIsland/Trees" instance=ExtResource( 42 )]
+[node name="Tree9" parent="Map/YellowIsland/Trees" instance=ExtResource( 48 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 4, -27 )
 
-[node name="Tree3" parent="Map/YellowIsland/Trees" instance=ExtResource( 42 )]
+[node name="Tree3" parent="Map/YellowIsland/Trees" instance=ExtResource( 48 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -29 )
 
 [node name="Tree4" type="Spatial" parent="Map/YellowIsland/Trees"]
-editor/display_folded = true
 transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 11, -5, -35 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/YellowIsland/Trees/Tree4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 35 )
+mesh = SubResource( 37 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/YellowIsland/Trees/Tree4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 37 )
+mesh = SubResource( 39 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/YellowIsland/Trees/Tree4/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/Trees/Tree4/Top/StaticBody"]
-shape = SubResource( 38 )
+shape = SubResource( 40 )
 
 [node name="Top2" type="MeshInstance" parent="Map/YellowIsland/Trees/Tree4"]
 transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 9, 0 )
-mesh = SubResource( 37 )
+mesh = SubResource( 39 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/YellowIsland/Trees/Tree4/Top2"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/YellowIsland/Trees/Tree4/Top2/StaticBody"]
-shape = SubResource( 38 )
+shape = SubResource( 40 )
 
 [node name="QuiltIsland" type="Spatial" parent="Map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, 0 )
@@ -2569,145 +2918,142 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 5.00387, -21 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree5"]
 transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree5"]
 editor/display_folded = true
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 9, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree5/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree5/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree11" type="Spatial" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97, 4.00387, 27 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 9.23918, 75 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree11"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree11"]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree11/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree11/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Top2" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree11"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0 )
-mesh = SubResource( 40 )
+mesh = SubResource( 42 )
 material/0 = null
 
 [node name="StaticBody2" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree11/Top2"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree11/Top2/StaticBody2"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree12" type="Spatial" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -101, 4.00387, 36 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 7.23918, 85 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree12"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree12"]
-editor/display_folded = true
-transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 8, 0 )
-mesh = SubResource( 39 )
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 8, 0 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree12/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree12/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Top2" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree12"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
-mesh = SubResource( 40 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0 )
+mesh = SubResource( 42 )
 material/0 = null
 
 [node name="StaticBody2" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree12/Top2"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree12/Top2/StaticBody2"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree15" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -112, 25.0039, -12 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree15"]
 transform = Transform( 1.3, 0, 0, 0, 1, 0, 0, 0, 1.3, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree15"]
 editor/display_folded = true
 transform = Transform( 2.3, 0, 0, 0, 1, 0, 0, 0, 2.3, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree15/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree15/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Top2" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree15"]
 editor/display_folded = true
 transform = Transform( 1.3, 0, 0, 0, 0.8, 0, 0, 0, 1.3, 0, 11, 0 )
-mesh = SubResource( 40 )
+mesh = SubResource( 42 )
 material/0 = null
 
 [node name="StaticBody2" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree15/Top2"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree15/Top2/StaticBody2"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree13" type="Spatial" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 4.00387, 38 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 9.00387, 89 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree13"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree13"]
-editor/display_folded = true
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree13/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree13/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree6" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41, -7.99613, -21 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree6"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree6"]
 editor/display_folded = true
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree6/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree6/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree7" type="Spatial" parent="Map/QuiltIsland/Trees"]
 editor/display_folded = true
@@ -2715,727 +3061,615 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23, -8.99613, -9 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree7"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree7/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree7/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree14" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23, -0.996128, -9 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree14"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree14"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree14/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree14/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree20" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -73, -17.9961, 16 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree20"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree20"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree20/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree20/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree21" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -64, -12.9961, 11 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree21"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree21"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree21/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree21/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree22" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97, -13.9961, 9 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree22"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree22"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree22/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree22/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree23" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -112, -17.9961, -12 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree23"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree23"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree23/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree23/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree24" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -102, -18.9961, -33 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree24"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree24"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree24/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree24/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree25" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -85, -15.9961, -37 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree25"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree25"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree25/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree25/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree30" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -74, -15.9961, -44 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree30"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree30"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree30/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree30/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree16" type="Spatial" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -82, -1.99613, 31 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.99613, 82 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree16"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree16"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree16/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree16/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
+
+[node name="Tree17" type="Spatial" parent="Map/QuiltIsland/Trees"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 7.00387, 78 )
+
+[node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree17"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+mesh = SubResource( 32 )
+material/0 = null
+
+[node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree17"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
+mesh = SubResource( 41 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree17/Top"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree17/Top/StaticBody"]
+shape = SubResource( 34 )
+
+[node name="Tree18" type="Spatial" parent="Map/QuiltIsland/Trees"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 6.00387, 90 )
+
+[node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree18"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+mesh = SubResource( 32 )
+material/0 = null
+
+[node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree18"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
+mesh = SubResource( 41 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree18/Top"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree18/Top/StaticBody"]
+shape = SubResource( 34 )
+
+[node name="Tree19" type="Spatial" parent="Map/QuiltIsland/Trees"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 7.00387, 81 )
+
+[node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree19"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+mesh = SubResource( 32 )
+material/0 = null
+
+[node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree19"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
+mesh = SubResource( 41 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree19/Top"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree19/Top/StaticBody"]
+shape = SubResource( 34 )
 
 [node name="Tree26" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -71, 3.00387, -15 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree26"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree26"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree26/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree26/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree27" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 2.00387, -26 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree27"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree27"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree27/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree27/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree28" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -61, 1.00387, -20 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree28"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree28"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree28/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree28/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree29" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -63, 1.00387, 1 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree29"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree29"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree29/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree29/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree32" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -120, 16.0039, -17 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree32"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree32"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree32/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree32/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree33" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -116, 13.0039, -20 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree33"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree33"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree33/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree33/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree36" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -105, 13.0039, -21 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree36"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree36"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree36/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree36/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree37" type="Spatial" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -104, 13.0039, -9 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -104, 17.0039, -9 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree37"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree37"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree37/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree37/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree34" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -108, 17.0039, -18 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree34"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree34"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree34/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree34/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree35" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -106, 15.0039, -5 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree35"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree35"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree35/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree35/Top/StaticBody"]
-shape = SubResource( 32 )
-
-[node name="Tree17" type="Spatial" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -91, 3.00387, 31 )
-
-[node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree17"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
-material/0 = null
-
-[node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree17"]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree17/Top"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree17/Top/StaticBody"]
-shape = SubResource( 32 )
-
-[node name="Trunk2" type="MeshInstance" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -106, 4.00387, 34 )
-mesh = SubResource( 30 )
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Trunk2"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Trunk2/StaticBody"]
-transform = Transform( 0.75, 0, 0, 0, 3, 0, 0, 0, 0.75, 0, 0, 0 )
-shape = SubResource( 41 )
-
-[node name="Trunk3" type="MeshInstance" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -103, 3.00387, 37 )
-mesh = SubResource( 30 )
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Trunk3"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Trunk3/StaticBody"]
-transform = Transform( 0.75, 0, 0, 0, 3, 0, 0, 0, 0.75, 0, 0, 0 )
-shape = SubResource( 41 )
-
-[node name="Trunk4" type="MeshInstance" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97, 3.00387, 35 )
-mesh = SubResource( 30 )
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Trunk4"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Trunk4/StaticBody"]
-transform = Transform( 0.75, 0, 0, 0, 3, 0, 0, 0, 0.75, 0, 0, 0 )
-shape = SubResource( 41 )
+shape = SubResource( 34 )
 
 [node name="Trunk5" type="MeshInstance" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -95, 4.00387, 40 )
-mesh = SubResource( 30 )
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -20, 8.00387, 90 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Trunk5"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Trunk5/StaticBody"]
 transform = Transform( 0.75, 0, 0, 0, 3, 0, 0, 0, 0.75, 0, 0, 0 )
-shape = SubResource( 41 )
+shape = SubResource( 43 )
 
 [node name="Trunk6" type="MeshInstance" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -92, 4.00387, 24 )
-mesh = SubResource( 30 )
+transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, -25, 10.0039, 91 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Trunk6"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Trunk6/StaticBody"]
 transform = Transform( 0.75, 0, 0, 0, 3, 0, 0, 0, 0.75, 0, 0, 0 )
-shape = SubResource( 41 )
+shape = SubResource( 43 )
+
+[node name="Trunk8" type="MeshInstance" parent="Map/QuiltIsland/Trees"]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -15, 8.00387, 85 )
+mesh = SubResource( 32 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Trunk8"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Trunk8/StaticBody"]
+transform = Transform( 0.75, 0, 0, 0, 3, 0, 0, 0, 0.75, 0, 0, 0 )
+shape = SubResource( 43 )
 
 [node name="Trunk15" type="MeshInstance" parent="Map/QuiltIsland/Trees"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -118, 16.0039, -6 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Trunk15"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Trunk15/StaticBody"]
 transform = Transform( 0.75, 0, 0, 0, 3, 0, 0, 0, 0.75, 0, 0, 0 )
-shape = SubResource( 41 )
-
-[node name="Trunk8" type="MeshInstance" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 4.00387, 54 )
-mesh = SubResource( 30 )
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Trunk8"]
-editor/display_folded = true
-
-[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Trunk8/StaticBody"]
-transform = Transform( 0.75, 0, 0, 0, 3, 0, 0, 0, 0.75, 0, 0, 0 )
-shape = SubResource( 41 )
-
-[node name="Trunk9" type="MeshInstance" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 6.00387, 54 )
-mesh = SubResource( 30 )
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Trunk9"]
-editor/display_folded = true
-
-[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Trunk9/StaticBody"]
-transform = Transform( 0.75, 0, 0, 0, 3, 0, 0, 0, 0.75, 0, 0, 0 )
-shape = SubResource( 41 )
-
-[node name="Trunk10" type="MeshInstance" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 4.00387, 54 )
-mesh = SubResource( 30 )
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Trunk10"]
-editor/display_folded = true
-
-[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Trunk10/StaticBody"]
-transform = Transform( 0.75, 0, 0, 0, 3, 0, 0, 0, 0.75, 0, 0, 0 )
-shape = SubResource( 41 )
-
-[node name="Trunk11" type="MeshInstance" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 6.00387, 54 )
-mesh = SubResource( 30 )
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Trunk11"]
-editor/display_folded = true
-
-[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Trunk11/StaticBody"]
-transform = Transform( 0.75, 0, 0, 0, 3, 0, 0, 0, 0.75, 0, 0, 0 )
-shape = SubResource( 41 )
-
-[node name="Trunk12" type="MeshInstance" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 4.00387, 54 )
-mesh = SubResource( 30 )
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Trunk12"]
-editor/display_folded = true
-
-[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Trunk12/StaticBody"]
-transform = Transform( 0.75, 0, 0, 0, 3, 0, 0, 0, 0.75, 0, 0, 0 )
-shape = SubResource( 41 )
-
-[node name="Trunk13" type="MeshInstance" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 6.00387, 51 )
-mesh = SubResource( 30 )
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Trunk13"]
-editor/display_folded = true
-
-[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Trunk13/StaticBody"]
-transform = Transform( 0.75, 0, 0, 0, 3, 0, 0, 0, 0.75, 0, 0, 0 )
-shape = SubResource( 41 )
-
-[node name="Trunk14" type="MeshInstance" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 4.00387, 48 )
-mesh = SubResource( 30 )
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Trunk14"]
-editor/display_folded = true
-
-[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Trunk14/StaticBody"]
-transform = Transform( 0.75, 0, 0, 0, 3, 0, 0, 0, 0.75, 0, 0, 0 )
-shape = SubResource( 41 )
+shape = SubResource( 43 )
 
 [node name="Trunk7" type="MeshInstance" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 1.00387, -4 )
-mesh = SubResource( 30 )
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -60, 1.00387, -4 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Trunk7"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Trunk7/StaticBody"]
 transform = Transform( 0.75, 0, 0, 0, 3, 0, 0, 0, 0.75, 0, 0, 0 )
-shape = SubResource( 41 )
-
-[node name="Tree18" type="Spatial" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -101, 1.00387, 31 )
-
-[node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree18"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
-material/0 = null
-
-[node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree18"]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree18/Top"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree18/Top/StaticBody"]
-shape = SubResource( 32 )
-
-[node name="Tree19" type="Spatial" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -105, 2.00387, 26 )
-
-[node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree19"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
-material/0 = null
-
-[node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree19"]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree19/Top"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree19/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 43 )
 
 [node name="Tree10" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27, -3.99613, 3 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree10"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree10"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree10/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree10/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree31" type="Spatial" parent="Map/QuiltIsland/Trees"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27, -20.9961, 3 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree31"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree31"]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree31/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree31/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree8" type="Spatial" parent="Map/QuiltIsland/Trees"]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, -33, -4.99613, -1 )
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, -33, -2.99613, -1 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree8"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree8"]
 editor/display_folded = true
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 8, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree8/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree8/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="Tree9" type="Spatial" parent="Map/QuiltIsland/Trees"]
-transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -21, -7.90441, 48 )
+transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, -21, -3.90441, 53 )
 
 [node name="Trunk" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree9"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 30 )
+mesh = SubResource( 32 )
 material/0 = null
 
 [node name="Top" type="MeshInstance" parent="Map/QuiltIsland/Trees/Tree9"]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 8, 0 )
-mesh = SubResource( 39 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.0291634, 7.87411, -0.00714111 )
+mesh = SubResource( 41 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Map/QuiltIsland/Trees/Tree9/Top"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/Trees/Tree9/Top/StaticBody"]
-shape = SubResource( 32 )
+shape = SubResource( 34 )
 
 [node name="QuiltIsland1" type="StaticBody" parent="Map/QuiltIsland"]
 editor/display_folded = true
 transform = Transform( 10, 0, 0, 0, 8, 0, 0, 0, 10, -74.9065, -3, -13 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland1"]
-material_override = SubResource( 42 )
+material_override = SubResource( 44 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland1"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland10" type="StaticBody" parent="Map/QuiltIsland"]
 editor/display_folded = true
 transform = Transform( 10, 0, 0, 0, 8, 0, 0, 0, 10, -111.906, 9, -13 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland10"]
-material_override = SubResource( 42 )
+material_override = SubResource( 44 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland10"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland11" type="StaticBody" parent="Map/QuiltIsland"]
-transform = Transform( 10, 0, 0, 0, 8, 0, 0, 0, 10, -21.9065, -3.16022, 47 )
+transform = Transform( 10, 0, 0, 0, 8, 0, 0, 0, 10, -21.9065, 0.83978, 83 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland11"]
-material_override = SubResource( 42 )
+material_override = SubResource( 44 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland11"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland14" type="StaticBody" parent="Map/QuiltIsland"]
 editor/display_folded = true
 transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -111.906, 19.216, -12 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland14"]
-material_override = SubResource( 43 )
+material_override = SubResource( 45 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland14"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland5" type="StaticBody" parent="Map/QuiltIsland"]
-editor/display_folded = true
 transform = Transform( 4, 0, 0, 0, 8, 0, 0, 0, 10, -88.9065, 4, -27 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0 )
-material_override = SubResource( 43 )
+material_override = SubResource( 45 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland5"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland8" type="StaticBody" parent="Map/QuiltIsland"]
 editor/display_folded = true
@@ -3443,12 +3677,12 @@ transform = Transform( -1.74846e-007, 0, 10, 0, 8, 0, -4, 0, -4.37114e-007, -94.
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland8"]
 transform = Transform( 1, 0, -1.42109e-014, 0, 1, 0, 0, 0, 1, -0.25, 0, 0 )
-material_override = SubResource( 43 )
+material_override = SubResource( 45 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland8"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland9" type="StaticBody" parent="Map/QuiltIsland"]
 editor/display_folded = true
@@ -3456,85 +3690,84 @@ transform = Transform( -1.74846e-007, 0, 10, 0, 8, 0, -4, 0, -4.37114e-007, -94.
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland9"]
 transform = Transform( 1, 0, -1.42109e-014, 0, 1, 0, 0, 0, 1, -0.25, 0, 0 )
-material_override = SubResource( 43 )
+material_override = SubResource( 45 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland9"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland19" type="StaticBody" parent="Map/QuiltIsland"]
 transform = Transform( -1.31134e-007, 0, 3, 0, 2, 0, -3, 0, -1.31134e-007, -97.9065, 13, -34 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland19"]
 transform = Transform( 1, 0, -1.42109e-014, 0, 1, 0, 0, 0, 1, -0.25, 0, 0 )
-material_override = SubResource( 44 )
+material_override = SubResource( 46 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland19"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland26" type="StaticBody" parent="Map/QuiltIsland"]
 transform = Transform( -1.31134e-007, 0, 3, 0, 2, 0, -3, 0, -1.31134e-007, -108.906, 7, -26 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland26"]
 transform = Transform( 1, 0, -1.42109e-014, 0, 1, 0, 0, 0, 1, -0.25, 0, 0 )
-material_override = SubResource( 44 )
+material_override = SubResource( 46 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland26"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland25" type="StaticBody" parent="Map/QuiltIsland"]
 transform = Transform( -1.31134e-007, 0, 3, 0, 2, 0, -3, 0, -1.31134e-007, -85.9065, 13, -21 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland25"]
 transform = Transform( 1, 0, -1.42109e-014, 0, 1, 0, 0, 0, 1, -0.25, 0, 0 )
-material_override = SubResource( 44 )
+material_override = SubResource( 46 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland25"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland27" type="StaticBody" parent="Map/QuiltIsland"]
 transform = Transform( -1.31134e-007, 0, 3, 0, 2, 0, -3, 0, -1.31134e-007, -93.9065, 8, -16 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland27"]
 transform = Transform( 1, 0, -1.42109e-014, 0, 1, 0, 0, 0, 1, -0.25, 0, 0 )
-material_override = SubResource( 44 )
+material_override = SubResource( 46 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland27"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland24" type="StaticBody" parent="Map/QuiltIsland"]
 transform = Transform( -1.31134e-007, 0, 3, 0, 2, 0, -3, 0, -1.31134e-007, -111.906, 25, -13 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland24"]
 transform = Transform( 1, 0, -1.42109e-014, 0, 1, 0, 0, 0, 1, -0.25, 0, 0 )
-material_override = SubResource( 43 )
+material_override = SubResource( 45 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland24"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland7" type="StaticBody" parent="Map/QuiltIsland"]
-editor/display_folded = true
 transform = Transform( 4, 0, 0, 0, 8, 0, 0, 0, 10, -100.906, 4, -27 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland7"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0 )
-material_override = SubResource( 43 )
+material_override = SubResource( 45 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland7"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland15" type="StaticBody" parent="Map/QuiltIsland"]
 editor/display_folded = true
@@ -3542,12 +3775,12 @@ transform = Transform( -3, 0, -8.74228e-007, 0, 4, 0, 2.62268e-007, 0, -10, -101
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland15"]
 transform = Transform( 1, 0, -1.42109e-014, 0, 1, 0, 0, 0, 1, -0.25, 0, 0 )
-material_override = SubResource( 43 )
+material_override = SubResource( 45 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland15"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland16" type="StaticBody" parent="Map/QuiltIsland"]
 editor/display_folded = true
@@ -3555,24 +3788,24 @@ transform = Transform( -1.31134e-007, 0, 10, 0, 4, 0, -3, 0, -4.37114e-007, -93.
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland16"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0 )
-material_override = SubResource( 43 )
+material_override = SubResource( 45 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland16"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland17" type="StaticBody" parent="Map/QuiltIsland"]
 transform = Transform( -1.31134e-007, 0, 10, 0, 5, 0, -3, 0, -4.37114e-007, -93.9063, 0.66907, -12.9997 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland17"]
 transform = Transform( 1, 0, 1.42109e-014, 0, 1, 0, 1.77636e-015, 0, 1, 0.264975, 9.53674e-007, 0.00176716 )
-material_override = SubResource( 43 )
+material_override = SubResource( 45 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland17"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland18" type="StaticBody" parent="Map/QuiltIsland"]
 editor/display_folded = true
@@ -3580,238 +3813,321 @@ transform = Transform( -3, 0, -8.74228e-007, 0, 4, 0, 2.62268e-007, 0, -10, -87.
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland18"]
 transform = Transform( 1, 0, -1.42109e-014, 0, 1, 0, 0, 0, 1, -0.25, 0, 0 )
-material_override = SubResource( 43 )
+material_override = SubResource( 45 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland18"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland2" type="StaticBody" parent="Map/QuiltIsland"]
-editor/display_folded = true
 transform = Transform( 10, 0, 0, 0, 8, 0, 0, 0, 10, -62.9065, -6, -5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland2"]
-material_override = SubResource( 42 )
+material_override = SubResource( 44 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland2"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland6" type="StaticBody" parent="Map/QuiltIsland"]
 transform = Transform( 5, 0, 0, 0, 8, 0, 0, 0, 5, -42.9065, -6, 15 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland6"]
-material_override = SubResource( 42 )
+material_override = SubResource( 44 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland6"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland29" type="StaticBody" parent="Map/QuiltIsland"]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 9, -20.9065, -2, 18 )
+transform = Transform( 5, 0, 0, 0, 4.69846, 3.07818, 0, -1.7101, 8.45723, -20.9065, -2, 26 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland29"]
-material_override = SubResource( 42 )
+material_override = SubResource( 44 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland29"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
+
+[node name="QuiltIsland30" type="StaticBody" parent="Map/QuiltIsland"]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 9, -20.9065, -2, 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland30"]
+material_override = SubResource( 44 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland30"]
+shape = SubResource( 22 )
 
 [node name="QuiltIsland28" type="StaticBody" parent="Map/QuiltIsland"]
 transform = Transform( 5, 0, 0, 0, 8, 0, 0, 0, 5, 29.0935, -6, -82 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland28"]
-material_override = SubResource( 42 )
+material_override = SubResource( 44 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland28"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland12" type="StaticBody" parent="Map/QuiltIsland"]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -74.9065, -15, -42 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland12"]
-material_override = SubResource( 42 )
+material_override = SubResource( 44 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland12"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland13" type="StaticBody" parent="Map/QuiltIsland"]
 transform = Transform( 7, 0, 0, 0, 5, 0, 0, 0, 7, -61.9065, -11, -5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland13"]
-material_override = SubResource( 42 )
+material_override = SubResource( 44 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland13"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="QuiltIsland3" type="StaticBody" parent="Map/QuiltIsland"]
 editor/display_folded = true
 transform = Transform( 10, 0, 0, 0, 8, 0, 0, 0, 10, -65.9065, -4, -23 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland3"]
-material_override = SubResource( 42 )
+material_override = SubResource( 44 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland3"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="RedIsland" type="Spatial" parent="Map"]
 transform = Transform( 1.6383, 0, -1.14715, 0, 2, 0, 1.14715, 0, 1.6383, -68, 0, 56 )
+
+[node name="RedIsland13" type="StaticBody" parent="Map/RedIsland"]
+editor/display_folded = true
+transform = Transform( 8, 0, 0, 0, 4, 0, 0, 0, 8, -91.1268, 32, -69.9856 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland13"]
+material_override = SubResource( 47 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland13"]
+shape = SubResource( 22 )
+
+[node name="RedIsland17" type="StaticBody" parent="Map/RedIsland"]
+editor/display_folded = true
+transform = Transform( 8, 0, 0, 0, 4, 0, 0, 0, 8, -47.8268, 74.5, -44.7592 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland17"]
+material_override = SubResource( 47 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland17"]
+shape = SubResource( 22 )
+
+[node name="RedIsland11" type="StaticBody" parent="Map/RedIsland"]
+editor/display_folded = true
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -91.1268, 37, -69.9856 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland11"]
+material_override = SubResource( 49 )
+mesh = SubResource( 50 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland11"]
+shape = SubResource( 51 )
+
+[node name="RedIsland16" type="StaticBody" parent="Map/RedIsland"]
+editor/display_folded = true
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -47.8268, 79.5, -44.7592 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland16"]
+material_override = SubResource( 49 )
+mesh = SubResource( 50 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland16"]
+shape = SubResource( 51 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland"]
+transform = Transform( 9, 0, 0, 0, 4, 0, 0, 0, 9, -91.1268, 26.5, -69.9856 )
+material_override = SubResource( 48 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="Map/RedIsland"]
+transform = Transform( 9, 0, 0, 0, 4, 0, 0, 0, 9, -47.8268, 69, -44.7592 )
+material_override = SubResource( 48 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Map/RedIsland"]
+transform = Transform( 9, 0, 0, 0, 4, 0, 0, 0, 9, -60.2033, 48, -88.5865 )
+material_override = SubResource( 48 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="RedIsland15" type="StaticBody" parent="Map/RedIsland"]
+editor/display_folded = true
+transform = Transform( 8, 0, 0, 0, 4, 0, 0, 0, 8, -60.2033, 53.5, -88.5865 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland15"]
+material_override = SubResource( 47 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland15"]
+shape = SubResource( 22 )
+
+[node name="RedIsland14" type="StaticBody" parent="Map/RedIsland"]
+editor/display_folded = true
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -60.2033, 58.5, -88.5865 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland14"]
+material_override = SubResource( 49 )
+mesh = SubResource( 50 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland14"]
+shape = SubResource( 51 )
 
 [node name="RedIsland1" type="StaticBody" parent="Map/RedIsland"]
 editor/display_folded = true
 transform = Transform( 8, 0, 0, 0, 4, 0, 0, 0, 8, -57.9065, 22, -67 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland1"]
-material_override = SubResource( 45 )
+material_override = SubResource( 47 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland1"]
-shape = SubResource( 20 )
-
-[node name="RedIsland13" type="StaticBody" parent="Map/RedIsland"]
-transform = Transform( 8, 0, 0, 0, 4, 0, 0, 0, 8, -91.1268, 15.5, -69.9856 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland13"]
-material_override = SubResource( 45 )
-mesh = SubResource( 11 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland13"]
-shape = SubResource( 20 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland"]
-transform = Transform( 9, 0, 0, 0, 4, 0, 0, 0, 9, -91.1268, 7.5, -69.9856 )
-material_override = SubResource( 46 )
-mesh = SubResource( 11 )
-material/0 = null
+shape = SubResource( 22 )
 
 [node name="RedIsland2" type="StaticBody" parent="Map/RedIsland"]
 editor/display_folded = true
 transform = Transform( 10, 0, 0, 0, 4, 0, 0, 0, 10, -57.9065, 14, -67 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland2"]
-material_override = SubResource( 45 )
+material_override = SubResource( 47 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland2"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
+
+[node name="RedIsland9" type="StaticBody" parent="Map/RedIsland"]
+transform = Transform( 8, 0, 0, 0, 2, 0, 0, 0, 8, -62.0023, 17.9292, -64.1321 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland9"]
+material_override = SubResource( 47 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland9"]
+shape = SubResource( 22 )
+
+[node name="RedIsland12" type="StaticBody" parent="Map/RedIsland"]
+transform = Transform( 8, 0, 0, 0, 4, 0, 0, 0, 8, -50.82, 13.4292, -66.4685 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland12"]
+material_override = SubResource( 47 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland12"]
+shape = SubResource( 22 )
+
+[node name="RedIsland10" type="StaticBody" parent="Map/RedIsland"]
+editor/display_folded = true
+transform = Transform( 8, 0, 0, 0, 2, 0, 0, 0, 8, -64.0858, 9.42925, -65.1148 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland10"]
+material_override = SubResource( 47 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland10"]
+shape = SubResource( 22 )
 
 [node name="RedIsland3" type="StaticBody" parent="Map/RedIsland"]
 transform = Transform( 14, 0, 0, 0, 6, 0, 0, 0, 14, -57.9065, 4, -67 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland3"]
-material_override = SubResource( 45 )
+material_override = SubResource( 47 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland3"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="RedIsland8" type="StaticBody" parent="Map/RedIsland"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -47.4181, 0, -51.1493 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland8"]
-material_override = SubResource( 45 )
+material_override = SubResource( 47 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland8"]
-shape = SubResource( 20 )
-
-[node name="RedIsland9" type="StaticBody" parent="Map/RedIsland"]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -57.7112, 5, -51.03 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland9"]
-material_override = SubResource( 45 )
-mesh = SubResource( 11 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland9"]
-shape = SubResource( 20 )
-
-[node name="RedIsland10" type="StaticBody" parent="Map/RedIsland"]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -46.3246, 14, -56.5614 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland10"]
-material_override = SubResource( 45 )
-mesh = SubResource( 11 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland10"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="RedIsland5" type="StaticBody" parent="Map/RedIsland"]
 editor/display_folded = true
 transform = Transform( 16, 0, 0, 0, 8, 0, 0, 0, 16, -57.9065, -10, -67 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland5"]
-material_override = SubResource( 45 )
+material_override = SubResource( 47 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland5"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="RedIsland6" type="StaticBody" parent="Map/RedIsland"]
 transform = Transform( 18, 0, 0, 0, 10, 0, 0, 0, 18, -57.9065, -28, -67 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland6"]
-material_override = SubResource( 45 )
+material_override = SubResource( 47 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland6"]
-shape = SubResource( 20 )
+shape = SubResource( 22 )
 
 [node name="RedIsland4" type="StaticBody" parent="Map/RedIsland"]
 editor/display_folded = true
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -57.9065, 27, -67 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland4"]
-material_override = SubResource( 47 )
-mesh = SubResource( 48 )
+material_override = SubResource( 49 )
+mesh = SubResource( 50 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland4"]
-shape = SubResource( 49 )
-
-[node name="RedIsland11" type="StaticBody" parent="Map/RedIsland"]
-editor/display_folded = true
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -91.1268, 20.5, -69.9856 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland11"]
-material_override = SubResource( 47 )
-mesh = SubResource( 48 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland11"]
-shape = SubResource( 49 )
+shape = SubResource( 51 )
 
 [node name="RedIsland7" type="StaticBody" parent="Map/RedIsland"]
 editor/display_folded = true
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -57.9065, 27, -67 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Map/RedIsland/RedIsland7"]
-material_override = SubResource( 47 )
-mesh = SubResource( 48 )
+material_override = SubResource( 49 )
+mesh = SubResource( 50 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/RedIsland/RedIsland7"]
-shape = SubResource( 49 )
+shape = SubResource( 51 )
 
 [editable path="Item3"]
 
@@ -3873,6 +4189,16 @@ shape = SubResource( 49 )
 
 [editable path="NPC2"]
 
+[editable path="NPC2/NPC TextBox"]
+
+[editable path="NPC2/TextContainer3"]
+
+[editable path="NPC2/TextContainer4"]
+
+[editable path="NPC2/TextContainer5"]
+
+[editable path="NPC13"]
+
 [editable path="NPC5"]
 
 [editable path="NPC5/NPC TextBox"]
@@ -3884,6 +4210,8 @@ shape = SubResource( 49 )
 [editable path="NPC3"]
 
 [editable path="NPC7"]
+
+[editable path="NPC10"]
 
 [editable path="UnderwaterNPC"]
 
@@ -3912,6 +4240,22 @@ shape = SubResource( 49 )
 [editable path="fishies/fish25"]
 
 [editable path="fishies/fish31"]
+
+[editable path="fishies/fish44"]
+
+[editable path="fishies/fish45"]
+
+[editable path="fishies/fish46"]
+
+[editable path="fishies/fish47"]
+
+[editable path="fishies/fish48"]
+
+[editable path="fishies/fish49"]
+
+[editable path="fishies/fish50"]
+
+[editable path="fishies/fish51"]
 
 [editable path="fishies/fish32"]
 

@@ -66,12 +66,12 @@ hey mu dude
 
 [node name="DialogSound" type="AudioStreamPlayer" parent="TextBox"]
 stream = ExtResource( 5 )
-volume_db = -10.0
+volume_db = -18.0
 script = ExtResource( 6 )
 
 [node name="AbortSound" type="AudioStreamPlayer" parent="TextBox"]
 stream = ExtResource( 5 )
-volume_db = -20.0
+volume_db = -22.0
 script = ExtResource( 6 )
 
 [node name="TextBox2" type="TextureRect" parent="TextBox"]

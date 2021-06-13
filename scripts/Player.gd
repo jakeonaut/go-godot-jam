@@ -36,6 +36,7 @@ var should_i_sprint = true # used by textboxes to prevent player from trying to 
 var is_being_carried = false
 var mushroomCounter = 0
 var has_gotten_a_fish = false
+var has_ever_gotten_a_fish = false
 var has_fed_a_heron = false
 
 var seaFishTimer = 0
@@ -56,10 +57,10 @@ func getSeaFish():
     
 func _process(delta):
     # while global.numMushrooms > mushroomCounter:
-    # 	getMushroom()
+    #     getMushroom()
 
     # while global.bugCounter > bugCounter:
-    # 	getBug()
+    #     getBug()
 
     # ._process(delta) #NOTE: this super method is called automatically 
     # https://github.com/godotengine/godot/issues/6500
@@ -100,59 +101,10 @@ func _process(delta):
 
     # using enum state machines is so much easier than relying on states of timers and booleans..
     if has_sprint_boots:
-        var sprint_speed = 22
-        var fast_walk_speed = 14
-        var cool_down_speed = 4
-        if should_i_sprint and not global.activeInteractor and not global.activeThrowableObject:
-            if should_i_sprint and (just_tried_to_sprint or ((Input.is_action_just_pressed("ui_interact") and sprint_timer == 0) or startChargeSound.playing or (sprint_timer > 0 and sprint_timer < sprint_time_max))):
-                if Input.is_action_just_pressed("ui_interact") and not startChargeSound.playing:
-                    startChargeSound.play()
-                    sprint_timer = 0
-                    just_tried_to_sprint = true
-
-                if startChargeSound.playing:
-                    walk_speed = cool_down_speed
-                    if not Input.is_action_pressed("ui_interact"):
-                        just_tried_to_sprint = false
-                        walk_speed = fast_walk_speed
-                        startChargeSound.stop()
-                        fullChargeSound.stop()
-                        sprint_timer = 0
-                else:
-                    if walk_speed == cool_down_speed:
-                        fullChargeSound.play()
-                        sprint_timer = 1
-                        just_tried_to_sprint = false
-                    walk_speed = sprint_speed
-                    sprint_timer += (delta*22)
-
-            elif sprint_timer >= sprint_time_max:
-                just_tried_to_sprint = false
-                if walk_speed == sprint_speed:
-                    slowDownSound.play()
-                if slowDownSound.playing:
-                    walk_speed = cool_down_speed
-                else:
-                    walk_speed = fast_walk_speed
-                    sprint_timer = 0
-            elif not Input.is_action_pressed("ui_interact"):
-                just_tried_to_sprint = false
-                walk_speed = fast_walk_speed
-                startChargeSound.stop()
-                sprint_timer = 0
-                should_i_sprint = true
-        elif sprint_timer != 0:
-            just_tried_to_sprint = false
-            slowDownSound.play()
-            walk_speed = fast_walk_speed
-            startChargeSound.stop()
-            fullChargeSound.stop()
-            sprint_timer = 0
-            should_i_sprint = true
-        elif not Input.is_action_pressed("ui_interact"):
-            should_i_sprint = true
-            walk_speed = fast_walk_speed
-            sprint_timer = 0
+        if on_ground:
+            walk_speed = 18
+        elif smallInteractionArea.is_touching_water:
+            walk_speed = 14
                 
 
     # if Input.is_action_just_pressed("ui_action") and on_ground and not global.pauseMoveInput and not global.pauseGame:
@@ -183,17 +135,22 @@ func getBugNet():
     itemGetSound.play()
     mySprite.texture = playerWithBugNetTex
     npc.textBox = npc.get_node("TextContainer2").get_node("TextBox")
-    #getCamera().autoRotate = true
+    if global.activeInteractor != null:
+        global.activeInteractor.interact()
+    global.activeInteractor = npc.textBox
+    npc.textBox.interact()
 
 func getFirstFish():
     if has_gotten_a_fish:
         return
     has_gotten_a_fish = true
-    npc.textBox = npc.get_node("TextContainer4").get_node("TextBox")
-    if global.activeInteractor != null:
-        global.activeInteractor.interact()
-    global.activeInteractor = npc.textBox
-    npc.textBox.interact()
+    if not has_ever_gotten_a_fish:
+        npc.textBox = npc.get_node("TextContainer4").get_node("TextBox")
+        if global.activeInteractor != null:
+            global.activeInteractor.interact()
+        global.activeInteractor = npc.textBox
+        npc.textBox.interact()
+        has_ever_gotten_a_fish = true
 
 func getZoraFlippers():
     has_zora_flippers = true
@@ -214,10 +171,11 @@ func getBug():
     #getCamera().autoRotate = true
 
 func getMushroom():
-    mySprite.pixel_size += 0.0022
+    mySprite.pixel_size += 0.0003
     mushroomCounter = mushroomCounter + 1
     global.numMushrooms = mushroomCounter
     if mushroomCounter == global.maxMushrooms:
+        global_transform.origin.y += 3
         animationPlayer.play("growth")
         growthSound.play()
         am_i_big = true

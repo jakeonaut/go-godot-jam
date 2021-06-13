@@ -4714,11 +4714,11 @@ script = ExtResource( 1 )
 
 [node name="badMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = 3.0
+volume_db = -20.0
 
 [node name="goodMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -15.0
+volume_db = -25.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
@@ -4831,7 +4831,7 @@ pitch_scale = 0.3
 
 [node name="WingSound" type="AudioStreamPlayer" parent="herongod/Sounds"]
 stream = ExtResource( 14 )
-volume_db = -30.0
+volume_db = -25.0
 pitch_scale = 0.6
 
 [node name="PickupSound" type="AudioStreamPlayer3D" parent="herongod/Sounds"]
@@ -4934,6 +4934,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 shape = SubResource( 20 )
 
 [node name="Sounds" type="Spatial" parent="Heron"]
+editor/display_folded = true
 
 [node name="GrowthSound" type="AudioStreamPlayer3D" parent="Heron/Sounds"]
 stream = ExtResource( 19 )
@@ -4950,6 +4951,7 @@ pitch_scale = 1.9
 
 [node name="WingSound" type="AudioStreamPlayer3D" parent="Heron/Sounds"]
 stream = ExtResource( 21 )
+unit_db = -10.0
 unit_size = 6.0
 max_db = 6.0
 
@@ -5066,6 +5068,7 @@ unit_size = 1.5
 pitch_scale = 1.9
 
 [node name="WingSound" type="AudioStreamPlayer3D" parent="Heron/Heron2/Sounds"]
+unit_db = -10.0
 unit_size = 10.0
 max_db = 6.0
 
@@ -5086,7 +5089,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.174 )
 shape = SubResource( 21 )
 
 [node name="Heron3" type="KinematicBody" parent="Heron"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.72741, -5, 2.07054 )
 script = ExtResource( 18 )
 
@@ -5183,7 +5185,8 @@ unit_size = 1.5
 pitch_scale = 1.9
 
 [node name="WingSound" type="AudioStreamPlayer3D" parent="Heron/Heron3/Sounds"]
-unit_size = 10.0
+unit_db = -10.0
+unit_size = 0.1
 max_db = 6.0
 
 [node name="PickupSound" type="AudioStreamPlayer3D" parent="Heron/Heron3/Sounds"]
@@ -5203,7 +5206,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.174 )
 shape = SubResource( 21 )
 
 [node name="Heron4" type="KinematicBody" parent="Heron"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.34727, 7, -0.637756 )
 script = ExtResource( 18 )
 
@@ -5300,6 +5302,7 @@ unit_size = 1.5
 pitch_scale = 1.9
 
 [node name="WingSound" type="AudioStreamPlayer3D" parent="Heron/Heron4/Sounds"]
+unit_db = -10.0
 unit_size = 10.0
 max_db = 6.0
 
@@ -5320,7 +5323,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.174 )
 shape = SubResource( 21 )
 
 [node name="Heron5" type="KinematicBody" parent="Heron"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.34606, 7, -2.96713 )
 script = ExtResource( 18 )
 
@@ -5417,6 +5419,7 @@ unit_size = 1.5
 pitch_scale = 1.9
 
 [node name="WingSound" type="AudioStreamPlayer3D" parent="Heron/Heron5/Sounds"]
+unit_db = -10.0
 unit_size = 10.0
 max_db = 6.0
 

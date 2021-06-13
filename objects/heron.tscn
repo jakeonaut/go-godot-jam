@@ -969,39 +969,41 @@ shape = SubResource( 17 )
 
 [node name="GrowthSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource( 6 )
+unit_db = -10.0
 unit_size = 3.0
 max_db = -10.0
 pitch_scale = 0.5
 
 [node name="SpottedSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource( 7 )
-max_db = -10.0
+max_db = -20.0
 
 [node name="PeckSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource( 8 )
 unit_size = 1.5
-max_db = -10.0
+max_db = -24.0
 pitch_scale = 1.9
 
 [node name="WingSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource( 9 )
 unit_size = 10.0
-max_db = -5.0
+max_db = -10.0
+max_distance = 15.0
 
 [node name="PickupSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource( 10 )
 unit_size = 3.0
-max_db = -10.0
+max_db = -15.0
 
 [node name="BabyQuackSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource( 11 )
-max_db = -10.0
+max_db = -24.0
 pitch_scale = 1.5
 
 [node name="AdultQuackSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource( 12 )
 unit_size = 2.0
-max_db = -10.0
+max_db = -15.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.174 )

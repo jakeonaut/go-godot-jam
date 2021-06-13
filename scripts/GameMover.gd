@@ -55,10 +55,21 @@ func _ready():
     spawn_origin = self.global_transform.origin
     last_grounded_pos = spawn_origin
 
+    if walk_speed:
+        pass
+    if falling_y_offset:
+        pass
+    if fallCountMin:
+        pass
+
 func _process(delta):
-    pass
+    if delta:
+        pass
 
 func _physics_process(delta):
+    tryToRespawn()
+
+func tryToRespawn():
     if not on_ground and translation.y < -40: # translation.y < (last_grounded_pos.y - falling_y_offset):
         respawn()
 
@@ -180,10 +191,12 @@ func startRotateSprite(max2):
     if mySprite: mySprite.faceDown()
 
 func processInputs(delta):
-    pass
+    if delta:
+        pass
 
 func postProcessInputs(delta):
-    pass
+    if delta:
+        pass
     
 func landed():
     last_grounded_pos = self.global_transform.origin

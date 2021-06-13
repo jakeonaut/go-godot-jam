@@ -77,6 +77,7 @@ var has_water_sprint = false
 var has_venomous_jump = false
 var am_i_big = false
 var has_triple_jump = false
+var has_unlimited_jumps = false
 
 func _ready():
     set_physics_process(true)
@@ -146,10 +147,7 @@ func applyGravity(delta):
         g = Vector3(0, grav/2, 0)
         # on_ground = false
     elif smallInteractionArea.is_touching_water:
-        if just_tried_to_sprint or sprint_timer > 0 and not global.activeThrowableObject:
-            g = Vector3(0, 0, 0)
-        else:
-            g = Vector3(0, -grav/3, 0)
+        g = Vector3(0, -grav/3, 0)
     elif self.isFeatherLike():
         g = Vector3(0, -grav/2, 0)
     elif broom_state > 0:
@@ -182,9 +180,6 @@ func applyTerminalVelocity(delta):
 func processInputs(delta):
     processJumpInputs(delta)
     processHorizontalInputs(delta)
-    if sprint_timer > 0 and sprint_timer < sprint_time_max and self.isWalkingIntoWall():
-        bumpSound.play()
-        sprint_timer = sprint_time_max
     if Input.is_action_pressed("ui_ctrl"):
         if mySprite: mySprite.setLungeSprite(true)
     elif not Input.is_action_pressed("ui_ctrl") and is_lunging == 0:
@@ -202,12 +197,12 @@ func magicJump():
 func isWalkingIntoWall():
     return linear_velocity.x < 2 and linear_velocity.x > -2 \
             and linear_velocity.z < 2 and linear_velocity.z > -2 \
-            and (self.is_pressing_horizontal_input or (sprint_timer > 5 and sprint_timer < sprint_time_max))
+            and self.is_pressing_horizontal_input
 
 func processJumpInputs(delta):
     has_just_lunged = false
     if has_venomous_jump:
-        jump_force = 25
+        jump_force = 28
         weaker_jump_force = 20
 
     # jump
@@ -221,6 +216,8 @@ func processJumpInputs(delta):
                 vv = (2*jump_force) / 3
             else:
                 vv = (3*jump_force) / 4
+                if has_venomous_jump:
+                    vv = jump_force / 2
                 has_just_lunged = true
 
             if smallInteractionArea.is_touching_water:
@@ -239,7 +236,7 @@ func processJumpInputs(delta):
             feather_fall_timer = 0
             chicken_jumps += 1
         # Jump from the ground
-        elif is_lunging == 0 or should_magic_jump or (glitch_form == GlitchForm.JUMP && fallCounter >= fallCountMin):
+        elif (not has_triple_jump and has_unlimited_jumps) or is_lunging == 0 or should_magic_jump or (glitch_form == GlitchForm.JUMP && fallCounter >= fallCountMin):
             is_recovering = false
             var curr_jump_force = jump_force
             # a11y hack for jessica. if walking into a wall, make it a bit easier to jump right on it
@@ -256,7 +253,7 @@ func processJumpInputs(delta):
             should_magic_jump = false
         # Double jump
         elif has_double_jump and not weakWetJumpSound.playing and (is_lunging == -1) and not glitch_form == GlitchForm.JUMP and not Input.is_action_pressed("ui_ctrl"):
-            vv = jump_force / 1.5
+            vv = jump_force
             if has_venomous_jump:
                 vv = jump_force / 1.2
             doubleJumpSound.play()
@@ -264,7 +261,7 @@ func processJumpInputs(delta):
             has_just_jumped_timer = 0
             feather_fall_timer = 0
             startRotateSprite(1)
-        elif has_triple_jump and not weakWetJumpSound.playing and (is_lunging <= -2 and is_lunging >= -3) and not glitch_form == GlitchForm.JUMP and not Input.is_action_pressed("ui_ctrl"):
+        elif has_triple_jump and not weakWetJumpSound.playing and ((is_lunging <= -2 and is_lunging >= -3) or has_unlimited_jumps) and not glitch_form == GlitchForm.JUMP and not Input.is_action_pressed("ui_ctrl"):
             vv = jump_force
             tripleJumpSound.play()
             is_lunging -= 1
@@ -414,18 +411,13 @@ func processHorizontalInputs(delta):
         self.isFeatherLike() or self.glitch_form == GlitchForm.LADDER:
         
         horizontal_input = true
-        if (self.sprint_timer == 0 or self.is_pressing_horizontal_input) and self.glitch_form != GlitchForm.FEATHER and (not self.is_holding_chicken or on_ground) and is_lunging < 2:
+        if self.glitch_form != GlitchForm.FEATHER and (not self.is_holding_chicken or on_ground) and is_lunging < 2:
             dir = Vector3(0.0, 0.0, 0.0)
-        if dir.x == 0 and dir.z == 0 and self.sprint_timer > 0 and self.sprint_timer < self.sprint_time_max and not self.is_pressing_horizontal_input:
-            dir += forward
 
         if is_lunging != 2:
             if Input.is_action_pressed("ui_up"):
                 if not global.pauseMoveInput: 
                     dir += forward
-                if mySprite.isFacingDown() and sprint_timer > 0 and sprint_timer < sprint_time_max:
-                    sprint_timer = sprint_time_max
-                    print("Seriouslyt?")
                 # only change sprite facing if i'm idle of if I just pressed this
                 if not mySprite.is_lunge_sprite and is_lunging < 2 and broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_up") or Input.is_action_just_released("ui_down") or \
                     (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"))) and not is_rotating:
@@ -433,8 +425,6 @@ func processHorizontalInputs(delta):
             elif Input.is_action_pressed("ui_down"):
                 if not global.pauseMoveInput: 
                     dir -= forward
-                if mySprite.isFacingUp() and sprint_timer > 0 and sprint_timer < sprint_time_max:
-                    sprint_timer = sprint_time_max
                 # only change sprite facing if i'm idle or if I just pressed down, or was holding down and released up
                 if not mySprite.is_lunge_sprite and is_lunging < 2 and broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_down") or Input.is_action_just_released("ui_up") or \
                     (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"))) and not is_rotating:
@@ -444,8 +434,6 @@ func processHorizontalInputs(delta):
             if Input.is_action_pressed("ui_left"):
                 if not global.pauseMoveInput: 
                     dir += right
-                if mySprite.isFacingRight() and sprint_timer > 0 and sprint_timer < sprint_time_max:
-                    sprint_timer = sprint_time_max
                 # only change sprite facing if i'm idle of if I just pressed this
                 if not mySprite.is_lunge_sprite and  is_lunging < 2 and broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_left") or Input.is_action_just_released("ui_right") or \
                     (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"))) and not is_rotating:
@@ -454,8 +442,6 @@ func processHorizontalInputs(delta):
             elif Input.is_action_pressed("ui_right"):
                 if not global.pauseMoveInput: 
                     dir -= right
-                if mySprite.isFacingLeft() and sprint_timer > 0 and sprint_timer < sprint_time_max:
-                    sprint_timer = sprint_time_max
                 # only change sprite facing if i'm idle or if I just pressed right, or was holding right and released left
                 if not mySprite.is_lunge_sprite and  is_lunging < 2 and broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_right") or Input.is_action_just_released("ui_left") or \
                     (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"))) and not is_rotating:
@@ -477,8 +463,6 @@ func processHorizontalInputs(delta):
             curr_walk_speed = walk_speed
     elif is_recovering or should_recover or (not on_ground and self.glitch_form == GlitchForm.LADDER):
         curr_walk_speed = recover_walk_speed
-    elif Input.is_action_pressed("ui_ctrl") and sprint_timer == 0:
-        curr_walk_speed = swimming_walk_speed
 
     # update x and z
     if is_lunging < 2 and (not smallInteractionArea.is_touching_water or horizontal_input):
@@ -499,7 +483,7 @@ func processHorizontalInputs(delta):
     if broom_state > 0 or is_interact_charging:
         hv = Vector3(0, 0, 0)
         is_walking = false
-    else:
+    elif not global.activeThrowableObject:
         updateFacing(dir)
 
 func updateFacing(dir):

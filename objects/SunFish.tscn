@@ -438,7 +438,7 @@ volume_db = -20.0
 nextTextBoxPath = NodePath("../TextContainer3")
 bbText = "you have done well.
 for this, I will grant
-you unlimited time
+you unlimited jumps
 to finish your quest."
 portrait = ExtResource( 6 )
 

@@ -30,14 +30,15 @@ func interrupt():
 
 # PRIVATE FUNCTION. CALLED AT THE MIDDLE OF THE TRANSITION ANIMATION
 func change_scene():
-	# print(was_i_interrupted)
-	# if was_i_interrupted:
-	# 	was_i_interrupted = false
-	# 	return
+    # print(was_i_interrupted)
+    # if was_i_interrupted:
+    #     was_i_interrupted = false
+    #     return
 
-	print(self.path)
-	if self.path != null:
-		get_tree().change_scene(self.path)
-	else:
-		player.global_transform.origin = player.last_grounded_pos
-		player.IJustDrowned()
+    print(self.path)
+    if self.path != null:
+        var x = get_tree().change_scene(self.path)
+        if x: pass
+    else:
+        player.global_transform.origin = player.last_grounded_pos
+        player.IJustDrowned()

@@ -11,6 +11,8 @@ onready var textBox = get_node("NPC TextBox").get_node("TextBox")
 onready var textBoxtext = get_node("NPC TextBox/TextBox/Text")
 onready var textBoxportrait = get_node("NPC TextBox/TextBox/Portrait")
 
+var myLastTextBox = null
+
 var have_i_talked = false
 var try_to_forget = false
 
@@ -32,12 +34,17 @@ func _ready():
         textBoxContainer.nextTextBoxPath = NodePath(nextTextBoxPathStr)
     textBoxContainer.setVars()
 
+    if myLastTextBox != textBox:
+        have_i_talked = false
+    myLastTextBox = textBox
+    if try_to_forget: pass
+
 func isActive():
     return visible
 
 func activate():
     have_i_talked = true
-    try_to_forget = true
+    # try_to_forget = true
     if global.activeInteractor == null:
         global.activeInteractor = textBox
         textBox.interact()
@@ -47,12 +54,10 @@ func passiveActivate(delta):
         activate()
 
 func stopPassiveActivate():
-    try_to_forget = true
+    pass
 
 func softPassiveActivate(delta):
     pass
 
 func stopSoftPassiveActivate():
-    if try_to_forget:
-        have_i_talked = false
-        try_to_forget = false
+    pass

@@ -26,6 +26,10 @@ var am_i_big = false
 var is_being_eaten = false
 var im_the_first = false
 
+var was_recently_touching_water = true
+var was_recently_touching_water_timer = 0
+var was_recently_touching_water_time_max = 5
+
 func _ready():
     set_process(true)
     set_physics_process(true)
@@ -50,12 +54,21 @@ func _physics_process(delta):
 
     if self.repositionSelf(): return
 
-    if not was_touching_water and interactionArea.is_touching_water:
+    if not was_recently_touching_water and interactionArea.is_touching_water:
         splashSound.play()
     is_touching_water = interactionArea.is_touching_water
     .processPhysics(delta)
     if not has_initially_landed and on_ground:
         has_initially_landed = true
+
+    if interactionArea.is_touching_water:
+        was_recently_touching_water = true
+        was_recently_touching_water_timer = 0
+    elif was_recently_touching_water:
+        was_recently_touching_water_timer += (delta*22)
+        if was_recently_touching_water_timer >= was_recently_touching_water_time_max:
+            was_recently_touching_water = false
+            was_recently_touching_water_timer = 0
 
 func repositionSelf():
     if is_held:
@@ -66,6 +79,11 @@ func repositionSelf():
         set_collision_mask_bit(1, false)
         return true
     return false
+
+# @override
+func tryToRespawn():
+    if not on_ground and (translation.y < -40 or (not player.has_zora_flippers and translation.y < -1)):
+        respawn()
 
 # @override
 func processInputs(delta):
@@ -114,6 +132,7 @@ func landed():
         has_initially_landed = true
     if im_the_first and not is_being_eaten:
         im_the_first = false
+        player.has_gotten_a_fish = false
         npc.textBox = npc.get_node("TextContainerPostFish").get_node("TextBox")
         if global.activeInteractor != null:
             global.activeInteractor.interact()
@@ -140,9 +159,12 @@ func activate(interact_charge_timer = 1):
             pickup()
         elif pickupCounter >= pickupCounterMax and (global.activeThrowableObject == self or is_held):
             throw(interact_charge_timer)
-		
+        
 func getEaten():
-	is_being_eaten = true
+    is_being_eaten = true
+
+func getSpitUp():
+    is_being_eaten = false
 
 func pickup():
     is_floating = false

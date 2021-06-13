@@ -15,9 +15,8 @@
 [sub_resource type="SphereShape" id=2]
 radius = 2.1
 
-[sub_resource type="CapsuleShape" id=3]
-radius = 2.0
-height = 2.0
+[sub_resource type="SphereShape" id=5]
+radius = 2.5
 
 [sub_resource type="CylinderShape" id=4]
 radius = 6.0
@@ -42,8 +41,8 @@ shape = SubResource( 2 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SmallInteractionArea"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 1.37651, 0 )
-shape = SubResource( 3 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0.811569, 0 )
+shape = SubResource( 5 )
 
 [node name="SoftPassiveInteractionArea" type="Area" parent="."]
 script = ExtResource( 4 )

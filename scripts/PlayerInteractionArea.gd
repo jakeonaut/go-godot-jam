@@ -49,6 +49,7 @@ func _process(delta):
 
     # give priority to active area if user pressing interact action
     if Input.is_action_just_pressed("ui_interact"):
+        player.startThrowChargeSound.stop()
         if nearest_area:
             nearest_area.InteractActivate()
             player.walk_speed = 12
@@ -63,13 +64,13 @@ func _process(delta):
             get_node("..").tryEmptyInteract()
     elif player.is_interact_charging and Input.is_action_pressed("ui_interact"):
         if global.activeThrowableObject and player.interact_charge_timer < player.interact_charge_time_max:
-            var was_less_than_3 = player.interact_charge_timer < 3
+            var was_less_than_3 = player.interact_charge_timer < 5
             player.interact_charge_timer += (delta*22)
             if was_less_than_3 and player.interact_charge_timer >= 3:
                 player.startThrowChargeSound.play()
             
             if player.interact_charge_timer >= player.interact_charge_time_max:
-                #player.fullChargeSound.play()
+                player.fullChargeSound.play()
                 pass
     elif player.is_interact_charging:
         player.is_interact_charging = 0
@@ -84,6 +85,9 @@ func _process(delta):
     # otherwise, try to interact passive areas
     elif nearest_passive_area:
         nearest_passive_area.PassiveInteractActivate(delta)     
+
+    if not Input.is_action_pressed("ui_interact"):
+        player.startThrowChargeSound.stop()
 
 # cast a ray from camera at mouse position, and get the object colliding with the ray
 # from: https://www.reddit.com/r/godot/comments/8ft84k/get_clicked_object_in_3d/

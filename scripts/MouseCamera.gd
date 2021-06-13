@@ -150,9 +150,11 @@ func processMouseInput(delta):
 
     if (mouseDiffY > 0 and not self.gateKeepDownCondition_(camera_x.rotation.x)) or \
        (mouseDiffY < 0 and not self.gateKeepUpCondition_(camera_x.rotation.x)):
-        target_rotation_x = camera_x.rotation.x
-        real_rotation_target_x = camera_x.rotation_degrees.x
-        self.normalizeTargetX()
+        # target_rotation_x = camera_x.rotation.x
+        # real_rotation_target_x = camera_x.rotation_degrees.x
+        # self.normalizeTargetX()
+        camera_x.rotate_x(mouseDiffY * delta)
+
 
     if mouseDiffX != 0 or mouseDiffY != 0:
         player_sprite.fixSpriteFacing()
