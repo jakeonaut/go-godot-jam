@@ -4734,6 +4734,7 @@ material_override = SubResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 9.99999 )
 
 [node name="herongod" type="KinematicBody" parent="."]
+editor/display_folded = true
 transform = Transform( 18.1262, 0, 8.45238, 0, 15, 0, -8.45238, 0, 18.1262, -159, -111.724, -253 )
 collision_layer = 4
 script = ExtResource( 5 )
@@ -4772,6 +4773,7 @@ mesh = SubResource( 8 )
 material/0 = null
 
 [node name="heron" type="Spatial" parent="herongod"]
+editor/display_folded = true
 transform = Transform( 1.5, 0, 3.8743e-007, 0, 1.5, 0, -4.76837e-007, 0, 1, 4.76837e-007, 0, 1.58863 )
 
 [node name="Body" type="MeshInstance" parent="herongod/heron"]
@@ -4816,6 +4818,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 shape = SubResource( 20 )
 
 [node name="Sounds" type="Spatial" parent="herongod"]
+editor/display_folded = true
 
 [node name="GrowthSound" type="AudioStreamPlayer" parent="herongod/Sounds"]
 stream = ExtResource( 11 )
@@ -4972,6 +4975,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.174 )
 shape = SubResource( 21 )
 
 [node name="Heron2" type="KinematicBody" parent="Heron"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.76148, -5, -1.81174 )
 script = ExtResource( 18 )
 
@@ -5089,6 +5093,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.174 )
 shape = SubResource( 21 )
 
 [node name="Heron3" type="KinematicBody" parent="Heron"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.72741, -5, 2.07054 )
 script = ExtResource( 18 )
 
@@ -5206,6 +5211,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.174 )
 shape = SubResource( 21 )
 
 [node name="Heron4" type="KinematicBody" parent="Heron"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.34727, 7, -0.637756 )
 script = ExtResource( 18 )
 
@@ -5323,7 +5329,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.174 )
 shape = SubResource( 21 )
 
 [node name="Heron5" type="KinematicBody" parent="Heron"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.34606, 7, -2.96713 )
+editor/display_folded = true
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -3.34606, 7, -2.96713 )
 script = ExtResource( 18 )
 
 [node name="Target" type="Spatial" parent="Heron/Heron5"]

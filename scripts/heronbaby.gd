@@ -173,6 +173,12 @@ func processInputs(delta):
                 global.activeInteractor.abort()
             global.activeInteractor = npc.textBox
             global.activeInteractor.interact()
+        if global.numHerons >= 5:
+            global.pauseGame = true
+            global.pauseMoveInput = true
+            global.is_in_cutscene = true
+            transition.interrupt()
+            transition.long_fade_to("res://levels/nighttimefinale.tscn")
         state = State.ADULT_START_FLY
         animationPlayer.play("heronAdultFlapAwayStart")
         adultQuackSound.play()

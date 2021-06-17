@@ -499,12 +499,12 @@ state = 4
 
 [node name="Item26" parent="Mushrooms" instance=ExtResource( 11 )]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 6.60222, 24 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 0.60222, -4 )
 state = 4
 
 [node name="Item27" parent="Mushrooms" instance=ExtResource( 11 )]
 editor/display_folded = true
-transform = Transform( 0.55138, 0.822651, -0.138653, 0.541865, -0.479521, -0.690248, -0.634321, 0.305458, -0.710164, -55, 3.60222, 17 )
+transform = Transform( 0.55138, 0.822651, -0.138653, 0.541865, -0.479521, -0.690248, -0.634321, 0.305458, -0.710164, -48, 3.60222, -14 )
 state = 4
 
 [node name="Item8" parent="Mushrooms" instance=ExtResource( 11 )]
@@ -1044,7 +1044,7 @@ elder first!"
 portrait = ExtResource( 23 )
 
 [node name="NPC8" parent="." instance=ExtResource( 22 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -78, 2.8178, 14 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 5.8178, 32 )
 bbText = "i can't get over to that
 island.. maybe if 
 i had some cool new
@@ -1422,20 +1422,18 @@ collision_layer = 4
 transform = Transform( 1, 0, 2.98023e-008, 0, 1, 0, -2.98023e-008, 0, 1, -15.3196, 28, -126.425 )
 
 [node name="heronbaby5" parent="." instance=ExtResource( 33 )]
-editor/display_folded = true
 transform = Transform( 3.06418, 0, 2.57115, 0, 4, 0, -2.57115, 0, 3.06418, -94, 161.276, -74 )
 collision_layer = 4
 am_i_big = true
 
 [node name="Target" parent="heronbaby5" index="0"]
-transform = Transform( 1, 0, 5.96046e-008, 0, 1, 0, -5.96046e-008, 0, 1, 2.21288, 26, 14.4758 )
+transform = Transform( 1, 0, 2.08616e-007, 0, 1, 0, -2.08616e-007, 0, 1, 11.2139, 5, 22.0285 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.782701, -0.140057, 0.606435, -0.45699, 0.532155, 0.712721, -0.422539, -0.834982, 0.352513, 0, 15, 0 )
 light_energy = 0.5
 
 [node name="Map" type="Spatial" parent="."]
-editor/display_folded = true
 
 [node name="OceanWater" type="Area" parent="Map" groups=[
 "water",
@@ -3832,6 +3830,17 @@ mesh = SubResource( 11 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland6"]
+shape = SubResource( 22 )
+
+[node name="QuiltIsland20" type="StaticBody" parent="Map/QuiltIsland"]
+transform = Transform( 5, 0, 0, 0, 8, 0, 0, 0, 5, -14.9065, -6, -16 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Map/QuiltIsland/QuiltIsland20"]
+material_override = SubResource( 44 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Map/QuiltIsland/QuiltIsland20"]
 shape = SubResource( 22 )
 
 [node name="QuiltIsland29" type="StaticBody" parent="Map/QuiltIsland"]
