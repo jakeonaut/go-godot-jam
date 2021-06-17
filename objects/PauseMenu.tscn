@@ -1,0 +1,500 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/darkwater.png" type="Texture" id=1]
+[ext_resource path="res://scripts/PauseMenu.gd" type="Script" id=2]
+[ext_resource path="res://assets/water_normal_5.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/Quirk.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://scripts/PauseMenuText.gd" type="Script" id=5]
+[ext_resource path="res://assets/textures/darkyellowgrassfloortrans.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/yellowgrassfloor.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+extra_spacing_char = 1
+extra_spacing_space = 2
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 28
+extra_spacing_char = 1
+extra_spacing_space = 2
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+extra_spacing_char = 1
+extra_spacing_space = 2
+font_data = ExtResource( 4 )
+
+[node name="PauseMenu" type="TextureRect"]
+margin_left = 15.0
+margin_top = 21.0
+margin_right = 628.0
+margin_bottom = 426.0
+texture = ExtResource( 1 )
+expand = true
+script = ExtResource( 2 )
+
+[node name="EnterKeyRect" type="TextureRect" parent="."]
+margin_left = 97.0
+margin_top = 65.0
+margin_right = 176.0
+margin_bottom = 95.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 2
+
+[node name="ESCKeyRect" type="TextureRect" parent="."]
+margin_left = 439.0
+margin_top = 65.0
+margin_right = 495.0
+margin_bottom = 95.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="."]
+margin_left = 15.0
+margin_top = 18.0
+margin_right = 617.0
+margin_bottom = 393.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "welcome to summer islands.  take a break :)
+
+press enter to unpause    hold ESC to quit
+
+swim in the water by moving and jumping"
+text = "welcome to summer islands.  take a break :)
+
+press enter to unpause    hold ESC to quit
+
+swim in the water by moving and jumping"
+scroll_active = false
+script = ExtResource( 5 )
+
+[node name="InputControl" type="Control" parent="."]
+margin_left = 74.0
+margin_top = 32.0
+margin_right = 609.0
+margin_bottom = 404.0
+mouse_filter = 2
+
+[node name="Text" type="RichTextLabel" parent="InputControl"]
+margin_left = -9.0
+margin_top = 135.0
+margin_right = 520.0
+margin_bottom = 170.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 0.101961, 1, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "click a key below to change input!"
+text = "click a key below to change input!"
+scroll_active = false
+
+[node name="Text2" type="RichTextLabel" parent="InputControl"]
+margin_left = -39.0
+margin_top = 182.0
+margin_right = 49.0
+margin_bottom = 241.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = " move
+player"
+text = " move
+player"
+scroll_active = false
+
+[node name="MoveUpKeyRect" type="TextureButton" parent="InputControl"]
+margin_left = 52.0
+margin_top = 184.0
+margin_right = 98.0
+margin_bottom = 228.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+expand = true
+stretch_mode = 1
+
+[node name="Text" type="RichTextLabel" parent="InputControl/MoveUpKeyRect"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 86.0
+margin_bottom = 37.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "W
+"
+text = "W
+"
+scroll_active = false
+
+[node name="MoveLeftKeyRect" type="TextureRect" parent="InputControl"]
+margin_left = 107.0
+margin_top = 184.0
+margin_right = 149.0
+margin_bottom = 228.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="InputControl/MoveLeftKeyRect"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 102.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "A"
+text = "A"
+scroll_active = false
+
+[node name="MoveDownKeyRect" type="TextureRect" parent="InputControl"]
+margin_left = 158.0
+margin_top = 184.0
+margin_right = 198.0
+margin_bottom = 228.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="InputControl/MoveDownKeyRect"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 100.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "S"
+text = "S"
+scroll_active = false
+
+[node name="MoveRightKeyRect" type="TextureRect" parent="InputControl"]
+margin_left = 209.0
+margin_top = 184.0
+margin_right = 249.0
+margin_bottom = 228.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="InputControl/MoveRightKeyRect"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 96.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "D
+"
+text = "D
+"
+scroll_active = false
+
+[node name="Text3" type="RichTextLabel" parent="InputControl"]
+margin_left = 325.0
+margin_top = 191.0
+margin_right = 398.0
+margin_bottom = 241.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "jump"
+text = "jump"
+scroll_active = false
+
+[node name="JumpKeyRect" type="TextureRect" parent="InputControl"]
+editor/display_folded = true
+margin_left = 404.0
+margin_top = 184.0
+margin_right = 524.0
+margin_bottom = 228.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="InputControl/JumpKeyRect"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 100.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "space
+"
+text = "space
+"
+scroll_active = false
+
+[node name="Text4" type="RichTextLabel" parent="InputControl"]
+margin_left = -50.0
+margin_top = 248.0
+margin_right = 52.0
+margin_bottom = 319.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = " move
+camera"
+text = " move
+camera"
+scroll_active = false
+
+[node name="Text5" type="RichTextLabel" parent="InputControl"]
+margin_left = -50.0
+margin_top = 332.0
+margin_right = 183.0
+margin_bottom = 371.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "mouse sensitivity"
+text = "mouse sensitivity"
+scroll_active = false
+
+[node name="MoveCameraLeftKeyRect" type="TextureRect" parent="InputControl"]
+margin_left = 52.0
+margin_top = 253.0
+margin_right = 133.0
+margin_bottom = 294.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="InputControl/MoveCameraLeftKeyRect"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 85.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Left
+"
+text = "Left
+"
+scroll_active = false
+
+[node name="MoveCameraRightKeyRect" type="TextureRect" parent="InputControl"]
+margin_left = 147.0
+margin_top = 253.0
+margin_right = 237.0
+margin_bottom = 294.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="InputControl/MoveCameraRightKeyRect"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 83.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Right
+	"
+text = "Right
+	"
+scroll_active = false
+
+[node name="MoveCameraUpKeyRect" type="TextureRect" parent="InputControl"]
+margin_left = 248.0
+margin_top = 253.0
+margin_right = 337.0
+margin_bottom = 294.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="InputControl/MoveCameraUpKeyRect"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 83.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Up
+"
+text = "Up
+"
+scroll_active = false
+
+[node name="MoveCameraDownKeyRect" type="TextureRect" parent="InputControl"]
+editor/display_folded = true
+margin_left = 350.0
+margin_top = 253.0
+margin_right = 446.0
+margin_bottom = 294.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="InputControl/MoveCameraDownKeyRect"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 83.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Down"
+text = "Down"
+scroll_active = false
+
+[node name="MouseSensitivityRect" type="TextureRect" parent="InputControl"]
+margin_left = 194.0
+margin_top = 319.0
+margin_right = 238.0
+margin_bottom = 360.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="InputControl/MouseSensitivityRect"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 83.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "5"
+text = "5"
+scroll_active = false
+
+[node name="Text6" type="RichTextLabel" parent="InputControl"]
+margin_left = 263.0
+margin_top = 328.0
+margin_right = 526.0
+margin_bottom = 367.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "interact/talk
+"
+text = "interact/talk
+"
+scroll_active = false
+
+[node name="InteractKeyRect" type="TextureRect" parent="InputControl"]
+margin_left = 444.0
+margin_top = 319.0
+margin_right = 518.0
+margin_bottom = 360.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="InputControl/InteractKeyRect"]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 83.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "E"
+text = "E"
+scroll_active = false
+
+[node name="PressAKey" type="TextureRect" parent="."]
+visible = false
+margin_left = 12.0
+margin_top = 17.0
+margin_right = 601.0
+margin_bottom = 387.0
+mouse_filter = 2
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="PressAKey"]
+anchor_right = 1.0
+margin_left = 8.0
+margin_top = 26.0
+margin_right = 28.0
+margin_bottom = 393.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "              press any key 
+			
+      (except enter or escape)
+	 
+         to set the key for JUMP"
+text = "              press any key 
+			
+      (except enter or escape)
+	 
+         to set the key for JUMP"
+scroll_active = false
+
+[node name="PressNumber" type="TextureRect" parent="."]
+visible = false
+margin_left = 12.0
+margin_top = 17.0
+margin_right = 601.0
+margin_bottom = 387.0
+mouse_filter = 2
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="PressNumber"]
+anchor_right = 1.0
+margin_left = 8.0
+margin_top = 77.0
+margin_right = 28.0
+margin_bottom = 393.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "     press a digit (between 0-9)
+
+     to set the mouse sensitivity
+
+       for camera movement"
+text = "     press a digit (between 0-9)
+
+     to set the mouse sensitivity
+
+       for camera movement"
+scroll_active = false

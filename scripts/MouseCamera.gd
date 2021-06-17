@@ -50,14 +50,20 @@ func _ready():
     real_rotation_target_x = camera_x.rotation_degrees.x
     self.normalizeTargetX()
     current_rotation_x = target_rotation_x
-
-    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     
 func _input(ev):
     if ev is InputEventMouseButton: # and ev.button_index == BUTTON_RIGHT:
+        if global.pauseGame:
+            Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+        else:
+            Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
         mouseDown = ev.is_pressed()
         startClickPos = ev.position
     elif ev is InputEventMouseMotion:
+        if global.pauseGame:
+            Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+        else:
+            Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
         #if mouseDown:
         mouseDiffX = -ev.relative.x
         mouseDiffY = -ev.relative.y
@@ -122,7 +128,7 @@ func _process(delta):
         # if curr_step.y > 3.5:
         curr_step.y = 4
     
-    if not global.is_in_cutscene and not autoRotate:
+    if not global.pauseGame and not global.is_in_cutscene and not autoRotate:
         self.processMouseInput(delta)
 
 func processMouseInput(delta):
@@ -139,8 +145,30 @@ func processMouseInput(delta):
     if abs(mouseDiffX) < smallest: mouseDiffX = 0
     if abs(mouseDiffY) < smallest: mouseDiffY = 0
 
-    mouseDiffX /= 2
-    mouseDiffY /= 2
+    var precision = 0.5
+    if global.mouseSensitivity == 0:
+        precision = 0
+    if global.mouseSensitivity == 1:
+        precision = 0.1
+    if global.mouseSensitivity == 2:
+        precision = 0.2
+    if global.mouseSensitivity == 3:
+        precision = 0.3
+    if global.mouseSensitivity == 4:
+        precision = 0.4
+    if global.mouseSensitivity == 5:
+        precision = 0.5
+    if global.mouseSensitivity == 6:
+        precision = 0.6
+    if global.mouseSensitivity == 7:
+        precision = 0.7
+    if global.mouseSensitivity == 8:
+        precision = 0.8
+    if global.mouseSensitivity == 9:
+        precision = 0.9
+
+    mouseDiffX *= precision
+    mouseDiffY *= precision
 
     rotate_y(mouseDiffX * delta)
     # target_rotation = self.rotation.y
@@ -161,8 +189,6 @@ func processMouseInput(delta):
 
     mouseDiffX = 0
     mouseDiffY = 0
-
-    Input.warp_mouse_position (Vector2(0, 0))
 
 func focusForward(facing):
     # STILL DON'T REALLY KNOW WHAT I'M DOING HERE

@@ -28,6 +28,7 @@ var numMushrooms = 0
 var maxMushrooms = 39
 var game_over = false
 var did_i_win = false
+var mouseSensitivity = 5
 
 func _ready():
     randomize()
@@ -55,6 +56,7 @@ func _ready():
     if is_in_cutscene: pass
     if game_over: pass
     if did_i_win: pass
+    if mouseSensitivity: pass
 
 
 var save_game_file = "user://savegame.save"
