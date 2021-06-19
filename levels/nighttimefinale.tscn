@@ -4734,7 +4734,6 @@ material_override = SubResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 9.99999 )
 
 [node name="herongod" type="KinematicBody" parent="."]
-editor/display_folded = true
 transform = Transform( 18.1262, 0, 8.45238, 0, 15, 0, -8.45238, 0, 18.1262, -159, -111.724, -253 )
 collision_layer = 4
 script = ExtResource( 5 )
@@ -4818,23 +4817,22 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 shape = SubResource( 20 )
 
 [node name="Sounds" type="Spatial" parent="herongod"]
-editor/display_folded = true
 
 [node name="GrowthSound" type="AudioStreamPlayer" parent="herongod/Sounds"]
 stream = ExtResource( 11 )
-volume_db = -18.0
+volume_db = -30.75
 
 [node name="SpottedSound" type="AudioStreamPlayer3D" parent="herongod/Sounds"]
 stream = ExtResource( 12 )
 
 [node name="PeckSound" type="AudioStreamPlayer" parent="herongod/Sounds"]
 stream = ExtResource( 13 )
-volume_db = -25.0
+volume_db = -31.4
 pitch_scale = 0.3
 
 [node name="WingSound" type="AudioStreamPlayer" parent="herongod/Sounds"]
 stream = ExtResource( 14 )
-volume_db = -25.0
+volume_db = -36.742
 pitch_scale = 0.6
 
 [node name="PickupSound" type="AudioStreamPlayer3D" parent="herongod/Sounds"]
@@ -4843,12 +4841,12 @@ unit_size = 3.0
 
 [node name="BabyQuackSound" type="AudioStreamPlayer" parent="herongod/Sounds"]
 stream = ExtResource( 16 )
-volume_db = -4.0
+volume_db = -28.603
 pitch_scale = 0.3
 
 [node name="AdultQuackSound" type="AudioStreamPlayer" parent="herongod/Sounds"]
 stream = ExtResource( 17 )
-volume_db = -20.0
+volume_db = -28.946
 pitch_scale = 0.2
 
 [node name="CollisionShape" type="CollisionShape" parent="herongod"]
@@ -4856,6 +4854,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.174 )
 shape = SubResource( 21 )
 
 [node name="Heron" type="KinematicBody" parent="."]
+editor/display_folded = true
 transform = Transform( -0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -86, 68.0908, -114 )
 script = ExtResource( 18 )
 
@@ -4937,11 +4936,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 shape = SubResource( 20 )
 
 [node name="Sounds" type="Spatial" parent="Heron"]
-editor/display_folded = true
 
 [node name="GrowthSound" type="AudioStreamPlayer3D" parent="Heron/Sounds"]
 stream = ExtResource( 19 )
-unit_size = 3.0
+unit_size = 0.4
 pitch_scale = 0.5
 
 [node name="SpottedSound" type="AudioStreamPlayer3D" parent="Heron/Sounds"]
@@ -4964,6 +4962,7 @@ unit_size = 3.0
 
 [node name="BabyQuackSound" type="AudioStreamPlayer3D" parent="Heron/Sounds"]
 stream = ExtResource( 17 )
+unit_size = 0.1
 pitch_scale = 1.5
 
 [node name="AdultQuackSound" type="AudioStreamPlayer3D" parent="Heron/Sounds"]

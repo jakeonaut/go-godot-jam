@@ -14,13 +14,13 @@ extra_spacing_char = 1
 extra_spacing_space = 2
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 28
 extra_spacing_char = 1
 extra_spacing_space = 2
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 30
 extra_spacing_char = 1
 extra_spacing_space = 2
@@ -91,7 +91,7 @@ margin_bottom = 170.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0.101961, 1, 0, 1 )
 bbcode_enabled = true
 bbcode_text = "click a key below to change input!"
@@ -451,7 +451,7 @@ margin_bottom = 393.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
 bbcode_text = "              press any key 
 			
@@ -485,7 +485,7 @@ margin_bottom = 393.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
 bbcode_text = "     press a digit (between 0-9)
 

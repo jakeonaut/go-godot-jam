@@ -53,14 +53,14 @@ func _ready():
     
 func _input(ev):
     if ev is InputEventMouseButton: # and ev.button_index == BUTTON_RIGHT:
-        if global.pauseGame:
+        if global.pauseGame and global.activeInteractor == null:
             Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
         else:
             Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
         mouseDown = ev.is_pressed()
         startClickPos = ev.position
     elif ev is InputEventMouseMotion:
-        if global.pauseGame:
+        if global.pauseGame and global.activeInteractor == null:
             Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
         else:
             Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -173,7 +173,7 @@ func processMouseInput(delta):
     rotate_y(mouseDiffX * delta)
     # target_rotation = self.rotation.y
     # current_rotation = target_rotation
-    if mouseDiffX != 0 and not player.is_pressing_horizontal_input and global.activeThrowableObject:
+    if mouseDiffX != 0:
         player.facing = player.getCameraForward()
 
     if (mouseDiffY > 0 and not self.gateKeepDownCondition_(camera_x.rotation.x)) or \

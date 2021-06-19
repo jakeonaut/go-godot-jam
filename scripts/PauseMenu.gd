@@ -6,14 +6,14 @@ var input_action_to_read = ""
 var inputNodeToChange = null
 
 var escHoldTimer = 0
-var escHoldTimerMax = 10
+var escHoldTimerMax = 40
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
     pass
 
 func _process(delta):
-    if not global.pauseGame or read_input or read_mouse_sensitivity_input:
+    if not global.pauseGame or read_input or read_mouse_sensitivity_input or global.activeInteractor != null:
         return
 
     if Input.is_action_pressed("ui_cancel"):
@@ -37,7 +37,7 @@ func startInputRead(action_name, nodeName, display_name):
     inputNodeToChange = get_node("InputControl/"+nodeName+"/Text")
 
 func _input(ev):
-    if not global.pauseGame:
+    if not global.pauseGame or global.activeInteractor != null:
         read_input = false
         read_mouse_sensitivity_input = false
         return
